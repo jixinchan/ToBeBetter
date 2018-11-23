@@ -1,18 +1,60 @@
-<!--
-  Generated template for the MePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>me</ion-title>
+<ion-header text-center>
+  <ion-navbar color="white">
+    <ion-title>我的</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="primary">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <div class="bg">
+    <div class="info">
+      <div class="toux">
+        <img src="./assets/imgs/timg.png">
+      </div>
+      <div class="name">
+        <p class="mz">
+          小仙女
+        </p>
+        <p class="gq">
+          今天天气真好
+        </p>
+      </div>
+    </div>
+    <ul class="mine">
+      <li>
+        <ion-icon name="happy"></ion-icon>
+        <p>动态</p>
+      </li>
+      <li>
+        <ion-icon name="bonfire"></ion-icon>
+        <p>关注</p>
+      </li>
+      <li>
+        <ion-icon name="star-outline"></ion-icon>
+        <p>收藏</p>
+      </li>
+      <li>
+        <ion-icon name="heart-outline"></ion-icon>
+        <p>粉丝</p>
+      </li>
+    </ul>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="contact" item-start></ion-icon>
+        个人资料
+      </button>
+      <button ion-item>
+        <ion-icon name="copy" item-start></ion-icon>
+        体制报告
+      </button>
+      <button ion-item>
+        <ion-icon name="settings" item-start></ion-icon>
+        设置
+      </button>
+    </ion-list>
+  </div>
 </ion-content>
