@@ -14,5 +14,26 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item style="text-align:center; font-size:1.5em; color:green; width: 100%">
+      设置
+    </ion-item>
+  </ion-list>
+    <button ion-item ng-repeat="item in items">分享该应用</button>
+  <ion-list ng-repeat="item in items" style="margin-top:2em;">
+    <button ion-item>
+        关于鲜活
+    </button>
+    <button ion-item>
+        评价应用
+    </button>
+    <button ion-item>
+        清除缓存
+    </button>
+  </ion-list>
+  <ion-list>
+    <ion-item style="text-align:center; color:green; font-size:1em;">
+      退出当前账号
+    </ion-item>
+  </ion-list>
 </ion-content>
