@@ -1,9 +1,13 @@
 page-home {
     padding: 0px;
     margin:0px;
-    color:#23a257!important;
+    // color:#23a257!important;
     ion-title{
-        color:#23a257!important;
+        p{
+            color:#23a257!important;
+            font-weight: bold;
+        }
+       
         margin-left: 35px;
     }
 

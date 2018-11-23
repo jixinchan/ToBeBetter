@@ -1,6 +1,6 @@
 <ion-header text-center> 
   <ion-navbar color="wh">
-    <ion-title color="primary">首页</ion-title>
+    <ion-title color="primary"><p class="article">首页</p></ion-title>
     <ion-buttons end >
         <button ion-button icon-only>
           <ion-icon name="search" color="primary"></ion-icon>
@@ -29,7 +29,7 @@
 
 
         <div *ngSwitchCase="0">
-          <div class="recommendations">
+          <div class="recommendations" (click)="goarticle()">
             <div class="dation">
               <div class="rtitle">冬季养生金点子</div>
               <div class="des">一定要注意保暖，忌辛凉食物</div>
@@ -39,7 +39,7 @@
               <img src="assets/imgs/recommended01.jpg">
             </div>
           </div>
-          <div class="recommendations">
+          <div class="recommendations" (click)="goarticle()">
               <div class="dation">
                 <div class="rtitle">午休新点子教你养生之道</div>
                 <div class="des">午休是每个人都需要的,就是</div> 
@@ -79,7 +79,7 @@
                   <p>10min</p>  
                 </div>
                 <div class="recommendationsimg">
-                  <img src="assets/imgs/recommended05.jpeg">
+                  <img src="assets/imgs/fitness01.jpg">
                 </div>
             </div>
             <div class="recommendations">
@@ -89,7 +89,7 @@
                     <p>10min</p>  
                   </div>
                   <div class="recommendationsimg">
-                    <img src="assets/imgs/recommended06.jpeg">
+                    <img src="assets/imgs/fitness02.jpg">
                   </div>
             </div>
             <div class="recommendations">
@@ -99,7 +99,7 @@
                       <p>10min</p>  
                     </div>
                     <div class="recommendationsimg">
-                      <img src="assets/imgs/recommended03.jpg">
+                      <img src="assets/imgs/fitness03.jpg">
                     </div>
             </div>
             <div class="recommendations">
@@ -109,7 +109,7 @@
                     <p>10min</p>  
                   </div>
                   <div class="recommendationsimg">
-                    <img src="assets/imgs/recommended04.jpeg">
+                    <img src="assets/imgs/fitness04.jpg">
                   </div>
             </div>
 

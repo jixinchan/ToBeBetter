@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import{ HometailPage} from '../hometail/hometail'
 
 @Component({
   selector: 'page-home',
@@ -7,6 +8,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  isActive=0;
+  isClick(i){
+    this.isActive=i;
+  }
+
+  goarticle(){
+    this.navCtrl.push(HometailPage);
+  }
+  
+  arr=['推荐','健身','饮食','理疗'];
   constructor(public navCtrl: NavController) {
 
   }
