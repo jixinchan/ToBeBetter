@@ -1,17 +1,39 @@
-<ion-header>
+<ion-header no-border>
   <ion-navbar>
     <ion-title>
-      Contact
+      动态
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="add" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <div class="search">
+    <ion-icon name="search"></ion-icon>
+    <input type="text" placeholder="搜索">
+  </div>
+  <ul class="kapian">
+    <li *ngFor="let item of content;let i=index">
+      <div class="wrap">
+        <div class="img">
+          <img src="{{item.img}}">
+        </div>
+        <div class="word">
+          <p>{{item.content}}</p>
+        </div>
+        <div class="user">
+          <img src="../assets/imgs/register_bg.png">
+          <p>鲜活用户{{i+1}}</p>
+          <div class="icon">
+            <p><ion-icon name="heart-outline"></ion-icon></p>
+            <p class="p">{{item.love}}</p>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
 </ion-content>

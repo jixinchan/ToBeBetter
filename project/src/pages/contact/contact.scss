@@ -1,3 +1,104 @@
 page-contact {
+    .toolbar-title-md{
+        padding-left: 50%;
+        color: rgb(35,162,87);
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .toolbar-md{
+        min-height: 40px;
+        padding: 0px;
+    }
+    .toolbar-background{
+        background: #fff;
+        border: 1px solid rgb(204,204,204);
+    }
+    ion-buttons{
+        width: 30px;
+        height: 30px;
+    }
+    ion-content{
+        .search{
+            background: #fff;
+            height:41px;
+            padding: 7px 8.5px;
+            position: relative;
+            ion-icon{
+                position: absolute;
+                left: 150px;
+                top: 12.5px;
+                color:rgb(128,128,128);
+            }
+            input{
+                display: block;
+                margin: 0 auto;
+                width:343px; 
+                height: 27px;                
+                background: rgba(231,231,231,50);
+                border-radius: 3px;
+                border:none;
+            }
+            input::-webkit-input-placeholder{
+                color:rgb(128,128,128);
+                font-size: 14px;
+                text-align: center;
+            }            
+        }
+        .kapian{
+            list-style: none;
+            padding-left: 0px;
+            margin: 0px;
+            li{
+                border: 1px solid rgb(204,204,204);
+                border-radius: 4px;
+                width:174px;
+                height:210px;
+                margin: 3px;
+                float: left;
+                .img img{
+                    width: 174px;
+                    height: 115px;
+                }
+                .word{
+                    margin: 0 auto;
+                    width: 168px;
+                    height: 46px;                   
+                    letter-spacing: 2px;
+                    color: rgb(80,80,80);
+                    font-weight: bold;
+                    font-size: 12px;
+                    // line-height: 15px;
+                    overflow: hidden;
+                    text-overflow:ellipsis;
+                }
+                .user{
+                    img{
+                        display: block;
+                    }
+                    img,p{
+                        float: left;
+                    }
+                    p{
+                        color: rgb(128,128,128);
+                        font-size: 12px;
+                        margin-top: 17px;
+                    }
+                    img{
+                        border-radius: 15px;
+                        width: 29px;
+                        height: 29px;
+                        margin: 10px;
+                    }
+                    .icon p{
+                        margin-left: 34px;
+                        margin-top: 17px;
+                    }
+                    .icon .p{
+                        margin-left: 3px;
+                    }
+                }
 
+            }
+        }
+    }
 }
