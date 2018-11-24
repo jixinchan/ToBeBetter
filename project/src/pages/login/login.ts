@@ -15,14 +15,18 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
+  tel;
+  pwd;
   constructor(public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-  // login(){
-  //   this.http.post('192.168.137.144:8080',[],()=>{});
-  // }
+  login(){
+    this.http.post('192.168.137.144:8080',{
+      "tel":this.tel,
+      "pwd":this.pwd
+    });
+  }
 }
