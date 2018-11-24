@@ -1,17 +1,226 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
+<ion-header text-center> 
+  <ion-navbar color="wh">
+    <ion-title color="primary"><p class="article">首页</p></ion-title>
+    <ion-buttons end >
+        <button ion-button icon-only>
+          <ion-icon name="search" color="primary"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+<ion-content>
+  <div class="card">
+    <div class="leftcard">
+      <div><p>宜：清淡饮食</p></div>
+      <div><p>忌：动怒气郁</p></div>
+    </div>
+    <div class="rightcard">
+        <div> <ion-icon name="sunny" color="gold"></ion-icon> 晴 </div>
+        <div><p>10℃</p></div>
+        <div><p>湿度：55%</p></div>
+    </div>
+  </div>
+  <div class="recommended">
+      <ul class="navList">
+          <li *ngFor="let item of arr;let idx=index" (click)="isClick(idx)" [class.first]="isActive==idx">{{arr[idx]}}</li>
+      </ul>
+      <div [ngSwitch]="isActive">
+
+
+        <div *ngSwitchCase="0">
+          <div class="recommendations" (click)="goarticle()">
+            <div class="dation">
+              <div class="rtitle">冬季养生金点子</div>
+              <div class="des">一定要注意保暖，忌辛凉食物</div>
+              <p>10min</p> 
+            </div>
+            <div class="recommendationsimg">
+              <img src="assets/imgs/recommended01.jpg">
+            </div>
+          </div>
+          <div class="recommendations" (click)="goarticle()">
+              <div class="dation">
+                <div class="rtitle">午休新点子教你养生之道</div>
+                <div class="des">午休是每个人都需要的,就是</div> 
+                <p>10min</p> 
+              </div>
+              <div class="recommendationsimg">
+                <img src="assets/imgs/recommended02.jpg">
+          </div>
+          </div>
+          <div class="recommendations">
+                <div class="dation">
+                  <div class="rtitle">午休新点子教你养生之道</div>
+                  <div class="des">午休是每个人都需要的,就是</div>
+                  <p>10min</p>  
+                </div>
+                <div class="recommendationsimg">
+                  <img src="assets/imgs/recommended03.jpg">
+                </div>
+          </div>
+          <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/recommended04.jpeg">
+                  </div>
+          </div>
+        </div>
+      
+        <div *ngSwitchCase="1">
+            <div class="recommendations">
+                <div class="dation">
+                  <div class="rtitle">午休新点子教你养生之道</div>
+                  <div class="des">午休是每个人都需要的,就是</div>
+                  <p>10min</p>  
+                </div>
+                <div class="recommendationsimg">
+                  <img src="assets/imgs/fitness01.jpg">
+                </div>
+            </div>
+            <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/fitness02.jpg">
+                  </div>
+            </div>
+            <div class="recommendations">
+                    <div class="dation">
+                      <div class="rtitle">午休新点子教你养生之道</div>
+                      <div class="des">午休是每个人都需要的,就是</div>
+                      <p>10min</p>  
+                    </div>
+                    <div class="recommendationsimg">
+                      <img src="assets/imgs/fitness03.jpg">
+                    </div>
+            </div>
+            <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/fitness04.jpg">
+                  </div>
+            </div>
+
+
+        </div>
+        <div *ngSwitchCase="2">
+            <div class="recommendations">
+                <div class="dation">
+                  <div class="rtitle">黑木耳是平和质可以减重</div>
+                  <div class="des">就是木耳呀</div>
+                  <p>10min</p>  
+                </div>
+                <div class="recommendationsimg">
+                  <img src="assets/imgs/diet01.jpg">
+                </div>
+            </div>
+            <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/diet02.jpeg">
+                  </div>
+            </div>
+            <div class="recommendations">
+                    <div class="dation">
+                      <div class="rtitle">午休新点子教你养生之道</div>
+                      <div class="des">午休是每个人都需要的,就是</div>
+                      <p>10min</p>  
+                    </div>
+                    <div class="recommendationsimg">
+                      <img src="assets/imgs/diet03.jpeg">
+                    </div>
+              </div>
+              <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/diet04.jpg">
+                  </div>
+              </div>
+        </div>
+        <div *ngSwitchCase="3">
+            <div class="recommendations">
+                <div class="dation">
+                  <div class="rtitle">午休新点子教你养生之道</div>
+                  <div class="des">午休是每个人都需要的,就是</div>
+                  <p>10min</p>  
+                </div>
+                <div class="recommendationsimg">
+                  <img src="assets/imgs/recommended01.jpg">
+                </div>
+              </div>
+              <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/recommended02.jpg">
+                  </div>
+                </div>
+                <div class="recommendations">
+                    <div class="dation">
+                      <div class="rtitle">午休新点子教你养生之道</div>
+                      <div class="des">午休是每个人都需要的,就是</div>
+                      <p>10min</p>  
+                    </div>
+                    <div class="recommendationsimg">
+                      <img src="assets/imgs/recommended03.jpg">
+                    </div>
+                  </div>
+        </div>
+        <div *ngSwitchDefault>
+            <div class="recommendations">
+                <div class="dation">
+                  <div class="rtitle">午休新点子教你养生之道</div>
+                  <div class="des">午休是每个人都需要的,就是</div>
+                  <p>10min</p>  
+                </div>
+                <div class="recommendationsimg">
+                  <img src="assets/imgs/recommended01.jpg">
+                </div>
+              </div>
+              <div class="recommendations">
+                  <div class="dation">
+                    <div class="rtitle">午休新点子教你养生之道</div>
+                    <div class="des">午休是每个人都需要的,就是</div>
+                    <p>10min</p>  
+                  </div>
+                  <div class="recommendationsimg">
+                    <img src="assets/imgs/recommended02.jpg">
+                  </div>
+                </div>
+                <div class="recommendations">
+                    <div class="dation">
+                      <div class="rtitle">午休新点子教你养生之道</div>
+                      <div class="des">午休是每个人都需要的,就是</div>
+                      <p>10min</p>  
+                    </div>
+                    <div class="recommendationsimg">
+                      <img src="assets/imgs/recommended03.jpg">
+                    </div>
+                  </div>
+        </div>
+      </div>
+  </div>
 </ion-content>
