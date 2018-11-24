@@ -14,5 +14,39 @@
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-item style="text-align:center; font-size:1.5em;color: green;">
+      个人资料
+    </ion-item>
+  </ion-list>
+  <div id="one" style="width:100%; height:120px; border:1px solid gainsboro; background-color: white">
+    <div style="float:left; padding: 50px 0 0 20px">
+    <h3>头像</h3>
+    </div>
+    <div id="img" style="padding: 10px 20px 0 0;">
+    <button (click)="buttonClick()" style="float:right; padding:0 20px 0 0; width:100px; height:100px">
+      <ion-img width="100px" height="100px" src="assets/imgs/usertail.jpg"></ion-img>
+    </button>
+    </div>
+  </div>
+  <ion-list>
+    <button ion-item detail-none (click)="buttonClick()">
+      昵称
+    </button>
+    <button ion-item detail-none (click)="buttonClick()">
+      个性签名
+    </button>
+    <button ion-item detail-none (click)="buttonClick()">
+      性别
+    </button>
+    <button ion-item detail-none (click)="buttonClick()">
+      生日
+    </button>
+    <button ion-item detail-none (click)="buttonClick()">
+      所在城市
+    </button>
+    <button ion-item detail-none (click)="buttonClick()">
+      注册手机号
+    </button>
+  </ion-list>
 </ion-content>
