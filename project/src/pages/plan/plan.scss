@@ -1,3 +1,41 @@
 page-plan {
-
+    ion-title{
+        span{
+            color: #23a257;
+            font-weight: bold;
+        }
+    }
+    ion-content{
+        .box{
+            float: left;
+            width: 100%;
+        }
+        .plan{
+            border-radius: 50%;
+            width: 75px;
+            height: 75px;
+            margin: 1%;
+            float: left;
+            text-align: center;
+        }
+        .plan p{
+            margin: 5px;
+            color: rgb(73, 73, 73);
+        }
+        ion-icon{
+            font-size: 30px;
+        }
+        .p1{
+            background: #f79090;
+        }
+        .p2{
+            background: #6cedf7;
+        }
+        .p3{
+            background: #ffeb3b;
+        }
+        .p4{
+            background: #92f536;
+        }
+    }
 }

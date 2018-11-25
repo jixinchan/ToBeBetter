@@ -19,7 +19,11 @@ export class PlanPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PlanPage');
+
+  }
+
+  choose(){
+    
   }
 
 }
