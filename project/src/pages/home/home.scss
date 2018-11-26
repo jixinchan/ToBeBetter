@@ -2,15 +2,10 @@ page-home {
     padding: 0px;
     margin:0px;
     // color:#23a257!important;
-    ion-title{
-        p{
-            color:#23a257!important;
-            font-weight: bold;
-        }
-       
-        margin-left: 35px;
+    .toolbar-title-md{
+        padding-left: 15%;
     }
-
+ 
     ion-content{
         .card{
             color:rgba(79,79,79, $alpha: 1.0);
@@ -78,6 +73,7 @@ page-home {
                         width: 100%;
                         float: left;
                         overflow: hidden;
+                        font-size: 13px;
                         // border:1px solid firebrick;
                         padding: 10px 10px 5px 7px;
                         // text-align: center;

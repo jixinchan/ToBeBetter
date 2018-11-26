@@ -1,17 +1,6 @@
 page-contact {
     .toolbar-title-md{
         padding-left: 50%;
-        color: rgb(35,162,87);
-        font-weight: bold;
-        font-size: 16px;
-    }
-    .toolbar-md{
-        min-height: 40px;
-        padding: 0px;
-    }
-    .toolbar-background{
-        background: #fff;
-        border: 1px solid rgb(204,204,204);
     }
     ion-buttons{
         width: 30px;
@@ -65,8 +54,8 @@ page-contact {
                     height: 46px;                   
                     letter-spacing: 2px;
                     color: rgb(80,80,80);
-                    font-weight: bold;
-                    font-size: 12px;
+                    // font-weight: bold;
+                    font-size: 13px;
                     // line-height: 15px;
                     overflow: hidden;
                     text-overflow:ellipsis;
@@ -80,7 +69,7 @@ page-contact {
                     }
                     p{
                         color: rgb(128,128,128);
-                        font-size: 12px;
+                        font-size: 16px;
                         margin-top: 17px;
                     }
                     img{
