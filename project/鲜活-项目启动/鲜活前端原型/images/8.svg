@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="84px" height="87px" viewBox="0 0 84 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>Key</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="84" height="85" rx="10"></rect>
+        <filter x="-1.2%" y="-1.2%" width="102.4%" height="104.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="keyborad/zh" transform="translate(-660.000000, -318.000000)">
+            <g id="中文键盘">
+                <g>
+                    <g id="Key" transform="translate(660.000000, 318.000000)">
+                        <g>
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#ADB3BC" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <path d="M52.2555,34 L46.3425,39.913 L40.4295,34 L38.3425,36.087 L44.2555,42 L38.3425,47.913 L40.4295,50 L46.3425,44.087 L52.2555,50 L54.3425,47.913 L48.4295,42 L54.3425,36.087 L52.2555,34 Z M56.3425,25 L37.2405,25 C35.0695,25 32.9905,25.883 31.4835,27.446 L20.1715,39.172 C18.6095,40.734 18.6095,43.267 20.1715,44.829 L31.4835,56.555 C32.9915,58.118 35.0695,59.001 37.2405,59.001 L56.3425,59.001 C60.7605,59.001 64.3425,55.419 64.3425,51.001 L64.3425,33.001 C64.3425,28.582 60.7605,25 56.3425,25 L56.3425,25 Z M61.4675,51 C61.4675,53.826 59.1685,56.125 56.3425,56.125 L37.2405,56.125 C35.8575,56.125 34.5125,55.554 33.5525,54.558 L22.2405,42.832 L22.2225,42.813 L22.2035,42.795 C21.9165,42.508 21.8735,42.173 21.8735,41.999 C21.8735,41.825 21.9165,41.49 22.2035,41.203 L22.2225,41.185 L22.2405,41.166 L33.5525,29.44 C34.5125,28.444 35.8575,27.873 37.2405,27.873 L56.3425,27.873 C59.1685,27.873 61.4675,30.172 61.4675,32.998 L61.4675,51 L61.4675,51 Z" id="Delete-Key" fill="#000000"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
