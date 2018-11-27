@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,App } from 'ionic-angular';
+import{ LoginPage} from '../login/login'
+
+import { HttpClient} from '@angular/common/http';
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,11 +18,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  // goLogin(){
+  //   this.app.getRootNavs()[0].setRoot(LoginPage);
+  // }
+  constructor(public http:HttpClient,public app:App,public navCtrl: NavController, public navParams: NavParams)
+  {
   }
+  tel;
+  pwd;
+  repwd;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  submit(){
+    this.http.post('http://10.7.86.67:8080',{
+      "tel":this.tel,
+      "pwd":this.pwd
+    }).subscribe((data)=>{});
   }
-
 }
+

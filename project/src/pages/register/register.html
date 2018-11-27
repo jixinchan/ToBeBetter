@@ -1,23 +1,24 @@
 <ion-content padding>
-  <ion-navbar color="trans">
-    <h3>注册</h3>
-  </ion-navbar>
+  <div class="regi">
+      <h3>注册</h3>
+  </div>
+  
   <div class="box">
-    <form action="/" method="POST">
+    <!-- <form action="/" method="POST"> -->
       <ion-item>
         <ion-icon name="ios-phone-portrait" item-start></ion-icon>
-        <ion-input type="number" name="tel" placeholder="手机号"></ion-input>
+        <ion-input type="number" name="tel " [(ngModel)]="tel" placeholder="手机号"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="unlock" item-start></ion-icon>
-        <ion-input type="password" name="pwd" placeholder="密码"></ion-input>
+        <ion-input type="password" name="pwd" [(ngModel)]="pwd" placeholder="密码"></ion-input>
       </ion-item>
       <ion-item>
         <ion-icon name="lock" item-start></ion-icon>
         <ion-input type="password" name="repwd" placeholder="确认密码"></ion-input>
       </ion-item>
-      <button ion-button round block>注册</button>
-    </form>
-    <p text-center>已有账号？立即登录</p>
+      <button ion-button round block (click)="submit()" (click)="goLogin()">注册</button>
+    <!-- </form> -->
+    <p text-center (click)="goLogin()">已有账号？立即登录</p>
   </div>
 </ion-content>

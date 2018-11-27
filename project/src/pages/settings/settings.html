@@ -1,26 +1,16 @@
-<!--
-  Generated template for the SettingsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>settings</ion-title>
+    <ion-title>设置</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding style="background-color:whitesmoke">
-  <ion-list>
-    <ion-item style="text-align:center; font-size:1.5em; color:green;">
-      设置
-    </ion-item>
-  </ion-list>
-    <button ion-item>分享该应用</button>
-  <ion-list style="margin-top:2em;">
+  <ion-list >
+    <button ion-item>
+      分享该应用
+    </button> 
     <button ion-item>
         关于鲜活
     </button>
@@ -31,8 +21,8 @@
         清除缓存
     </button>
   </ion-list>
-  <ion-list>
-    <ion-item style="text-align:center; color:green; font-size:1em;">
+  <ion-list (click)="goLogin()">
+    <ion-item style="text-align:center; color:green; font-size:1.1em;">
       退出当前账号
     </ion-item>
   </ion-list>

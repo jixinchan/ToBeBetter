@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import{ SettingsPage} from '../settings/settings'
 
 /**
  * Generated class for the MePage page.
@@ -15,6 +16,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MePage {
 
+  goSet(){
+    this.navCtrl.push(SettingsPage);
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

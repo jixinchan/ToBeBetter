@@ -20,16 +20,16 @@ export class HometailPage {
   Share(){
 
   }
+  //收藏的功能
   isActive=1;
   Collection(i){
     this.isActive=i;
-    
   }
   arr=[0];
   constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
     this.newLeave.sqsj=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
   }
-
+//分享的功能
   doPrompt() {
     let alert = this.alertCtrl.create({
       title: '分享给朋友',

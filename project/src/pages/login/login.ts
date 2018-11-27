@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,App} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-
+import { RegisterPage } from '../register/register';
+import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,7 +18,15 @@ import { HttpClient } from '@angular/common/http';
 export class LoginPage {
   tel;
   pwd;
-  constructor(public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+
+  goHome(){
+    this.app.getRootNavs()[0].setRoot(TabsPage);
+  }
+
+  goRegister(){
+    this.navCtrl.push(RegisterPage);
+  }
+  constructor(public app:App,public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {

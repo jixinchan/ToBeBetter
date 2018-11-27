@@ -9,8 +9,8 @@
     <h4>鲜  活</h4>
     <ion-input placeholder="手机号" [(ngModel)]="tel"></ion-input>
     <ion-input placeholder="密码" [(ngModel)]="pwd"></ion-input>
-    <button ion-button block round (click)="login()">登录</button>
+    <button ion-button block round (click)="goHome()">登录</button>
     <p>忘记密码？</p>
-    <p>没有账号,立即注册</p>
+    <p (click)="goRegister()">没有账号,立即注册</p>
   </div>
 </ion-content>
