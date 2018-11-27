@@ -19,6 +19,9 @@ export class MePage {
   goSet(){
     this.navCtrl.push('SettingsPage');
   }
+  goPrivate(){
+    this.navCtrl.push('UsertailPage')
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
