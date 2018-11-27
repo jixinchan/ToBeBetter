@@ -17,7 +17,7 @@ import{ SettingsPage} from '../settings/settings'
 export class MePage {
 
   goSet(){
-    this.navCtrl.push(SettingsPage);
+    this.navCtrl.push('SettingsPage');
   }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

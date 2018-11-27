@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,App } from 'ionic-angular';
-import{ LoginPage} from '../login/login'
 
 import { HttpClient} from '@angular/common/http';
 
@@ -18,9 +17,9 @@ import { HttpClient} from '@angular/common/http';
 })
 export class RegisterPage {
 
-  // goLogin(){
-  //   this.app.getRootNavs()[0].setRoot(LoginPage);
-  // }
+  goLogin(){
+    this.app.getRootNavs()[0].setRoot('LoginPage');
+  }
   constructor(public http:HttpClient,public app:App,public navCtrl: NavController, public navParams: NavParams)
   {
   }

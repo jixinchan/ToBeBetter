@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,App} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { RegisterPage } from '../register/register';
 import { TabsPage } from '../tabs/tabs';
 /**
  * Generated class for the LoginPage page.
@@ -24,7 +23,7 @@ export class LoginPage {
   }
 
   goRegister(){
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push('RegisterPage');
   }
   constructor(public app:App,public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -33,7 +32,7 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   login(){
-    this.http.post('192.168.137.144:8080',{
+    this.http.post('http://10.7.86.67:8080',{
       "tel":this.tel,
       "pwd":this.pwd
     });
