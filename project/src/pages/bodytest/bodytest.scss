@@ -1,3 +1,78 @@
 page-bodytest {
-
+    .selectColor{
+        background-color: #e5e5e5;
+      }
+      
+    ion-content{
+        .banner{
+            margin-top: -13px;
+            width: 100%;
+            height: 30%;
+            background-color: rgba(67,207, 124,1);
+            .top{
+                width: 100%;
+                height: 50%;
+                // border: 1px solid palevioletred;
+                text-align: center;
+                margin-top: 13px;
+                img{
+                    margin-top: 20px;
+                    width: 55px;
+                    height: 55px;
+                    line-height: 80px;
+                }       
+            }
+            .tip{
+                color: white;
+                p{
+                    margin: 10px 20px 0px 20px;
+                    line-height: 30px;
+                }
+            }
+        }
+        .box-question{
+            
+            line-height: 30px; 
+            .question-list{
+            }
+            ul{
+                li{
+                    width: 100%;
+                    height: 25%;
+                    // border: 1px solid gold;
+                    margin-left:-20px;
+                    margin-bottom: 10px;
+                    .question-content{
+                        width: 100%;
+                        height: 40%;
+                        font-size: 16px;
+                    }
+                    .key{
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        margin-right: 5%;
+                        // margin-left: 10px;
+                        text-align: center;
+                        width: 15%;
+                        height: 45px;
+                        line-height: 45px;
+                        float: left;
+                        font-size: 14px;
+                        border: 1px solid gainsboro;
+                        border-radius:2.5em; 
+                        
+                    }
+                    .change{
+                        background-color:rgba(67,207, 124,1);
+                    }
+                    .addclass{
+                        display: none!important;
+                        // background-color:rgba(67,207, 124,1);
+                    }
+                    
+                }
+            }
+        }
+        
+    }
 }

@@ -1,18 +1,35 @@
-<!--
-  Generated template for the BodytestPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
+<ion-header text-center>
   <ion-navbar>
-    <ion-title>bodytest</ion-title>
+    <ion-title>中医体质测试</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="share" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+  <div class="banner">
+    <div class="top">
+      <img src="../assets/imgs/doctor.png"/>
+    </div>
+    <div class="tip">
+      <p>请根据最近三个月你身体的情况和感觉，回答以下
+        问题，本测试不适用于孕妇。
+      </p>
+    </div>
+  </div>
+  <div class="box-question">
+    <ul class="question-ul">
+      <li *ngFor="let item of question;let i=index" class="list">
+        <div class="question-content">{{item}}</div>
+        <div *ngFor="let item of key;let j=index" class="key" [class.change]="isActive1==i&&isActive2==j" (click)="goChange(i,j)">
+            {{item}}
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!-- [ngClass]="{addclass:isActive1==i&&isActive2==j }" -->
+    
 </ion-content>
