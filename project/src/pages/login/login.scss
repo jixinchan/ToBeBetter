@@ -1,6 +1,6 @@
 page-login {
     ion-content{
-        background-image: url(../../assets/imgs/login_bg.jpg)!important;
+        background-image: url(../../assets/imgs/login_bg.png)!important;
         .scroll-content{
             overflow:hidden;
         }
@@ -16,7 +16,7 @@ page-login {
             }
             ion-input{
                 border:1px solid #cccccc;
-                border-radius: 10px;
+                border-radius: 10%;
                 background-color: white;
                 margin-bottom:20px;
             }

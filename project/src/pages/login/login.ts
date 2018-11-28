@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,App} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,App, Header} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { TabsPage } from '../tabs/tabs';
+import { RequestOptions, Headers } from '@angular/http';
 /**
  * Generated class for the LoginPage page.
  *
@@ -32,9 +33,17 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
   login(){
-    this.http.post('http://10.7.86.67:8080',{
+    console.log(this.tel,this.pwd);
+    let headers = {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Access-Control-Allow-Origin':'*'
+    };
+    let options ={
+      headers: headers
+    };
+    this.http.post('http://192.168.1.104:8080',{
       "tel":this.tel,
       "pwd":this.pwd
-    });
+    },options).subscribe((data)=>{});
   }
 }
