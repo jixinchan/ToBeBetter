@@ -22,6 +22,18 @@ export class MePage {
   goPrivate(){
     this.navCtrl.push('UsertailPage')
   }
+  goMydynamic(){
+    this.navCtrl.push('MydynamicPage');
+  }
+  goMyattention(){
+    this.navCtrl.push('MyattentionPage')
+  }
+  goMyfans(){
+    this.navCtrl.push('MyfansPage');
+  }
+  goMylikes(){
+    this.navCtrl.push('MylikesPage')
+  }
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
