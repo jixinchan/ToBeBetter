@@ -1,0 +1,59 @@
+<!--
+  Generated template for the ContactailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>鲜活</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="nav">
+    <p><img src="../assets/imgs/register_bg.png"></p>
+    <p>鲜活用户{{i+1}}</p>
+    <p>
+      <ion-icon name="more"></ion-icon>
+    </p>
+    <p><button outline ion-button>关注</button></p>
+  </div>
+
+  <ion-slides class="sli" loop autoplay="2000" pager>
+    <ion-slide>
+      <img src="{{imgs[i]}}">
+    </ion-slide>
+    <ion-slide>
+      <img src="{{imgs[i]}}">
+    </ion-slide>
+    <ion-slide>
+      <img src="{{imgs[i]}}">
+    </ion-slide>
+  </ion-slides>
+
+  <div class="word">
+    <p>{{title[i]}}</p>
+    <p>{{content[i]}}</p>
+    <div class="key">
+      <div class="cir"><span>#</span></div>
+      <span class="span">每日{{className[i]}}</span>
+    </div>
+  </div>
+  <div class="commend">
+    <ion-icon name="share"></ion-icon>
+    <ion-icon name="heart-outline"></ion-icon>
+    <ion-icon name="star-outline"></ion-icon>
+    <ion-icon name="text"></ion-icon>
+  </div>
+  <div class="commend2">
+    <p>
+      <ion-icon name="chatbubbles" color="primary"></ion-icon>动态评论
+    </p>
+    <hr>
+    <div class="com">
+      <img src="../assets/imgs/register_bg.png">
+      <input type="text" placeholder="喜欢TA就留下第一个评论，别等别人哦">
+    </div>
+  </div>
+</ion-content>

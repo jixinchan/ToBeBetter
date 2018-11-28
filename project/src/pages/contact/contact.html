@@ -17,10 +17,10 @@
     <input type="text" placeholder="搜索">
   </div>
   <ul class="kapian">
-    <li *ngFor="let item of content;let i=index">
+    <li *ngFor="let item of content;let i=index" (click)="goContactail(i)">
       <div class="wrap">
         <div class="img">
-          <img src="{{item.img}}">
+          <img src="{{item.imgs}}">
         </div>
         <div class="word">
           <p>{{item.content}}</p>
@@ -29,8 +29,10 @@
           <img src="../assets/imgs/register_bg.png">
           <p>鲜活用户{{i+1}}</p>
           <div class="icon">
-            <p><ion-icon name="heart-outline"></ion-icon></p>
-            <p class="p">{{item.love}}</p>
+            <p>
+              <ion-icon name="heart-outline"></ion-icon>
+            </p>
+            <p class="p">{{love[i]}}</p>
           </div>
         </div>
       </div>

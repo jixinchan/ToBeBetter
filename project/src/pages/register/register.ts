@@ -27,11 +27,13 @@ export class RegisterPage {
   pwd;
   repwd;
 
-  submit(){
-    this.http.post('http://10.7.86.67:8080',{
+  submit(){//10.7.86.67 192.168.0.109
+    this.http.post('http://10.7.86.67:8080/register',{
       "tel":this.tel,
       "pwd":this.pwd
-    }).subscribe((data)=>{});
+    }).subscribe(data=>{
+      
+    });
   }
 }
 

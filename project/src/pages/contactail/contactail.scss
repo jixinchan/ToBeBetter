@@ -1,0 +1,160 @@
+page-contactail {
+    .button-inner{
+        color: rgb(35,162,87);
+    }
+    ion-content{
+        .nav{
+            height: 40px;
+            p{
+                margin-bottom: 0;
+            }
+            img{
+                width: 30px;
+                height: 30px;
+                border-radius: 15px;
+                margin-top: -10px;
+                margin-left: 17px;
+            }
+            p{
+                float: left;
+            }
+            p:nth-child(3),p:nth-child(4){
+                float: right;
+            }
+            p:nth-child(2){
+                font-size: 13px;
+                color:rgb(56,56,56);
+                margin-top: 10px;
+                margin-left:15px;
+            }
+            p:nth-child(4){
+                margin-bottom: 0px;
+            }
+            button{
+                width: 40px;
+                height: 20px;
+                border-radius: 6px;
+                font-size: 10px;
+                margin-top: -10px;
+                margin-right: 20px;
+            }
+            ion-icon{
+                width: 25px;
+                height: 25px;
+                transform: scale(1.5,1.5);
+                margin-top: -10px;
+                margin-right: -10px;
+            }
+        }
+        .sli{
+            width: 100%;
+            height: auto;   
+            ion-slide{
+                img{
+                    width: 100%;
+                    height: 200px;
+                    display: block;
+                    margin: 0 auto;
+                }
+            }
+        }
+        .word{
+            height: auto;
+            p{
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            p:nth-child(1){
+                font-size: 18px;
+                font-weight: bold;
+            }
+            p:nth-child(2){
+                font-size: 15px;
+
+            }
+            .key{
+                width: 93px;
+                height: 28px;
+                background: rgb(228, 223, 223);
+                border-radius: 16px;
+                margin-left: 10px;
+                margin-bottom: 10px;
+                .cir{
+                    float: left;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 8px;
+                    background: rgb(159, 218, 183);
+                    margin-top: 6px;
+                    margin-left: 5px;
+                    span{
+                        display: block;
+                        color: rgb(35,162,87);
+                        text-align: center;
+                    }
+                }
+                .span{
+                    display: block;
+                    color:rgb(35,162,87);
+                    float: left;
+                    margin-top: 5px;
+                    margin-left: 10px;
+                }
+            }
+        }
+        .commend{
+            ion-icon{
+                transform: scale(1.5,1.5);
+                opacity: 0.5;
+                margin-right: 25px;
+            }
+            ion-icon:nth-child(1){
+                margin: 10px;
+                margin-left: 20px;
+                margin-right: 200px;
+            }
+        }
+        .commend2{
+            height:auto;
+            p{
+                color: rgb(128,128,128);
+                font-size: 14px;
+                margin-bottom: 0;
+                margin-left: 10px;
+                ion-icon{
+                    opacity: 0.5;
+                    margin-right: 5px;
+                }
+            }
+            hr{
+                color: rgb(128,128,128);
+                width: 336px;
+            }
+            .com{
+                img{
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    margin: 10px;
+                }
+                input{
+                    display: block;
+                    width: 280px;
+                    height: 30px;
+                    margin: 10px;
+                    background: rgb(231,231,231);
+                    border:none;
+                    border-radius: 6px;
+                }
+                input::-webkit-input-placeholder{
+                    color:rgb(128,128,128);
+                    font-size: 12px;
+                    padding-left: 10px;
+                }    
+                img,input{
+                    float: left;
+                }
+            }
+        }
+    }
+}
