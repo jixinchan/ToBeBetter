@@ -7,98 +7,97 @@ page-home {
     }
  
     ion-content{
+        ul{
+            padding-left: 0!important;
+        }
+//卡片
         .card{
             color:rgba(79,79,79, $alpha: 1.0);
             border:1px solid #23a257;
             border-radius: 25px;
-            margin: 30px 20px 20px 20px;
-            // margin:20px;
-            height: 20%;
-            // width:100%;
-            .leftcard{
-                // border:1px solid lawngreen;
-                width: 50%;
-                float: left;
-                height: 100%;
-                font-size: 18px;
-                text-align: center;
-                line-height: 1.7em;
-            }
-            .rightcard{
-                // border:1px solid hotpink;
-                width: 50%;
-                float: left;
-                height: 100%;
-                font-size: 16px;
-                text-align: center;
-                padding-top: 5px;
-                line-height: 1.2em;
-            }
+            float: left;
+            width: 84%;
+            height: 100px;
+            margin: 20px 8% 0 8%;
         }
-        .recommended{
-            margin:20px;
-
-            .navList{
-                padding-left: 0!important;
-                // margin-top: -5px;
-                margin-bottom: 0px;
-                height: 44px;
-                line-height: 44px;
-                .first{
-                    border-bottom:2px solid #23a257;
-                }
-                li{
-                    height: 44px;
-                    text-align: center;
-                    float: left;
-                    width: 25%;
-                }
-            }
-            .recommendations{         
-                border-bottom:0.5px solid gainsboro;
-                height: 90px;
-                .dation{
-                    width: 70%;
-                    float: left;
-                    // height:50%;
-                    .rtitle{
-                        width: 100%;
-                        float: left;
-                        padding: 7px;
-                        font-size: 16px;
-                        overflow: hidden;
-                        // border:1px solid lawngreen;    
-                    }
-                    .des{
-                        width: 100%;
-                        float: left;
-                        overflow: hidden;
-                        font-size: 13px;
-                        // border:1px solid firebrick;
-                        padding: 10px 10px 5px 7px;
-                        // text-align: center;
-                       
-                    }
-                    p{
-                        font-size: 12px;
-                        padding-left:10px;
-                        height: 20px; 
-                    }
-                }
-                
-
-            }
-            .recommendationsimg{
-                float: right;            
-                width: 30%;
-                text-align: center;
-                margin-top: 15px;
-                img{
-                    width: 80px;
-                    height: 60px;
-                }
-                
-            }
+        .lc{
+            width: 50%;
+            height: 100px;
+            float: left;
+            font-size: 18px;
+            text-align: center;
+        }
+        .lc p{
+            margin: 16px 0;
+            line-height: 25px;
+            // border: black 1px solid;
+        }
+        .rc{
+            width: 50%;
+            height: 100px;
+            float: left;
+            text-align: center;
+            // border: black 1px solid;
+        }
+        .rc div{
+            margin: 3px;
+        }
+        .rc ion-icon{
+            font-size: 25px;
+        }
+        .rc span{
+            font-size: 18px;
+        }
+        .rc p{
+            font-size: 18px;
+            margin: 5px 0;
+        }
+//导航
+        .navlist{
+            width: 100%;
+            height: 44px;
+            float: left;
+        }
+        .navlist li{
+            width: 25%;
+            line-height: 44px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .first{
+            border-bottom:2px solid #23a257;
+        }
+//推荐列表
+        .out{
+            width: 100%;
+            float: left;
+            // border: black 1px solid;
+        }
+        .out li{
+            width: 100%;
+            margin: 0 0 10px 0;
+            // border: black 1px solid;
+        }
+        p{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            margin: 0 10px 10px 10px;
+        }
+        .left{
+            width: 75%;
+            float: left;
+        }
+        .title{
+            width: 200px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        img{
+            width: 25%;
+            height: 70px;
+            float: left;
         }
     }
 }
+
