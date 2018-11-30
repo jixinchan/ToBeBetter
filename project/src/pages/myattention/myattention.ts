@@ -21,5 +21,18 @@ export class MyattentionPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyattentionPage');
   }
+  check=true;
+  show(){
+  
+    if(this.check) {
+      document.getElementById('isshow1').style.display='none';
+      document.getElementById('isshow').style.display='block';
+    }
+    else{
+      document.getElementById('isshow').style.display='none';
+      document.getElementById('isshow1').style.display='block';
+    }
 
+    this.check=!this.check;
+  }
 }

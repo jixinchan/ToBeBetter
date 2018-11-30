@@ -1,3 +1,51 @@
 page-myattention {
-
+    .toolbar-title-md{
+        padding-left: 38%;
+    }
+    ion-content{
+        background-color:#e2e2e2;
+        .item{
+            border: 1px solid gainsboro;
+            .picture{
+                float:left;
+                width:70px;
+                height: 70px;
+            }
+            img{
+                width:100%;
+                height:100%;
+                border-radius:50%;
+            }
+            .tail{
+                float:left; 
+                margin-top: 20px;
+            }
+        }
+        .attention{
+            float: right;
+            margin-top: 20px;
+            .btn1 {
+                width: 68px;
+                height: 28px;
+                color: #808080;
+                font-size: 18px;
+                text-align: center;
+                background-color: #fff;
+                border: 1px solid #808080;
+            }
+            .btn2 {
+                width: 68px;
+                height: 28px;
+                color: #23a257;
+                font-size: 18px;
+                text-align: center;
+                background-color: #fff;
+                border: 1px solid #23a257;
+            }
+            
+            #isshow{
+                display: none;
+            }
+        }
+    }
 }
