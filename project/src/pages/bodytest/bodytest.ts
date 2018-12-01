@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,App} from 'ionic-angular';
+import { NgStyle } from '@angular/common';
 
 /**
  * Generated class for the BodytestPage page.
@@ -32,8 +33,8 @@ export class BodytestPage {
   '6.您的皮肤一抓就红，并出现抓痕吗？'];
 
   key=['没有','很少','有时','经常','总是'];
-  isActive1;
-  isActive2;
+  isActive1=[-1,-1,-1,-1,-1,-1];
+  isActive2=0;
   // goChange(i,j){
   //   this.isActive1=i;
   //   this.isActive2=j;
@@ -42,28 +43,13 @@ export class BodytestPage {
     this.isActive1=i;
   }
   goChange(i,j){
-    this.isActive1=i;
-    this.isActive2=j;
-    // console.log(i);
-    // console.log(j);
-    var list=document.getElementsByClassName('list');
-    console.log(list[i].children[1]);
-    if(j+1){
-      var k,q;
-      list[i].children[j+1].style.background="#23a257";
-      for(k=0;k!= j+1 && k<6;k++)
-      {
-        list[i].children[k].style.background="#ffffff";
-      }
-      for(q=5;q!=j+1 &&q>0;q--)
-      {
-        list[i].children[q].style.background="#ffffff";
-      }
-    }
-    
-    
-    list[i]
-    
+    // if(this.isActive1[i]==j){
+    //   this.isActive1[i] = -1
+    // }else{
+    //   this.isActive1[i]=j;
+    // }
+    this.isActive1[i]=j;
+
   }
  
 
