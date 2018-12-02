@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,App } from 'ionic-angular';
-
+import { AlertController } from 'ionic-angular';
 import { HttpClient} from '@angular/common/http';
 
 /**
@@ -20,20 +20,38 @@ export class RegisterPage {
   goLogin(){
     this.app.getRootNavs()[0].setRoot('LoginPage');
   }
-  constructor(public http:HttpClient,public app:App,public navCtrl: NavController, public navParams: NavParams)
+  constructor(public alertCtrl:AlertController,public http:HttpClient,public app:App,public navCtrl: NavController)
   {
   }
   tel;
   pwd;
   repwd;
 
-  submit(){//10.7.86.67 192.168.0.109
-    this.http.post('http://10.7.86.67:8080/register',{
+  submit(){
+    this.http.post('/api/register',{
       "tel":this.tel,
       "pwd":this.pwd
     }).subscribe(data=>{
-      
+      if(!data){
+        this.presentPrompt('该手机号已注册，请登录。');
+      }
     });
+  }
+  presentPrompt(str) {
+    let alert = this.alertCtrl.create({
+      title: '登录失败',
+      subTitle:str+'，请重新输入。',
+      buttons: [
+        {
+          text: '确认',
+          role: 'cancel',
+          handler: data => {
+            console.log('Confirm clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
 

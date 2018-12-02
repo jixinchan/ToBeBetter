@@ -19,6 +19,7 @@ import { AlertController } from 'ionic-angular';
 export class LoginPage {
   tel;
   pwd;
+  result;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -29,30 +30,37 @@ export class LoginPage {
 
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   login(){
-    this.http.post('/api/login',{
-      "tel":this.tel,
-      "pwd":this.pwd
-    },{headers:this.headers}).subscribe((data)=>{
-      // 1成功 0密码空 -1用户不存在 -2密码错误 -3手机号空
-      switch(data){
-        case 0:
-            this.presentPrompt('密码不能为空');
-            break;
-        case 1:
-            this.goHome();
-            break;
-        case -1:
-            this.presentPrompt('该手机号未注册');
-            break;
-        case -2:
-            this.presentPrompt('密码错误');
-            break;
-      }
-    });
+    if(!this.pwd){
+      this.presentPrompt('密码不能为空');
+    }
+    if(!this.tel){
+      this.presentPrompt('手机号不能为空');
+    }
+    if(this.tel && this.pwd){
+      this.http.post('/api/login',{
+        'tel':this.tel,
+        'pwd':this.pwd
+      },{headers:this.headers}).subscribe((data)=>{
+        console.log(data);
+        if(!data[0]){
+          this.presentPrompt('该手机号未注册');
+        }else{
+          if(data[0].password==this.pwd){
+              //登陆成功
+              // console.log(data[0].uid);
+              localStorage.setItem('uid',data[0].uid);
+              this.goHome();
+          }else{
+              this.presentPrompt('密码错误');
+          }
+        }
+      });
+    }
   }
   goHome(){
     //跳转到tabs页并将用户tel传给tabs
-    this.app.getRootNavs()[0].setRoot(TabsPage,{account:this.tel});
+
+    this.app.getRootNavs()[0].setRoot(TabsPage);
   }
   goRegister(){
     this.navCtrl.push('RegisterPage');
