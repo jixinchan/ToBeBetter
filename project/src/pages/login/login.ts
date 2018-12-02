@@ -30,24 +30,21 @@ export class LoginPage {
 
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   login(){
-    if(!this.pwd){
-      this.presentPrompt('密码不能为空');
-    }
     if(!this.tel){
       this.presentPrompt('手机号不能为空');
-    }
-    if(this.tel && this.pwd){
+    }else if(!this.pwd){
+      this.presentPrompt('密码不能为空');
+    }else{
       this.http.post('/api/login',{
         'tel':this.tel,
         'pwd':this.pwd
       },{headers:this.headers}).subscribe((data)=>{
-        console.log(data);
+        // console.log(data);
         if(!data[0]){
           this.presentPrompt('该手机号未注册');
         }else{
           if(data[0].password==this.pwd){
               //登陆成功
-              // console.log(data[0].uid);
               localStorage.setItem('uid',data[0].uid);
               this.goHome();
           }else{
