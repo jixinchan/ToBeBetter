@@ -22,8 +22,8 @@ export class ContactPage {
 
   constructor(public navCtrl: NavController,public http:HttpClient) {
   }
-  ionViewDidLoad(){//"http://10.7.86.67:8080/contact"
-    this.http.get("http://192.168.0.109:8080/contact").subscribe(data=>{
+  ionViewDidLoad(){
+    this.http.get("/api/contact").subscribe(data=>{
       this.content=data;
       //console.log(data);
       this.content.forEach(e=>{
