@@ -3,8 +3,39 @@
     <ion-title color="primary" ><p class="article">文章详情</p></ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content padding>
+  <div *ngFor="let art of article;">
+    <div>
+      <p class="title">{{art.title}}</p>
+      <p class="song">系统推送</p>
+    </div>
+    <div>
+      <img src="{{art.imgs}}">
+      <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
+    </div>
+  </div>
 
-<ion-content>
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-content>
   <div class="article-title">
     <h4>午休新点子教你养生之道</h4>
     <div>
@@ -16,9 +47,9 @@
       </span>
     </div> 
   </div>
-  <div class="article-content"> 
+  <div class="article-content">  -->
     <!-- <div class="article-"> -->
-      <p>
+      <!-- <p>
           午休是每一个人都需要的，特别是对于现在的工作族来说。因为早上八点钟上班，
           晚上五点钟下班，所以说整个工作的时间是非常长的。如果在中间不进行一个半小时
           的午休的话，那么很有可能会影响到大家的身体健康，同时大家都明白，
@@ -41,16 +72,16 @@
           冷毛巾敷脸。忙了一个上午后，人们早已一脸油光，皮肤闷在油脂和灰尘里透不过气
           来，让人精神状态不佳。午休时洗把脸，或者用手帕、小毛巾蘸冷水，敷脸几分钟，
           脸部温度降低，能让你下午神采奕奕。
-      </p>
+      </p> -->
     <!-- </div> -->
-  </div>
+  <!-- </div> -->
 
 
-  <div class="operation">
-    <ion-icon name="share" (click)="doPrompt()"></ion-icon>
+  <!-- <div class="operation">
+    <ion-icon name="share" (click)="doPrompt()"></ion-icon> -->
       <!-- <ion-icon name="star-outline" *ngFor="let item of arr;let idx=index" (click)="Collection()" (click)="isClick(idx)" [class.first]="isActive==idx"></ion-icon>
        -->
-       <ion-icon name="star-outline" (click)="Collection(idx)"  *ngFor="let item of arr;let idx=index" [class.collection]="isActive==idx"></ion-icon>
+       <!-- <ion-icon name="star-outline" (click)="Collection(idx)"  *ngFor="let item of arr;let idx=index" [class.collection]="isActive==idx"></ion-icon>
   </div>
  
-</ion-content>
+</ion-content> -->

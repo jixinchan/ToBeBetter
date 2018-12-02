@@ -35,48 +35,48 @@
     <!-- 推荐 -->
     <div *ngSwitchCase="0" class="out">
       <ul>
-        <li *ngFor="let tj of tuijian;">
-          <div class="left">
-            <p class="title">{{tj.title}}</p>
-            <p>{{tj.content}}</p>
-          </div>
-          <img src="{{tj.imgs}}" alt="">
+        <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.title)">
+            <div class="left">
+              <p class="title">{{tj.title}}</p>
+              <p>{{tj.content}}</p>
+            </div>
+            <img src="{{tj.imgs}}">
         </li>
       </ul>
     </div>
     <!-- 健身 -->
     <div *ngSwitchCase="1" class="out">
       <ul>
-        <li *ngFor="let js of jianshen;">
-          <div class="left">
-            <p class="title">{{js.title}}</p>
-            <p>{{js.content}}</p>
-          </div>
-          <img src="{{js.imgs}}" alt="">
+        <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.title)">
+            <div class="left">
+              <p class="title">{{js.title}}</p>
+              <p>{{js.content}}</p>
+            </div>
+            <img src="{{js.imgs}}">
         </li>
       </ul>
     </div>
     <!-- 饮食 -->
     <div *ngSwitchCase="2" class="out">
       <ul>
-        <li *ngFor="let ys of yinshi;">
-          <div class="left">
-            <p class="title">{{ys.title}}</p>
-            <p>{{ys.content}}</p>
-          </div>
-          <img src="{{ys.imgs}}" alt="">
+        <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.title)">
+            <div class="left">
+              <p class="title">{{ys.title}}</p>
+              <p>{{ys.content}}</p>
+            </div>
+            <img src="{{ys.imgs}}">
         </li>
       </ul>
     </div>
     <!-- 理疗 -->
     <div *ngSwitchCase="3" class="out">
       <ul>
-        <li *ngFor="let ll of liliao;">
-          <div class="left">
-            <p class="title">{{ll.title}}</p>
-            <p>{{ll.content}}</p>
-          </div>
-          <img src="{{ll.imgs}}" alt="">
+        <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.title)">
+            <div class="left">
+              <p class="title">{{ll.title}}</p>
+              <p>{{ll.content}}</p>
+            </div>
+            <img src="{{ll.imgs}}">
         </li>
       </ul>
     </div>

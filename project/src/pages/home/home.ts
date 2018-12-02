@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController,NavParams } from 'ionic-angular';
-import{ HometailPage} from '../hometail/hometail'
+import { NavController } from 'ionic-angular';
+// import{ HometailPage} from '../hometail/hometail';
 import { HttpClient } from '@angular/common/http';
+import { JsonpCallbackContext } from '@angular/common/http/src/jsonp';
+
 
 @Component({
   selector: 'page-home',
@@ -14,26 +16,18 @@ export class HomePage {
     this.isActive=i;
   }
 
-  goarticle(){
-    this.navCtrl.push(HometailPage);
-  }
-  
-  // arr=['推荐','健身','饮食','理疗'];
-
-
-  bid;
+  uid;
   tuijian;
-  constructor(public navCtrl: NavController,public http:HttpClient,public params:NavParams) {
-    
-    // console.log('Home参数:',params.data);
-    this.bid = params.data;
-    // this.bid = 3;
+  constructor(public navCtrl: NavController,public http:HttpClient) {
+    // localStorage.setItem("uid","1");
+    //得到uid
+    this.uid = localStorage.getItem("uid");
     
     this.http.post('/api',{
-      "bid":this.bid
+      "uid":this.uid
     }).subscribe(data=>{});
 
-    this.http.get('/api').subscribe(data=>{
+    this.http.get('/api/tuijian').subscribe(data=>{
       this.tuijian = data;
       // console.log(data);
       this.tuijian.forEach(e => {
@@ -75,7 +69,23 @@ export class HomePage {
     });
   }
 
+  
+  goHomeTail(title){
+    this.http.post('/api/hometail',{
+      "title":title
+    }).subscribe(data=>{});
 
+    this.navCtrl.push("HometailPage");
+  }
+
+
+
+  
+  // goarticle(){
+  //   this.navCtrl.push(HometailPage);
+  // }
+  
+  // arr=['推荐','健身','饮食','理疗'];
 
 
 }

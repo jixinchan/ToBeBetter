@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the HometailPage page.
@@ -26,8 +27,25 @@ export class HometailPage {
     this.isActive=i;
   }
   arr=[0];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alertCtrl: AlertController) {
-    this.newLeave.sqsj=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
+
+  article;
+  paragraph;
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private alertCtrl: AlertController,
+              public http: HttpClient
+            ) {
+    // this.newLeave.sqsj=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
+    
+    // 获得文章内容
+    this.http.get('/api/hometail').subscribe(data=>{
+      this.article = data;
+      this.article.forEach(e => {
+        e.imgs = '../assets/imgs/images/'+e.imgs;
+        this.paragraph = e.content.split("%%%");
+      });
+    });
+
   }
 //分享的功能
   doPrompt() {
@@ -40,7 +58,7 @@ export class HometailPage {
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HometailPage');
+    // console.log('ionViewDidLoad HometailPage');
   }
 
 }
