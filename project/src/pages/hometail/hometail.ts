@@ -19,6 +19,7 @@ export class HometailPage {
 
   article;
   paragraph;
+  uid;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private alertCtrl: AlertController,
@@ -34,6 +35,9 @@ export class HometailPage {
         this.paragraph = e.content.split("%%%");
       });
     });
+
+    this.uid = localStorage.getItem("uid");
+
   }
     
   ionViewDidLoad() {
@@ -42,20 +46,23 @@ export class HometailPage {
 
   
   // 收藏
-  uid;
-  isActive=1;
+  isActive=-1;
   collect(rid){
     this.isActive=0;
+    // localStorage.setItem('Collected',rid);
 
-    this.uid = localStorage.getItem("uid");
-    this.http.post('/api/collection',{
+    this.http.post('/api/collect',{
       "uid":this.uid,
       "rid":rid
     }).subscribe(data=>{});
   }
-  // uncollect(i){
-  //   this.isActive = -i;
-  // }  想绑定双击事件不起作用
+  uncollect(rid){
+    this.isActive = -1;
+    this.http.post('/api/uncollect',{
+      "uid":this.uid,
+      "rid":rid
+    }).subscribe(data=>{});
+  }
 
 // 分享
   Share() {

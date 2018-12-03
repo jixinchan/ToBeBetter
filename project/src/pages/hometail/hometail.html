@@ -14,13 +14,15 @@
       <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
     </div>
     <div class="operation">
-      <!-- 分享 -->
-      <ion-icon name="share" (click)="Share()"></ion-icon>
       <!-- 收藏 -->
-      <ion-icon name="star" (click)="collect(art.rid)" [class.first]="isActive==0"></ion-icon>
+      <ion-icon name="star-outline" (click)="collect(art.rid)" [class.first]="isActive==0"></ion-icon>
+      <!-- 取消收藏 -->
+      <ion-icon name="md-trash" (click)="uncollect(art.rid)"></ion-icon>
+      <!-- 分享 -->
+      <ion-icon name="md-share-alt" (click)="Share()"></ion-icon>
     </div>
-  </div> 
-
+  </div>
+  
 </ion-content>
 
 

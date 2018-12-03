@@ -5,7 +5,6 @@ page-hometail {
             font-size: 14px;
         }
         .title{
-            font-family: '楷体';
             font-size: 20px;
             font-weight: bold;
             text-align: center;
@@ -16,7 +15,7 @@ page-hometail {
             font-size: 14px;
             color: #aaa;
             text-align: right;
-            margin: 0 0 20px 0;
+            margin: 10px 0 10px 0;
         }
         img{
             width: 100%;
@@ -33,9 +32,12 @@ page-hometail {
             width:100%;
             text-align: right;
             ion-icon{
-                font-size: 30px;
+                font-size: 25px;
                 margin-right: 20px;
                 color: rgb(80, 80, 80);
+            }
+            span{
+                font-size: 16px;
             }
             .first{
                 color: gold;
