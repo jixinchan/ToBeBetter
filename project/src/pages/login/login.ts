@@ -37,7 +37,6 @@ export class LoginPage {
     }else{
       this.http.post('/api/login',{
         'tel':this.tel,
-        'pwd':this.pwd
       },{headers:this.headers}).subscribe((data)=>{
         // console.log(data);
         if(!data[0]){
@@ -55,8 +54,7 @@ export class LoginPage {
     }
   }
   goHome(){
-    //跳转到tabs页并将用户tel传给tabs
-
+    this.http.post('/api/login/status',{'tel':this.tel}).subscribe(data=>{});
     this.app.getRootNavs()[0].setRoot(TabsPage);
   }
   goRegister(){

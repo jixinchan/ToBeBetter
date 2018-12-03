@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import{ SettingsPage} from '../settings/settings'
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
 
 /**
  * Generated class for the MePage page.
@@ -15,6 +15,24 @@ import{ SettingsPage} from '../settings/settings'
   templateUrl: 'me.html',
 })
 export class MePage {
+  avatar;//头像
+  nickname;//昵称
+  signature;//个签
+  uid;//用户id
+  constructor(public http:HttpClient, public navCtrl: NavController, public navParams: NavParams) {
+  }
+  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
+  ionViewDidLoad() {
+    this.uid = localStorage.getItem('uid');
+    console.log('ionViewDidLoad MePage');
+    this.http.post('/api/me',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+      this.avatar = './assets/imgs/'+data[0].avatar;
+      this.nickname = data[0].nickname;
+      this.signature = data[0].signature;
+    });
+  }
+
+
 
   goSet(){
     this.navCtrl.push('SettingsPage');
@@ -34,11 +52,4 @@ export class MePage {
   goMylikes(){
     this.navCtrl.push('MylikesPage')
   }
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MePage');
-  }
-
 }
