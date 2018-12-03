@@ -17,17 +17,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HometailPage {
 
-  newLeave:any={};
-  Share(){
-
-  }
-  //收藏的功能
-  isActive=1;
-  Collection(i){
-    this.isActive=i;
-  }
-  arr=[0];
-
   article;
   paragraph;
   constructor(public navCtrl: NavController,
@@ -45,20 +34,38 @@ export class HometailPage {
         this.paragraph = e.content.split("%%%");
       });
     });
-
   }
-//分享的功能
-  doPrompt() {
+    
+  ionViewDidLoad() {
+    // console.log('ionViewDidLoad HometailPage');
+  }
+
+  
+  // 收藏
+  uid;
+  isActive=1;
+  collect(rid){
+    this.isActive=0;
+
+    this.uid = localStorage.getItem("uid");
+    this.http.post('/api/collection',{
+      "uid":this.uid,
+      "rid":rid
+    }).subscribe(data=>{});
+  }
+  // uncollect(i){
+  //   this.isActive = -i;
+  // }  想绑定双击事件不起作用
+
+// 分享
+  Share() {
     let alert = this.alertCtrl.create({
       title: '分享给朋友',
       message: '&nbsp;<img src="../assets/imgs/wechat.png" width="50px" style="margin-right:20px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../assets/imgs/QQ.png" width="50px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../assets/imgs/微博.png" width="50px"/>',
       buttons: ['取消']
     });
-    alert.present()
+    alert.present();
   }
-  
-  ionViewDidLoad() {
-    // console.log('ionViewDidLoad HometailPage');
-  }
+
 
 }

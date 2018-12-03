@@ -13,24 +13,15 @@
       <img src="{{art.imgs}}">
       <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
     </div>
-  </div>
+    <div class="operation">
+      <!-- 分享 -->
+      <ion-icon name="share" (click)="Share()"></ion-icon>
+      <!-- 收藏 -->
+      <ion-icon name="star" (click)="collect(art.rid)" [class.first]="isActive==0"></ion-icon>
+    </div>
+  </div> 
 
 </ion-content>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

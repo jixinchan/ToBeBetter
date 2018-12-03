@@ -16,17 +16,33 @@ export class HomePage {
     this.isActive=i;
   }
 
+
   uid;
   tuijian;
+  yiji;
+  should; avoid;
   constructor(public navCtrl: NavController,public http:HttpClient) {
     // localStorage.setItem("uid","1");
+   
     //得到uid
     this.uid = localStorage.getItem("uid");
-    
+
     this.http.post('/api',{
       "uid":this.uid
     }).subscribe(data=>{});
 
+    // 得到宜忌内容
+    this.http.get('/api/yiji').subscribe(data=>{
+      this.yiji = data;
+      var num = Math.floor(Math.random()*this.yiji.length);
+      // console.log(num);
+      this.should = this.yiji[num].should;
+      this.avoid = this.yiji[num].avoid;
+      // console.log(this.yiji[num].should);
+    });
+
+
+    // 得到推荐推文
     this.http.get('/api/tuijian').subscribe(data=>{
       this.tuijian = data;
       // console.log(data);
