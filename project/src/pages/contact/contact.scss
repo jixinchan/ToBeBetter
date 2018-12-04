@@ -78,12 +78,14 @@ page-contact {
                         height: 29px;
                         margin: 10px;
                     }
-                    .icon p{
-                        margin-left: 34px;
-                        margin-top: 17px;
-                    }
-                    .icon .p{
-                        margin-left: 3px;
+                    .icon{
+                        float: right;
+                        p:nth-child(1){
+                            margin-right: 3px;
+                        }
+                        p:nth-child(2){
+                            margin-right: 5px;
+                        }
                     }
                 }
 

@@ -2,9 +2,6 @@ page-contactail {
     .button-inner{
         color: rgb(35,162,87);
     }
-    .toolbar-title-md{
-        padding-left: 35%;
-    }
     ion-content{
         .nav{
             height: 40px;
@@ -16,7 +13,7 @@ page-contactail {
                 height: 30px;
                 border-radius: 15px;
                 margin-top: -10px;
-                margin-left: 17px;
+                margin-left: 10px;
             }
             p{
                 float: left;
@@ -39,8 +36,14 @@ page-contactail {
                 border-radius: 6px;
                 font-size: 10px;
                 margin-top: -10px;
-                margin-right: 20px;
+                margin-right: 20px;                
             }
+            .btn .button-inner{
+                color:#808080;
+            }   
+            .btn{
+                margin-left: 163px;
+            }        
             ion-icon{
                 width: 25px;
                 height: 25px;
@@ -75,6 +78,9 @@ page-contactail {
                 font-size: 15px;
 
             }
+            .span2{
+                float: right;
+            }
             .key{
                 width: 93px;
                 height: 28px;
@@ -96,25 +102,45 @@ page-contactail {
                         text-align: center;
                     }
                 }
-                .span{
-                    display: block;
+                .span{                   
                     color:rgb(35,162,87);
                     float: left;
                     margin-top: 5px;
                     margin-left: 10px;
                 }
             }
+            .span2{
+                margin-top: -35px;
+                margin-right: 20px;
+                color: #808080;
+                font-size: 1.1em;
+            }
         }
         .commend{
-            ion-icon{
-                transform: scale(1.5,1.5);
-                opacity: 0.5;
-                margin-right: 25px;
+            clear: both;
+            margin: 20px 0 20px 10px;
+            span{
+                display: inline-block;
+                width: 24px;
+                ion-icon{
+                    transform: scale(1.5,1.5);
+                    opacity: 0.5;
+                }
             }
-            ion-icon:nth-child(1){
-                margin: 10px;
-                margin-left: 20px;
-                margin-right: 200px;
+            span:nth-child(1){
+                margin-left: 10px;
+                margin-right: 180px;
+            }    
+            span:nth-child(2),span:nth-child(3),span:nth-child(4),span:nth-child(5){
+                margin-right: 20px;
+            }     
+            .love{
+                color:#ff5733;
+                opacity: 1;
+            }
+            .star{
+                color: #fde400;
+                opacity: 1;
             }
         }
         .commend2{

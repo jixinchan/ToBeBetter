@@ -3,7 +3,7 @@
     <ion-title>
       动态
     </ion-title>
-    <ion-buttons end>
+    <ion-buttons end (click)="goRelease()">
       <button ion-button icon-only>
         <ion-icon name="add" color="primary"></ion-icon>
       </button>
@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="search">
+  <div class="search" (click)="goSearch()">
     <ion-icon name="search"></ion-icon>
     <input type="text" placeholder="搜索">
   </div>
@@ -26,13 +26,13 @@
           <p>{{item.content}}</p>
         </div>
         <div class="user">
-          <img src="../assets/imgs/register_bg.png">
-          <p>鲜活用户{{i+1}}</p>
+          <img src="{{avatar[i]}}">
+          <p>{{nickname[i]}}</p>
           <div class="icon">
             <p>
               <ion-icon name="heart-outline"></ion-icon>
             </p>
-            <p class="p">{{love[i]}}</p>
+            <p>{{love[i]}}</p>
           </div>
         </div>
       </div>
