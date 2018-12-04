@@ -4,6 +4,9 @@ page-usertail {
     }
     ion-content{
         background-color:#e2e2e2;
+        ion-label{
+            color: black!important;
+        }
         span{
             color: gray;
             .ipt{

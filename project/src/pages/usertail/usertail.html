@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>个人资料</ion-title>
-    <ion-buttons end (click)='goEdit()'>
+    <ion-buttons end (click)='save()'>
       <button ion-button icon-only color="primary">
         <ion-icon name="create"></ion-icon>
       </button>
@@ -24,10 +24,10 @@
   <ion-list>
     <ion-item>
       昵称
-      <span item-end><input type="text" name="nickname" placeholder="{{nickname}}" class="ipt"></span>
+      <span item-end><input type="text" name="nickname" placeholder="{{nickname}}" class="ipt" [(ngModel)]='nickname'></span>
     </ion-item>
     <ion-item>
-      个性签名<span item-end><input type="text" name="nickname" placeholder="{{signature}}" class="ipt"></span>
+      个性签名<span item-end><input type="text" name="nickname" placeholder="{{signature}}" class="ipt" [(ngModel)]='signature'></span>
     </ion-item>
     <ion-item (click)='presentSex()'>
       性别<span item-end>{{sex}}</span>
@@ -36,11 +36,11 @@
       生日<span item-end>{{birth}}</span>
     </ion-item>
     <ion-item>
-      <ion-label>地区选择器</ion-label>
-      <ion-multi-picker item-content [multiPickerColumns]="listData"></ion-multi-picker>
+      <ion-label>所在地区</ion-label>
+      <ion-multi-picker item-content [placeholder]='city' [cancelText]="cancel" [doneText]="done" [multiPickerColumns]="listData" [(ngModel)]='bcity'></ion-multi-picker>
     </ion-item>
     <ion-item>
-      注册手机号<span item-end><input type="text" name="nickname" placeholder="{{account}}" class="ipt"></span>
+      注册手机号<span item-end><input type="text" name="nickname" placeholder="{{account}}" class="ipt" [(ngModel)]='account'></span>
     </ion-item>
   </ion-list>
 </ion-content>
