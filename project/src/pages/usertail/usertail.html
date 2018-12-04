@@ -1,4 +1,4 @@
- <ion-header>
+<ion-header>
   <ion-navbar>
     <ion-title>个人资料</ion-title>
     <ion-buttons end (click)='goEdit()'>
@@ -36,7 +36,8 @@
       生日<span item-end>{{birth}}</span>
     </ion-item>
     <ion-item>
-      所在城市<span item-end>{{city}}</span>
+      <ion-label>地区选择器</ion-label>
+      <ion-multi-picker item-content [multiPickerColumns]="listData"></ion-multi-picker>
     </ion-item>
     <ion-item>
       注册手机号<span item-end><input type="text" name="nickname" placeholder="{{account}}" class="ipt"></span>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
-
+import { ReciveServeProvider } from '../../providers/recive-serve/recive-serve';
 
 /**
  * Generated class for the UsertailPage page.
@@ -14,6 +14,8 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
 @Component({
   selector: 'page-usertail',
   templateUrl: 'usertail.html',
+  providers:[ReciveServeProvider],
+  
 })
 export class UsertailPage {
   uid;//用户id
@@ -24,7 +26,9 @@ export class UsertailPage {
   birth;//生日
   city;//城市
   account;//用户手机号
-  constructor(public alertCtrl:AlertController, public http:HttpClient, public navCtrl: NavController) {
+
+  listData=[];
+  constructor(private reciveServe: ReciveServeProvider,public alertCtrl:AlertController, public http:HttpClient, public navCtrl: NavController) {
   }
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {
@@ -40,12 +44,20 @@ export class UsertailPage {
     });
     this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.account = data[0].account;
-    })
+    });
+
+    this.getRequestContact();
   }
   goEdit(){
     
   }
-  
+  getRequestContact() {
+    this.reciveServe.getRequestContact().subscribe(res => {
+        this.listData = res.json();
+    }, error => {
+        console.log(error);
+    })
+}
   
   
   cityP = this.alertCtrl.create({

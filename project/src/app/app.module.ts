@@ -2,7 +2,6 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +12,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MePage } from '../pages/me/me';
 import { PlanPage } from '../pages/plan/plan';
 
+import { MultiPickerModule } from 'ion-multi-picker';
+import { ReciveServeProvider } from '../providers/recive-serve/recive-serve';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -24,6 +27,8 @@ import { PlanPage } from '../pages/plan/plan';
   ],
   imports: [
     BrowserModule,
+    MultiPickerModule,
+    HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
@@ -42,7 +47,8 @@ import { PlanPage } from '../pages/plan/plan';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ReciveServeProvider
   ]
 })
 export class AppModule {}
