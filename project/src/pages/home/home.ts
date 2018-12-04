@@ -87,11 +87,11 @@ export class HomePage {
 
   
   goHomeTail(title){
-    this.http.post('/api/hometail',{
-      "title":title
-    }).subscribe(data=>{});
+    // this.http.post('/api/hometail',{
+    //   "title":title
+    // }).subscribe(data=>{});
 
-    this.navCtrl.push("HometailPage");
+    this.navCtrl.push("HometailPage",{'title':title});
   }
 
 

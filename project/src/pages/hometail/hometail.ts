@@ -20,6 +20,7 @@ export class HometailPage {
   article;
   paragraph;
   uid;
+  title;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private alertCtrl: AlertController,
@@ -27,8 +28,9 @@ export class HometailPage {
             ) {
     // this.newLeave.sqsj=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
     
+    this.title=this.navParams.get('title');
     // 获得文章内容
-    this.http.get('/api/hometail').subscribe(data=>{
+    this.http.post('/api/hometail',{'title':this.title}).subscribe(data=>{
       this.article = data;
       this.article.forEach(e => {
         e.imgs = '../assets/imgs/images/'+e.imgs;
