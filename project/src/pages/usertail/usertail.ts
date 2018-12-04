@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
+import { HttpClient ,HttpHeaders} from '@angular/common/http';
+
 
 /**
  * Generated class for the UsertailPage page.
@@ -14,12 +16,84 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'usertail.html',
 })
 export class UsertailPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  uid;//用户id
+  avatar;//头像
+  nickname;//昵称
+  signature;//个签
+  sex;//性别
+  birth;//生日
+  city;//城市
+  account;//用户手机号
+  constructor(public alertCtrl:AlertController, public http:HttpClient, public navCtrl: NavController) {
   }
-
+  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {
+    this.uid=localStorage.getItem('uid');
     console.log('ionViewDidLoad UsertailPage');
+    this.http.post('/api/usertail',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+      this.avatar = './assets/imgs/'+data[0].avatar;
+      this.nickname = data[0].nickname;
+      this.signature = data[0].signature;
+      this.sex = data[0].sex;
+      this.city = data[0].city;
+      this.birth = data[0].birth.substring(0,10);
+    });
+    this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+      this.account = data[0].account;
+    })
+  }
+  goEdit(){
+    
+  }
+  
+  
+  
+  cityP = this.alertCtrl.create({
+    inputs:[{
+      type:'date',
+    }]
+  });
+  //性别弹框
+  presentSex() {
+    let sexP = this.alertCtrl.create({
+      inputs: [{      
+          type: 'radio',
+          label: '女',
+          value: '女',
+        },{
+          type: 'radio',
+          label: '男',
+          value: '男'
+        }],
+      buttons: [{
+          text: 'OK',
+          handler: (data) => {
+            this.sex=data;
+          }
+        }
+      ]
+    });
+    sexP.present();
+  }
+  //生日弹框
+  presentBirth(){
+    let birthP = this.alertCtrl.create({
+      title:'选择您的生日',
+      inputs:[{
+        type:'date',
+      }],
+      buttons: [{
+        text:'OK',
+        handler:data=>{
+          this.birth=data['0'];
+        }
+      }]
+    });
+    birthP.present();
+  }
+  //城市弹框
+  presentCity(){
+
   }
 
 }

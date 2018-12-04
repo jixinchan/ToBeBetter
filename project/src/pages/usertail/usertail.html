@@ -1,6 +1,11 @@
-<ion-header>
+ <ion-header>
   <ion-navbar>
     <ion-title>个人资料</ion-title>
+    <ion-buttons end (click)='goEdit()'>
+      <button ion-button icon-only color="primary">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -12,28 +17,30 @@
     </div>
     <div id="img" style="padding: 10px 20px 0 0;">
     <button (click)="buttonClick()" style="float:right; padding:0 20px 0 0; width:100px; height:100px">
-      <ion-img width="100px" height="100px" src="assets/imgs/usertail.jpg"></ion-img>
+      <ion-img width="100px" height="100px" src="{{avatar}}"></ion-img>
     </button>
     </div>
   </div>
   <ion-list>
-    <button ion-item detail-none (click)="buttonClick()">
+    <ion-item>
       昵称
-    </button>
-    <button ion-item detail-none (click)="buttonClick()">
-      个性签名
-    </button>
-    <button ion-item detail-none (click)="buttonClick()">
-      性别
-    </button>
-    <button ion-item detail-none (click)="buttonClick()">
-      生日
-    </button>
-    <button ion-item detail-none (click)="buttonClick()">
-      所在城市
-    </button>
-    <button ion-item detail-none (click)="buttonClick()">
-      注册手机号
-    </button>
+      <span item-end><input type="text" name="nickname" placeholder="{{nickname}}" class="ipt"></span>
+    </ion-item>
+    <ion-item>
+      个性签名<span item-end><input type="text" name="nickname" placeholder="{{signature}}" class="ipt"></span>
+    </ion-item>
+    <ion-item (click)='presentSex()'>
+      性别<span item-end>{{sex}}</span>
+    </ion-item>
+    <ion-item (click)='presentBirth()'>
+      生日<span item-end>{{birth}}</span>
+    </ion-item>
+    <ion-item>
+      所在城市<span item-end>{{city}}</span>
+    </ion-item>
+    <ion-item>
+      注册手机号<span item-end><input type="text" name="nickname" placeholder="{{account}}" class="ipt"></span>
+    </ion-item>
   </ion-list>
 </ion-content>
+x

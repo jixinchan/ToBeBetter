@@ -4,5 +4,12 @@ page-usertail {
     }
     ion-content{
         background-color:#e2e2e2;
+        span{
+            color: gray;
+            .ipt{
+                border:0!important;
+                text-align: right;
+            }
+        }
     }
 }
