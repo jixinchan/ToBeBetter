@@ -16,6 +16,9 @@ import { MultiPickerModule } from 'ion-multi-picker';
 import { ReciveServeProvider } from '../providers/recive-serve/recive-serve';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+
+import {IonicStorageModule} from '@ionic/storage';
+import { WelcomePage } from '../pages/welcome/welcome';
 @NgModule({
   declarations: [
     MyApp,
@@ -23,7 +26,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     TabsPage,
     MePage,
-    PlanPage
+    PlanPage,
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,8 @@ import { HttpModule } from '@angular/http';
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
       tabsHideOnSubPages:true
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +47,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     TabsPage,
     MePage,
-    PlanPage
+    PlanPage,
+    WelcomePage
   ],
   providers: [
     StatusBar,

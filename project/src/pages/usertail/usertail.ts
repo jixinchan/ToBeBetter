@@ -28,18 +28,13 @@ export class UsertailPage {
   account;//用户手机号
   bcity;
 
-
   cancel='取消';
   done='完成';
 
   listData=[];
   constructor(private reciveServe: ReciveServeProvider,public alertCtrl:AlertController, public http:HttpClient, public navCtrl: NavController) {
-    this.getRequestContact();
-  }
-  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
-  ionViewDidLoad() {  
     this.uid=localStorage.getItem('uid');
-    this.http.post('/api',{'uid':this.uid},{headers:this.headers});
+    this.http.post('/api',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
     this.http.post('/api/usertail',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.avatar = './assets/imgs/'+data[0].avatar;
       this.nickname = data[0].nickname;
@@ -51,22 +46,28 @@ export class UsertailPage {
     this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.account = data[0].account;
     });
+    
+    this.getRequestContact();
   }
-
+  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
+  ionViewDidLoad() {   
+  }
 
   //保存个人资料
   save(){
+    console.log(this.bcity);
+    
     this.http.post('/api/usertail/save',{
       'avatar':this.avatar.substring(14),
       'nickname':this.nickname,
       'signature':this.signature,
       'sex':this.sex,
       'birth':this.birth,
-      'city':this.cityFliter(this.city),
-      'account':this.account
+      'city':this.cityFliter(this.bcity),
+      'account':this.account,
+      'uid':this.uid
     },{headers:this.headers}).subscribe(data=>{});
   }
-  
   //城市选择
   getRequestContact() {
     this.reciveServe.getRequestContact().subscribe(res => {
@@ -76,17 +77,16 @@ export class UsertailPage {
         console.log(error);
     })
   }
-
+  //将对应城市码转为文字
   cityFliter(val){
-    console.log(this.city,this.bcity);
-    if(this.city===this.bcity){
+    // console.log(typeof this.bcity);
+    if(typeof this.bcity=='undefined'){
       return this.city;
     }else{
       this.city='';
       var province = val.substring(0,6);
       var shi = val.substring(7,13);
       var xian = val.substring(14);
-      console.log(province,shi,xian);
       this.city+=this.listData[0].options.find(function(e){
         return e.value===province;
       }).text;
@@ -96,7 +96,6 @@ export class UsertailPage {
       this.city+=this.listData[2].options.find(function(e){
         return e.value===xian;
       }).text;
-      console.log(this.city);
       return this.city;
     }
     
