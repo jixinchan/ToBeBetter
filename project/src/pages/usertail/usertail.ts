@@ -34,14 +34,14 @@ export class UsertailPage {
   listData=[];
   constructor(private reciveServe: ReciveServeProvider,public alertCtrl:AlertController, public http:HttpClient, public navCtrl: NavController) {
     this.uid=localStorage.getItem('uid');
-    this.http.post('/api',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
+    
     this.http.post('/api/usertail',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.avatar = './assets/imgs/avatar/'+data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
       this.sex = data[0].sex;
       this.city = data[0].city;
-      this.birth = data[0].birth.substring(0,10);
+      this.birth = data[0].birth?data[0].birth.substring(0,10):data[0].birth;
     });
     this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.account = data[0].account;

@@ -24,9 +24,8 @@ export class MePage {
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {
     this.uid = localStorage.getItem('uid');
-    console.log('ionViewDidLoad MePage');
     this.http.post('/api/me',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
-      this.avatar = './assets/imgs/'+data[0].avatar;
+      this.avatar = './assets/imgs/avatar/'+data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
     });

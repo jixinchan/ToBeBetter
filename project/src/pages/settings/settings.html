@@ -6,9 +6,9 @@
 
 </ion-header>
 
-<ion-content padding style="background-color:whitesmoke">
-  <ion-list >
-    <button ion-item>
+<ion-content>
+  <ion-list>
+    <button ion-item (click)='goShare()'>
       分享该应用
     </button> 
     <button ion-item>
@@ -21,9 +21,7 @@
         清除缓存
     </button>
   </ion-list>
-  <ion-list (click)="goLogin()">
-    <ion-item style="text-align:center; color:green; font-size:1.1em;">
-      退出当前账号
-    </ion-item>
-  </ion-list>
+  <button ion-button  block (click)='goLogin()'>退出当前账号</button>
+      
+    
 </ion-content>

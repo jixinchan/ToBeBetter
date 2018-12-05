@@ -2,4 +2,13 @@ page-settings {
     .toolbar-title-md{
         padding-left: 35%;
     }
+    ion-content{
+        background-color:whitesmoke!important;
+        ion-list{
+            .ion-item{
+                padding-left:20px;
+            }
+        }
+    }
+
 }

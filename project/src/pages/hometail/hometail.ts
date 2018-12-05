@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , ModalController} from 'ionic-angular';
+// import { AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -23,8 +23,8 @@ export class HometailPage {
   title;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private alertCtrl: AlertController,
-              public http: HttpClient
+              public http: HttpClient,
+              public modalCtrl: ModalController
             ) {
     // this.newLeave.sqsj=new Date(new Date().getTime()+8*60*60*1000).toISOString();//北京时间
     
@@ -67,13 +67,9 @@ export class HometailPage {
   }
 
 // 分享
-  Share() {
-    let alert = this.alertCtrl.create({
-      title: '分享给朋友',
-      message: '&nbsp;<img src="../assets/imgs/wechat.png" width="50px" style="margin-right:20px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../assets/imgs/QQ.png" width="50px"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../assets/imgs/微博.png" width="50px"/>',
-      buttons: ['取消']
-    });
-    alert.present();
+  goShare() {
+    let profileModal = this.modalCtrl.create('SharePage');
+    profileModal.present();
   }
 
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,App} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,App, ModalController} from 'ionic-angular';
 // import{ LoginPage} from '../login/login'
 
 /**
@@ -18,13 +18,17 @@ export class SettingsPage {
 
   goLogin(){
     this.app.getRootNavs()[0].setRoot('LoginPage');
+    localStorage.removeItem('uid');
   }
-  constructor(public app:App, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public app:App, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
+  goShare() {
+    let profileModal = this.modalCtrl.create('SharePage');
+    profileModal.present();
+  }
 }
