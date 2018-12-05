@@ -36,7 +36,7 @@ export class UsertailPage {
     this.uid=localStorage.getItem('uid');
     this.http.post('/api',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
     this.http.post('/api/usertail',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
-      this.avatar = './assets/imgs/'+data[0].avatar;
+      this.avatar = './assets/imgs/avatar/'+data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
       this.sex = data[0].sex;
@@ -58,7 +58,7 @@ export class UsertailPage {
     console.log(this.bcity);
     
     this.http.post('/api/usertail/save',{
-      'avatar':this.avatar.substring(14),
+      'avatar':this.avatar.substring(21),
       'nickname':this.nickname,
       'signature':this.signature,
       'sex':this.sex,
@@ -72,7 +72,6 @@ export class UsertailPage {
   getRequestContact() {
     this.reciveServe.getRequestContact().subscribe(res => {
         this.listData = res.json();
-        console.log(this.listData);
     }, error => {
         console.log(error);
     })
@@ -108,6 +107,7 @@ export class UsertailPage {
           type: 'radio',
           label: '女',
           value: '女',
+          checked:true
         },{
           type: 'radio',
           label: '男',

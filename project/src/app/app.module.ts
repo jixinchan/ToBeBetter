@@ -19,6 +19,7 @@ import { HttpModule } from '@angular/http';
 
 import {IonicStorageModule} from '@ionic/storage';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { LoginPage } from '../pages/login/login';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +28,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
     TabsPage,
     MePage,
     PlanPage,
-    WelcomePage
+    WelcomePage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
     TabsPage,
     MePage,
     PlanPage,
-    WelcomePage
+    WelcomePage,
+    LoginPage
   ],
   providers: [
     StatusBar,
