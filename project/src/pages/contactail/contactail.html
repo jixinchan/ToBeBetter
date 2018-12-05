@@ -13,14 +13,17 @@
 <ion-content>
   <div class="nav">
     <p><img src="{{avatar[i]}}"></p>
-    <p>{{nickname[i]}}</p>
-    <p (click)="goShare()">
-      <ion-icon name="more"></ion-icon>
+    <p>{{nickname[i]}}</p>    
+    <p class="btn1">
+      <button outline ion-button [ngStyle]="{'border-color':'#808080'}"
+       [ngClass]="{'hide':!flag}" (click)="change(1)">已关注</button>
     </p>
-    <p><button outline ion-button [ngClass]="{'hide':flag}" (click)="change(0)">关注</button></p>
-    <p><button outline ion-button class="btn" 
-      [ngStyle]="{'border-color':'#808080'}" [ngClass]="{'hide':!flag}" 
-      (click)="change(1)">已关注</button></p>
+    <p class="btn2">
+      <button outline ion-button [ngClass]="{'hide':flag}" (click)="change(0)">关注</button>
+    </p>
+    <p (click)="goShare()" class="p">
+      <ion-icon name="more"></ion-icon>
+    </p>  
   </div>
 
   <ion-slides class="sli" loop autoplay="2000" pager>
@@ -51,17 +54,19 @@
     <span [ngClass]="{'hide':!love}" (click)="change2()"><ion-icon name="heart" class="love"></ion-icon></span>
     <span [ngClass]="{'hide':star}" (click)="change3(0)"><ion-icon name="star-outline" ></ion-icon></span>
     <span [ngClass]="{'hide':!star}" (click)="change3(1)"><ion-icon name="star" class="star"></ion-icon></span>
-    <span><ion-icon name="text"></ion-icon></span>
+    <span (click)="goAssess()"><ion-icon name="text"></ion-icon></span>
   </div>
 
   <div class="commend2">
-    <p>
+    <p (click)="goAssess()">
       <ion-icon name="chatbubbles" color="primary"></ion-icon>动态评论
     </p>
     <hr>
     <div class="com">
-      <img src="../assets/imgs/register_bg.png">
-      <input type="text" placeholder="喜欢TA就留下你的评论，别等别人哦">
+      <img src="{{avatar[i]}}">
+      <input type="text" placeholder="喜欢TA就留下你的评论" [(ngModel)]="input">
+      <ion-icon name="happy"></ion-icon>
+      <span (click)="release()">发布</span>
     </div>
   </div>
 </ion-content>

@@ -4,6 +4,7 @@ page-contactail {
     }
     ion-content{
         .nav{
+            position: relative;
             height: 40px;
             p{
                 margin-bottom: 0;
@@ -18,38 +19,37 @@ page-contactail {
             p{
                 float: left;
             }
-            p:nth-child(3),p:nth-child(4){
-                float: right;
+            .p,.btn1,.btn2{
+               position: absolute;
             }
             p:nth-child(2){
                 font-size: 13px;
                 color:rgb(56,56,56);
                 margin-top: 10px;
-                margin-left:15px;
-            }
-            p:nth-child(4){
-                margin-bottom: 0px;
+                margin-left:10px;
+                margin-right: 140px;
             }
             button{
                 width: 40px;
                 height: 20px;
                 border-radius: 6px;
                 font-size: 10px;
-                margin-top: -10px;
-                margin-right: 20px;                
-            }
-            .btn .button-inner{
+                margin-top: -10px;          
+            }            
+            .btn1 .button-inner{
                 color:#808080;
-            }   
-            .btn{
-                margin-left: 163px;
-            }        
+            }  
+            .btn1,.btn2{
+                right:8%;
+            } 
+            .p{
+                right:2%;
+            }
             ion-icon{
                 width: 25px;
                 height: 25px;
                 transform: scale(1.5,1.5);
-                margin-top: -10px;
-                margin-right: -10px;
+                padding-left: 13px;
             }
         }
         .sli{
@@ -165,10 +165,12 @@ page-contactail {
                     width: 30px;
                     height: 30px;
                     margin: 10px;
+                    margin-right: 0px;
+                    border-radius: 50%;
                 }
                 input{
                     display: block;
-                    width: 280px;
+                    width: 230px;
                     height: 30px;
                     margin: 10px;
                     background: rgb(231,231,231);
@@ -182,6 +184,13 @@ page-contactail {
                 }    
                 img,input{
                     float: left;
+                }
+                ion-icon{
+                    margin: 15px 8px 0 3px;
+                    opacity: 0.5;
+                }
+                span{
+                    color: rgb(35,162,87);
                 }
             }
         }
