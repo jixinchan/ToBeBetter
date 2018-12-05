@@ -7,21 +7,44 @@
 </ion-header>
 
 <ion-content>
-  <ul class="dynamic">
-    <li *ngFor="let item of content;let i=index">
-      <div class="img">
-        <img src="{{item.img}}">
-      </div>
-      <div class="info">
-        <div class="word">
-          <p>{{item.content}}</p>
-        </div>
-        <div class="dt">
-          <p class="date">{{item.date}}<span class="time">{{item.time}}</span></p>
-        </div>
-      </div>
-
-    </li>
+  <ul class="navlist">
+    <li (click)="isClick(0)" [class.first]="isActive==0">动态</li>
+    <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goReco()">推文</li>
   </ul>
-
+  <div [ngSwitch]="isActive">
+    <div *ngSwitchCase="0">
+      <ul class="dynamic">
+        <li *ngFor="let item of dyna;" (click)="goContacTail(item.did)">
+          <div class="img">
+            <img src="{{item.imgs}}">
+          </div>
+          <div class="info">
+            <div class="word">
+              <p>{{item.content}}</p>
+            </div>
+            <div class="dt">
+              <p class="date">{{item.time}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div *ngSwitchCase="1">
+      <ul class="recommend">
+        <li *ngFor="let item of reco;" (click)="goHomeTail(item.title)">
+          <div class="img">
+            <img src="{{item.imgs}}">
+          </div>
+          <div class="info">
+            <div class="dt">
+              <p class="title">{{item.title}}</p>
+            </div>
+            <div class="word">
+              <p>{{item.content}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </ion-content>

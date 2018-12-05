@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { HometailPage } from '../hometail/hometail';
 
 /**
  * Generated class for the MylikesPage page.
@@ -14,12 +16,57 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mylikes.html',
 })
 export class MylikesPage {
-  content=[{img:"../assets/imgs/milk.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/muer.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/hetao.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/zao.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"}]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  isActive = 0;
+  isClick(i) {
+    this.isActive = i;
   }
 
+  dyna;
+  uid;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    //得到uid
+    this.uid = localStorage.getItem("uid");
+
+    this.http.post('/api/mylikesd', {
+      "uid": this.uid
+    }).subscribe(data => {
+      this.dyna = data;
+      // console.log(data);
+      this.dyna.forEach(e => {
+        e.imgs = '../assets/imgs/' + e.imgs;
+      });
+    });
+
+  }
+
+  reco;
+  goReco() {
+    this.http.post('/api/mylikesr', {
+      "uid": this.uid
+    }).subscribe(data => {
+      this.reco = data;
+      // console.log(data);
+      this.reco.forEach(e => {
+        e.imgs = '../assets/imgs/images/' + e.imgs;
+      });
+    });
+  }
+
+  goHomeTail(title){
+    this.http.post('/api/hometail',{
+      "title":title
+    }).subscribe(data=>{});
+
+    this.navCtrl.push("HometailPage");
+  }
+
+  goContacTail(did){
+    this.http.post('/api/contactail',{
+      "did":did
+    }).subscribe(data=>{});
+
+    this.navCtrl.push("ContactailPage");
+  }
 }

@@ -8,9 +8,9 @@
 
 <ion-content>
   <ul class="dynamic">
-    <li *ngFor="let item of content;let i=index">
+    <li *ngFor="let item of content" (click)="goContacTail(item.did)">
       <div class="img">
-        <img src="{{item.img}}">
+        <img src="{{item.imgs}}">
       </div>
       <div class="info">
         <div class="word">

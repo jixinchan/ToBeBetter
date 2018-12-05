@@ -2,9 +2,24 @@ page-mylikes {
     .toolbar-title-md{
         padding-left: 30%;
     }
+    .navlist{
+        padding: 0;
+        width: 40%;
+        height: 30px;
+        float: left;
+        margin-left: 30%;
+    }
+    .navlist li{
+        width: 50%;
+        line-height: 30px;
+        font-size: 16px;
+        text-align: center;
+    }
+    .first{
+        border-bottom: 2px solid #23a257;
+    }
     .dynamic{
         width: 100%;
-        height: 100%;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -52,6 +67,54 @@ page-mylikes {
                         .time{
                             float: right;
                         }
+                    }
+                }
+            }
+        }
+    }
+    .recommend{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        li{
+            float: left;
+            width: 100%;
+            padding: 10px;
+            height: 120px;
+            .img{
+                width: 30%;
+                height: 100px;
+                float: left;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .info{                
+                width: 63%;
+                height: 90px;
+                float: left;
+                margin-left: 20px;
+                .title{
+                    width: 100%;
+                    height: 30%;
+                    padding-top: 5px;
+                    margin-top: 0px;
+                    font-weight: bolder;
+                }
+                .word{
+                    width: 100%;
+                    height: 70%;
+                    padding-top: 5px;
+                    p{
+                        margin: 0;
+                        line-height: 25px;
+                        font-size: 14px;                            
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
                     }
                 }
             }

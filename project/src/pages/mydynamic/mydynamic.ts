@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the MydynamicPage page.
@@ -14,12 +15,29 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'mydynamic.html',
 })
 export class MydynamicPage {
-  content=[{img:"../assets/imgs/milk.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/muer.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/hetao.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"},
-{img:"../assets/imgs/zao.jpg",content:"养生，动词也，亦可为名词。原指道家通过各种方法颐养生命、增强体质、预防疾病，从而达到延年益寿的一种医事活动。",date:"2018年10月20日",time:"15:11"}]
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  content;
+  uid;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpClient) {
+    // //得到uid
+    this.uid = localStorage.getItem("uid");
+    // console.log(this.uid);
+    
+    this.http.post('/api/mydynamic',{
+      "uid":this.uid
+    }).subscribe(data=>{
+      this.content = data;
+      // console.log(data);
+      this.content.forEach(e=>{
+        e.imgs = '../assets/imgs/'+e.imgs;
+      });
+    });
   }
 
+  goContacTail(did){
+    this.http.post('/api/contactail',{
+      "did":did
+    }).subscribe(data=>{});
+
+    this.navCtrl.push("ContactailPage");
+  }
 }
