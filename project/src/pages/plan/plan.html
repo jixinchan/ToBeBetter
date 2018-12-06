@@ -4,24 +4,26 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p>任意时间</p>
-  <div class="box">
-    <div class="plan p1" (click)="choose()">
-      <p><ion-icon name='md-clipboard' color="light"></ion-icon></p>
-      <p>早睡早起</p>
+<ion-content>
+  <!-- <div class="box">
+    <div class="addFirstPlan" (click)="addFirst()">
+      <p>添加你的第一个计划吧</p>
+      <ion-icon name="add"></ion-icon>
     </div>
-    <div class="plan p2" (click)="choose()">
-      <p><ion-icon name='md-happy' color="light"></ion-icon></p>
-      <p>平板支撑</p>
-    </div>
-    <div class="plan p3">
-      <p><ion-icon name='md-heart-outline' color="light"></ion-icon></p>
-      <p>按摩</p>
-    </div>
-    <div class="plan p4">
-      <p><ion-icon name='md-cloud-outline' color="light"></ion-icon></p>
-      <p>喝热水</p>
+  </div> -->
+  <div>
+    <p class="myplan">我的计划</p>
+    <div class="box">
+      <div class="row">
+        <div *ngFor="let item of myplan;" class="out">
+          <div class="plan {{item.plancolor}}">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-shuiguo"></use>
+            </svg>
+          </div>
+          <p>{{item.plantxt}}</p>
+        </div>
+      </div>
     </div>
   </div>
 

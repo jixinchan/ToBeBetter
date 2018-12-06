@@ -1,3 +1,80 @@
 page-editplan {
+    .newplan{
+        border: #23a257 2px solid;
+        border-radius: 10px;
+        width: 80%;
+        height: 100px;
+        text-align: center;
+        margin-left: 10%;
+        .pic{
+            margin: 5px 0 0 38%;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            // background: #ccc;
+        }
+        .txt{
+            margin: 5px;
+            // border: red 1px solid
+        }
+        .pid{
+            color: white;
+        }
+    }
+
+    .save{
+        float: left;
+        width: 100%;
+        height: 60px;
+        // border: black 1px solid;
+        p{
+            // border: #23a257 2px solid;
+            background-color: #23a257;
+            color: white;
+            float: right;
+            border-radius: 10px;
+            width: 65px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: 15px;
+        }
+    }
+
+    .box{
+        margin-top: 60px;
+    }
+    .plan{
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        margin-left: 15%;
+        // border: red 1px solid;
+    }
+    .out{
+        width: 25%;
+        text-align: center;
+    }
+    .p1{background: orange;}
+    .p2{background: rgb(81, 214, 185);}
+    .p3{background: yellow;}
+    .p4{background: rgb(74, 230, 60);}
+    .p5{background: rgb(43, 137, 245);}
+    .p6{background: rgb(78, 237, 248);}
+    .p7{background: pink;}
+    .p8{background: lightgoldenrodyellow;}
+    .p9{background: lightgrey;}
+    .p10{background: lightblue}
+    .p11{background: red;}
+    .p12{background: white;border: black 1px solid;}
+
+    
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+       font-size: 35px;
+       margin-top: 12px;
+    }
 
 }

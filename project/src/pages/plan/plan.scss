@@ -1,35 +1,53 @@
 page-plan {
     ion-content{
-        .box{
-            float: left;
-            width: 100%;
+        .addFirstPlan{
+            text-align: center;
+            color: #ccc;
+            margin-top: 150px;
+            // border: #aaa 1px solid;
+            p{
+                font-size: 30px;
+            }
+            ion-icon{
+                font-size: 50px;
+            }
+        }
+
+
+        .myplan{
+            font-size: 20px;
         }
         .plan{
             border-radius: 50%;
-            width: 75px;
-            height: 75px;
-            margin: 1%;
-            float: left;
+            width: 60px;
+            height: 60px;
+            margin-left: 15%;
+            // border: red 1px solid;
+        }
+        .out{
+            width: 25%;
             text-align: center;
         }
-        .plan p{
-            margin: 5px;
-            color: rgb(73, 73, 73);
-        }
-        ion-icon{
-            font-size: 30px;
-        }
-        .p1{
-            background: #f79090;
-        }
-        .p2{
-            background: #6cedf7;
-        }
-        .p3{
-            background: #ffeb3b;
-        }
-        .p4{
-            background: #92f536;
-        }
+        .p1{background: orange;}
+        .p2{background: rgb(81, 214, 185);}
+        .p3{background: yellow;}
+        .p4{background: rgb(74, 230, 60);}
+        .p5{background: rgb(43, 137, 245);}
+        .p6{background: rgb(78, 237, 248);}
+        .p7{background: pink;}
+        .p8{background: lightgoldenrodyellow;}
+        .p9{background: lightgrey;}
+        .p10{background: lightblue}
+        .p11{background: red;}
+        .p12{background: white;border: black 1px solid;}
+
+        .icon {
+            width: 1em; height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            font-size: 35px;
+            margin-top: 12px;
+         }
     }
 }

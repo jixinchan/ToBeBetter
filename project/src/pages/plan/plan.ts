@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { convertDataToISO } from 'ionic-angular/umd/util/datetime-util';
 
 /**
  * Generated class for the PlanPage page.
@@ -15,15 +17,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PlanPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  uid;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpClient) {    
+    this.uid = localStorage.getItem('uid');
+  }
+  ionViewDidLoad() {}
+
+  myplan;
+  ionViewDidEnter(){    
+    this.http.get('/api/userplan').subscribe(data=>{
+      console.log(data);
+      this.myplan = data;
+    });
   }
 
-  ionViewDidLoad() {
-
-  }
-
-  choose(){
-    
+  addFirst(){
+    this.navCtrl.push("EditplanPage");
   }
 
 }
