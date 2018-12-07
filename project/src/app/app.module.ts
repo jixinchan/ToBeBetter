@@ -19,6 +19,8 @@ import { HttpModule } from '@angular/http';
 
 import {IonicStorageModule} from '@ionic/storage';
 import { WelcomePage } from '../pages/welcome/welcome';
+
+import { WeatherProvider } from '../providers/weather/weather';
 @NgModule({
   declarations: [
     MyApp,
@@ -54,7 +56,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ReciveServeProvider
+    ReciveServeProvider,WeatherProvider
   ]
 })
 export class AppModule {}

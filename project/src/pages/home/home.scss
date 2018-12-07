@@ -38,6 +38,13 @@ page-home {
             float: left;
             text-align: center;
             // border: black 1px solid;
+            img{
+                position: relative;
+                left: 22px;
+                margin: 0px;
+                width: 50px;
+                height: 50px;
+            }
         }
         .rc div{
             margin: 3px;

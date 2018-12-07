@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 // import{ HometailPage} from '../hometail/hometail';
 import { HttpClient } from '@angular/common/http';
-import { JsonpCallbackContext } from '@angular/common/http/src/jsonp';
-
+import { WeatherProvider } from '../../providers/weather/weather';
+import { Storage } from '@ionic/storage'
 
 @Component({
   selector: 'page-home',
@@ -21,7 +21,16 @@ export class HomePage {
   tuijian;
   yiji;
   should; avoid;
-  constructor(public navCtrl: NavController,public http:HttpClient) {
+
+  result;
+  weather;//天气情况
+  temperature;//温度
+  humidity;//湿度
+  img;//图片
+  location: {
+    city: string,
+  };
+  constructor(public navCtrl: NavController,public http:HttpClient,public weatherProvider: WeatherProvider, public storage: Storage) {
     // localStorage.setItem("uid","1");
    
     //得到uid
@@ -93,7 +102,27 @@ export class HomePage {
 
     this.navCtrl.push("HometailPage",{'title':title});
   }
-
+  ionViewWillEnter() {  // 初始化视图数据   
+    this.storage.get('location').then((val) => { // 获取本地储存的数据并根据城市名称初始化城市数据     
+      if (val != null) { // 如果本地储存的数据不为空
+        this.location = JSON.parse(val);
+      } else {
+        this.location = {
+          city: '石家庄',
+        }
+      }
+      // 用天气服务获得当前城市的天气数据
+      this.weatherProvider.getWeather(this.location.city).subscribe(result => {
+        // console.log(result["showapi_res_body"]["f1"]);
+        this.result = result["showapi_res_body"]["f1"];
+        this.weather = this.result['day_weather'];
+        this.temperature = this.result['day_air_temperature'];
+        this.humidity = this.result['jiangshui'];
+        this.img = this.result['day_weather_pic'];
+        // console.log(this.weather, this.temperature, this.humidity);
+      });
+    });
+  }
 
 
   
