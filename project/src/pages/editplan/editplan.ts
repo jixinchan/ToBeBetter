@@ -20,7 +20,7 @@ export class EditplanPage {
   plan;
   uid;
   constructor(public navCtrl: NavController, public navParams: NavParams,public App:App,public http:HttpClient) {
-    this.uid = localStorage.getItem("uid");
+   
     this.http.get('/api/plan').subscribe(data=>{
       // console.log(data);
       this.plan = data;
@@ -32,6 +32,7 @@ export class EditplanPage {
 
 
   save(){
+    this.uid = localStorage.getItem("uid");
     var pid = document.querySelectorAll('.pid')[0].innerHTML;
     this.http.post('/api/saveplan',{
       "uid":this.uid,

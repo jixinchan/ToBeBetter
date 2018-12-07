@@ -1,27 +1,33 @@
 <ion-header text-center>
   <ion-navbar>
     <ion-title>计划</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="addPlan()">
+        <ion-icon name="add" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <!-- <div class="box">
-    <div class="addFirstPlan" (click)="addFirst()">
+  <div class="box">
+    <div class="addFirstPlan" (click)="addPlan()">
       <p>添加你的第一个计划吧</p>
       <ion-icon name="add"></ion-icon>
     </div>
-  </div> -->
-  <div>
+  </div>
+  <div class="planbox">
     <p class="myplan">我的计划</p>
-    <div class="box">
+    <div>
       <div class="row">
-        <div *ngFor="let item of myplan;" class="out">
-          <div class="plan {{item.plancolor}}">
+        <div *ngFor="let item of myplan;" class="out">        
+          <div class="plan {{item.plancolor}}" (click)="isFinish(item.pid)">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-shuiguo"></use>
             </svg>
           </div>
-          <p>{{item.plantxt}}</p>
+          <p class="txt">{{item.plantxt}}</p>
+          <p class="del" (click)="delPlan(item.pid)">删 除</p>
         </div>
       </div>
     </div>

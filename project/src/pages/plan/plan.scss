@@ -1,4 +1,9 @@
 page-plan {
+    ion-navbar{
+        ion-icon{
+            font-size: 30px;
+        }
+    }
     ion-content{
         .addFirstPlan{
             text-align: center;
@@ -28,26 +33,47 @@ page-plan {
             width: 25%;
             text-align: center;
         }
-        .p1{background: orange;}
-        .p2{background: rgb(81, 214, 185);}
-        .p3{background: yellow;}
-        .p4{background: rgb(74, 230, 60);}
-        .p5{background: rgb(43, 137, 245);}
-        .p6{background: rgb(78, 237, 248);}
-        .p7{background: pink;}
-        .p8{background: lightgoldenrodyellow;}
-        .p9{background: lightgrey;}
-        .p10{background: lightblue}
-        .p11{background: red;}
-        .p12{background: white;border: black 1px solid;}
+        .txt{
+            margin:5px;
+        }
+        .del{
+            border-radius: 10px;
+            width: 60px;
+            background-color: #23a257;
+            color: white;
+            margin: 0 0 0 15%;
+        }
+
+        .p1{background-color: orange;}
+        .p2{background-color: rgb(81, 214, 185);}
+        .p3{background-color: yellow;}
+        .p4{background-color: rgb(74, 230, 60);}
+        .p5{background-color: rgb(43, 137, 245);}
+        .p6{background-color: rgb(78, 237, 248);}
+        .p7{background-color: pink;}
+        .p8{background-color: rgb(243, 243, 181);}
+        .p9{background-color: lightgrey;}
+        .p10{background-color: lightblue}
+        .p11{background-color: red;}
+        .p12{background-color: white;border: black 1px solid;}
 
         .icon {
-            width: 1em; height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-            font-size: 35px;
-            margin-top: 12px;
-         }
+           width: 1em; height: 1em;
+           vertical-align: -0.15em;
+           fill: currentColor;
+           overflow: hidden;
+           font-size: 35px;
+           margin-top: 12px;
+        }
+        .finish{
+            opacity: 0.5;
+        }
+        .finishimg{
+            background: url("../../assets/imgs/right.png");
+            background-size: 60px 60px;
+        }
+        .hide{
+            display: none;
+        }
     }
 }
