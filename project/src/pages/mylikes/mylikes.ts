@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { HometailPage } from '../hometail/hometail';
 
 /**
  * Generated class for the MylikesPage page.
@@ -24,6 +23,8 @@ export class MylikesPage {
 
   dyna;
   uid;
+  title;
+  did;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     //得到uid
@@ -55,18 +56,17 @@ export class MylikesPage {
   }
 
   goHomeTail(title){
-    this.http.post('/api/hometail',{
-      "title":title
-    }).subscribe(data=>{});
+    // this.http.post('/api/hometail',{
+    //   "title":title
+    // }).subscribe(data=>{});
 
-    this.navCtrl.push("HometailPage");
+    this.navCtrl.push("HometailPage",{'title':title});
   }
+  goMydynamicTail(did){
+    // this.http.post('/api/hometail',{
+    //   "title":title
+    // }).subscribe(data=>{});
 
-  goContacTail(did){
-    this.http.post('/api/contactail',{
-      "did":did
-    }).subscribe(data=>{});
-
-    this.navCtrl.push("ContactailPage");
+    this.navCtrl.push("MydynamictailPage",{'did':did});
   }
 }

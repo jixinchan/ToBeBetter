@@ -7,21 +7,26 @@
 </ion-header>
 
 <ion-content>
-  <ul class="dynamic">
-    <li *ngFor="let item of content" (click)="goContacTail(item.did)">
-      <div class="img">
-        <img src="{{item.imgs}}">
-      </div>
-      <div class="info">
+  <ul class="kapian">
+    <li *ngFor="let item of content;let i=index" (click)="goMydynamictail(item.did)">
+      <div class="wrap">
+        <div class="img">
+          <img src="{{item.imgs}}">
+        </div>
         <div class="word">
           <p>{{item.content}}</p>
         </div>
-        <div class="dt">
-          <p class="date">{{item.date}}<span class="time">{{item.time}}</span></p>
+        <div class="user">
+          <img src="{{avatar[i]}}">
+          <p>{{nickname[i]}}</p>
+          <div class="icon">
+            <p>
+              <ion-icon name="heart-outline"></ion-icon>
+            </p>
+            <p>{{love[i]}}</p>
+          </div>
         </div>
       </div>
-
     </li>
   </ul>
-
 </ion-content>

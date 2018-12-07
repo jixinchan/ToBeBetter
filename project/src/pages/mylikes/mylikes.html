@@ -14,7 +14,7 @@
   <div [ngSwitch]="isActive">
     <div *ngSwitchCase="0">
       <ul class="dynamic">
-        <li *ngFor="let item of dyna;" (click)="goContacTail(item.did)">
+        <li *ngFor="let item of dyna;" (click)="goMydynamicTail(item.did)">
           <div class="img">
             <img src="{{item.imgs}}">
           </div>
