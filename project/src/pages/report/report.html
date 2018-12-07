@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>体质报告</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <div class="result">
+    <div class="first">
+        <p class="title">我的体质是</p>
+        <p class="main">{{physique[body-1]}}</p>
+    </div>
+    <div class="second">
+      <p class="title">兼有体质和倾向体质</p>
+      <span *ngFor="let item of inclination; let idx=index" class="tendency">{{physique[inclination[idx]-1]}}&nbsp;&nbsp;&nbsp;</span>
+    </div>
+  </div>
+  <div #EchartsContent class="EchartsDiv"></div>
+  <div class="tip">
+    <div class="tipdiv">
+      <span class="tipspan0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="tipspan2">主体质</span>
+    </div>
+    <div class="tipdiv">
+      <span class="tipspan1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span class="tipspan2">兼有体质或倾向体质</span>
+    </div>
+  </div>
+  <div class="explain">
+    <h6>
+      <img src="../assets/imgs/report0.png"/>
+      结果说明
+    </h6>
+    <p class="explain-details">{{explain}}</p>
+    <div class="describe">
+        <span *ngIf="!isShow" (click)="isShow=!isShow">查看体质结果说明</span>
+        <span *ngIf="isShow" (click)="isShow=!isShow">体质结果说明</span>
+        <ion-list *ngIf="isShow" class="describe-details">
+            <div>
+               <p>1.本测试来自《中医体质分类与判定》，这是中华中医药学会于2009年4月颁布的国家标准</p>
+               <p>2.上方图展示了你的体质详情，绿色是为超过60分的体质，为主要的体质,黄色是倾向体质。</p>
+               <p>3.多种体质并存是多数人的状态，不必过于担心，调整生活方式是有改变的可能的。根据你的独特的情况，我们推荐你首先改善{{physique[body-1]}}，其他体质也会巨剑有所改善。</p>
+            </div>
+        </ion-list>
+    </div>
+  </div>
+  <div class="feature">
+    <h6>
+      <img src="../assets/imgs/report01.png"/>
+      {{physique[body-1]}}的特征
+    </h6>
+    <ul>
+      <li *ngFor="let item of mentality; let idx=index"><span>◆</span>{{mentality[idx]}}</li>
+      <li><span>◆</span>{{shape}}</li>
+    </ul>
+  </div>
+
+  <div class="troubled">
+      <h6>
+          <img src="../assets/imgs/report02.png"/>
+        {{physique[body-1]}}的困扰
+      </h6>
+      <ul>
+        <li><span>◆</span>{{incidence}}</li>
+      </ul>
+  </div>
+  <div class="improve">
+    <h6>
+        <img src="../assets/imgs/report03.png"/>
+      <!-- <ion-icon name="bulb"></ion-icon> -->
+      {{physique[body-1]}}的调养方式
+    </h6>
+    <ul class="lll">
+      <li *ngFor="let item of properdiet;let idx=index"><span>◆</span>{{properdiet[idx]}}</li>
+    </ul>
+    <ul class="lll">
+        <li><span>◆</span>{{unsuitable}}</li>
+    </ul>
+    <ul class="lll">
+        <li><span>◆</span>{{living}}</li>
+    </ul>
+    <ul class="lll">
+        <li><span>◆</span>{{emotion}}</li>
+    </ul>
+  </div>
+  
+</ion-content>
+<ion-footer text-center no-border>
+      <button ion-button round outline small>重新进行测试</button>
+      <button ion-button round outline small>分享给好友测一测</button>
+</ion-footer>
