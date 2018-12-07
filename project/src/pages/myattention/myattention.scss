@@ -1,50 +1,59 @@
 page-myattention {
     .toolbar-title-md{
-        padding-left: 38%;
+        padding-left: 30%;
     }
     ion-content{
-        background-color:#e2e2e2;
-        .item{
-            border: 1px solid gainsboro;
-            .picture{
-                float:left;
-                width:70px;
-                height: 70px;
-            }
-            img{
-                width:100%;
-                height:100%;
-                border-radius:50%;
-            }
-            .tail{
-                float:left; 
-                margin-top: 20px;
-            }
-        }
-        .attention{
-            float: right;
-            margin-top: 20px;
-            .btn1 {
-                width: 68px;
-                height: 28px;
-                color: #808080;
-                font-size: 18px;
-                text-align: center;
-                background-color: #fff;
-                border: 1px solid #808080;
-            }
-            .btn2 {
-                width: 68px;
-                height: 28px;
-                color: #23a257;
-                font-size: 18px;
-                text-align: center;
-                background-color: #fff;
-                border: 1px solid #23a257;
-            }
-            
-            #isshow{
-                display: none;
+        .kapian{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            li{
+                border: 1px solid gainsboro;
+                float: left;
+                width: 100%;
+                padding: 5px;
+                height: 80px;
+                .picture{    
+                    float:left;
+                    width:70px;
+                    height: 70px;
+                    border-radius:50%;
+                    img{
+                        width:100%;
+                        height:100%;
+                        border-radius:50%;
+                    }
+                }
+                .tail{    
+                    float:left; 
+                    margin-left: 10px;
+                    .nickname{        
+                        margin-top: 5px;
+                        font-weight: bolder;
+                        color: #525050;
+                    }
+                    .signature{        
+                        margin-bottom: 10px;
+                        color: #525050;
+                    }
+                }
+                .btn1,.btn2{
+                    position: absolute;
+                }
+                button{
+                    width: 70px;
+                    height: 30px;
+                    border-radius: 20px;
+                    font-size: 14px;         
+                }   
+                .btn1 .button-inner{
+                    color:#808080;
+                }  
+                .btn1,.btn2{
+                    right:8%;
+                }        
             }
         }
     }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the MyfansPage page.
@@ -15,24 +16,60 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MyfansPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  flag = false;
+  uid;
+  aid;
+  attention;
+
+  change(i) {
+    if (i == 0) {
+      this.flag = !this.flag;
+      this.http.post("/api/attention", {
+        "uid": this.uid,
+        "aid": this.aid
+      }).subscribe(data => { });
+    } else {
+      let alert = this.alertCtrl.create({
+        message: '确认不在关注？',
+        buttons: [
+          {
+            text: '确认',
+            handler: () => {
+              this.flag = !this.flag;
+              this.http.post("/api/noattention", {
+                "uid": this.uid,
+                "aid": this.aid
+              }).subscribe(data => { });
+            }
+          },
+          {
+            text: '取消',
+            handler: () => {
+
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
+    //得到uid
+    this.uid = localStorage.getItem("uid");
+    console.log(this.uid);
+
+    this.http.post('/api/myfans', {"uid": this.uid}).subscribe(data => {
+      this.attention = data;
+      console.log(data);
+      this.attention.forEach(e => {
+        e.avatar = '../assets/imgs/avatar/' + e.avatar;
+      });
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyfansPage');
   }
-  check=true;
-  show(){
   
-    if(this.check) {
-      document.getElementById('isshow1').style.display='none';
-      document.getElementById('isshow').style.display='block';
-    }
-    else{
-      document.getElementById('isshow').style.display='none';
-      document.getElementById('isshow1').style.display='block';
-    }
-
-    this.check=!this.check;
-  }
 }
