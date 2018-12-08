@@ -36,11 +36,12 @@ export class RegisterPage {
         this.presentPrompt('该手机号已注册，请登录。');
       }
     });
+    this.goLogin();
   }
   presentPrompt(str) {
     let alert = this.alertCtrl.create({
-      title: '登录失败',
-      subTitle:str+'，请重新输入。',
+      title: '注册失败',
+      subTitle:str,
       buttons: [
         {
           text: '确认',

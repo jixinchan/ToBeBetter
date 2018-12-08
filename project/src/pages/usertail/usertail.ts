@@ -41,7 +41,8 @@ export class UsertailPage {
       this.signature = data[0].signature;
       this.sex = data[0].sex;
       this.city = data[0].city;
-      this.birth = data[0].birth?data[0].birth.substring(0,10):data[0].birth;
+      this.birth = data[0].birth?data[0].birth.substring(0,9)+(Number(data[0].birth.substring(9,10))+1):data[0].birth;
+      console.log(data[0].birth,this.birth);
     });
     this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       this.account = data[0].account;

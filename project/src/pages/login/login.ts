@@ -20,6 +20,7 @@ export class LoginPage {
   tel;
   pwd;
   result;
+  uid;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -44,6 +45,7 @@ export class LoginPage {
         }else{
           if(data[0].password==this.pwd){
               //登陆成功
+              this.uid = data[0].uid;
               localStorage.setItem('uid',data[0].uid);
               this.goHome();
           }else{
@@ -54,7 +56,7 @@ export class LoginPage {
     }
   }
   goHome(){
-    this.http.post('/api/login/status',{'tel':this.tel}).subscribe(data=>{});
+    this.http.post('/api/login/status',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
     this.app.getRootNavs()[0].setRoot(TabsPage);
   }
   goRegister(){
