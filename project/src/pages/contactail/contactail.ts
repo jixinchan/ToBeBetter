@@ -76,13 +76,11 @@ export class ContactailPage {
       this.http.post("/api/contact/contactail/collection", {
         "uid": this.uid,
         "did": this.did,
-        "cid": this.cid
       }).subscribe(data => { });
     } else {
       this.http.post("/api/contact/contactail/nocollec", {
         "uid": this.uid,
         "did": this.did,
-        "cid": this.cid
       }).subscribe(data => { });
     }
   }

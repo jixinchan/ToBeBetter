@@ -72,13 +72,11 @@ export class MydynamictailPage {
       this.http.post("/api/mydynamictail/collection", {
         "uid": this.uid,
         "did": this.did,
-        "cid": this.cid
       }).subscribe(data => { });
     } else {
       this.http.post("/api/mydynamictail/nocollec", {
         "uid": this.uid,
         "did": this.did,
-        "cid": this.cid
       }).subscribe(data => { });
     }
   }

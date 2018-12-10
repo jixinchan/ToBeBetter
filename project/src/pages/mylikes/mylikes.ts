@@ -22,6 +22,7 @@ export class MylikesPage {
   }
 
   dyna;
+  reco;
   uid;
   title;
   did;
@@ -30,6 +31,7 @@ export class MylikesPage {
     //得到uid
     this.uid = localStorage.getItem("uid");
     console.log(this.uid);
+    
     this.http.post('/api/mylikesd', {
       "uid": this.uid
     }).subscribe(data => {
@@ -52,19 +54,7 @@ export class MylikesPage {
 
   }
 
-  reco;
-  goReco() {
-    this.http.post('/api/mylikesr', {
-      "uid": this.uid
-    }).subscribe(data => {
-      this.reco = data;
-      // console.log(data);
-      this.reco.forEach(e => {
-        e.imgs = '../assets/imgs/images/' + e.imgs;
-      });
-    });
-  }
-
+  
   goHomeTail(title){
     // this.http.post('/api/hometail',{
     //   "title":title
