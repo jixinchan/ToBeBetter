@@ -29,12 +29,12 @@ export class MylikesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
     //得到uid
     this.uid = localStorage.getItem("uid");
-
+    console.log(this.uid);
     this.http.post('/api/mylikesd', {
       "uid": this.uid
     }).subscribe(data => {
       this.dyna = data;
-      // console.log(data);
+      console.log(data);
       this.dyna.forEach(e => {
         e.imgs = '../assets/imgs/' + e.imgs;
       });

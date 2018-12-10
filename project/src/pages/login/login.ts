@@ -56,7 +56,7 @@ export class LoginPage {
     }
   }
   goHome(){
-    this.http.post('/api/login/status',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
+    // this.http.post('/api/login/status',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
     this.app.getRootNavs()[0].setRoot(TabsPage);
   }
   goRegister(){

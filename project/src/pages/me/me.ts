@@ -36,6 +36,9 @@ export class MePage {
   goSet(){
     this.navCtrl.push('SettingsPage');
   }
+  goReport(){
+    this.navCtrl.push('BodytestPage');
+  }
   goPrivate(){
     this.navCtrl.push('UsertailPage')
   }

@@ -56,10 +56,10 @@ export class MyattentionPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
     //得到uid
-    this.aid = localStorage.getItem("uid");
-    console.log(this.aid);
+    this.uid = localStorage.getItem("uid");
+    console.log(this.uid);
 
-    this.http.post('/api/myattention', {"aid": this.aid}).subscribe(data => {
+    this.http.post('/api/myattention', {"uid": this.uid}).subscribe(data => {
       this.attention = data;
       console.log(data);
       this.attention.forEach(e => {

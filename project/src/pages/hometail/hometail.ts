@@ -52,15 +52,15 @@ export class HometailPage {
   collect(rid){
     this.isActive=0;
     // localStorage.setItem('Collected',rid);
-
-    this.http.post('/api/collect',{
+    console.log('1');
+    this.http.post('/api/hometail/collect',{
       "uid":this.uid,
       "rid":rid
     }).subscribe(data=>{});
   }
   uncollect(rid){
     this.isActive = -1;
-    this.http.post('/api/uncollect',{
+    this.http.post('/api/hometail/uncollect',{
       "uid":this.uid,
       "rid":rid
     }).subscribe(data=>{});

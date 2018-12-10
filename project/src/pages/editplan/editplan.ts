@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
-import { PlanPage } from '../plan/plan';
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -34,7 +33,7 @@ export class EditplanPage {
   save(){
     this.uid = localStorage.getItem("uid");
     var pid = document.querySelectorAll('.pid')[0].innerHTML;
-    this.http.post('/api/saveplan',{
+    this.http.post('/api/plan/saveplan',{
       "uid":this.uid,
       "pid":pid
     }).subscribe(data=>{});

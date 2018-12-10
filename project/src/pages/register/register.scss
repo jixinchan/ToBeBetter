@@ -1,31 +1,31 @@
 page-register {
     ion-content{
         background-image: url(../assets/imgs/reg_bg.jpg);
-        background-size: cover;
-        .regi{
-            // margin:auto;
-            margin-top: 80px;
-            margin-bottom: 20px;
-            h3{
-                text-align: center;
-                font-size: 25px;
-                color: #23a257;
-            }   
-        }
-    .box{
-        text-align: center;
-            ion-item{
-                background: transparent;
-                ion-icon{
-                    color:#d1dad8;
-                }
-                input::-webkit-input-placeholder {
-                    font-size: 14px;
-                }
+        background-size: cover;   
+        .box{
+            .regi{
+                // // margin:auto;
+                // margin-top: 80px;
+                // margin-bottom: 20px;
+                h3{
+                    text-align: center;
+                    font-size: 30px;
+                    color:#2a5a3d;
+                }   
+            }
+            text-align: center;
+            width: 280px;
+            margin:0 auto;
+            position: relative;
+            top: 80px;
+            ion-input{
+                border:1px solid #cccccc;
+                background-color: white;
+                margin-bottom:20px;
             }
             p{
-                color: #23a257;
                 text-align: center;
+                color:#2a5a3d;
             }
         }
     }
