@@ -40,6 +40,16 @@ export class MylikesPage {
       });
     });
 
+    this.http.post('/api/mylikesr', {
+      "uid": this.uid
+    }).subscribe(data => {
+      this.reco = data;
+      console.log(data);
+      this.reco.forEach(e => {
+        e.imgs = '../assets/imgs/images/' + e.imgs;
+      });
+    });
+
   }
 
   reco;

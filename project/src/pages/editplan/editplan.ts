@@ -46,7 +46,7 @@ export class EditplanPage {
     var addcolor = document.querySelectorAll('.pic')[0].className;  // 自定义图和背景
 
     document.querySelectorAll('.pic')[0].className = addcolor + " " + color;
-    document.querySelectorAll('.txt')[0].innerHTML = txt;  // 修改计划文字
+    document.querySelector('#txt').innerHTML = txt;  // 修改计划文字
 
     // pid
     document.querySelectorAll('.pid')[0].innerHTML = pid;
@@ -55,7 +55,7 @@ export class EditplanPage {
   quxiao(){
     document.querySelectorAll('.pic')[0].className = "pic";
     document.querySelectorAll('.pic')[0].querySelector('use').attributes[0].value = "#icon-shuiguo";
-    document.querySelectorAll('.txt')[0].innerHTML = "添加计划";
+    document.querySelector('#txt').innerHTML = "添加计划";
   }
 
 

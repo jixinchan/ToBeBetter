@@ -28,7 +28,7 @@ export class ContactailPage {
   times = [];//发布时间
   nickname;//昵称
   avatar;//头像
-  input="";
+  input = "";
   rTime;
   uid = localStorage.getItem("uid");
   aid;
@@ -60,9 +60,7 @@ export class ContactailPage {
           },
           {
             text: '取消',
-            handler: () => {
-
-            }
+            handler: () => { }
           }
         ]
       });
@@ -93,7 +91,7 @@ export class ContactailPage {
     profileModal.present();
   }
   goAssess() {
-    this.navCtrl.push('AssessPage',{"did":this.did});
+    this.navCtrl.push('AssessPage', { "did": this.did });
     // console.log(this.did);
   }
   release() {
@@ -110,16 +108,16 @@ export class ContactailPage {
     };
     this.rTime = formatDateTime(mytime);
     // console.log(this.rTime);
-    if(this.input!=''){
+    if (this.input != '') {
       this.http.post('/api/contact/contactail/assess', {
         "did": this.did,
         "uid": this.uid,
         "time": this.rTime,
         "content": this.input
-      }).subscribe(data=>{});
+      }).subscribe(data => { });
       this.goAssess();
     }
-    this.input="";
+    this.input = "";
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
@@ -131,15 +129,17 @@ export class ContactailPage {
     this.http.get("/api/contact").subscribe(data => {
       this.data = data;
       // console.log(data);
-      this.data.forEach(e => {
-        this.imgs.push("../assets/imgs/" + e.imgs);
-        this.title.push(e.title);
-        this.content.push(e.content);
-        this.uids.push(e.uid);
-        this.dids.push(e.did);
-        this.cids.push(e.cid);
-        this.times.push(e.time);
-      });
+      if (this.data != undefined) {
+        this.data.forEach(e => {
+          this.imgs.push("../assets/imgs/" + e.imgs);
+          this.title.push(e.title);
+          this.content.push(e.content);
+          this.uids.push(e.uid);
+          this.dids.push(e.did);
+          this.cids.push(e.cid);
+          this.times.push(e.time);
+        });
+      }
       // console.log(this.title,this.imgs,this.content,this.uids,this.dids,this.cids,this.times);
       this.aid = this.uids[this.i];
       this.did = this.dids[this.i];
@@ -150,17 +150,21 @@ export class ContactailPage {
     this.http.get("/api/contact/contactail").subscribe(data => {
       this.class = data;
       // console.log(data);
-      this.data.forEach(e => {
-        this.class.forEach(c => {
-          if (e.cid == c.cid) {
-            this.className.push(c.className);
+      if (this.data != undefined) {
+        this.data.forEach(e => {
+          if (this.class != undefined) {
+            this.class.forEach(c => {
+              if (e.cid == c.cid) {
+                this.className.push(c.className);
+              }
+            });
           }
         });
-      });
+      }
       // console.log(this.className);
     });
   }
   ionViewDidLoad() {
-    
+
   }
 }

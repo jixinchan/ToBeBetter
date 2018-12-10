@@ -9,7 +9,7 @@
 <ion-content>
   <ul class="navlist">
     <li (click)="isClick(0)" [class.first]="isActive==0">动态</li>
-    <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goReco()">推文</li>
+    <li (click)="isClick(1)" [class.first]="isActive==1">推文</li>
   </ul>
   <div [ngSwitch]="isActive">
     <div *ngSwitchCase="0">
