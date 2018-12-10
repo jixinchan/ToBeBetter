@@ -58,12 +58,12 @@
   </div>
 
   <div class="commend2">
-    <p (click)="goAssess()">
+    <p>
       <ion-icon name="chatbubbles" color="primary"></ion-icon>动态评论
     </p>
     <hr>
     <div class="com">
-      <img src="{{avatar[i]}}">
+      <img src="{{myAvatar}}">
       <input type="text" placeholder="喜欢TA就留下你的评论" [(ngModel)]="input">
       <ion-icon name="happy"></ion-icon>
       <span (click)="release()">发布</span>

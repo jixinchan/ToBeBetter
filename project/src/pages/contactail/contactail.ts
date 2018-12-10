@@ -28,12 +28,15 @@ export class ContactailPage {
   times = [];//发布时间
   nickname;//昵称
   avatar;//头像
+  myAvatar;//用户头像
+  info;
   input = "";
   rTime;
   uid = localStorage.getItem("uid");
   aid;
   cid;
   did;
+  assess;
   flag = false;
   love = false;
   star = false;
@@ -75,12 +78,12 @@ export class ContactailPage {
     if (i == 0) {
       this.http.post("/api/contact/contactail/collection", {
         "uid": this.uid,
-        "did": this.did,
+        "did": this.did
       }).subscribe(data => { });
     } else {
       this.http.post("/api/contact/contactail/nocollec", {
         "uid": this.uid,
-        "did": this.did,
+        "did": this.did
       }).subscribe(data => { });
     }
   }
@@ -89,7 +92,7 @@ export class ContactailPage {
     profileModal.present();
   }
   goAssess() {
-    this.navCtrl.push('AssessPage', { "did": this.did });
+    this.navCtrl.push('AssessPage', { "did": this.did, "assess": this.assess });
     // console.log(this.did);
   }
   release() {
@@ -112,8 +115,11 @@ export class ContactailPage {
         "uid": this.uid,
         "time": this.rTime,
         "content": this.input
-      }).subscribe(data => { });
-      this.goAssess();
+      }).subscribe(data => {
+        this.assess = data;
+        // console.log(this.assess);
+        this.goAssess();
+      });
     }
     this.input = "";
   }
@@ -161,8 +167,23 @@ export class ContactailPage {
       }
       // console.log(this.className);
     });
-  }
-  ionViewDidLoad() {
 
+    this.http.get('/api/contact/contactail/assess').subscribe(data => {
+      this.assess = data;
+      // console.log(data);
+    });
+
+    this.http.get("/api/contact/user_info").subscribe(data => {
+      this.info = data;
+      // console.log(data);
+      if (this.info != undefined && this.uid != undefined) {
+        this.info.forEach(e => {
+          if (e.uid == this.uid) {
+            this.myAvatar = "../assets/imgs/avatar/"+e.avatar;
+            // console.log(this.myAvatar);
+          }
+        });
+      }
+    });
   }
 }

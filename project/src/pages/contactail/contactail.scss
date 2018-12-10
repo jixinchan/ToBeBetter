@@ -2,9 +2,6 @@ page-contactail {
     .button-inner{
         color: rgb(35,162,87);
     }
-    .toolbar-title-md{
-        padding-left: 35%;
-    }
     ion-content{
         .nav{
             position: relative;
@@ -179,11 +176,11 @@ page-contactail {
                     background: rgb(231,231,231);
                     border:none;
                     border-radius: 6px;
+                    padding-left: 10px;
                 }
                 input::-webkit-input-placeholder{
                     color:rgb(128,128,128);
                     font-size: 12px;
-                    padding-left: 10px;
                 }    
                 img,input{
                     float: left;
