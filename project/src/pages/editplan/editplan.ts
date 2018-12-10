@@ -31,11 +31,13 @@ export class EditplanPage {
 
 
   save(){
+    var date = new Date();
     this.uid = localStorage.getItem("uid");
     var pid = document.querySelectorAll('.pid')[0].innerHTML;
     this.http.post('/api/plan/saveplan',{
       "uid":this.uid,
-      "pid":pid
+      "pid":pid,
+      "time": date.getTime()
     }).subscribe(data=>{});
     
     this.navCtrl.pop();
@@ -55,7 +57,7 @@ export class EditplanPage {
   quxiao(){
     document.querySelectorAll('.pic')[0].className = "pic";
     document.querySelectorAll('.pic')[0].querySelector('use').attributes[0].value = "#icon-shuiguo";
-    document.querySelector('#txt').innerHTML = "添加计划";
+    document.querySelectorAll('.txt')[0].innerHTML = "添加计划";
   }
 
 

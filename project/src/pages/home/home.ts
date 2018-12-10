@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// import{ HometailPage} from '../hometail/hometail';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { Storage } from '@ionic/storage'
@@ -95,12 +94,12 @@ export class HomePage {
   }
 
   
-  goHomeTail(title){
+  goHomeTail(rid){
     // this.http.post('/api/hometail',{
     //   "title":title
     // }).subscribe(data=>{});
 
-    this.navCtrl.push("HometailPage",{'title':title});
+    this.navCtrl.push("HometailPage",{'rid':rid});
   }
   ionViewWillEnter() {  // 初始化视图数据   
     this.storage.get('location').then((val) => { // 获取本地储存的数据并根据城市名称初始化城市数据     

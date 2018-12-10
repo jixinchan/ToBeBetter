@@ -33,7 +33,7 @@
     <!-- 推荐 -->
     <div *ngSwitchCase="0" class="out">
       <ul>
-        <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.title)">
+        <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.rid)">
             <div class="left">
               <p class="title">{{tj.title}}</p>
               <p>{{tj.content}}</p>
@@ -45,7 +45,7 @@
     <!-- 健身 -->
     <div *ngSwitchCase="1" class="out">
       <ul>
-        <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.title)">
+        <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.rid)">
             <div class="left">
               <p class="title">{{js.title}}</p>
               <p>{{js.content}}</p>
@@ -57,7 +57,7 @@
     <!-- 饮食 -->
     <div *ngSwitchCase="2" class="out">
       <ul>
-        <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.title)">
+        <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.rid)">
             <div class="left">
               <p class="title">{{ys.title}}</p>
               <p>{{ys.content}}</p>
@@ -69,7 +69,7 @@
     <!-- 理疗 -->
     <div *ngSwitchCase="3" class="out">
       <ul>
-        <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.title)">
+        <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.rid)">
             <div class="left">
               <p class="title">{{ll.title}}</p>
               <p>{{ll.content}}</p>

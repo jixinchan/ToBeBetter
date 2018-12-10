@@ -14,10 +14,8 @@
       <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
     </div>
     <div class="operation">
-      <!-- 收藏 -->
-      <ion-icon name="star-outline" (click)="collect(art.rid)" [class.first]="isActive==0"></ion-icon>
-      <!-- 取消收藏 -->
-      <ion-icon name="md-trash" (click)="uncollect(art.rid)"></ion-icon>
+      <!-- 收藏、取消收藏 -->
+      <ion-icon name="star-outline" (click)="isCollect(art.rid)" class="star"></ion-icon>
       <!-- 分享 -->
       <ion-icon name="share" (click)="goShare()"></ion-icon>
     </div>
