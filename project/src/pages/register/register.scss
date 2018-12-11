@@ -4,13 +4,11 @@ page-register {
         background-size: cover;   
         .box{
             .regi{
-                // // margin:auto;
-                // margin-top: 80px;
-                // margin-bottom: 20px;
                 h3{
                     text-align: center;
                     font-size: 30px;
                     color:#2a5a3d;
+                    margin-bottom: 20px;
                 }   
             }
             text-align: center;
@@ -21,7 +19,13 @@ page-register {
             ion-input{
                 border:1px solid #cccccc;
                 background-color: white;
-                margin-bottom:20px;
+                margin-bottom:10px;
+            }
+            button{
+                font-size:17px;
+                font-weight: bolder;
+                color:white!important;
+                background: #23a257;
             }
             p{
                 text-align: center;
