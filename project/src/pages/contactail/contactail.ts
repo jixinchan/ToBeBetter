@@ -40,6 +40,8 @@ export class ContactailPage {
   flag = false;
   love = false;
   star = false;
+  isAtten = [];
+  isCollec = [];
   change(i) {
     if (i == 0) {
       this.flag = !this.flag;
@@ -123,13 +125,14 @@ export class ContactailPage {
     }
     this.input = "";
   }
-
+ 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
+    //传参
     this.i = this.navParams.get("index");
     this.nickname = this.navParams.get("nickname");
     this.avatar = this.navParams.get("avatar");
 
-    // console.log(this.uid);    
+    //动态信息
     this.http.get("/api/contact").subscribe(data => {
       this.data = data;
       // console.log(data);
@@ -148,9 +151,44 @@ export class ContactailPage {
       this.aid = this.uids[this.i];
       this.did = this.dids[this.i];
       this.cid = this.cids[this.i];
-      // console.log(this.aid,this.did,this.cid);
+      // console.log(this.aid, this.did, this.cid);
+      if (this.uid) {
+        if (this.aid) {
+          //是否关注
+          this.http.post("/api/contact/contactail/isAtten", {
+            "uid": this.uid,
+            "aid": this.aid
+          }).subscribe(data => {
+            // console.log(data);
+            this.isAtten.push(data);
+            // console.log(this.isAtten);
+            if (!!this.isAtten.join("")) {
+              this.flag = true;
+            } else {
+              this.flag = false;
+            }
+          });
+        }
+        if (this.did) {
+          //是否收藏
+          this.http.post("/api/contact/contactail/isCollec", {
+            "uid": this.uid,
+            "did": this.did
+          }).subscribe(data => {
+            // console.log(data);
+            this.isCollec.push(data);
+            // console.log(this.isCollec);
+            if (!!this.isCollec.join("")) {
+              this.star = true;
+            } else {
+              this.star = false;
+            }
+          });
+        }
+      }
     });
 
+    //动态分类
     this.http.get("/api/contact/contactail").subscribe(data => {
       this.class = data;
       // console.log(data);
@@ -168,18 +206,20 @@ export class ContactailPage {
       // console.log(this.className);
     });
 
+    //评论  
     this.http.get('/api/contact/contactail/assess').subscribe(data => {
       this.assess = data;
       // console.log(data);
     });
 
+    //用户信息
     this.http.get("/api/contact/user_info").subscribe(data => {
       this.info = data;
       // console.log(data);
       if (this.info != undefined && this.uid != undefined) {
         this.info.forEach(e => {
           if (e.uid == this.uid) {
-            this.myAvatar = "../assets/imgs/avatar/"+e.avatar;
+            this.myAvatar = "../assets/imgs/avatar/" + e.avatar;
             // console.log(this.myAvatar);
           }
         });
