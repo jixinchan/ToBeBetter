@@ -10,39 +10,38 @@ import { Storage } from '@ionic/storage'
 })
 export class HomePage {
 
-  isActive=0;
-  isClick(i){
-    this.isActive=i;
+  isActive = 0;
+  isClick(i) {
+    this.isActive = i;
   }
-
 
   uid;
   tuijian;
   yiji;
   should; avoid;
 
+  user_info;
   result;
   weather;//天气情况
   temperature;//温度
   humidity;//湿度
   img;//图片
+  city;//城市
   location: {
     city: string,
   };
-  constructor(public navCtrl: NavController,public http:HttpClient,public weatherProvider: WeatherProvider, public storage: Storage) {
-    // localStorage.setItem("uid","1");
-   
+  constructor(public navCtrl: NavController, public http: HttpClient, public weatherProvider: WeatherProvider, public storage: Storage) {
     //得到uid
     this.uid = localStorage.getItem("uid");
 
-    this.http.post('/api',{
-      "uid":this.uid
-    }).subscribe(data=>{});
+    this.http.post('/api', {
+      "uid": this.uid
+    }).subscribe(data => { });
 
     // 得到宜忌内容
-    this.http.get('/api/yiji').subscribe(data=>{
+    this.http.get('/api/yiji').subscribe(data => {
       this.yiji = data;
-      var num = Math.floor(Math.random()*this.yiji.length);
+      var num = Math.floor(Math.random() * this.yiji.length);
       // console.log(num);
       this.should = this.yiji[num].should;
       this.avoid = this.yiji[num].avoid;
@@ -51,67 +50,81 @@ export class HomePage {
 
 
     // 得到推荐推文
-    this.http.get('/api/tuijian').subscribe(data=>{
+    this.http.get('/api/tuijian').subscribe(data => {
       this.tuijian = data;
       // console.log(data);
       this.tuijian.forEach(e => {
-        e.imgs = '../assets/imgs/images/'+e.imgs;
+        e.imgs = '../assets/imgs/images/' + e.imgs;
       });
     });
   }
 
   jianshen;
-  goJianShen(){    
-    this.http.get('/api/jianshen').subscribe(data=>{
+  goJianShen() {
+    this.http.get('/api/jianshen').subscribe(data => {
       this.jianshen = data;
       // console.log(data);
       this.jianshen.forEach(e => {
-        e.imgs = '../assets/imgs/images/'+e.imgs;
+        e.imgs = '../assets/imgs/images/' + e.imgs;
       });
     });
   }
 
   yinshi;
-  goYinShi(){    
-    this.http.get('/api/yinshi').subscribe(data=>{
+  goYinShi() {
+    this.http.get('/api/yinshi').subscribe(data => {
       this.yinshi = data;
       // console.log(data);
       this.yinshi.forEach(e => {
-        e.imgs = '../assets/imgs/images/'+e.imgs;
+        e.imgs = '../assets/imgs/images/' + e.imgs;
       });
     });
   }
 
   liliao;
-  goLiLiao(){    
-    this.http.get('/api/liliao').subscribe(data=>{
+  goLiLiao() {
+    this.http.get('/api/liliao').subscribe(data => {
       this.liliao = data;
       // console.log(data);
       this.liliao.forEach(e => {
-        e.imgs = '../assets/imgs/images/'+e.imgs;
+        e.imgs = '../assets/imgs/images/' + e.imgs;
       });
     });
   }
 
-  
-  goHomeTail(rid){
+
+  goHomeTail(rid) {
     // this.http.post('/api/hometail',{
     //   "title":title
     // }).subscribe(data=>{});
 
-    this.navCtrl.push("HometailPage",{'rid':rid});
+    this.navCtrl.push("HometailPage", { 'rid': rid });
   }
-  ionViewWillEnter() {  // 初始化视图数据   
+  ionViewWillEnter() {
+    this.http.get("/api/contact/user_info").subscribe(data => {
+      this.user_info = data;
+      if (this.user_info != undefined) {
+        this.user_info.forEach(e => {
+          if (e.uid == this.uid) {
+            this.city = e.city;
+            // console.log(this.city2);
+          }
+        });
+      }
+    });
+
     this.storage.get('location').then((val) => { // 获取本地储存的数据并根据城市名称初始化城市数据     
       if (val != null) { // 如果本地储存的数据不为空
         this.location = JSON.parse(val);
+        // console.log(val);
       } else {
         this.location = {
-          city: '石家庄',
+          city: this.city,
         }
       }
       // 用天气服务获得当前城市的天气数据
       this.weatherProvider.getWeather(this.location.city).subscribe(result => {
+        console.log(result["showapi_res_body"]["cityInfo"]);
         // console.log(result["showapi_res_body"]["f1"]);
         this.result = result["showapi_res_body"]["f1"];
         this.weather = this.result['day_weather'];
@@ -122,14 +135,4 @@ export class HomePage {
       });
     });
   }
-
-
-  
-  // goarticle(){
-  //   this.navCtrl.push(HometailPage);
-  // }
-  
-  // arr=['推荐','健身','饮食','理疗'];
-
-
 }
