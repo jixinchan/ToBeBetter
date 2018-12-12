@@ -5,14 +5,14 @@
   Ionic pages and navigation.
 -->
 <ion-content padding>
-  <button ion-button class="skip" color="light" (click)="goHome2()">跳过</button>
   <div class="login-window" padding>
     <h4>鲜  活</h4>
     <ion-input type="text" name="tel" placeholder="手机号" [(ngModel)]="tel"></ion-input>
     <ion-input placeholder="密码" [(ngModel)]="pwd" type="password" name="pwd"></ion-input>
     <button ion-button block round (click)="login()">登录</button>
     <p>忘记密码？</p>
-    <p (click)="goRegister()">没有账号,立即注册</p>
+    <p><span (click)="goRegister()">没有账号,立即注册!</span><span (click)="goHome2()" id="p3">暂不登录</span></p>
+    
   </div>
 </ion-content>
 

@@ -2,6 +2,7 @@ page-login {
     .skip{
         float: right;
         opacity: 0.7;
+        color: #23a257;
     }
     ion-content{
         background-image: url(../../assets/imgs/login_bg.png)!important;
@@ -29,9 +30,14 @@ page-login {
                 background: #23a257;
             }
             p{
-                text-align: center;
+                font-size: 16px;
                 color:#2a5a3d;
+                padding:0 12px;
             }
+            #p3{
+                float: right;
+            }
+            
         }
         
     }
