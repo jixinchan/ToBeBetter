@@ -135,4 +135,9 @@ export class HomePage {
       // });
     });
   }
+
+  goSearch(){
+    this.navCtrl.push('HomesearchPage');
+  }
+
 }

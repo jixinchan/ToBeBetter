@@ -30,7 +30,7 @@ export class ContactPage {
     }   
   }
   goSearch() {
-    this.navCtrl.push('SearchPage');
+    this.navCtrl.push('HomesearchPage');
   }
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
