@@ -12,6 +12,10 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="search" (click)="goSearch()">
     <ion-icon name="search"></ion-icon>
     <input type="text" placeholder="搜索">

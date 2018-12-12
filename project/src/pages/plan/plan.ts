@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 
 /**
@@ -15,51 +15,57 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: 'plan.html',
 })
 export class PlanPage {
-
-  // uid;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpClient) {    
-    // this.uid = localStorage.getItem('uid');
+  //游客
+  uid;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,public app:App) {
+    //游客
+    this.uid = localStorage.getItem('uid');
   }
-  ionViewDidLoad() {}
+  ionViewDidLoad() { }
 
   isEmpty(obj) {
-    for(var k in obj){
+    for (var k in obj) {
       return false;  // 非空
     }
     return true;  // 空
   }
 
   myplan;
-  ionViewDidEnter(){
-    this.http.get('/api/plan/userplan').subscribe(data=>{
+  ionViewDidEnter() {
+    this.http.get('/api/plan/userplan').subscribe(data => {
       this.myplan = data;
-      if(this.isEmpty(this.myplan)){
-        document.querySelectorAll('.box')[0].className = document.querySelectorAll('.box')[0].className.slice(0,3);
+      if (this.isEmpty(this.myplan)) {
+        document.querySelectorAll('.box')[0].className = document.querySelectorAll('.box')[0].className.slice(0, 3);
         document.querySelectorAll('.planbox')[0].className += " hide";
       }
-      else{
-        document.querySelectorAll('.planbox')[0].className = document.querySelectorAll('.planbox')[0].className.slice(0,7);
+      else {
+        document.querySelectorAll('.planbox')[0].className = document.querySelectorAll('.planbox')[0].className.slice(0, 7);
         document.querySelectorAll('.box')[0].className += " hide";
       }
     });
   }
 
-  addPlan(){
-    this.navCtrl.push("EditplanPage");
-  }
-
-  isFinish(i){
-    var p = document.querySelectorAll(".p"+i)[0].className;
-    if(p.indexOf(' finish finishimg') !== -1){
-      document.querySelectorAll(".p"+i)[0].className = document.querySelectorAll(".p"+i)[0].className.replace(" finish finishimg","");
+  addPlan() {
+    //游客
+    if(this.uid==1){
+      alert("请登录");
     }else{
-      document.querySelectorAll(".p"+i)[0].className += " finish finishimg";
+      this.navCtrl.push("EditplanPage");
     }    
   }
-  delPlan(i){
-    this.http.post('/api/plan/delplan',{
-      "pid":i
-    }).subscribe(()=>{
+
+  isFinish(i) {
+    var p = document.querySelectorAll(".p" + i)[0].className;
+    if (p.indexOf(' finish finishimg') !== -1) {
+      document.querySelectorAll(".p" + i)[0].className = document.querySelectorAll(".p" + i)[0].className.replace(" finish finishimg", "");
+    } else {
+      document.querySelectorAll(".p" + i)[0].className += " finish finishimg";
+    }
+  }
+  delPlan(i) {
+    this.http.post('/api/plan/delplan', {
+      "pid": i
+    }).subscribe(() => {
       this.ionViewDidEnter();
     });
   }

@@ -12,6 +12,7 @@ export class ContactPage {
   user_info;
   nickname = [];
   avatar = [];
+  uid;//游客
   doRefresh(refresher) {
     setTimeout(() => {
       refresher.complete();
@@ -22,13 +23,20 @@ export class ContactPage {
     // console.log(i);
   }
   goRelease() {
-    this.navCtrl.push('ReleasePage');
+    if(this.uid==1){
+      alert("请登录");
+    }else{
+      this.navCtrl.push('ReleasePage');
+    }   
   }
   goSearch() {
-    this.navCtrl.push('HomesearchPage');
+    this.navCtrl.push('SearchPage');
   }
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
+    //游客
+    this.uid=localStorage.getItem("uid");
+
     this.http.get("/api/contact").subscribe(data => {
       this.content = data;
       // console.log(data);

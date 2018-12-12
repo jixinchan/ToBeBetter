@@ -78,4 +78,11 @@ export class LoginPage {
     });
     alert.present();
   }
+
+  //游客
+  goHome2(){
+    this.app.getRootNavs()[0].setRoot(TabsPage);
+    localStorage.setItem("uid",'1');
+    // localStorage.setItem("bid",'1');
+  }
 }

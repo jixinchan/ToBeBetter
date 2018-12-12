@@ -1,4 +1,8 @@
 page-login {
+    .skip{
+        float: right;
+        opacity: 0.7;
+    }
     ion-content{
         background-image: url(../../assets/imgs/login_bg.png)!important;
         .scroll-content{
