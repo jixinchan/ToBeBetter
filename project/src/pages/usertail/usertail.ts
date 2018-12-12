@@ -53,7 +53,9 @@ export class UsertailPage {
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {   
   }
-
+  buttonClick(){
+    this.navCtrl.push('EditPage');
+  }
   //保存个人资料
   save(){
     console.log(this.bcity);

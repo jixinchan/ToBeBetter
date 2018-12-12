@@ -21,6 +21,9 @@ import {IonicStorageModule} from '@ionic/storage';
 import { WelcomePage } from '../pages/welcome/welcome';
 
 import { WeatherProvider } from '../providers/weather/weather';
+import { QuickloginProvider } from '../providers/quicklogin/quicklogin';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Camera } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -55,6 +58,9 @@ import { WeatherProvider } from '../providers/weather/weather';
   providers: [
     StatusBar,
     SplashScreen,
+    ImagePicker,
+    Camera,
+    QuickloginProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ReciveServeProvider,WeatherProvider
   ]
