@@ -53,7 +53,7 @@ export class HometailPage {
       'uid':this.uid
     }).subscribe((data)=>{
       this.collected = data;
-      console.log(this.collected);
+      // console.log(this.collected);
       if(!this.isEmpty(this.collected)){  //data 非空
         document.querySelectorAll('.star')[0].className += ' collected';
       }
@@ -71,7 +71,7 @@ export class HometailPage {
     // console.log(iscollect);
     if(iscollect === -1){  // 未收藏->已收藏
       document.querySelectorAll('.star')[0].className += ' collected';
-      console.log('未收藏->已收藏： ',document.querySelectorAll('.star')[0].className);
+      // console.log('未收藏->已收藏： ',document.querySelectorAll('.star')[0].className);
       this.http.post('/api/hometail/collect',{
         "uid":this.uid,
         "rid":rid
@@ -79,7 +79,7 @@ export class HometailPage {
     }
     else{  // 已收藏->未收藏
       document.querySelectorAll('.star')[0].className = document.querySelectorAll('.star')[0].className.slice(0,37);
-      console.log('已收藏->未收藏： ',document.querySelectorAll('.star')[0].className);
+      // console.log('已收藏->未收藏： ',document.querySelectorAll('.star')[0].className);
       this.http.post('/api/hometail/uncollect',{
         "uid":this.uid,
         "rid":rid

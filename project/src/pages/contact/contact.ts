@@ -25,7 +25,7 @@ export class ContactPage {
     this.navCtrl.push('ReleasePage');
   }
   goSearch() {
-    this.navCtrl.push('SearchPage');
+    this.navCtrl.push('HomesearchPage');
   }
 
   constructor(public navCtrl: NavController, public http: HttpClient) {

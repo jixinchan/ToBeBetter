@@ -1,0 +1,135 @@
+page-homesearch {
+  ion-content {
+    ul {
+      padding: 0 !important;
+    }
+
+    .searchOptions{
+      width: 100%;
+      float: left;
+      // border: black 1px solid;
+    }
+
+    .hot {
+      width: 100%;
+      float: left;
+      // border: red 1px solid;
+    }
+
+    .hp{
+      font-size: 16px;
+      margin: 10px 0 0 10px;
+    }
+
+    .option {
+      border-radius: 20px;
+      border: #23a257 1px solid;
+      float: left;
+      margin: 15px 2% 0 3%;
+    }
+
+    .option p {
+      margin: 3px 10px;
+      font-size: 14px;
+      line-height: 16px;
+    }
+
+    .hide {
+      display: none;
+    }
+    
+    .history{
+      width: 100%;
+      float: left;
+      margin-top: 10px;
+      // border: red 1px solid;
+    }
+    .hsp{
+      margin-top: 10px;
+      padding: 0 10px;
+    }
+    .hsp span{
+      font-size: 16px;
+    }
+    .delhis{
+      color: #23a257;
+      font-size: 14px;
+      float: right;
+    }
+    .delthis{
+      float: right;
+      margin: 13px 20px 0 0;
+    }
+    .history ul li{
+      width: 100%;
+      height: 45px;
+      float: left;
+      border: #ccc 1px solid;
+    }
+    .history ul li p{
+      font-size: 16px;
+      line-height: 45px;
+      margin: 0 0 0 10px;
+    }
+
+    .list {
+      width: 100%;
+      height: 44px;
+      float: left;
+      margin: 0;
+      // border: red 1px solid;
+    }
+
+    .list li {
+      width: 50%;
+      line-height: 44px;
+      font-size: 16px;
+      text-align: center;
+      // border: green 1px solid;
+    }
+
+    .first {
+      border-bottom: 2px solid #23a257;
+    }
+
+    .result{
+      width: 100%;
+    }
+
+    .out{
+      width: 100%;
+      float: left;
+    }
+
+    .out li {
+      width: 100%;
+      margin: 0 0 10px 0;
+    }
+
+    .right {
+      margin-top: 10px;
+      width: 75%;
+      float: left;
+    }
+    
+    .right p {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      margin: 0 0 10px 10px;
+    }
+
+    .title {
+      width: 200px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    img {
+      width: 25%;
+      height: 70px;
+      float: left;
+    }
+
+  }
+}

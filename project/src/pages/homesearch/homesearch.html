@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-input placeholder="搜索文章、动态" value=""></ion-input>    
+    <ion-buttons end (click)="searchKey()">
+      <button ion-button icon-only id="btn">搜索</button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <div class="searchOptions">
+    <div class="hot">
+      <p class="hp">热门搜索</p>
+      <div *ngFor="let item of hot;let i=index;" class="option" (click)="search(i)">
+        <p>{{item}}</p>
+      </div>
+    </div>
+    <div class="history">
+      <div class="hsp">
+        <span>历史搜索</span>
+        <span class="delhis" (click)="delHistory()">清除历史</span>
+      </div>
+      <ul>
+        <li *ngFor="let his of history;let i=index;" (click)="searchHis(his)">
+          <p>
+            {{his}}
+            <ion-icon name="md-close" class="delthis" (click)="delthis(i)"></ion-icon>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="box">
+    <ul class="list">
+      <li (click)="isClick(0)" [class.first]="isActive==0">文章</li>
+      <li (click)="isClick(1)" [class.first]="isActive==1">动态</li>
+    </ul>
+    <div [ngSwitch]='isActive'>
+      <div *ngSwitchCase='0' class="out">
+        <ul>
+          <li *ngFor="let ar of articleResults;" class="result">
+            <img src="{{ar.imgs}}">
+            <div class="right">
+              <p class="title">{{ar.title}}</p>
+              <p>{{ar.content}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div *ngSwitchCase='1' class="out">
+        <ul>
+          <li *ngFor="let dr of dynamicResults;" class="result">
+            <img src="{{dr.imgs}}">
+            <div class="right">
+              <p class="title">{{dr.title}}</p>
+              <p>{{dr.content}}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</ion-content>
