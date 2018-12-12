@@ -18,7 +18,6 @@ declare var echarts;//设置echarts全局对象
 })
 export class ReportPage {
 
-  
   @ViewChild('EchartsContent') container:ElementRef;//与html中div #container1对应
   EChart :any;
   score;
@@ -29,6 +28,7 @@ export class ReportPage {
   physiqueid=[];
   inclination=[];
   main=1;
+  name;
   explain;
   incidence;
   mentality;
@@ -39,71 +39,20 @@ export class ReportPage {
   medicinalfood1;
   living;
   emotion;
-  constructor(public params: NavParams,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
-    this.score = params.data;
-    console.log(this.score);
-    this.uid = localStorage.getItem("uid");
-    for(var i in this.score){
-      this.arr.push(this.score[i]);
-      console.log(this.score[i]);
-    }
-    console.log("arr的长度");
-    console.log(this.arr.length);
-    for(var j=2;j<this.arr.length;j++)
-    {
-      if(this.arr[j]>=40){
-        if(this.main!=1&&this.arr[j]>=this.arr[this.main]){
-          this.inclination.push(this.main);
-          this.main=j;
-          // console.log('主体质1');
-          // console.log(this.main);
-          // console.log('偏向的体质1');
-          // console.log(this.inclination);
-        }else if(this.main!=1&&this.arr[j]<this.arr[this.main]){
-          this.inclination.push(j);
-          this.main=this.main;
-          // console.log('主体质2');
-          // console.log(this.main);
-        }else if(this.main===1){
-          this.main=j;
-        }
-      }else if(this.arr[0]>=60&&this.arr[1]<40&&this.arr[2]<40&&this.arr[3]<40&&this.arr[4]<40&&this.arr[5]<40&&this.arr[6]<40&&this.arr[7]<40&&this.arr[8]<40&&this.arr[9]<40){
-          this.main=1;
-          break;
-      }else if(this.arr[j]>=30){
-        this.inclination.push(j);
-        // console.log('偏向的体质2');
-        // console.log(this.inclination);
-        // console.log('主体质3');
-        // console.log(this.main);
-      }
-    }
-    
-    //写数据库中的用户信息表的主体质id
-    this.uid = localStorage.getItem("uid");
-    this.http.post("/api/question/main",{
-      "bid":this.main,
-      "uid":this.uid
-    }).subscribe(data=>{
-    });
-    this.http.get('/api/body').subscribe(data=>{
-      this.explain=data[this.main-1].report;
-      this.shape=data[this.main-1].shape.split("%%%");
-      this.mentality=data[this.main-1].mentality.split("%%%");
-      this.incidence=data[this.main-1].incidence;
-      this.medicinalfood=data[this.main-1].medicinalfood.split("%%%");
-      this.properdiet=data[this.main-1].properdiet.split("%%%");
-      this.unsuitable=data[this.main-1].unsuitable.split("%%%");
-      this.living=data[this.main-1].living;
-      this.emotion=data[this.main-1].emotion;
-    });
-    
-
+  flag;
+  goBodytest(){
+    this.navCtrl.push('BodytestPage');
   }
-
-  ionViewDidLoad() {
+  isEmpty(obj) {
+    for(var k in obj){
+      return false;  // 非空
+    }
+    return true;  // 空
+  }
+  goChart(){
+    var data = [this.arr[1],this.arr[2],this.arr[3],this.arr[4],this.arr[5],this.arr[6],this.arr[7],this.arr[8],this.arr[9]];
     var dataAxis = ['平和', '气虚', '阳虚', '阴虚', '痰湿', '湿热', '血瘀', '气郁', '特禀'];
-    var data = [this.score.pinghe,this.score.qixu,this.score.yangxu,this.score.yinxu,this.score.tanshi,this.score.shire,this.score.xueyu,this.score.qiyu,this.score.tebing];
+    // var data = [20,30,this.arr[3],this.arr[4],this.arr[5],this.arr[6],this.arr[7],this.arr[8],this.arr[9]];
     var yMax = 100;
     var dataShadow = [];
     for (var i = 0; i < data.length; i++) {
@@ -140,7 +89,6 @@ export class ReportPage {
         },
         z: 10
     },
-    
     yAxis: {
       show:true,                         
       splitLine:{show:false},
@@ -205,13 +153,112 @@ export class ReportPage {
         },
     ]
     });
+  }
+  constructor(public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+    //写数据库中的用户信息表的主体质id
+    this.uid = localStorage.getItem("uid");
+    //获取所有体质的调养方法
+    // this.ionViewDidEnter();
     
-    this.http.post('/api/body/main',{
+    
+  }
+  goJisuan(){
+    this.inclination=[];
+    for(var j=2;j<this.arr.length;j++)
+    {
+      if(this.arr[j]>=40){
+        if(this.main!=1&&this.arr[j]>=this.arr[this.main]){
+          this.inclination.push(this.main);
+          this.main=j;
+          console.log('主体质1');
+          console.log(this.main);
+          console.log('偏向的体质1');
+          console.log(this.inclination);
+        }else if(this.main!=1&&this.arr[j]<this.arr[this.main]){
+          this.inclination.push(j);
+          this.main=this.main;
+          console.log('主体质2');
+          console.log(this.main);
+        }else if(this.main===1){
+          this.main=j;
+        }
+      }else if(this.arr[0]>=60&&this.arr[1]<40&&this.arr[2]<40&&this.arr[3]<40&&this.arr[4]<40&&this.arr[5]<40&&this.arr[6]<40&&this.arr[7]<40&&this.arr[8]<40&&this.arr[9]<40){
+          this.main=1;
+          break;
+      }else if(this.arr[j]>=30){
+        this.inclination.push(j);
+        console.log('偏向的体质2');
+        console.log(this.inclination);
+        console.log('主体质3');
+        console.log(this.main);
+      }
+    }
+    this.uid = localStorage.getItem("uid");
+    this.http.post("/api/question/main",{
+      "bid":this.main,
+      "uid":this.uid
+    }).subscribe(data=>{
+      console.log("bodytest的主要的体质");
+      console.log(this.main);
+    });
+    
+  }
+  ionViewWillEnter() {  
+    this.http.post('/api/flag?num='+Math.random(),{
+      "uid":this.uid
+    }).subscribe(data=>{
+      this.flag = data;
+      if(this.isEmpty(this.flag)){
+        document.querySelectorAll('.reportbox')[0].className += " hide";
+        console.log('没有测试过');
+      }
+      else{
+        document.querySelectorAll('.box')[0].className += " hide";
+        console.log('测试过');
+        this.flag.forEach(e => {
+          this.arr=[];
+          this.arr.push(e.uid);
+          this.arr.push(e.pinghe);
+          this.arr.push(e.qixu);
+          this.arr.push(e.yangxu);
+          this.arr.push(e.yinxu);
+          this.arr.push(e.tanshi);
+          this.arr.push(e.shire);
+          this.arr.push(e.xueyu);
+          this.arr.push(e.qiyu);
+          this.arr.push(e.tebing);
+          this.arr.push(e.uid);
+          this.goJisuan();
+          this.goChart();
+        });
+        
+      }
+    });
+    
+    
+
+
+
+    
+    this.http.post('/api/body/main?num='+Math.random(),{
       "uid":this.uid
     }).subscribe(data=>{
       this.body=data[0].bid;
+      console.log(this.body);
+      this.goChart();
     });
-
-    
+    this.http.get('/api/body?num='+Math.random()).subscribe(data=>{
+      // this.ionViewDidEnter();
+      this.name=data[this.body-1].bodyName;
+      this.explain=data[this.body-1].report;
+      this.shape=data[this.body-1].shape.split("%%%");
+      this.mentality=data[this.body-1].mentality.split("%%%");
+      this.incidence=data[this.body-1].incidence;
+      this.medicinalfood=data[this.body-1].medicinalfood.split("%%%");
+      this.properdiet=data[this.body-1].properdiet.split("%%%");
+      this.unsuitable=data[this.body-1].unsuitable.split("%%%");
+      this.living=data[this.body-1].living;
+      this.emotion=data[this.body-1].emotion;
+    });
   }
 }  

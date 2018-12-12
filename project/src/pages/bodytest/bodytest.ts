@@ -9,6 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BodytestPage {
   question;
+  question0=[];
+  qid=[];
+  bid=[];
   key=['没有','很少','有时','经常','总是'];
   isActive1=[-1];
   isActive2=0;
@@ -25,8 +28,6 @@ export class BodytestPage {
   tebing;
   // 主体质id
   main=0;
-  //倾向的体质
-  inclination=[];
   body=[
     {id:1,sum:0,count:0,result:0,bodyname:"平和质"},
     {id:2,sum:0,count:0,result:0,bodyname:"气虚质"},
@@ -64,53 +65,22 @@ export class BodytestPage {
     }else{
       this.scorearr[this.question[i].qid-1]={qid:this.question[i].qid,id:this.body[this.question[i].bid-1].id,score:(j+1)};
     }
-    this.body[this.question[i].bid-1].sum =this.body[this.question[i].bid-1].sum+this.scorearr[this.question[i].qid-1].score;
-    console.log(this.body[this.question[i].bid-1].sum);
-    this.body[this.question[i].bid-1].count++;
+    console.log(this.scorearr);
   }
   //计算分数+跳转+更改数据库
   goReport(){
+    for(var y=0;y<this.scorearr.length;y++){
+      this.body[this.scorearr[y].id-1].sum += this.scorearr[y].score;
+      this.body[this.scorearr[y].id-1].count++;
+      console.log(this.body[this.scorearr[y].id-1].sum);
+    }
     for(var x=0;x<9;x++){
       this.body[x].result=Math.round(((this.body[x].sum-this.body[x].count)/(this.body[x].count*4))*100);
       this.resultarr.push(this.body[x].result);
-      // console.log("resultarr的长度");
-      // console.log(this.resultarr);
+      console.log(this.resultarr);
     }
-    // for(var y=0;y<9;y++){
-    //   if(this.body[y].result!=undefined){
-    //     for(var j=1;j<this.body.length;j++)
-    //     {
-    //       if(this.body[j].result>=40){
-    //         if(this.main!=0&&this.body[j].result>=this.body[this.main].result){
-    //           this.inclination.push(this.main);
-    //           this.main=j+1;
-    //           console.log('主体质1');
-    //           console.log(this.main);
-    //           console.log('偏向的体质1');
-    //         }else if(this.main!=0&&this.body[j].result<this.body[this.main].result){
-    //           this.inclination.push(j+1);
-    //           this.main=this.main;
-    //           console.log('主体质2');
-    //           console.log(this.main);
-    //         }else if(this.main===0){
-    //           this.main=j+1;
-    //         }
-    //       }else if(this.body[0].result>=60&&this.body[1].result<40&&this.body[2].result<40&&this.body[3].result<40&&this.body[4].result<40&&this.body[5].result<40&&this.body[6].result<40&&this.body[7].result<40&&this.body[8].result<40){
-    //           this.main=1;
-    //           break;
-    //       }else if(this.body[j].result>=30){
-    //         this.inclination.push(j+1);
-    //         console.log('偏向的体质2');
-    //         console.log(this.inclination);
-    //         console.log('主体质3');
-    //         console.log(this.main);
-    //       }
-    //     }
-    //   }
-    // }
     if(this.flag.length===1){
         this.http.post("/api/question2",{
-          "uid":this.uid,
           "pinghe":this.body[0].result,
           "qixu":this.body[1].result,
           "yangxu":this.body[2].result,
@@ -119,10 +89,11 @@ export class BodytestPage {
           "shire":this.body[5].result,
           "xueyu":this.body[6].result,
           "qiyu":this.body[7].result,
-          "tebing":this.body[8].result
+          "tebing":this.body[8].result,
+          "uid":this.uid
         }).subscribe(data=>{
-          // this.question=data;
-          // console.log("question2");
+          console.log("question2");
+          console.log(data);
         });
     }else{
       this.http.post("/api/question",{
@@ -141,28 +112,14 @@ export class BodytestPage {
         // console.log(this.question);
       });
     }
-    // //写数据库
     // this.http.post("/api/question/main",{
-    //   "uid":this.uid,
-    //   "bid":this.main
+    //   "bid":this.main,
+    //   "uid":this.uid
     // }).subscribe(data=>{
-    //   // this.question=data;
-    //   // console.log(this.question);
+    //   console.log("bodytest的主要的体质");
+    //   console.log(this.main);
     // });
-
-
-    this.navCtrl.push('ReportPage',{
-      uid:this.uid,
-        pinghe:this.body[0].result,
-        qixu:this.body[1].result,
-        yangxu:this.body[2].result,
-        yinxu:this.body[3].result,
-        tanshi:this.body[4].result,
-        shire:this.body[5].result,
-        xueyu:this.body[6].result,
-        qiyu:this.body[7].result,
-        tebing:this.body[8].result
-    });
+    this.navCtrl.pop();
   }
   uid;
   flag;
@@ -176,10 +133,8 @@ export class BodytestPage {
     })
   }
   ionViewDidLoad(){
-    
   this.http.get("/api/question").subscribe(data=>{
     this.question=data;
-    // console.log(this.question);
   });
   }
 }
