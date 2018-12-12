@@ -20,29 +20,29 @@
       </div>
     </div>
     <ul class="mine">
-      <li (click)="goMydynamic()">
+      <li (click)="goPage('MydynamicPage')">
         <ion-icon name="happy"></ion-icon>
         <p>动态</p>
       </li>
-      <li (click)="goMyattention()">
+      <li (click)="goPage('MyattentionPage')">
         <ion-icon name="bonfire"></ion-icon>
         <p>关注</p>
       </li>
-      <li (click)="goMylikes()">
+      <li (click)="goPage('MylikesPage')">
         <ion-icon name="star-outline"></ion-icon>
         <p>收藏</p>
       </li>
-      <li (click)="goMyfans()">
+      <li (click)="goPage('MyfansPage')">
         <ion-icon name="heart-outline"></ion-icon>
         <p>粉丝</p>
       </li>
     </ul>
     <ion-list>
-      <button ion-item (click)="goPrivate()">
+      <button ion-item (click)="goPage('PrivatePage')">
         <ion-icon name="contact" item-start ></ion-icon>
         个人资料
       </button>
-      <button ion-item (click)="goReport()">
+      <button ion-item (click)="goPage('ReportPage')">
         <ion-icon name="copy" item-start></ion-icon>
         体制报告
       </button>

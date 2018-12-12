@@ -21,7 +21,8 @@
         清除缓存
     </button>
   </ion-list>
-  <button ion-button  block (click)='goLogin()'>退出当前账号</button>
+  <button ion-button  block (click)='goLogin()' class='btn' [ngClass]="{'show':flag}">立 即 登 录</button>
+  <button ion-button  block (click)='goLogin()' class='btn' [ngClass]="{'show':!flag}">退出当前账号</button>
       
     
 </ion-content>

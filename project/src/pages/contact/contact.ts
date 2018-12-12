@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 @Component({
   selector: 'page-contact',
@@ -24,7 +25,7 @@ export class ContactPage {
   }
   goRelease() {
     if(this.uid==1){
-      alert("请登录");
+      this.quicklogin.quickLogin();
     }else{
       this.navCtrl.push('ReleasePage');
     }   
@@ -33,7 +34,7 @@ export class ContactPage {
     this.navCtrl.push('HomesearchPage');
   }
 
-  constructor(public navCtrl: NavController, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public http: HttpClient,public quicklogin:QuickloginProvider) {
     //游客
     this.uid=localStorage.getItem("uid");
 

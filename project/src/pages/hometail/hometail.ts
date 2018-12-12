@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams , ModalController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 /**
  * Generated class for the HometailPage page.
@@ -32,7 +33,8 @@ export class HometailPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: HttpClient,
-              public modalCtrl: ModalController
+              public modalCtrl: ModalController,
+              public quicklogin:QuickloginProvider
             ) {
     
     this.rid = this.navParams.get('rid');
@@ -66,31 +68,41 @@ export class HometailPage {
   
   // 收藏
   isCollect(rid){
-    // document.querySelectorAll('.star')[0].className += ' collected';
-    var iscollect = document.querySelectorAll('.star')[0].className.indexOf(' collected');
-    // console.log(iscollect);
-    if(iscollect === -1){  // 未收藏->已收藏
-      document.querySelectorAll('.star')[0].className += ' collected';
-      // console.log('未收藏->已收藏： ',document.querySelectorAll('.star')[0].className);
-      this.http.post('/api/hometail/collect',{
-        "uid":this.uid,
-        "rid":rid
-      }).subscribe(data=>{});
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      // document.querySelectorAll('.star')[0].className += ' collected';
+      var iscollect = document.querySelectorAll('.star')[0].className.indexOf(' collected');
+      // console.log(iscollect);
+      if(iscollect === -1){  // 未收藏->已收藏
+        document.querySelectorAll('.star')[0].className += ' collected';
+        // console.log('未收藏->已收藏： ',document.querySelectorAll('.star')[0].className);
+        this.http.post('/api/hometail/collect',{
+          "uid":this.uid,
+          "rid":rid
+        }).subscribe(data=>{});
+      }
+      else{  // 已收藏->未收藏
+        document.querySelectorAll('.star')[0].className = document.querySelectorAll('.star')[0].className.slice(0,37);
+        // console.log('已收藏->未收藏： ',document.querySelectorAll('.star')[0].className);
+        this.http.post('/api/hometail/uncollect',{
+          "uid":this.uid,
+          "rid":rid
+        }).subscribe(data=>{});
+      }
     }
-    else{  // 已收藏->未收藏
-      document.querySelectorAll('.star')[0].className = document.querySelectorAll('.star')[0].className.slice(0,37);
-      // console.log('已收藏->未收藏： ',document.querySelectorAll('.star')[0].className);
-      this.http.post('/api/hometail/uncollect',{
-        "uid":this.uid,
-        "rid":rid
-      }).subscribe(data=>{});
-    }
+    
   }
 
 // 分享
   goShare() {
-    let profileModal = this.modalCtrl.create('SharePage');
-    profileModal.present();
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      let profileModal = this.modalCtrl.create('SharePage');
+      profileModal.present();
+    }
+    
   }
 
 

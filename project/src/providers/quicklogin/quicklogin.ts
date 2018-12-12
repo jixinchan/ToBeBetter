@@ -12,7 +12,7 @@ import { AlertController, App } from 'ionic-angular';
 export class QuickloginProvider {
   quickLogin(){
     let quickLogin = this.alertCtrl.create({
-      message: '确认重新登录吗？',
+      message: '请先登录',
       buttons: [
         {
           text: '确认',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 /**
  * Generated class for the MePage page.
@@ -19,7 +20,7 @@ export class MePage {
   nickname;//昵称
   signature;//个签
   uid;//用户id
-  constructor(public http:HttpClient, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public quicklogin:QuickloginProvider ,public http:HttpClient, public navCtrl: NavController, public navParams: NavParams) {
   }
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {
@@ -31,27 +32,14 @@ export class MePage {
     });
   }
 
-
-
+  goPage(page){
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      this.navCtrl.push(page);
+    }
+  }
   goSet(){
     this.navCtrl.push('SettingsPage');
-  }
-  goReport(){
-    this.navCtrl.push('BodytestPage');
-  }
-  goPrivate(){
-    this.navCtrl.push('UsertailPage')
-  }
-  goMydynamic(){
-    this.navCtrl.push('MydynamicPage');
-  }
-  goMyattention(){
-    this.navCtrl.push('MyattentionPage')
-  }
-  goMyfans(){
-    this.navCtrl.push('MyfansPage');
-  }
-  goMylikes(){
-    this.navCtrl.push('MylikesPage')
   }
 }

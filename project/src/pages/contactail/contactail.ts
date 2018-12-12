@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 /**
  * Generated class for the ContactailPage page.
@@ -44,7 +45,7 @@ export class ContactailPage {
   isCollec = [];
   change(i) {
     if (this.uid == '1') { //游客判断
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       if (i == 0) {
         this.flag = !this.flag;
@@ -78,14 +79,14 @@ export class ContactailPage {
   }
   change2() {
     if (this.uid == '1') {//游客判断
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       this.love = !this.love;
     }
   }
   change3(i) {
     if (this.uid == '1') {//游客判断
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       this.star = !this.star;
       if (i == 0) {
@@ -103,7 +104,7 @@ export class ContactailPage {
   }
   goShare() {
     if (this.uid == '1') {//游客判断
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       let profileModal = this.modalCtrl.create('SharePage');
       profileModal.present();
@@ -111,7 +112,7 @@ export class ContactailPage {
   }
   goAssess() {
     if (this.uid == '1') {//游客判断
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       this.navCtrl.push('AssessPage', { "did": this.did, "assess": this.assess });
       // console.log(this.did);
@@ -119,7 +120,7 @@ export class ContactailPage {
   }
   release() {//游客判断
     if (this.uid == '1') {
-      alert("请登录");
+      this.quicklogin.quickLogin();
     } else {
       var mytime = new Date();
       var formatDateTime = function (date) {
@@ -150,7 +151,9 @@ export class ContactailPage {
     }
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: HttpClient, public modalCtrl: ModalController, 
+    public alertCtrl: AlertController,public quicklogin:QuickloginProvider) {
     //传参
     this.i = this.navParams.get("index");
     this.nickname = this.navParams.get("nickname");

@@ -17,6 +17,7 @@ import { HttpClient ,HttpHeaders} from '@angular/common/http';
 })
 export class SettingsPage {
   uid;
+  flag=0;
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   goLogin(){
     this.app.getRootNavs()[0].setRoot('LoginPage');
@@ -30,6 +31,9 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     this.uid = localStorage.getItem('uid');
+    if(this.uid=='1'){
+      this.flag=1;
+    }
     console.log('ionViewDidLoad SettingsPage');
   }
   goShare() {
