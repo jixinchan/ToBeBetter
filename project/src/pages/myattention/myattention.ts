@@ -16,17 +16,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MyattentionPage {
 
-  flag = false;
+  flag = [];
+  aid = [];
   uid;
-  aid;
   attention;
 
-  change(i) {
+  change(i,j) {
+    console.log(j);
+    
     if (i == 0) {
-      this.flag = !this.flag;
-      this.http.post("/api/attention", {
+      this.flag[j] = true;
+      this.flag[j] = !this.flag[j];
+      this.http.post("/api/myattention/attention", {
         "uid": this.uid,
-        "aid": this.aid
+        "aid": this.aid[j]
       }).subscribe(data => { });
     } else {
       let alert = this.alertCtrl.create({
@@ -35,10 +38,11 @@ export class MyattentionPage {
           {
             text: '确认',
             handler: () => {
-              this.flag = !this.flag;
-              this.http.post("/api/noattention", {
+              this.flag[j] = false;
+              this.flag[j] = !this.flag[j];
+              this.http.post("/api/myattention/noattention", {
                 "uid": this.uid,
-                "aid": this.aid
+                "aid": this.aid[j]
               }).subscribe(data => { });
             }
           },
@@ -51,6 +55,7 @@ export class MyattentionPage {
         ]
       });
       alert.present();
+      console.log(200);
     }
   }
 
@@ -61,9 +66,10 @@ export class MyattentionPage {
 
     this.http.post('/api/myattention', {"uid": this.uid}).subscribe(data => {
       this.attention = data;
-      console.log(data);
+      // console.log(data);
       this.attention.forEach(e => {
         e.avatar = '../assets/imgs/avatar/' + e.avatar;
+        this.aid.push(e.uid);
       });
     });
   }

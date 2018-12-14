@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ul class="kapian ">
-    <li *ngFor="let atten of attention;">
+    <li *ngFor="let atten of attention;let j=index;">
       <div class="picture">
         <img src="{{atten.avatar}}">
       </div>
@@ -23,13 +23,13 @@
         <p class="nickname">{{atten.nickname}}</p>
         <p class="signature">{{atten.signature}}</p>
       </div>
-        <!-- <p class="btn1">
+        <p class="btn1">
           <button outline ion-button [ngStyle]="{'border-color':'#808080'}" 
-          [ngClass]="{'hide':!flag}" (click)="change(1)">已关注</button>
+          [ngClass]="{'hide':flag[j]}" (click)="change(1,j)">已关注</button>
         </p>
         <p class="btn2">
-          <button outline ion-button [ngClass]="{'hide':flag}" (click)="change(0)">+关注</button>
-        </p> -->
+          <button outline ion-button [ngClass]="{'hide':!flag[j]}" (click)="change(0,j)">+关注</button>
+        </p>
     </li>
   </ul>
 </ion-content>
