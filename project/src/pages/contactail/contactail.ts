@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 /**
  * Generated class for the ContactailPage page.
@@ -45,7 +44,7 @@ export class ContactailPage {
   isCollec = [];
   change(i) {
     if (this.uid == '1') { //游客判断
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
       if (i == 0) {
         this.flag = !this.flag;
@@ -79,14 +78,14 @@ export class ContactailPage {
   }
   change2() {
     if (this.uid == '1') {//游客判断
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
       this.love = !this.love;
     }
   }
   change3(i) {
     if (this.uid == '1') {//游客判断
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
       this.star = !this.star;
       if (i == 0) {
@@ -104,7 +103,7 @@ export class ContactailPage {
   }
   goShare() {
     if (this.uid == '1') {//游客判断
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
       let profileModal = this.modalCtrl.create('SharePage');
       profileModal.present();
@@ -112,15 +111,14 @@ export class ContactailPage {
   }
   goAssess() {
     if (this.uid == '1') {//游客判断
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
-      this.navCtrl.push('AssessPage', { "did": this.did, "assess": this.assess });
-      // console.log(this.did);
+      this.navCtrl.push('AssessPage', { "did": this.did });
     }
   }
   release() {//游客判断
     if (this.uid == '1') {
-      this.quicklogin.quickLogin();
+      alert("请登录");
     } else {
       var mytime = new Date();
       var formatDateTime = function (date) {
@@ -143,7 +141,7 @@ export class ContactailPage {
           "content": this.input
         }).subscribe(data => {
           this.assess = data;
-          // console.log(this.assess);
+          console.log(this.assess);
           this.goAssess();
         });
       }
@@ -151,9 +149,7 @@ export class ContactailPage {
     }
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: HttpClient, public modalCtrl: ModalController, 
-    public alertCtrl: AlertController,public quicklogin:QuickloginProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController) {
     //传参
     this.i = this.navParams.get("index");
     this.nickname = this.navParams.get("nickname");
@@ -233,11 +229,6 @@ export class ContactailPage {
       // console.log(this.className);
     });
 
-    //评论  
-    this.http.get('/api/contact/contactail/assess').subscribe(data => {
-      this.assess = data;
-      // console.log(data);
-    });
 
     //用户信息
     this.http.get("/api/contact/user_info").subscribe(data => {
