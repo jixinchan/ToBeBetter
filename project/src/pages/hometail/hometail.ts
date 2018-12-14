@@ -99,7 +99,7 @@ export class HometailPage {
     if(this.uid=='1'){
       this.quicklogin.quickLogin();
     }else{
-      let profileModal = this.modalCtrl.create('SharePage');
+      let profileModal = this.modalCtrl.create('SharePage',{flag:true});
       profileModal.present();
     }
     

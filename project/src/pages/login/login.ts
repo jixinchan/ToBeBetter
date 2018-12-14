@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,App} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,App, ModalController} from 'ionic-angular';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { TabsPage } from '../tabs/tabs';
 import { AlertController } from 'ionic-angular';
@@ -26,7 +26,10 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
-  constructor(public alertCtrl:AlertController,public app:App,public http: HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl:AlertController,public app:App,public http: HttpClient,
+    public navCtrl: NavController, public navParams: NavParams,
+    public modal: ModalController
+    ) {
   }
 
   headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
@@ -56,7 +59,12 @@ export class LoginPage {
     }
   }
   goHome(){
-    // this.http.post('/api/login/status',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
+    this.http.post('/api/login/count',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+      if(!data){
+        let profileModal = this.modal.create('SharePage',{flag:false});
+        profileModal.present();
+      }
+    });
     this.app.getRootNavs()[0].setRoot(TabsPage);
   }
   goRegister(){

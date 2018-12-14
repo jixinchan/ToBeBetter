@@ -8,11 +8,14 @@
 </ion-content>
 
 <ion-footer>
-  <div class="s">
+  <div class="s" [ngClass]="{'hide':!flag}">
     <p>分享到</p>
     <div><img src="../assets/imgs/QQ.png"><span>QQ</span></div>
     <div><img src="../assets/imgs/wechat.png"><span>微信</span></div>
     <div><img src="../assets/imgs/微博.png"><span>微博</span></div>
+  </div>
+  <div id="totest" [ngClass]="{'hide':flag}">
+    <p (click)='goTest()'>现在进入测试></p>
   </div>
   <p class="p" (click)="close()">取消</p>
 </ion-footer>

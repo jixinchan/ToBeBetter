@@ -17,8 +17,12 @@ export class SharePage {
   close() {
     this.navCtrl.pop();
   }
-
+  goTest(){
+    this.navCtrl.push('BodytestPage');
+  }
+  flag=true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.flag=this.navParams.get('flag');
   }
   ionViewDidLoad() {
     // console.log('ionViewDidLoad SharePage');

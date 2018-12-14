@@ -105,7 +105,7 @@ export class ContactailPage {
     if (this.uid == '1') {//游客判断
       alert("请登录");
     } else {
-      let profileModal = this.modalCtrl.create('SharePage');
+      let profileModal = this.modalCtrl.create('SharePage',{flag:true});
       profileModal.present();
     }
   }

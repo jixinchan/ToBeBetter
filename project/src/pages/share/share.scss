@@ -2,12 +2,30 @@ page-share {
     ion-content{
         background: #505050!important;
         opacity: 0.7;
-        height:65%;   
+        height:60%;   
+    }
+    
+    .hide{
+        display:none;
     }
     ion-footer{
-        height: 35%;
+        height: 40%;
         background: #fff;
         opacity: 1;
+        #totest{
+            background-image: url(../../assets/imgs/test.jpg);
+            background-repeat: no-repeat;
+            background-size:77% 110%;
+            height: 75%;
+            p{
+                text-align: right;
+                color: #238857;
+                font:bold 20px arial,sans-serif;
+                position: relative;
+                top: 80px;
+                margin-right: 20px;
+            }
+        }
         .s{
             background: #f5f5f9;
             height: 80%;
