@@ -23,7 +23,7 @@
         <div *ngFor="let item of myplan;" class="out">        
           <div class="plan {{item.plancolor}}" (click)="isFinish(item.pid)">
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-shuiguo"></use>
+              <use xlink:href="#icon-shuiguo" style="opacity: 1;"></use>
             </svg>
           </div>
           <p class="txt">{{item.plantxt}}</p>
@@ -32,5 +32,6 @@
       </div>
     </div>
   </div>
+    <!-- <img src="../../assets/imgs/right.png"> -->
 
 </ion-content>

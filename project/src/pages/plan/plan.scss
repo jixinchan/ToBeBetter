@@ -68,13 +68,16 @@ page-plan {
            overflow: hidden;
            font-size: 35px;
            margin-top: 12px;
+        //    position: relative;
+        //    top: 12px;
         }
         .finish{
-            opacity: 0.5;
+            opacity: 0.8;
         }
         .finishimg{
             background: url("../../assets/imgs/right.png");
             background-size: 60px 60px;
+            // background-color: black
         }
         .hide{
             display: none;
