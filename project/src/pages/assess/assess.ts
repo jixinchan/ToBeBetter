@@ -29,11 +29,10 @@ export class AssessPage {
 
   ionViewDidEnter(){    
     this.did = this.navParams.get("did");
-    // this.assess = this.navParams.get("assess");
+
     //评论  
     this.http.get('/api/contact/contactail/assess').subscribe(data => {
       this.assess = data;
-      // console.log('11111111111',this.assess);
 
       this.http.get("/api/contact/user_info").subscribe(data => {
         this.user_info = data;
@@ -65,9 +64,6 @@ export class AssessPage {
         }
         // console.log(this.nickname, this.avatar);
       });
-
-    });
- 
+    }); 
   }
-
 }

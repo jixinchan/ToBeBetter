@@ -7,27 +7,29 @@ page-release {
     }
     ion-content{
         .div1{
-            .imgs{
-                // height:110px;
-                // overflow-x:auto;
-                .img{
-                    border:1px solid #e0dbdb;
+            .class{
+                label,span{
+                    color: rgb(35,162,87);
+                }
+            }           
+            .img{
+                border:1px solid #e0dbdb;
+                border-radius: 5px;
+                width: 100px;
+                height:100px;
+                margin: 10px;
+                img{
                     border-radius: 5px;
                     width: 100px;
-                    height:100px;
-                    margin: 10px;
-                    float: left;
-                    ion-icon{
-                        transform: scale(2,2);
-                        color:#c5c4c4;
-                        margin-left: 45%;
-                        margin-top: 45%;
-                        opacity: 0.6;
-                    }
+                    height:98px;
                 }
-            }
+            }            
            .word{
                 margin: 10px;
+                input{
+                    display: block;
+
+                }
                 textarea{
                     width: 100%;
                     height:150px;

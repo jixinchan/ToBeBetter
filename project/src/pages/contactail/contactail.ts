@@ -105,7 +105,7 @@ export class ContactailPage {
     if (this.uid == '1') {//游客判断
       this.quicklogin.quickLogin();
     } else {
-      let profileModal = this.modalCtrl.create('SharePage',{flag:true});
+      let profileModal = this.modalCtrl.create('SharePage', { flag: true });
       profileModal.present();
     }
   }
@@ -140,7 +140,7 @@ export class ContactailPage {
           "time": this.rTime,
           "content": this.input
         }).subscribe(data => {
-          
+
         });
         this.goAssess();
       }
@@ -148,14 +148,15 @@ export class ContactailPage {
     }
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, 
-    public http: HttpClient, public modalCtrl: ModalController, 
-    public alertCtrl: AlertController,public quicklogin:QuickloginProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public http: HttpClient, public modalCtrl: ModalController,
+    public alertCtrl: AlertController, public quicklogin: QuickloginProvider) {
     //传参
     this.i = this.navParams.get("index");
     this.nickname = this.navParams.get("nickname");
     this.avatar = this.navParams.get("avatar");
-
+  }
+  ionViewWillEnter() {
     //动态信息
     this.http.get("/api/contact").subscribe(data => {
       this.data = data;

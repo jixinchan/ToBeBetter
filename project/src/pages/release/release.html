@@ -7,21 +7,26 @@
 <ion-header>
   <ion-navbar>
     <ion-title>发布</ion-title>
-    <ion-buttons end>
+    <ion-buttons end (click)="release()">
       <button ion-button>发布</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <div class="div1">   
-    <div class="imgs">
-      <div class="img" *ngFor="let item of items" (click)="add()">
-        <ion-icon name="add"></ion-icon>
-      </div>
+  <div class="div1">
+    <div class="class">
+      <ion-item (click)='key()' detail-push>
+        <label>#类别标签</label><span item-end>{{class}}</span>
+      </ion-item>
+    </div>
+    <div class="img" (click)="presentActionSheet()">
+      <!-- <ion-icon name="add"></ion-icon> -->
+      <img src="{{avatar[0]}}">
     </div>
     <div class="word">
-      <textarea placeholder="这一刻，想说什么..."></textarea>
+      <ion-input type="text" placeholder="做一个合格的标题党吧~" [(ngModel)]="title"></ion-input>
+      <textarea placeholder="这一刻，想说什么..." [(ngModel)]="txt"></textarea>
       <hr>
     </div>
   </div>
