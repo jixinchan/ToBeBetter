@@ -23,7 +23,6 @@ export class SettingsPage {
     this.app.getRootNavs()[0].setRoot('LoginPage');
     localStorage.removeItem('uid');
     localStorage.removeItem(this.uid+'history');
-    this.http.post('/api/login/statusout',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{});
   }
   constructor(public http:HttpClient  ,public app:App, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
 

@@ -42,10 +42,25 @@ export class RegisterPage {
         "tel":this.tel,
         "pwd":this.pwd
       }).subscribe(data=>{
-        if(!data){
-          this.presentPrompt('该手机号已注册，请登录。');
-        }
-        this.goLogin();
+        console.log('data:',data);
+        if(data==1){
+          let alert = this.alertCtrl.create({
+            title: '注册失败',
+            subTitle:'该手机号已注册，请登录。',
+            buttons: [
+              {
+                text: '确认',
+                role: 'cancel',
+                handler: data=> {
+                  this.goLogin();
+                }
+              }
+            ]
+          });
+          alert.present();
+        }else{
+          this.goLogin();
+        } 
       });  
     }
   }

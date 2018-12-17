@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
-import { Storage } from '@ionic/storage'
 
 @Component({
   selector: 'page-home',
@@ -27,10 +26,11 @@ export class HomePage {
   humidity;//湿度
   img;//图片
   city;//城市
-  location: {
-    city: string,
+  location={
+    city: '北京',
   };
-  constructor(public navCtrl: NavController, public http: HttpClient, public weatherProvider: WeatherProvider, public storage: Storage) {
+  constructor(public navCtrl: NavController, public http: HttpClient, 
+    public weatherProvider: WeatherProvider) {
     //得到uid
     this.uid = localStorage.getItem("uid");
 
@@ -94,10 +94,6 @@ export class HomePage {
 
 
   goHomeTail(rid) {
-    // this.http.post('/api/hometail',{
-    //   "title":title
-    // }).subscribe(data=>{});
-
     this.navCtrl.push("HometailPage", { 'rid': rid });
   }
   ionViewWillEnter() {
@@ -106,34 +102,27 @@ export class HomePage {
       if (this.user_info != undefined) {
         this.user_info.forEach(e => {
           if (e.uid == this.uid) {
-            this.city = e.city;
-            // console.log(this.city2);
+            this.city = this.city?e.city:'北京';
+            // console.log('city:',e.city);            
+            this.location.city=this.city;
+            console.log('this.location:',this.location);
+            //用天气服务获得当前城市的天气数据
+            this.weatherProvider.getWeather(this.location.city).subscribe(result => {
+              console.log('weather info:',result["showapi_res_body"]["cityInfo"]);
+              // console.log(result["showapi_res_body"]["f1"]);
+              this.result = result["showapi_res_body"]["f1"];
+              this.weather = this.result['day_weather'];
+              this.temperature = this.result['day_air_temperature'];
+              this.humidity = this.result['jiangshui'];
+              this.img = this.result['day_weather_pic'];
+              // console.log(this.weather, this.temperature, this.humidity);
+            });
           }
         });
       }
     });
 
-    this.storage.get('location').then((val) => { // 获取本地储存的数据并根据城市名称初始化城市数据     
-      if (val != null) { // 如果本地储存的数据不为空
-        this.location = JSON.parse(val);
-        // console.log(val);
-      } else {
-        this.location = {
-          city: this.city,
-        }
-      }
-      // 用天气服务获得当前城市的天气数据
-      // this.weatherProvider.getWeather(this.location.city).subscribe(result => {
-      //   console.log(result["showapi_res_body"]["cityInfo"]);
-      //   // console.log(result["showapi_res_body"]["f1"]);
-      //   this.result = result["showapi_res_body"]["f1"];
-      //   this.weather = this.result['day_weather'];
-      //   this.temperature = this.result['day_air_temperature'];
-      //   this.humidity = this.result['jiangshui'];
-      //   this.img = this.result['day_weather_pic'];
-      //   // console.log(this.weather, this.temperature, this.humidity);
-      // });
-    });
+  
   }
 
   goSearch(){
