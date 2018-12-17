@@ -114,85 +114,16 @@ page-mydynamictail {
                 margin-right: 20px;
                 color: #808080;
                 font-size: 1.1em;
-            }
-        }
-        .commend{
-            clear: both;
-            margin: 20px 0 20px 10px;
-            span{
-                display: inline-block;
-                width: 24px;
-                ion-icon{
-                    transform: scale(1.5,1.5);
-                    opacity: 0.5;
+                .text{
+                    display: inline-block;
+                    width: 24px;
+                    margin-left: 10px;
+                    ion-icon{
+                        transform: scale(1.5,1.5);
+                        opacity: 0.5;
+                    }
                 }
             }
-            span:nth-child(1){
-                margin-left: 10px;
-                margin-right: 180px;
-            }    
-            span:nth-child(2),span:nth-child(3),span:nth-child(4),span:nth-child(5){
-                margin-right: 20px;
-            }     
-            .love{
-                color:#ff5733;
-                opacity: 1;
-            }
-            .star{
-                color: #fde400;
-                opacity: 1;
-            }
-        }
-        .commend2{
-            height:auto;
-            p{
-                color: rgb(128,128,128);
-                font-size: 14px;
-                margin-bottom: 0;
-                margin-left: 10px;
-                ion-icon{
-                    opacity: 0.5;
-                    margin-right: 5px;
-                }
-            }
-            hr{
-                color: rgb(128,128,128);
-                width: 336px;
-            }
-            .com{
-                img{
-                    display: block;
-                    width: 30px;
-                    height: 30px;
-                    margin: 10px;
-                    margin-right: 0px;
-                    border-radius: 50%;
-                }
-                input{
-                    display: block;
-                    width: 230px;
-                    height: 30px;
-                    margin: 10px;
-                    background: rgb(231,231,231);
-                    border:none;
-                    border-radius: 6px;
-                }
-                input::-webkit-input-placeholder{
-                    color:rgb(128,128,128);
-                    font-size: 12px;
-                    padding-left: 10px;
-                }    
-                img,input{
-                    float: left;
-                }
-                ion-icon{
-                    margin: 15px 8px 0 3px;
-                    opacity: 0.5;
-                }
-                span{
-                    color: rgb(35,162,87);
-                }
-            }
-        }
+        }        
     }
 }
