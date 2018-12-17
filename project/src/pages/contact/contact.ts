@@ -43,7 +43,7 @@ export class ContactPage {
       // console.log(data);
       if (this.content != undefined) {
         this.content.forEach(e => {
-          e.imgs = "../assets/imgs/" + e.imgs;
+          e.imgs = "../assets/imgs/download/" + e.imgs;
         });
       }
     });

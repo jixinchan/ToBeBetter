@@ -37,7 +37,6 @@ export class ContactailPage {
   aid;
   cid;
   did;
-  assess;
   flag = false;
   love = false;
   star = false;
@@ -141,10 +140,9 @@ export class ContactailPage {
           "time": this.rTime,
           "content": this.input
         }).subscribe(data => {
-          this.assess = data;
-          console.log(this.assess);
-          this.goAssess();
+          
         });
+        this.goAssess();
       }
       this.input = "";
     }
@@ -164,7 +162,7 @@ export class ContactailPage {
       // console.log(data);
       if (this.data != undefined) {
         this.data.forEach(e => {
-          this.imgs.push("../assets/imgs/" + e.imgs);
+          this.imgs.push("../assets/imgs/download/" + e.imgs);
           this.title.push(e.title);
           this.content.push(e.content);
           this.uids.push(e.uid);
