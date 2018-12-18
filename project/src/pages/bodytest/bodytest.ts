@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,App} from 'ionic-angular';
+import { IonicPage, NavController, NavParams,App,ModalController,AlertController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { Events } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -41,6 +42,10 @@ export class BodytestPage {
   ];
   scorearr=[];
   resultarr=[];
+  goShare(){
+    let profileModal = this.modalCtrl.create('SharePage',{flag:true});
+    profileModal.present();
+  }
   goChange(i,j){
     //第一次点击之后有背景颜色，再次点击的时候没有
     // if(this.isActive1[i]==j){
@@ -65,19 +70,19 @@ export class BodytestPage {
     }else{
       this.scorearr[this.question[i].qid-1]={qid:this.question[i].qid,id:this.body[this.question[i].bid-1].id,score:(j+1)};
     }
-    console.log(this.scorearr);
+    // console.log(this.scorearr);
   }
   //计算分数+跳转+更改数据库
   goReport(){
     for(var y=0;y<this.scorearr.length;y++){
       this.body[this.scorearr[y].id-1].sum += this.scorearr[y].score;
       this.body[this.scorearr[y].id-1].count++;
-      console.log(this.body[this.scorearr[y].id-1].sum);
+      // console.log(this.body[this.scorearr[y].id-1].sum);
     }
     for(var x=0;x<9;x++){
       this.body[x].result=Math.round(((this.body[x].sum-this.body[x].count)/(this.body[x].count*4))*100);
       this.resultarr.push(this.body[x].result);
-      console.log(this.resultarr);
+      // console.log(this.resultarr);
     }
     if(this.flag.length===1){
         this.http.post("/api/question2",{
@@ -92,8 +97,8 @@ export class BodytestPage {
           "tebing":this.body[8].result,
           "uid":this.uid
         }).subscribe(data=>{
-          console.log("question2");
-          console.log(data);
+          // console.log("question2");
+          // console.log(data);
         });
     }else{
       this.http.post("/api/question",{
@@ -110,20 +115,24 @@ export class BodytestPage {
       }).subscribe(data=>{
         // this.question=data;
         // console.log(this.question);
+        // this.navCtrl.pop();
       });
     }
-    // this.http.post("/api/question/main",{
-    //   "bid":this.main,
-    //   "uid":this.uid
-    // }).subscribe(data=>{
-    //   console.log("bodytest的主要的体质");
-    //   console.log(this.main);
-    // });
-    this.navCtrl.pop();
+    this.http.post("/api/question/main",{
+      "bid":this.main,
+      "uid":this.uid
+    }).subscribe(data=>{
+      // console.log("bodytest的主要的体质");
+      // console.log(this.main);
+    });
+    this.navCtrl.pop().then(()=>{
+      this.events.publish('ReportPage');
+    });
+    // this.navCtrl.pop();
   }
   uid;
   flag;
-  constructor(public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public modalCtrl: ModalController, public alertCtrl: AlertController,public events: Events,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
     this.uid = localStorage.getItem("uid");
     this.http.post('/api/flag',{
       "uid":this.uid

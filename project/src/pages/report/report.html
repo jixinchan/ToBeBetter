@@ -5,12 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="box">
+  <div class="box" [class.hide]="!flag1" >
     <p>开始进行第一次测试吧</p>
     <button ion-button round outline (click)="goBodytest()">进入测试</button>
   </div>
   
-  <div class="reportbox">
+  <div class="reportbox" [class.hide]="flag1">
       <div class="result">
           <div class="first">
               <p class="title">我的体质是</p>

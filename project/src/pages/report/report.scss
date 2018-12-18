@@ -1,6 +1,9 @@
 page-report{
     .toolbar-title-md{
-        padding-left:-15%;
+        padding-left:25%;
+    }
+    .button-inner{
+        color:#23a257;
     }
     ul{
         margin-block-start: 0em;
@@ -68,6 +71,7 @@ page-report{
                 // height:25%!important;
                 height: 150px;
                 margin-top:-50px;
+                
             }
 
             //调养以及解释

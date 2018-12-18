@@ -1,16 +1,9 @@
 import { Component,ViewChild,ElementRef} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
+import { Events } from 'ionic-angular';
 
 declare var echarts;//设置echarts全局对象
-
-/**
- * Generated class for the ReportPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-report',
@@ -40,6 +33,7 @@ export class ReportPage {
   living;
   emotion;
   flag;
+  flag1=false;
   goBodytest(){
     this.navCtrl.push('BodytestPage');
   }
@@ -52,7 +46,6 @@ export class ReportPage {
   goChart(){
     var data = [this.arr[1],this.arr[2],this.arr[3],this.arr[4],this.arr[5],this.arr[6],this.arr[7],this.arr[8],this.arr[9]];
     var dataAxis = ['平和', '气虚', '阳虚', '阴虚', '痰湿', '湿热', '血瘀', '气郁', '特禀'];
-    // var data = [20,30,this.arr[3],this.arr[4],this.arr[5],this.arr[6],this.arr[7],this.arr[8],this.arr[9]];
     var yMax = 100;
     var dataShadow = [];
     for (var i = 0; i < data.length; i++) {
@@ -110,27 +103,6 @@ export class ReportPage {
             type: 'inside'
         }
     ],
-    markLine: {
-      data: [
-        [
-          { name: '标线1起点', xAxis: "平和",  yAxis: 60, symbol: 'circle'},
-          { name: '标线1终点', xAxis: '特禀',  yAxis: 60, symbol: 'circle' },
-        ],
-      ],
-      label: {
-        normal: {
-          show: true,
-          position: 'middle',
-          formatter: '节能与新能源汽车技术路线图2020年目标',
-        },
-      },
-      lineStyle: {
-        normal: {
-          type: 'solid',
-          color: '#grey',
-        },
-      },
-    },
     series: [
         {
             type: 'bar',
@@ -154,13 +126,9 @@ export class ReportPage {
     ]
     });
   }
-  constructor(public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
     //写数据库中的用户信息表的主体质id
     this.uid = localStorage.getItem("uid");
-    //获取所有体质的调养方法
-    // this.ionViewDidEnter();
-    
-    
   }
   goJisuan(){
     this.inclination=[];
@@ -170,15 +138,9 @@ export class ReportPage {
         if(this.main!=1&&this.arr[j]>=this.arr[this.main]){
           this.inclination.push(this.main);
           this.main=j;
-          console.log('主体质1');
-          console.log(this.main);
-          console.log('偏向的体质1');
-          console.log(this.inclination);
         }else if(this.main!=1&&this.arr[j]<this.arr[this.main]){
           this.inclination.push(j);
           this.main=this.main;
-          console.log('主体质2');
-          console.log(this.main);
         }else if(this.main===1){
           this.main=j;
         }
@@ -187,34 +149,36 @@ export class ReportPage {
           break;
       }else if(this.arr[j]>=30){
         this.inclination.push(j);
-        console.log('偏向的体质2');
-        console.log(this.inclination);
-        console.log('主体质3');
-        console.log(this.main);
       }
     }
-    this.uid = localStorage.getItem("uid");
+    //将主体质写到数据库
     this.http.post("/api/question/main",{
       "bid":this.main,
       "uid":this.uid
     }).subscribe(data=>{
-      console.log("bodytest的主要的体质");
-      console.log(this.main);
     });
-    
+
   }
-  ionViewWillEnter() {  
+  //确定倾向的体质
+  goRemove(){
+    for(var m=0;m<this.inclination.length;m++){
+      if(this.inclination[m]===this.main){
+        this.inclination.splice(m,1);
+      }
+    }
+  }
+  ionViewWillEnter(){
     this.http.post('/api/flag?num='+Math.random(),{
       "uid":this.uid
     }).subscribe(data=>{
       this.flag = data;
       if(this.isEmpty(this.flag)){
-        document.querySelectorAll('.reportbox')[0].className += " hide";
-        console.log('没有测试过');
+        this.flag1=true;
+        // console.log('没有测试过');
       }
       else{
-        document.querySelectorAll('.box')[0].className += " hide";
-        console.log('测试过');
+        this.flag1=false;
+        // console.log('测试过');
         this.flag.forEach(e => {
           this.arr=[];
           this.arr.push(e.uid);
@@ -230,35 +194,34 @@ export class ReportPage {
           this.arr.push(e.uid);
           this.goJisuan();
           this.goChart();
+          this.goRemove();
+          });
+          this.http.post('/api/body/main?num='+Math.random(),{
+            "uid":this.uid
+          }).subscribe(data=>{
+            this.body=data[0].bid;
+            this.http.get('/api/body?num='+Math.random()).subscribe(data=>{
+              this.name=data[this.body-1].bodyName;
+              this.explain=data[this.body-1].report;
+              this.shape=data[this.body-1].shape.split("%%%");
+              this.mentality=data[this.body-1].mentality.split("%%%");
+              this.incidence=data[this.body-1].incidence;
+              this.medicinalfood=data[this.body-1].medicinalfood.split("%%%");
+              this.properdiet=data[this.body-1].properdiet.split("%%%");
+              this.unsuitable=data[this.body-1].unsuitable.split("%%%");
+              this.living=data[this.body-1].living;
+              this.emotion=data[this.body-1].emotion;
+            });
+
         });
         
       }
     });
-    
-    
-
-
-
-    
-    this.http.post('/api/body/main?num='+Math.random(),{
-      "uid":this.uid
-    }).subscribe(data=>{
-      this.body=data[0].bid;
-      console.log(this.body);
-      this.goChart();
-    });
-    this.http.get('/api/body?num='+Math.random()).subscribe(data=>{
-      // this.ionViewDidEnter();
-      this.name=data[this.body-1].bodyName;
-      this.explain=data[this.body-1].report;
-      this.shape=data[this.body-1].shape.split("%%%");
-      this.mentality=data[this.body-1].mentality.split("%%%");
-      this.incidence=data[this.body-1].incidence;
-      this.medicinalfood=data[this.body-1].medicinalfood.split("%%%");
-      this.properdiet=data[this.body-1].properdiet.split("%%%");
-      this.unsuitable=data[this.body-1].unsuitable.split("%%%");
-      this.living=data[this.body-1].living;
-      this.emotion=data[this.body-1].emotion;
+  }
+  ionViewDidEnter(){
+    this.events.subscribe('ReportPage',()=>{
+      this.ionViewWillEnter();
     });
   }
+  
 }  
