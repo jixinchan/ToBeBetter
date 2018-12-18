@@ -55,12 +55,12 @@ export class MylikesPage {
   }
 
   
-  goHomeTail(title){
+  goHomeTail(rid) {
     // this.http.post('/api/hometail',{
     //   "title":title
     // }).subscribe(data=>{});
 
-    this.navCtrl.push("HometailPage",{'title':title});
+    this.navCtrl.push("HometailPage", { 'rid': rid });
   }
   goMydynamicTail(did){
     // this.http.post('/api/hometail',{

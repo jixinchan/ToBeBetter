@@ -31,7 +31,7 @@
     </div>
     <div *ngSwitchCase="1">
       <ul class="recommend">
-        <li *ngFor="let item of reco;" (click)="goHomeTail(item.title)">
+        <li *ngFor="let item of reco;" (click)="goHomeTail(item.rid)">
           <div class="img">
             <img src="{{item.imgs}}">
           </div>
