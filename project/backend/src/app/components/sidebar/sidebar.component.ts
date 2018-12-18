@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DH_NOT_SUITABLE_GENERATOR, ECONNABORTED } from 'constants';
 
 @Component({
   selector: 'app-sidebar',
