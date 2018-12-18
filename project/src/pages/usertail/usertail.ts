@@ -40,7 +40,9 @@ export class UsertailPage {
       ) {
     this.uid=localStorage.getItem('uid');
     
-    this.http.post('/api/usertail',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+    this.http.post('/api/usertail',{
+      'uid':this.uid
+    }).subscribe(data=>{
       this.avatar = './assets/imgs/avatar/'+data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
@@ -125,9 +127,6 @@ export class UsertailPage {
     });
   }
 
-
-
-  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {   
   }
   buttonClick(){
@@ -146,7 +145,7 @@ export class UsertailPage {
       'city':this.cityFliter(this.bcity),
       'account':this.account,
       'uid':this.uid
-    },{headers:this.headers}).subscribe(data=>{});
+    }).subscribe(data=>{});
   }
   //城市选择
   getRequestContact() {

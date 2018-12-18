@@ -22,10 +22,13 @@ export class MePage {
   uid;//用户id
   constructor(public quicklogin:QuickloginProvider ,public http:HttpClient, public navCtrl: NavController, public navParams: NavParams) {
   }
-  headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
+  // headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
   ionViewDidLoad() {
     this.uid = localStorage.getItem('uid');
-    this.http.post('/api/me',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+
+    this.http.post('/api/me',{
+      'uid':this.uid
+    }).subscribe(data=>{
       this.avatar = './assets/imgs/avatar/'+data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;

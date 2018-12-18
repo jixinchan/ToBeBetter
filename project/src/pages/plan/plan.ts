@@ -35,7 +35,7 @@ export class PlanPage {
   finishes = [];
   status;
   ionViewDidEnter() {
-    this.http.get('/api/plan/userplan').subscribe(data => {
+    this.http.post('/api/plan/userplan',{"uid":this.uid}).subscribe(data => {
       this.myplan = data;
       if (this.isEmpty(this.myplan)) {  // 未添加计划
         document.querySelectorAll('.box')[0].className = document.querySelectorAll('.box')[0].className.slice(0, 3);
@@ -76,9 +76,9 @@ export class PlanPage {
 
   changeStatus(pid,status){
     this.http.post('/api/plan/changeStatus',{
+      "status":status,
       "uid":this.uid,
-      "pid":pid,
-      "status":status
+      "pid":pid  
     }).subscribe(()=>{});
   }
   isFinish(pid) {
@@ -96,6 +96,7 @@ export class PlanPage {
   }
   delPlan(pid) {
     this.http.post('/api/plan/delplan', {
+      "uid":this.uid,
       "pid": pid
     }).subscribe(() => {});
     this.ionViewDidEnter();

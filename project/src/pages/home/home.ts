@@ -102,7 +102,7 @@ export class HomePage {
       if (this.user_info != undefined) {
         this.user_info.forEach(e => {
           if (e.uid == this.uid) {
-            this.city = this.city?e.city:'北京';
+            this.city = (e.city?e.city:'北京');
             // console.log('city:',e.city);            
             this.location.city=this.city;
             console.log('this.location:',this.location);

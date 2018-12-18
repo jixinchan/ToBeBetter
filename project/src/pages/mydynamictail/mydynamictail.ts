@@ -86,7 +86,7 @@ export class MydynamictailPage {
     this.http.post('/api/mydynamictail',{'did':this.did}).subscribe(data=>{
       this.dynamic = data;
       this.dynamic.forEach(e => {
-        e.imgs = '../assets/imgs/'+e.imgs;
+        e.imgs = '../assets/imgs/download/'+e.imgs;
       });
     });
     this.http.post('/api/mydynamictail/user_info',{'uid':this.uid}).subscribe(data=>{

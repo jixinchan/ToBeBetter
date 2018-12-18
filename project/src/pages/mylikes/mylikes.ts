@@ -38,7 +38,7 @@ export class MylikesPage {
       this.dyna = data;
       console.log(data);
       this.dyna.forEach(e => {
-        e.imgs = '../assets/imgs/' + e.imgs;
+        e.imgs = '../assets/imgs/download/' + e.imgs;
       });
     });
 

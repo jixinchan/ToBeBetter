@@ -39,7 +39,7 @@ export class MydynamicPage {
       this.content = data;
       // console.log(data);
       this.content.forEach(e => {
-        e.imgs = '../assets/imgs/' + e.imgs;
+        e.imgs = '../assets/imgs/download/' + e.imgs;
       });
     });
 
