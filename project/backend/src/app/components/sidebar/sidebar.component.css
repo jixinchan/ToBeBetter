@@ -1,0 +1,68 @@
+li{
+    color: white;
+    line-height: 40px;
+}
+li:hover{
+    cursor: pointer;
+}
+.container{
+    width: 15%;
+    height: 626px;
+    float: left;
+    background-color: #23a257;
+}
+
+.logo{
+    width: 100%;
+    /* height: 90px; */
+    display: flex;
+    flex-direction: row;
+    border-bottom: white 1px solid
+}
+
+.img{
+    width: 40%;
+    text-align: center;
+}
+img{
+    width: 50px;
+    height: 50px;
+}
+.name{
+    width: 55%;
+    color: white;
+    font-size: 25px;
+    line-height: 70px;
+    text-align: center;
+}
+.outlist{
+    margin-top: 20px;
+    text-indent: 2em;
+}
+.systemlist li{
+    text-indent: 4em;
+}
+.userlist{
+    text-indent: 4em;
+}
+.userdetail{
+    text-indent: 6em;
+}
+.right{
+    margin: 16px 10px 0 0;
+    width: 15px;
+    height: 8px;
+    float: right;
+}
+/* 是否显示 */
+.hide{
+    display: none;
+}
+/* 选中 */
+.choose{
+    font-weight: bold;
+    background-color: rgba(240, 238, 122, 0.363);
+}
+.choose a{
+    color: gold;
+}
