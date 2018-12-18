@@ -44,7 +44,7 @@ export class ContactPage {
     //游客
     this.uid = localStorage.getItem("uid");
   }
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     this.http.get("/api/contact").subscribe(data => {
       this.content = data;
       // console.log(data);
@@ -52,31 +52,29 @@ export class ContactPage {
         this.content.forEach(e => {
           e.imgs = "../assets/imgs/download/" + e.imgs;
         });
-      }
-    });
 
-    this.http.get("/api/contact/user_info").subscribe(data => {
-      this.user_info = data;
-      // console.log(data);
-      if (this.content != undefined) {
-        this.content.forEach(e => {
-          if (this.user_info != undefined) {
-            this.user_info.forEach(e2 => {
-              if (e.uid == e2.uid) {
-                this.nickname.push(e2.nickname);
-                this.avatar.push('../assets/imgs/avatar/' + e2.avatar);
-              }
-            });
-          }
+        this.http.get("/api/contact/user_info").subscribe(data => {
+          this.user_info = data;
+          // console.log(data);
+          this.content.forEach(e => {
+            if (this.user_info != undefined) {
+              this.user_info.forEach(e2 => {
+                if (e.uid == e2.uid) {
+                  this.nickname.push(e2.nickname);
+                  this.avatar.push('../assets/imgs/avatar/' + e2.avatar);
+                }
+              });
+            }
+          });
+          // console.log(this.nickname,this.avatar);
         });
       }
-      // console.log(this.nickname,this.avatar);
     });
   }
   ionViewDidLoad() {
     this.events.subscribe('ContactPage', () => {
       // console.log("刷新");
-      this.ionViewDidEnter();
+      this.ionViewWillEnter();
     });
   }
 }

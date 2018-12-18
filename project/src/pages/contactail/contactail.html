@@ -13,20 +13,19 @@
 <ion-content>
   <div class="nav">
     <p><img src="{{avatar[i]}}"></p>
-    <p>{{nickname[i]}}</p>    
+    <p>{{nickname[i]}}</p>
     <p class="btn1">
-      <button outline ion-button [ngStyle]="{'border-color':'#808080'}"
-       [ngClass]="{'hide':!flag}" (click)="change(1)">已关注</button>
+      <button outline ion-button [ngStyle]="{'border-color':'#808080'}" [ngClass]="{'hide':!flag}" (click)="change(1)">已关注</button>
     </p>
     <p class="btn2">
       <button outline ion-button [ngClass]="{'hide':flag}" (click)="change(0)">关注</button>
     </p>
     <p (click)="goShare()" class="p">
       <ion-icon name="more"></ion-icon>
-    </p>  
+    </p>
   </div>
 
-  <ion-slides class="sli" loop autoplay="2000" pager>
+  <ion-slides class="sli" loop autoplay="2000" pager *ngIf="imgs[i]">
     <ion-slide>
       <img src="{{imgs[i]}}">
     </ion-slide>
@@ -49,12 +48,24 @@
   </div>
 
   <div class="commend">
-    <span (click)="goShare()"><ion-icon name="share"></ion-icon></span>
-    <span [ngClass]="{'hide':love}" (click)="change2()"><ion-icon name="heart-outline"></ion-icon></span>
-    <span [ngClass]="{'hide':!love}" (click)="change2()"><ion-icon name="heart" class="love"></ion-icon></span>
-    <span [ngClass]="{'hide':star}" (click)="change3(0)"><ion-icon name="star-outline" ></ion-icon></span>
-    <span [ngClass]="{'hide':!star}" (click)="change3(1)"><ion-icon name="star" class="star"></ion-icon></span>
-    <span (click)="goAssess()"><ion-icon name="text"></ion-icon></span>
+    <span (click)="goShare()">
+      <ion-icon name="share"></ion-icon>
+    </span>
+    <span [ngClass]="{'hide':love}" (click)="change2()">
+      <ion-icon name="heart-outline"></ion-icon>
+    </span>
+    <span [ngClass]="{'hide':!love}" (click)="change2()">
+      <ion-icon name="heart" class="love"></ion-icon>
+    </span>
+    <span [ngClass]="{'hide':star}" (click)="change3(0)">
+      <ion-icon name="star-outline"></ion-icon>
+    </span>
+    <span [ngClass]="{'hide':!star}" (click)="change3(1)">
+      <ion-icon name="star" class="star"></ion-icon>
+    </span>
+    <span (click)="goAssess()">
+      <ion-icon name="text"></ion-icon>
+    </span>
   </div>
 
   <div class="commend2">

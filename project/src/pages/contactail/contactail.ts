@@ -171,6 +171,22 @@ export class ContactailPage {
           this.cids.push(e.cid);
           this.times.push(e.time);
         });
+
+        //动态分类
+        this.http.get("/api/contact/contactail").subscribe(data => {
+          this.class = data;
+          // console.log(data);
+          this.data.forEach(e => {
+            if (this.class != undefined) {
+              this.class.forEach(c => {
+                if (e.cid == c.cid) {
+                  this.className.push(c.className);
+                }
+              });
+            }
+          });
+          // console.log(this.className);
+        });
       }
       // console.log(this.title,this.imgs,this.content,this.uids,this.dids,this.cids,this.times);
       this.aid = this.uids[this.i];
@@ -212,25 +228,6 @@ export class ContactailPage {
         }
       }
     });
-
-    //动态分类
-    this.http.get("/api/contact/contactail").subscribe(data => {
-      this.class = data;
-      // console.log(data);
-      if (this.data != undefined) {
-        this.data.forEach(e => {
-          if (this.class != undefined) {
-            this.class.forEach(c => {
-              if (e.cid == c.cid) {
-                this.className.push(c.className);
-              }
-            });
-          }
-        });
-      }
-      // console.log(this.className);
-    });
-
 
     //用户信息
     this.http.get("/api/contact/user_info").subscribe(data => {
