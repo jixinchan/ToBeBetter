@@ -51,12 +51,13 @@ export class UsertailPage {
       this.birth = data[0].birth?data[0].birth.substring(0,9)+(Number(data[0].birth.substring(9,10))+1):data[0].birth;
       console.log(data[0].birth,this.birth);
     });
-    this.http.post('/api/usertail/tel',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
+    this.http.post('/api/usertail/tel',{'uid':this.uid}).subscribe(data=>{
       this.account = data[0].account;
     });
     
     this.getRequestContact();
   }
+
   //头像
   presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
