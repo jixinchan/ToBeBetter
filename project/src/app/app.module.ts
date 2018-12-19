@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MePage } from '../pages/me/me';
 import { PlanPage } from '../pages/plan/plan';
+import { AboutPage } from '../pages/about/about';
 
 import { MultiPickerModule } from 'ion-multi-picker';
 import { ReciveServeProvider } from '../providers/recive-serve/recive-serve';
@@ -33,6 +34,7 @@ import { Camera } from '@ionic-native/camera';
     MePage,
     PlanPage,
     WelcomePage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -54,6 +56,7 @@ import { Camera } from '@ionic-native/camera';
     MePage,
     PlanPage,
     WelcomePage,
+    AboutPage
   ],
   providers: [
     StatusBar,

@@ -18,7 +18,7 @@ export class SharePage {
     this.navCtrl.pop();
   }
   goTest(){
-    this.navCtrl.push('BodytestPage');
+    this.navCtrl.push('BodytestPage',{'des':1}); 
   }
   flag=true;
   constructor(public navCtrl: NavController, public navParams: NavParams) {

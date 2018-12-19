@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,App, ModalController} from 'ionic-angular';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
+import { AboutPage } from '../about/about';
 // import{ LoginPage} from '../login/login'
 
 /**
@@ -36,7 +37,10 @@ export class SettingsPage {
     console.log('ionViewDidLoad SettingsPage');
   }
   goShare() {
-    let profileModal = this.modalCtrl.create('SharePage');
+    let profileModal = this.modalCtrl.create('SharePage',{flag:true});
     profileModal.present();
+  }
+  goAbout(){
+    this.navCtrl.push(AboutPage);
   }
 }

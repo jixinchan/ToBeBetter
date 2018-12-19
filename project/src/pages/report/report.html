@@ -4,7 +4,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
   <div class="box" [class.hide]="!flag1" >
     <p>开始进行第一次测试吧</p>
     <button ion-button round outline (click)="goBodytest()">进入测试</button>
@@ -21,8 +21,8 @@
             <span *ngFor="let item of inclination; let idx=index" class="tendency">{{physique[inclination[idx]-1]}}&nbsp;&nbsp;&nbsp;</span>
           </div>
         </div>
-        <div #EchartsContent class="EchartsDiv"></div>
-        <div class="tip">
+        <div #EchartsContent class="EchartsDiv" style="width:360px; height:170px; margin:-50px auto 0 auto"></div>
+        <div class="tip" padding>
           <div class="tipdiv">
             <span class="tipspan0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span class="tipspan2">主体质</span>
@@ -32,7 +32,7 @@
             <span class="tipspan2">兼有体质或倾向体质</span>
           </div>
         </div>
-        <div class="explain">
+        <div class="explain" padding>
           <h6>
             <img src="../assets/imgs/report0.png"/>
             结果说明
@@ -50,7 +50,7 @@
               </ion-list>
           </div>
         </div>
-        <div class="feature">
+        <div class="feature" padding>
           <h6>
             <img src="../assets/imgs/report01.png"/>
             {{name}}的特征
@@ -61,7 +61,7 @@
           </ul>
         </div>
       
-        <div class="troubled">
+        <div class="troubled" padding>
             <h6>
                 <img src="../assets/imgs/report02.png"/>
                 {{name}}的困扰
@@ -70,7 +70,7 @@
               <li><span>◆</span>{{incidence}}</li>
             </ul>
         </div>
-        <div class="improve">
+        <div class="improve" padding>
           <h6>
               <img src="../assets/imgs/report03.png"/>
             <!-- <ion-icon name="bulb"></ion-icon> -->
@@ -89,8 +89,11 @@
               <li><span>◆</span>{{emotion}}</li>
           </ul>
         </div>
-        <button ion-button round outline small (click)="goBodytest()">重新进行测试</button>
-        <button ion-button round outline small>分享给好友测一测</button>
+        <div padding>
+          <button ion-button round outline small (click)="goBodytest()">重新进行测试</button>
+          <button ion-button round outline small >分享给好友测一测</button>
+        </div>
+        
   </div>
   
 </ion-content>

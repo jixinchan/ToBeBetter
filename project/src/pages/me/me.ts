@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
@@ -20,12 +20,18 @@ export class MePage {
   nickname;//昵称
   signature;//个签
   uid;//用户id
-  constructor(public quicklogin:QuickloginProvider ,public http:HttpClient, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public quicklogin:QuickloginProvider ,public http:HttpClient, 
+    public navCtrl: NavController, public navParams: NavParams,
+    public events:Events ) {
+    this.uid = localStorage.getItem('uid');
   }
   // headers = new HttpHeaders( {'Content-Type':'application/x-www-form-urlencoded'} );
-  ionViewDidLoad() {
-    this.uid = localStorage.getItem('uid');
-
+  ionViewDidLoad() {  
+    this.events.subscribe('MePage',()=>{
+      this.ionViewWillEnter();
+    });
+  }
+  ionViewWillEnter(){
     this.http.post('/api/me',{
       'uid':this.uid
     }).subscribe(data=>{
@@ -34,7 +40,6 @@ export class MePage {
       this.signature = data[0].signature;
     });
   }
-
   goPage(page){
     if(this.uid=='1'){
       this.quicklogin.quickLogin();

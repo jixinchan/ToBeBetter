@@ -1,3 +1,10 @@
 page-about {
-
+    ion-title{
+        color:green;
+    }
+    ion-content{
+        .logo{
+            margin-top: 20px;
+        }
+    }
 }

@@ -1,5 +1,5 @@
 import { Component,ViewChild,ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Navbar} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Events } from 'ionic-angular';
 
@@ -33,10 +33,8 @@ export class ReportPage {
   living;
   emotion;
   flag;
-  flag1=false;
-  goBodytest(){
-    this.navCtrl.push('BodytestPage');
-  }
+  flag1=true;
+  des;
   isEmpty(obj) {
     for(var k in obj){
       return false;  // 非空
@@ -52,6 +50,9 @@ export class ReportPage {
         dataShadow.push(yMax);
     }
     let ctelement = this.container.nativeElement;
+    if(this.EChart != null && this.EChart != "" && this.EChart != undefined) {
+      this.EChart.dispose();
+    }
     this.EChart = echarts.init(ctelement);
     this.EChart.setOption({
       title: {
@@ -71,7 +72,7 @@ export class ReportPage {
             outside: true,
             textStyle: {
                 color: 'grey',
-                fontSize:14,
+                fontSize:13,
             }
         },
         axisTick: {
@@ -106,7 +107,7 @@ export class ReportPage {
     series: [
         {
             type: 'bar',
-            barWidth: '50%',
+            barWidth: '45%',
             data:data,
             itemStyle: {
                 normal: {
@@ -129,6 +130,8 @@ export class ReportPage {
   constructor(public events: Events,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
     //写数据库中的用户信息表的主体质id
     this.uid = localStorage.getItem("uid");
+    this.des = this.navParams.get('des');
+    // console.log('report:',this.des);
   }
   goJisuan(){
     this.inclination=[];
@@ -168,7 +171,7 @@ export class ReportPage {
     }
   }
   ionViewWillEnter(){
-    this.http.post('/api/flag?num='+Math.random(),{
+    this.http.post('/api/flag',{
       "uid":this.uid
     }).subscribe(data=>{
       this.flag = data;
@@ -195,12 +198,13 @@ export class ReportPage {
           this.goJisuan();
           this.goChart();
           this.goRemove();
-          });
-          this.http.post('/api/body/main?num='+Math.random(),{
+        });
+           
+          this.http.post('/api/body/main',{
             "uid":this.uid
           }).subscribe(data=>{
             this.body=data[0].bid;
-            this.http.get('/api/body?num='+Math.random()).subscribe(data=>{
+            this.http.get('/api/body').subscribe(data=>{
               this.name=data[this.body-1].bodyName;
               this.explain=data[this.body-1].report;
               this.shape=data[this.body-1].shape.split("%%%");
@@ -218,7 +222,26 @@ export class ReportPage {
       }
     });
   }
-  ionViewDidEnter(){
+  
+  goBodytest(){
+    this.navCtrl.push('BodytestPage',{"des":2});
+  }
+
+  //控制页面跳转
+  backButtonClick(){
+    this.navCtrl.popToRoot();
+    this.navCtrl.pop();
+  }
+  backButtonClick2(){
+    this.navCtrl.popToRoot();
+  }
+  @ViewChild(Navbar) navBar: Navbar;
+  ionViewDidLoad(){
+    if(this.des==1){
+      this.navBar.backButtonClick = this.backButtonClick;
+    }else{
+      this.navBar.backButtonClick = this.backButtonClick2;
+    }
     this.events.subscribe('ReportPage',()=>{
       this.ionViewWillEnter();
     });

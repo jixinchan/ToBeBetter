@@ -27,6 +27,7 @@ export class BodytestPage {
   xueyu;
   qiyu;
   tebing;
+  des;//目标页面
   // 主体质id
   main=0;
   body=[
@@ -48,11 +49,6 @@ export class BodytestPage {
   }
   goChange(i,j){
     //第一次点击之后有背景颜色，再次点击的时候没有
-    // if(this.isActive1[i]==j){
-    //   this.isActive1[i] = -1
-    // }else{
-    //   this.isActive1[i]=j;
-    // }
     this.isActive1[i]=j;
     //为了可以修改点过的题的答案所以储存下来。
     if(this.k===0){
@@ -84,6 +80,8 @@ export class BodytestPage {
       this.resultarr.push(this.body[x].result);
       // console.log(this.resultarr);
     }
+    
+    
     if(this.flag.length===1){
         this.http.post("/api/question2",{
           "pinghe":this.body[0].result,
@@ -113,26 +111,25 @@ export class BodytestPage {
         "qiyu":this.body[7].result,
         "tebing":this.body[8].result
       }).subscribe(data=>{
-        // this.question=data;
-        // console.log(this.question);
-        // this.navCtrl.pop();
       });
     }
-    this.http.post("/api/question/main",{
-      "bid":this.main,
-      "uid":this.uid
-    }).subscribe(data=>{
-      // console.log("bodytest的主要的体质");
-      // console.log(this.main);
-    });
-    this.navCtrl.pop().then(()=>{
-      this.events.publish('ReportPage');
-    });
-    // this.navCtrl.pop();
+    // this.http.post("/api/question/main",{
+    //   "bid":this.main,
+    //   "uid":this.uid
+    // }).subscribe(data=>{
+    //   console.log("bodytest的主要的体质");
+    //   console.log(this.main);
+    // });
+    this.navCtrl.push('ReportPage',{"des":this.des});
+    // this.navCtrl.pop().then(()=>{
+    //   this.events.publish('ReportPage',{"des":this.des});
+    // });
   }
   uid;
   flag;
   constructor(public modalCtrl: ModalController, public alertCtrl: AlertController,public events: Events,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+    this.des = this.navParams.get('des');
+    // console.log('bodytest:',this.des);
     this.uid = localStorage.getItem("uid");
     this.http.post('/api/flag',{
       "uid":this.uid
