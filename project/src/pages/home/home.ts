@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 
@@ -30,33 +30,8 @@ export class HomePage {
     city: '北京',
   };
   constructor(public navCtrl: NavController, public http: HttpClient, 
-    public weatherProvider: WeatherProvider) {
-    //得到uid
-    this.uid = localStorage.getItem("uid");
-
-    this.http.post('/api', {
-      "uid": this.uid
-    }).subscribe(data => { });
-
-    // 得到宜忌内容
-    this.http.get('/api/yiji').subscribe(data => {
-      this.yiji = data;
-      var num = Math.floor(Math.random() * this.yiji.length);
-      // console.log(num);
-      this.should = this.yiji[num].should;
-      this.avoid = this.yiji[num].avoid;
-      // console.log(this.yiji[num].should);
-    });
-
-
-    // 得到推荐推文
-    this.http.get('/api/tuijian').subscribe(data => {
-      this.tuijian = data;
-      // console.log(data);
-      this.tuijian.forEach(e => {
-        e.imgs = '../assets/imgs/images/' + e.imgs;
-      });
-    });
+    public weatherProvider: WeatherProvider,public events:Events ) {
+    
   }
 
   jianshen;
@@ -97,6 +72,34 @@ export class HomePage {
     this.navCtrl.push("HometailPage", { 'rid': rid });
   }
   ionViewWillEnter() {
+    //得到uid
+    this.uid = localStorage.getItem("uid");
+
+    this.http.post('/api', {
+      "uid": this.uid
+    }).subscribe(data => { });
+
+    // 得到宜忌内容
+    this.http.get('/api/yiji').subscribe(data => {
+      this.yiji = data;
+      var num = Math.floor(Math.random() * this.yiji.length);
+      // console.log(num);
+      this.should = this.yiji[num].should;
+      this.avoid = this.yiji[num].avoid;
+      // console.log(this.yiji[num].should);
+    });
+
+
+    // 得到推荐推文
+    this.http.get('/api/tuijian').subscribe(data => {
+      this.tuijian = data;
+      // console.log(data);
+      this.tuijian.forEach(e => {
+        e.imgs = '../assets/imgs/images/' + e.imgs;
+      });
+    });
+
+
     this.http.get("/api/contact/user_info").subscribe(data => {
       this.user_info = data;
       if (this.user_info != undefined) {
@@ -121,10 +124,13 @@ export class HomePage {
         });
       }
     });
-
-  
   }
 
+  ionViewDidEnter(){
+    this.events.subscribe('HomePage',()=>{
+      this.ionViewWillEnter();
+    });
+  }
   goSearch(){
     this.navCtrl.push('HomesearchPage');
   }

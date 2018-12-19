@@ -29,7 +29,7 @@ export class BodytestPage {
   tebing;
   des;//目标页面
   // 主体质id
-  main=0;
+  main=1;
   body=[
     {id:1,sum:0,count:0,result:0,bodyname:"平和质"},
     {id:2,sum:0,count:0,result:0,bodyname:"气虚质"},
@@ -75,13 +75,39 @@ export class BodytestPage {
       this.body[this.scorearr[y].id-1].count++;
       // console.log(this.body[this.scorearr[y].id-1].sum);
     }
+    this.resultarr.push(this.uid);
     for(var x=0;x<9;x++){
       this.body[x].result=Math.round(((this.body[x].sum-this.body[x].count)/(this.body[x].count*4))*100);
       this.resultarr.push(this.body[x].result);
-      // console.log(this.resultarr);
+      console.log(this.resultarr);
     }
-    
-    
+    for(var j=2;j<this.resultarr.length;j++)
+    {
+      if(this.resultarr[j]>=40){
+        if(this.main!=1&&this.resultarr[j]>=this.resultarr[this.main]){
+          this.main=j;
+          console.log('main1:',this.main);
+        }else if(this.main!=1&&this.resultarr[j]<this.resultarr[this.main]){
+          this.main=this.main;
+          console.log('main2:',this.main);
+        }else if(this.main===1){
+          this.main=j;
+          console.log('main3:',this.main);
+        }
+      }else if(this.resultarr[0]>=60&&this.resultarr[1]<40&&this.resultarr[2]<40&&this.resultarr[3]<40&&this.resultarr[4]<40&&this.resultarr[5]<40&&this.resultarr[6]<40&&this.resultarr[7]<40&&this.resultarr[8]<40&&this.resultarr[9]<40){
+          this.main=1;
+          console.log('main4:',this.main);
+          break;
+      }
+    }
+    this.http.post("/api/question/main",{
+      "bid":this.main,
+      "uid":this.uid
+    }).subscribe(data=>{
+      console.log("bodytest的主要的体质");
+      console.log(this.main);
+      console.log(data);
+    });
     if(this.flag.length===1){
         this.http.post("/api/question2",{
           "pinghe":this.body[0].result,
@@ -99,7 +125,7 @@ export class BodytestPage {
           // console.log(data);
         });
     }else{
-      this.http.post("/api/question",{
+      this.http.post("/api/question1",{
         "uid":this.uid,
         "pinghe":this.body[0].result,
         "qixu":this.body[1].result,
@@ -113,17 +139,14 @@ export class BodytestPage {
       }).subscribe(data=>{
       });
     }
-    // this.http.post("/api/question/main",{
-    //   "bid":this.main,
-    //   "uid":this.uid
-    // }).subscribe(data=>{
-    //   console.log("bodytest的主要的体质");
-    //   console.log(this.main);
-    // });
-    this.navCtrl.push('ReportPage',{"des":this.des});
-    // this.navCtrl.pop().then(()=>{
-    //   this.events.publish('ReportPage',{"des":this.des});
-    // });
+    if(this.des==1){
+      this.navCtrl.push('ReportPage',{"des":this.des});
+    }else{
+      this.navCtrl.pop().then(()=>{
+        this.events.publish('ReportPage');
+      });
+    }
+     
   }
   uid;
   flag;
@@ -139,9 +162,9 @@ export class BodytestPage {
     })
   }
   ionViewDidLoad(){
-  this.http.get("/api/question").subscribe(data=>{
-    this.question=data;
-  });
+    this.http.get("/api/question").subscribe(data=>{
+      this.question=data;
+    });
   }
 }
     

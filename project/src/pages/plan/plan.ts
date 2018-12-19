@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { convertDataToISO } from 'ionic-angular/umd/util/datetime-util';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 /**
  * Generated class for the PlanPage page.
@@ -18,7 +19,8 @@ import { convertDataToISO } from 'ionic-angular/umd/util/datetime-util';
 export class PlanPage {
   //游客
   uid;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient,public app:App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public http: HttpClient,public app:App, public quicklogin:QuickloginProvider) {
     //游客
     this.uid = localStorage.getItem('uid');
   }
@@ -68,7 +70,7 @@ export class PlanPage {
   addPlan() {
     //游客
     if(this.uid==1){
-      alert("请登录");
+      this.quicklogin.quickLogin();
     }else{
       this.navCtrl.push("EditplanPage");
     }    

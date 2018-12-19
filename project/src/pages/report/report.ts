@@ -131,7 +131,6 @@ export class ReportPage {
     //写数据库中的用户信息表的主体质id
     this.uid = localStorage.getItem("uid");
     this.des = this.navParams.get('des');
-    // console.log('report:',this.des);
   }
   goJisuan(){
     this.inclination=[];
@@ -155,11 +154,11 @@ export class ReportPage {
       }
     }
     //将主体质写到数据库
-    this.http.post("/api/question/main",{
-      "bid":this.main,
-      "uid":this.uid
-    }).subscribe(data=>{
-    });
+    // this.http.post("/api/question/main",{
+    //   "bid":this.main,
+    //   "uid":this.uid
+    // }).subscribe(data=>{
+    // });
 
   }
   //确定倾向的体质
@@ -181,7 +180,7 @@ export class ReportPage {
       }
       else{
         this.flag1=false;
-        // console.log('测试过');
+        console.log('测试过');
         this.flag.forEach(e => {
           this.arr=[];
           this.arr.push(e.uid);
@@ -242,6 +241,8 @@ export class ReportPage {
     }else{
       this.navBar.backButtonClick = this.backButtonClick2;
     }
+  }
+  ionViewDidEnter(){
     this.events.subscribe('ReportPage',()=>{
       this.ionViewWillEnter();
     });

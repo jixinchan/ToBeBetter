@@ -85,7 +85,7 @@ export class HomesearchPage {
           this.dynamicResults = data;
           // console.log('dr: ',this.dynamicResults);
           this.dynamicResults.forEach(e => {
-            e.imgs = '../assets/imgs/'+e.imgs;
+            e.imgs = '../assets/imgs/download/'+e.imgs;
           });
         });
         document.querySelectorAll('.searchOptions')[0].className += ' hide';
