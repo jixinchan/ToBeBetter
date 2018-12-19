@@ -6,37 +6,37 @@
     <p class="name">鲜&nbsp;&nbsp;&nbsp;&nbsp;活</p>
   </div>
   <ul class="outlist">
-      <li class="h1" (click)="choose(1)">
-        <a [routerLink]='["/home"]'>首页</a>
+      <li class="h1">
+        <a (click)="choose(1)" [routerLink]='["/home"]'>首页</a>
       </li>
       <li>
         <span (click)="show('systemlist')">系统管理<img src="../../../assets/imgs/arrow.png" class="right"></span>
         <ul class="systemlist">
-          <li class="h2" (click)="choose(2)">
-            <a [routerLink]='["/question"]'>体质检测题库</a>
+          <li class="h2">
+            <a (click)="choose(2)" [routerLink]='["/question"]'>体质检测题库</a>
           </li>
-          <li class="h3" (click)="choose(3)">
-            <a [routerLink]='["/recommend"]'>系统推荐</a>
+          <li class="h3">
+            <a (click)="choose(3)" [routerLink]='["/recommend"]'>系统推荐</a>
           </li>
-          <li class="h4" (click)="choose(4)">
-            <a [routerLink]='["/shoulds"]'>宜忌</a>
+          <li class="h4">
+            <a (click)="choose(4)" [routerLink]='["/shoulds"]'>宜忌</a>
           </li>
-          <li class="h5" (click)="choose(5)">
-            <a [routerLink]='["/feedback"]'>意见反馈</a>
+          <li class="h5">
+            <a (click)="choose(5)" [routerLink]='["/feedback"]'>意见反馈</a>
           </li>
         </ul>
       </li>
       <li>
         <span (click)="show('userlist')">用户管理<img src="../../../assets/imgs/arrow.png" class="right"></span>
         <ul class="userlist">
-          <li class="h6" (click)="choose(6)">
-            <a [routerLink]='["/information"]'>个人信息</a>
+          <li class="h6">
+            <a (click)="choose(6)" [routerLink]='["/information"]'>个人信息</a>
           </li>
           <li>
             <span (click)="show('userdetail')">用户详细信息</span>
             <ul class="userdetail">
-              <li class="h7" (click)="choose(7)">
-                <a [routerLink]='["/infodetail"]'>详细信息</a>
+              <li class="h7">
+                <a (click)="choose(7)" [routerLink]='["/infodetail"]'>详细信息</a>
               </li>
             </ul>
           </li>

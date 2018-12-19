@@ -1,3 +1,38 @@
-<p>
-  information works!
-</p>
+<div class="container">
+    <div class="title">
+      <p>用户信息管理</p>
+    </div>
+    <div class="content">
+      <table border="1" cellspacing="0">
+        <thead>
+          <td>用户ID</td>
+          <td>性别</td>
+          <td>头像</td>
+          <td>昵称</td>
+          <td>个签</td>
+          <td>生日</td>
+          <td>所在地</td>
+          <td>体质</td>
+          <td>操作</td>
+          <td>详细信息</td>
+        </thead>
+        <tr *ngFor="let info of userinfo;">
+          <td>{{info.uid}}</td>
+          <td>{{info.sex}}</td>
+          <td>{{info.avatar}}</td>
+          <td>{{info.nickname}}</td>
+          <td>{{info.signature}}</td>
+          <td>{{info.birth}}</td>
+          <td>{{info.city}}</td>
+          <td>{{info.bid}}</td>
+          <td>
+            <!-- <p (click)="delthis(info.uid)" class="btn">删除</p> -->
+            <button (click)="delthis(info.uid)">删除</button>
+          </td>
+          <td>
+            <a [routerLink]="['/infodetail',info.uid]">详细信息</a>
+          </td>
+        </tr>
+      </table>
+    </div>    
+</div>
