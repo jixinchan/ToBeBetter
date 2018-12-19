@@ -1,1 +1,47 @@
-<p>首页</p>
+<div class="container">
+    <div class="title">
+        <p class="titletxt">HELLO！</p>
+        <div class="right">
+            <span>消息</span>
+            <span>信息</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="box up">
+            <div class="outer left">
+                <div class="block">
+                    <div class="inner in1">
+                        <p class="innertxt">3333</p>
+                    </div>
+                    <p class="txt">访问量</p>
+                </div>
+            </div>
+            <div class="outer">
+                <div class="block">
+                    <div class="inner in2">
+                        <p class="innertxt" *ngFor="let uc of usercount">{{uc.num}}</p>
+                    </div>
+                    <p class="txt">用户数量</p>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="outer left">
+                <div class="block">
+                    <div class="inner in3">
+                        <p class="innertxt">3333</p>
+                    </div>
+                    <p class="txt">意见反馈数</p>
+                </div>
+            </div>
+            <div class="outer">
+                <div class="block">
+                    <div class="inner in4">
+                        <p class="innertxt" *ngFor="let dc of dcount">{{dc.num}}</p>
+                    </div>
+                    <p class="txt">动态发布量</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

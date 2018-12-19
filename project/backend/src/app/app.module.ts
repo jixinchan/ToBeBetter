@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -24,7 +26,7 @@ import { AdminsComponent } from './components/admins/admins.component';
     FeedbackComponent,
     InformationComponent,
     InfodetailComponent,
-    AdminsComponent
+    AdminsComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,11 +38,13 @@ import { AdminsComponent } from './components/admins/admins.component';
       { path: 'shoulds', component: ShouldsComponent },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'information', component: InformationComponent },
-      { path: 'infodetail', component: InfodetailComponent },
+      // { path: 'infodetail', component: InfodetailComponent },
+      { path: 'infodetail/:userid', component: InfodetailComponent },
       { path: 'admins', component: AdminsComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: '**', component: HomeComponent }
-    ])
+    ]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
