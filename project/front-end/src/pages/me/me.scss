@@ -2,70 +2,99 @@ page-me {
     .bg{
         width: 100%;
         height: 100%;
-        padding-top: 20px;
+        // padding-top: 20px;
         background-color:  #e2e2e2;
         .info{
             width: 100%;
-            height: 100px;
-            padding: 0 5px;
-            background-color:  #fff;
-            border-bottom: 2px solid #a6a6a6;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('../../assets/imgs/me-bg.jpg');
+            background-size: cover;
             .toux{
                 width: 80px;
                 height: 80px;
-                margin-top: 10px; 
                 border-radius:50%;
-                float: left;
-                border: 1px solid black;
+                border: 1px solid white;
                 img{
                     width: 100%;
                     height: 100%;
                     border-radius:50%;
                 }
             }
-            .name{
-                float: left;
-                margin-top: 10px; 
-                padding: 0 20px;
-                .mz{
-                    font-size: 20px;
-                    margin: 10px 0;
-                }
-                .gq{
-                    font-size: 14px;
-                }
+            .mz{
+                font-size: 18px;
+                color: white;
+                margin: 10px 0 0 0;
             }
         }
         .mine{
             list-style: none;
             margin: 0;
             padding: 0;
-            height: 65px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            height: 80px;
             background-color:  #fff;
             li{
-                float:left;
-                width: 22.5%;
-                margin-left:2%;
-                text-align: center;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 ion-icon{
-                    margin: 0 auto;
-                    margin-top: 2px;
                     font-size: 30px;
-                    color: #ff8d1a;
+                    // color: orange;
                 }
                 p{
-                    margin-top: 5px;
-                    margin-bottom: 0;
-                    font-size: 16px;
+                    margin: 7px 0 0 0;
+                    font-size: 14px;
                 }
             }
         }
-        ion-list{
-            margin-top: 20px;
-            button{
-                border-bottom: 2px solid #a6a6a6;
-                ion-icon{
-                    color: #23a257;
+        // ion-list{
+        //     margin-top: 10px;
+        //     ion-item{
+        //         display: flex;
+        //         flex-direction: row;
+        //         // align-items: baseline;
+        //         border-bottom: 1px solid #ddd;
+        //     }
+        // }
+
+        .list{
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            .outbox{
+                width: 100%;
+                height: 55px;
+                border-bottom: #ccc 1px solid;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-left: 30px;
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;                    
+                    ion-icon{
+                        font-size: 30px;
+                    }
+                    p{
+                        font-size: 16px;
+                        margin-left: 25px;
+                    }
+                }
+                img{
+                    height: 16px;
+                    margin-right: 20px;
                 }
             }
         }

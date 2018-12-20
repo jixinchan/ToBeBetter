@@ -1,8 +1,8 @@
-<ion-header text-center>
+<!-- <ion-header text-center>
   <ion-navbar color="white">
     <ion-title>我的</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
   <div class="bg">
@@ -12,11 +12,11 @@
       </div>
       <div class="name">
         <p class="mz">
-          {{nickname}}
+          <!-- {{nickname}} -->我我我我
         </p>
-        <p class="gq">
-          {{signature}}
-        </p>
+        <!-- <p class="gq">
+          {{signature}}养生
+        </p> -->
       </div>
     </div>
     <ul class="mine">
@@ -37,19 +37,43 @@
         <p>粉丝</p>
       </li>
     </ul>
-    <ion-list>
-      <button ion-item (click)="goPage('UsertailPage')">
-        <ion-icon name="contact" item-start ></ion-icon>
+    <!-- <ion-list>
+      <ion-item (click)="goPage('UsertailPage')">
+        <ion-icon name="contact" item-start></ion-icon>
         个人资料
-      </button>
-      <button ion-item (click)="goPage('ReportPage')">
+      </ion-item>
+      <ion-item (click)="goPage('ReportPage')">
         <ion-icon name="copy" item-start></ion-icon>
         体质报告
-      </button>
-      <button ion-item (click)="goSet()">
+      </ion-item>
+      <ion-item (click)="goSet()">
         <ion-icon name="settings" item-start></ion-icon>
         设置
-      </button>
-    </ion-list>
+      </ion-item>
+    </ion-list> -->
+    <div class="list">
+      <div class="outbox" (click)="goPage('UsertailPage')">
+        <div>
+            <ion-icon name="contact" item-start></ion-icon>
+            <p>个人资料</p>
+        </div>
+        <img src="../../assets/imgs/rightarrow.jpg" alt="">
+      </div>
+      <div class="outbox" (click)="goPage('ReportPage')">
+         <div>
+            <ion-icon name="copy" item-start></ion-icon>
+          <p>体质报告</p>
+         </div>
+          <img src="../../assets/imgs/rightarrow.jpg" alt="">
+      </div>
+      <div class="outbox" (click)="goSet()">
+          <div>
+              <ion-icon name="settings" item-start></ion-icon>
+              <p>设置</p>
+          </div>
+          <img src="../../assets/imgs/rightarrow.jpg" alt="">
+      </div>
+    </div>
+
   </div>
 </ion-content>
