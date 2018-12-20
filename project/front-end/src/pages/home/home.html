@@ -1,4 +1,4 @@
-<ion-header text-center> 
+<!-- <ion-header text-center> 
   <ion-navbar color="wh">
     <ion-title>首页</ion-title>
     <ion-buttons end (click)="goSearch()">
@@ -7,13 +7,38 @@
         </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
+  <div class="slide">
+    <ion-slides autoplay="3000" pager loop>
+      <ion-slide class='s1'>
+        <div class="search" (click)="goSearch()">
+          <ion-icon name="search"></ion-icon>
+          <input type="text" placeholder="搜索">
+        </div>
+      </ion-slide>
+      <ion-slide class='s2'>
+        <div class="search" (click)="goSearch()">
+          <ion-icon name="search"></ion-icon>
+          <input type="text" placeholder="搜索">
+        </div>
+      </ion-slide>
+      <ion-slide class='s3'>
+        <div class="search" (click)="goSearch()">
+          <ion-icon name="search"></ion-icon>
+          <input type="text" placeholder="搜索">
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
   <div class="card">
+    <div class="rep">
+      <ion-item detail-push (click)='goReport()'>我的体质报告</ion-item>
+    </div>
     <div class="lc">
-      <p>宜：{{should}}</p>
-      <p>忌：{{avoid}}</p>
+      <p><span id="yi">宜</span> {{should}}</p>
+      <p><span id="ji">忌</span> {{avoid}}</p>
     </div>
     <div class="rc">
         <span class="werther-img"><img src = '{{img}}'></span>

@@ -5,6 +5,7 @@ page-welcome {
     }
     ion-slide{
         background: url(../assets/imgs/start/start1.jpg);
+        background-repeat: no-repeat;
         background-size: 100%,100%;
         .button-md{
             margin-top: 70%;
@@ -13,4 +14,10 @@ page-welcome {
             color: rgb(182, 182, 182);
         }
     }
+    // ion-slide:nth-child(1){
+    //     background: url(../assets/imgs/start/23.png);
+    // }
+    // ion-slide:nth-child(2){
+    //     background: url(../assets/imgs/start/20.png);
+    // }
 }
