@@ -1,0 +1,187 @@
+#wrap{
+    position: absolute;
+    left: 15%;
+    width: 82%;
+    height:auto;
+    margin: 10px;
+}
+.bread img{
+   width: 24px;
+   height: 24px;   
+   display: block;
+}
+.bread span{
+    display: block;
+    padding-top: 2px;
+    color: #505050;
+}
+.bread img,.bread span{
+    float: left;
+    margin-bottom: 10px;
+}
+.title{
+    clear: both;
+    color: #23a257;
+    margin-bottom: 10px;
+}
+/* 导航 */
+.dropdown-toggle{
+    color: #23a257;
+}
+.dropdown-menu li:hover{
+    color: #fff;
+    background-color: #23a257;
+}
+.dropdown-menu li a:hover{
+    color: #fff;
+    background-color: #23a257;
+}
+.dropdown-menu li{
+    border-bottom: 1px solid gainsboro;
+    padding:5px;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+    color: #fff;
+    background-color: #23a257;
+}
+/* 搜索 */
+/* form {
+    display: block;
+    margin-top: 0em;
+}
+.nav-search .input-group {
+    border: none;
+    background: #eee;
+    border-radius: 50px;
+}
+.input-group {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+
+.nav-search .form-control {
+    border: 0;
+    background: transparent;
+    font-size: 14px;
+}
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+    position: relative;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-bottom: 0;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color:#23a257;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.glyphicon{
+    width:30px;
+    height:30px;
+    line-height:30px;
+} */
+/* 增加题目 */
+.btn-primary{
+    background-color: #23a257;
+}
+.btn-default {
+    color: #23a257;
+    background-color: #fff;
+    border-color: #23a257;
+}
+
+/* 表格 */
+table{   
+    width: 100%;
+    table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+    color:#505050;
+    text-align: center;
+}
+tr:nth-child(1){
+    background: #ffeb3b;
+    font-weight: bold;
+}
+td{
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    border-bottom:1px solid gainsboro;
+    border-right:1px solid gainsboro;
+    height:30px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    line-height: 30px;
+}
+.bodyname{
+    width:100%;
+    background-color: #ffeb3b;
+    font-weight: bold;
+}
+.question{
+    text-align: left;
+    padding-left:20px;
+}
+tr td button{
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 8px 5px 8px;
+}
+.edit{
+    background: #43cf7c;    
+    margin-left: -5px;
+    margin-right:20px;
+}
+.delete{
+    background: #e64340;
+    margin-left:20px;
+}
+/* 模态窗口 */
+
+.modal_title{
+    text-align: center;
+}
+/* 编辑题目 */
+.text{
+    margin-bottom:20px;
+    text-align: center;
+}
+
+.text span{
+    margin-right:20px;
+    margin:auto;
+}
+.text2{
+    margin-left: 10px;
+    /* border:1px solid #23a257; */
+    padding-left:10px;
+    padding-right:10px;
+}
+.modal-body button{
+    margin-right:30px;
+    margin-left:30px;
+}
+/* 删除题目 */
+.modal-title{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
