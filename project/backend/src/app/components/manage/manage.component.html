@@ -1,0 +1,31 @@
+<div id="wrap">
+  <!-- 面包屑 -->
+  <div class="bread">
+    <img src="../../../assets/imgs/home.svg">
+    <span>当前位置：系统管理>><a [routerLink]="['/shoulds']">宜忌</a>>>宜忌编辑</span>
+  </div>
+  <!-- 标题 -->
+  <h3 class="title">宜忌管理</h3>
+  <!-- 修改 -->
+  <div class="edit">
+    <p>
+      宜忌ID：<input type="text" [(ngModel)]="sid" [autofocus]="!flag" [disabled]="flag" >
+    </p>
+    <p>
+      体质名称：
+      <select (change)="get($event.target.value)">
+        <option *ngFor="let item of body" [selected]="item==bodyName?true:false" value="{{item}}">
+          {{item}}
+        </option>
+      </select>
+    </p>
+    <p>
+      宜：<input type="text" [(ngModel)]="should">
+    </p>
+    <p>
+      忌：<input type="text" [(ngModel)]="avoid">
+    </p>
+  </div>
+  <button class="change" (click)="change()">修改</button>
+  <button class="cancel" (click)="cancel()">取消</button>
+</div>

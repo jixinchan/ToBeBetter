@@ -1,0 +1,43 @@
+<div id="wrap">
+  <!-- 面包屑 -->
+  <div class="bread">
+    <img src="../../../assets/imgs/home.svg">
+    <span>当前位置：系统管理>><a [routerLink]="['/recommend']">系统推荐</a>>>推荐编辑</span>
+  </div>
+  <!-- 标题 -->
+  <h3 class="title">系统推荐管理</h3>
+  <!-- 修改 -->
+  <div class="edit">
+    <p>
+      推文ID：<input type="text" [(ngModel)]="rid" [disabled]="flag" [autofocus]="!flag">
+    </p>
+    <p>
+      体质名称：
+      <select (change)="get($event.target.value)">
+        <option *ngFor="let item of body" [selected]="item==bodyName?true:false" value="{{item}}">
+          {{item}}
+        </option>
+      </select>
+    </p>
+    <p>
+      推文类别：
+      <select (change)="get2($event.target.value)">
+        <option *ngFor="let item of class" [selected]="item==className?true:false" value="{{item}}">
+          {{item}}
+        </option>
+      </select>
+    </p>
+    <p>
+      标题：<input type="text" [(ngModel)]="title" class="title2">
+    </p>
+    <p>
+      图片：<input type="text" [(ngModel)]="img">
+    </p>
+    <p>
+      内容：<br>
+      <textarea [(ngModel)]="content"></textarea>
+    </p>
+  </div>
+  <button class="change" (click)="change()">修改</button>
+  <button class="cancel" (click)="cancel()">取消</button>
+</div>

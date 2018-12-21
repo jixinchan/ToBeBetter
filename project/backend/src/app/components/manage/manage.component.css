@@ -1,0 +1,55 @@
+#wrap{
+    position: absolute;
+    left: 15%;
+    width: 82%;
+    height:auto;
+    margin: 10px;
+}
+a{
+    color:#8a8a8a;
+}
+.bread img{
+    width: 24px;
+    height: 24px;   
+    display: block;
+}
+.bread span{
+    display: block;
+    padding-top: 2px;
+    color: #505050;
+}
+.bread img,.bread span{
+    float: left;
+    margin-bottom: 10px;
+}
+.title{
+    clear: both;
+    color: #23a257;
+    margin-bottom: 10px;
+}
+.edit p{
+    margin: 15px;
+}
+.edit p input{
+    padding: 5px;
+    border-radius: 5px;
+}
+.edit p select{
+    border-radius: 3px;
+    padding: 5px;
+}
+button{
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 8px 5px 8px;
+}
+.change{
+    margin-left: 15px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+    background: #23a257;
+}
+.cancel{
+    background: rgb(224, 33, 33);
+}
