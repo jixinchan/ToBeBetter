@@ -11,3 +11,8 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+.container{
+    position: absolute;
+    left: 15%;
+    width: 82%;
+}

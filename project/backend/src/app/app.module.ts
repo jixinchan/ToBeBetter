@@ -15,6 +15,10 @@ import { InformationComponent } from './components/information/information.compo
 import { InfodetailComponent } from './components/infodetail/infodetail.component';
 import { AdminsComponent } from './components/admins/admins.component';
 
+import { ConfirmComponent } from './components/confirm/confirm.component';
+import {FormsModule} from '@angular/forms';
+import { ManageComponent } from './components/manage/manage.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,18 +31,23 @@ import { AdminsComponent } from './components/admins/admins.component';
     InformationComponent,
     InfodetailComponent,
     AdminsComponent,
+    ConfirmComponent,
+    ManageComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot([
       { path: 'sidebar', component: SidebarComponent },
       { path: 'home', component: HomeComponent },
       { path: 'question', component: QuestionsComponent },
       { path: 'recommend', component: RecommendComponent },
+      { path: 'recommend/confirm/:rid', component: ConfirmComponent },
       { path: 'shoulds', component: ShouldsComponent },
+      { path: 'shoulds/manage/:sid', component: ManageComponent },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'information', component: InformationComponent },
-      // { path: 'infodetail', component: InfodetailComponent },
+      { path: 'infodetail', component: InfodetailComponent },
       { path: 'infodetail/:userid', component: InfodetailComponent },
       { path: 'admins', component: AdminsComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },

@@ -29,6 +29,8 @@ export class InformationComponent implements OnInit {
     });
   }
 
-  
+  search(){
+    
+  }
 
 }

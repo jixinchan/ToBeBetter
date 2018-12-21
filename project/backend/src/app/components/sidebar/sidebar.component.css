@@ -5,11 +5,12 @@ li{
 li:hover{
     cursor: pointer;
 }
-.container{
+.sidebar{
     width: 15%;
     height: 626px;
     float: left;
     background-color: #23a257;
+    position: fixed;
 }
 
 .logo{

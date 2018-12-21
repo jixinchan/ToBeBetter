@@ -2,8 +2,12 @@
     <div class="title">
       <p>用户信息管理</p>
     </div>
+    <div class="search">
+      搜索用户：<input type="search" placeholder="搜索" >
+      <button (click)="search()">搜索</button>
+    </div>
     <div class="content">
-      <table border="1" cellspacing="0">
+      <table cellspacing="1">
         <thead>
           <td>用户ID</td>
           <td>性别</td>
@@ -27,7 +31,7 @@
           <td>{{info.bid}}</td>
           <td>
             <!-- <p (click)="delthis(info.uid)" class="btn">删除</p> -->
-            <button (click)="delthis(info.uid)">删除</button>
+            <button class="del" (click)="delthis(info.uid)">删除</button>
           </td>
           <td>
             <a [routerLink]="['/infodetail',info.uid]">详细信息</a>
