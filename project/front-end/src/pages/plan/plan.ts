@@ -33,6 +33,7 @@ export class PlanPage {
     return true;  // 空
   }
 
+  hide=false;
   myplan;
   finishes = [];
   status;
@@ -40,12 +41,10 @@ export class PlanPage {
     this.http.post('/api/plan/userplan',{"uid":this.uid}).subscribe(data => {
       this.myplan = data;
       if (this.isEmpty(this.myplan)) {  // 未添加计划
-        document.querySelectorAll('.box')[0].className = document.querySelectorAll('.box')[0].className.slice(0, 3);
-        document.querySelectorAll('.planbox')[0].className += " hide";
+        this.hide=false;
       }
       else {   // 已添加计划
-        document.querySelectorAll('.planbox')[0].className = document.querySelectorAll('.planbox')[0].className.slice(0,7);
-        document.querySelectorAll('.box')[0].className += " hide";
+        this.hide=true;
         this.myplan.forEach(e => {
           this.http.post('/api/plan/getStatus',{
             "uid":this.uid,

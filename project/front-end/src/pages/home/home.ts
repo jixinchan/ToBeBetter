@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component ,NgZone, ViewChild} from '@angular/core';
 import { NavController, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
+import { Content } from 'ionic-angular/umd/navigation/nav-interfaces';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +20,9 @@ export class HomePage {
   tuijian;
   yiji;
   should; avoid;
+  yaoshan;
+  qiju;
+  qingzhi;
 
   user_info;
   result;
@@ -29,16 +34,42 @@ export class HomePage {
   location={
     city: '北京',
   };
-  constructor(public navCtrl: NavController, public http: HttpClient, 
-    public weatherProvider: WeatherProvider,public events:Events ) {
+
+  //调理是否展开
+  clicks={
+    'isClick1':true,
+    'isClick2':true,
+    'isClick3':true
+  }
+  header=true;
+  show(i){
+    if(this.clicks['isClick'+i]){
+      this.clicks['isClick'+i]=false;
+    }else{
+      this.clicks['isClick'+i]=true;
+    }
     
   }
-
+  //滚动到轮播图下出现顶栏
+  scrollHandler(event) {
+    this.zone.run(()=>{
+      if(event.scrollTop>200){
+        this.header=false;
+      }else{
+        this.header=true;
+      }
+    })
+  }
+  constructor(public navCtrl: NavController, public http: HttpClient, 
+    public weatherProvider: WeatherProvider,public events:Events,
+    public quicklogin:QuickloginProvider ,public zone: NgZone) {
+    
+  }
+ 
   jianshen;
   goJianShen() {
-    this.http.get('/api/jianshen').subscribe(data => {
+    this.http.post('/api/jianshen',{'uid':this.uid}).subscribe(data => {
       this.jianshen = data;
-      // console.log(data);
       this.jianshen.forEach(e => {
         e.imgs = '../assets/imgs/images/' + e.imgs;
       });
@@ -47,7 +78,7 @@ export class HomePage {
 
   yinshi;
   goYinShi() {
-    this.http.get('/api/yinshi').subscribe(data => {
+    this.http.post('/api/yinshi',{'uid':this.uid}).subscribe(data => {
       this.yinshi = data;
       // console.log(data);
       this.yinshi.forEach(e => {
@@ -58,7 +89,7 @@ export class HomePage {
 
   liliao;
   goLiLiao() {
-    this.http.get('/api/liliao').subscribe(data => {
+    this.http.post('/api/liliao',{'uid':this.uid}).subscribe(data => {
       this.liliao = data;
       // console.log(data);
       this.liliao.forEach(e => {
@@ -69,18 +100,21 @@ export class HomePage {
 
 
   goHomeTail(rid) {
+    console.log('rid',rid);
     this.navCtrl.push("HometailPage", { 'rid': rid });
   }
   ionViewWillEnter() {
+    this.clicks={
+      'isClick1':true,
+      'isClick2':true,
+      'isClick3':true
+    }
     //得到uid
     this.uid = localStorage.getItem("uid");
 
-    this.http.post('/api', {
-      "uid": this.uid
-    }).subscribe(data => { });
 
     // 得到宜忌内容
-    this.http.get('/api/yiji').subscribe(data => {
+    this.http.post('/api/yiji',{'uid':this.uid}).subscribe(data => {
       this.yiji = data;
       var num = Math.floor(Math.random() * this.yiji.length);
       // console.log(num);
@@ -91,15 +125,22 @@ export class HomePage {
 
 
     // 得到推荐推文
-    this.http.get('/api/tuijian').subscribe(data => {
+    this.http.post('/api/tuijian',{'uid':this.uid}).subscribe(data => {
       this.tuijian = data;
-      // console.log(data);
+      // console.log('tuijian:',data);
       this.tuijian.forEach(e => {
         e.content = e.content.split('%%%').toString();
         e.imgs = '../assets/imgs/images/' + e.imgs;
       });
     });
 
+    //得到调理方案
+    this.http.post('/api/tiaoli',{'uid':this.uid}).subscribe(data=>{
+      // console.log('tiaoli:',data);
+      this.yaoshan=data[0].medicinalfood.split('%%%');
+      this.qiju=data[0].living;
+      this.qingzhi=data[0].emotion;
+    });
 
     this.http.get("/api/contact/user_info").subscribe(data => {
       this.user_info = data;
@@ -134,6 +175,13 @@ export class HomePage {
   }
   goSearch(){
     this.navCtrl.push('HomesearchPage');
+  }
+  goReport(){
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      this.navCtrl.push('ReportPage');
+    }  
   }
 
 }

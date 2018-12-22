@@ -14,6 +14,7 @@ page-me {
             background: url('../../assets/imgs/me-bg.jpg');
             background-size: cover;
             .toux{
+                margin-top: 40px;
                 width: 80px;
                 height: 80px;
                 border-radius:50%;
@@ -25,9 +26,15 @@ page-me {
                 }
             }
             .mz{
-                font-size: 18px;
+                font-size: 20px;
                 color: white;
-                margin: 10px 0 0 0;
+                text-align: center;
+                line-height: 15px;
+                letter-spacing: 4px;
+            }
+            .gq{
+                line-height: 10px;
+                color: #e2e2e2;
             }
         }
         .mine{
