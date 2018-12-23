@@ -18,6 +18,8 @@ import { AdminsComponent } from './components/admins/admins.component';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import {FormsModule} from '@angular/forms';
 import { ManageComponent } from './components/manage/manage.component';
+import { LoginComponent } from './components/login/login.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -33,10 +35,12 @@ import { ManageComponent } from './components/manage/manage.component';
     AdminsComponent,
     ConfirmComponent,
     ManageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ModalModule.forRoot(),
     RouterModule.forRoot([
       { path: 'sidebar', component: SidebarComponent },
       { path: 'home', component: HomeComponent },
