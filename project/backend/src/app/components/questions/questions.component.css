@@ -5,6 +5,22 @@
     height:auto;
     margin: 10px;
 }
+a{
+    text-decoration:none;
+}
+/* 路径导航 */
+.breadcrumb{
+    background-color: white;
+}
+.breadcrumb a{
+    color: #505050;
+}
+.breadcrumb a span{
+    margin-right:10px;
+}
+.active a{
+    color: #23a257;
+}
 .bread img{
    width: 24px;
    height: 24px;   
@@ -23,6 +39,7 @@
     clear: both;
     color: #23a257;
     margin-bottom: 10px;
+    text-align: center;
 }
 /* 导航 */
 .dropdown-toggle{
