@@ -1,2 +1,2 @@
-<app-login></app-login>
-<app-sidebar></app-sidebar>
+<app-login [hidden]='isLogin'></app-login>
+<app-sidebar [hidden]='!isLogin'></app-sidebar>

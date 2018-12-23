@@ -42,6 +42,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     FormsModule,
     ModalModule.forRoot(),
     RouterModule.forRoot([
+      { path: 'login',component:LoginComponent },
       { path: 'sidebar', component: SidebarComponent },
       { path: 'home', component: HomeComponent },
       { path: 'question', component: QuestionsComponent },
@@ -54,7 +55,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
       { path: 'infodetail', component: InfodetailComponent },
       { path: 'infodetail/:userid', component: InfodetailComponent },
       { path: 'admins', component: AdminsComponent },
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       { path: '**', component: HomeComponent }
     ]),
     HttpClientModule

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'freshBack';
+  isLogin=localStorage.getItem('isLogin')=='true'?true:false;
+  ngOnInit(){
+    this.isLogin=localStorage.getItem('isLogin')=='true'?true:false;
+  }
 }
