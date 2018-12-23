@@ -34,10 +34,10 @@ export class SidebarComponent implements OnInit {
     for(var i=1;i<9;i++){
       console.log(i);
       if(num==i){
-        document.querySelectorAll('.h'+i)[0].className += ' choose';
+        document.querySelectorAll('.hh'+i)[0].className += ' choose';
       }
       else{
-        document.querySelectorAll('.h'+i)[0].className = document.querySelectorAll('.h'+i)[0].className.slice(0,3)
+        document.querySelectorAll('.hh'+i)[0].className = document.querySelectorAll('.hh'+i)[0].className.slice(0,3)
         // console.log(document.querySelectorAll('.h'+i)[0].className);
       }
     }

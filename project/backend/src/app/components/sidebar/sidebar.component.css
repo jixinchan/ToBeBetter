@@ -5,6 +5,9 @@ li{
 li:hover{
     cursor: pointer;
 }
+a{
+    text-decoration-line: none;
+}
 .sidebar{
     width: 15%;
     height: 626px;
@@ -20,7 +23,6 @@ li:hover{
     flex-direction: row;
     border-bottom: white 1px solid
 }
-
 .img{
     width: 40%;
     text-align: center;
@@ -39,6 +41,13 @@ img{
 .outlist{
     margin-top: 20px;
     text-indent: 2em;
+    font-size:1.1em;
+}
+.outlist li:hover{
+    color: rgb(255,235,59);
+}
+.outlist li a:hover{
+    color: rgb(255,235,59);
 }
 .systemlist li{
     text-indent: 4em;
@@ -50,10 +59,11 @@ img{
     text-indent: 6em;
 }
 .right{
-    margin: 16px 10px 0 0;
-    width: 15px;
-    height: 8px;
-    float: right;
+    /* margin: 16px 10px 0 0; */
+    width: 10px;
+    margin-left:0px;
+    /* height: 8px; */
+    /* float: right; */
 }
 /* 是否显示 */
 .hide{
