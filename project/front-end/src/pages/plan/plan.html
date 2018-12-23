@@ -10,13 +10,29 @@
 </ion-header>
 
 <ion-content>
-  <div class="box">
+  <div class="box" [hidden]='hide'>  
+    <div class="tips">
+      <!-- <fieldset>
+        <legend><h3>温 馨 提 示</h3></legend>
+        <div>
+          <p id="pi"><img src='../../assets/imgs/heart.png'></p>
+          <p id="pw">我们为您挑选了适合您的养生计划，点击下面的或者右上角的按钮就可以进行添加了呢！</p>
+        </div>         
+      </fieldset> -->
+      <div id="qipao">
+        <img src="../../assets/imgs/qipao1.png" id="qipao-img">
+        <p id="pw">我们为您挑选了适合您的养生计划，点击下面的按钮或者右上角的按钮就可以进行添加了呢！</p> 
+      </div>      
+      <div id="touxiang">
+        <img src='../../assets/imgs/logo1.png'>
+      </div>
+    </div>
     <div class="addFirstPlan" (click)="addPlan()">
       <p>添加你的第一个计划吧</p>
       <ion-icon name="add"></ion-icon>
     </div>
   </div>
-  <div class="planbox">
+  <div class="planbox" [hidden]='!hide'>
     <p class="myplan">我的计划</p>
     <div>
       <div class="row">

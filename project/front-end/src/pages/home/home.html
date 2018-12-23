@@ -1,4 +1,5 @@
-<!-- <ion-header text-center> 
+<div text-center [hidden]='header'> 
+  <ion-header>
   <ion-navbar color="wh">
     <ion-title>首页</ion-title>
     <ion-buttons end (click)="goSearch()">
@@ -7,9 +8,10 @@
         </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header> -->
+</ion-header>
+</div>
 
-<ion-content>
+<ion-content (ionScroll)="scrollHandler($event)">
   <div class="slide">
     <ion-slides autoplay="3000" pager loop>
       <ion-slide class='s1'>
@@ -32,78 +34,121 @@
       </ion-slide>
     </ion-slides>
   </div>
-  <div class="card">
-    <div class="rep">
-      <ion-item detail-push (click)='goReport()'>我的体质报告</ion-item>
+  <div class="card">  
+    <div class="rep">  
+      <ion-icon name='alarm'></ion-icon> <span>今日宜忌</span>
     </div>
     <div class="lc">
       <p><span id="yi">宜</span> {{should}}</p>
       <p><span id="ji">忌</span> {{avoid}}</p>
     </div>
     <div class="rc">
-        <span class="werther-img"><img src = '{{img}}'></span>
-        <span>{{weather}}</span>
-        <p>{{temperature}}℃</p>
-        <p>降水：{{humidity}}</p>
+        <div class="weather-img"><img src = '{{img}}'></div>
+        <div class="weather-word">
+            <p>天气：<span>{{weather}}</span></p>
+            <p>温度：<span>{{temperature}}℃</span></p>
+            <p>降水：<span>{{humidity}}</span></p>
+        </div>        
     </div>
   </div>
-  <ul class="navlist">
-    <!-- <li *ngFor="let item of arr;let idx=index;" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li> -->
-    <li (click)="isClick(0)" [class.first]="isActive==0">推荐</li>
-    <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goJianShen()">健身</li>
-    <li (click)="isClick(2)" [class.first]="isActive==2" (click)="goYinShi()">饮食</li>
-    <li (click)="isClick(3)" [class.first]="isActive==3" (click)="goLiLiao()">理疗</li>
-  </ul>
-  <div [ngSwitch]="isActive">
-    <!-- 推荐 -->
-    <div *ngSwitchCase="0" class="out">
-      <ul>
-        <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.rid)">
-            <div class="left">
-              <p class="title">{{tj.title}}</p>
-              <p>{{tj.content}}</p>
-            </div>
-            <img src="{{tj.imgs}}">
-        </li>
-      </ul>
+  <div class="better">  
+    <div class="rep" (click)='goReport()'>  
+      <ion-icon name='body'></ion-icon>  <span>我的体质报告</span><span class="arrow">点击查看</span>
     </div>
-    <!-- 健身 -->
-    <div *ngSwitchCase="1" class="out">
-      <ul>
-        <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.rid)">
-            <div class="left">
-              <p class="title">{{js.title}}</p>
-              <p>{{js.content}}</p>
-            </div>
-            <img src="{{js.imgs}}">
-        </li>
-      </ul>
+    <div class="rep">  
+      <ion-icon name='bookmarks'></ion-icon>  <span>我的调理方案</span>
     </div>
-    <!-- 饮食 -->
-    <div *ngSwitchCase="2" class="out">
-      <ul>
-        <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.rid)">
-            <div class="left">
-              <p class="title">{{ys.title}}</p>
-              <p>{{ys.content}}</p>
-            </div>
-            <img src="{{ys.imgs}}">
-        </li>
-      </ul>
+    <div>
+      <p class="plist">
+        <ion-icon name='bulb'></ion-icon> 药膳调理
+        <span>({{yaoshan}})</span>
+        <ion-icon name='ios-arrow-down' (click)='show(1)'></ion-icon>
+      </p>
+      <div class="box" [hidden]='clicks.isClick1' *ngFor='let item of yaoshan'>
+        <p class="paragraph">{{item}}</p>
+      </div>
+      <p class="plist"><ion-icon name='bulb'></ion-icon> 起居调摄
+        <span>({{qiju}})</span>
+        <ion-icon name='ios-arrow-down' (click)='show(2)'></ion-icon>
+      </p>
+      <div class="box" [hidden]='clicks.isClick2'>
+        <p class="paragraph">{{qiju}}</p>
+      </div>
+      <p class="plist">
+        <ion-icon name='bulb'></ion-icon> 情志调理
+        <span>({{qingzhi}})</span>
+        <ion-icon name='ios-arrow-down' (click)='show(3)'></ion-icon>
+      </p>
+      <div class="box" [hidden]='clicks.isClick3'>
+        <p class="paragraph">{{qingzhi}}</p>
+      </div>
     </div>
-    <!-- 理疗 -->
-    <div *ngSwitchCase="3" class="out">
-      <ul>
-        <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.rid)">
-            <div class="left">
-              <p class="title">{{ll.title}}</p>
-              <p>{{ll.content}}</p>
-            </div>
-            <img src="{{ll.imgs}}">
-        </li>
-      </ul>
+
+  </div>
+  <div class="article">
+    <div class="rep">  
+      <ion-icon name='book'></ion-icon>  <span>好文推荐</span>
+    </div>
+    <ul class="navlist">
+      <!-- <li *ngFor="let item of arr;let idx=index;" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li> -->
+      <li (click)="isClick(0)" [class.first]="isActive==0">推荐</li>
+      <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goJianShen()">健身</li>
+      <li (click)="isClick(2)" [class.first]="isActive==2" (click)="goYinShi()">饮食</li>
+      <li (click)="isClick(3)" [class.first]="isActive==3" (click)="goLiLiao()">理疗</li>
+    </ul>
+    <div [ngSwitch]="isActive" padding>
+      <!-- 推荐 -->
+      <div *ngSwitchCase="0" class="out">
+        <ul>
+          <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.rid)">
+              <div class="left">
+                <p class="title">{{tj.title}}</p>
+                <p>{{tj.content}}</p>
+              </div>
+              <img src="{{tj.imgs}}">
+          </li>
+        </ul>
+      </div>
+      <!-- 健身 -->
+      <div *ngSwitchCase="1" class="out">
+        <ul>
+          <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.rid)">
+              <div class="left">
+                <p class="title">{{js.title}}</p>
+                <p>{{js.content}}</p>
+              </div>
+              <img src="{{js.imgs}}">
+          </li>
+        </ul>
+      </div>
+      <!-- 饮食 -->
+      <div *ngSwitchCase="2" class="out">
+        <ul>
+          <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.rid)">
+              <div class="left">
+                <p class="title">{{ys.title}}</p>
+                <p>{{ys.content}}</p>
+              </div>
+              <img src="{{ys.imgs}}">
+          </li>
+        </ul>
+      </div>
+      <!-- 理疗 -->
+      <div *ngSwitchCase="3" class="out">
+        <ul>
+          <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.rid)">
+              <div class="left">
+                <p class="title">{{ll.title}}</p>
+                <p>{{ll.content}}</p>
+              </div>
+              <img src="{{ll.imgs}}">
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
+  
+  
 </ion-content>
 
 
