@@ -45,6 +45,7 @@ app.post('/api/login',function(req,res){
     });
   });
 });
+
 //登陆次数
 app.post('/api/login/count',function(req,res){
   req.on('data',(data)=>{
@@ -69,14 +70,11 @@ app.post('/api/login/count',function(req,res){
 });
 
 
-
-
-
 //注册
 app.post('/api/register',function(req,res){
-  console.log('register');
+  // console.log('register');
   body=req.body;
-  console.log('body.tel:',body.tel);
+  // console.log('body.tel:',body.tel);
   db.query('select * from register where account=?',[body.tel],function(err,result){
       if(err){
         res.status(500).end('DB ERROR!');
@@ -164,10 +162,10 @@ app.post('/api/contact/release/dynamic', (req, res) => {
     // log(buf);
     fs.writeFile('../project/src/assets/imgs/download/' + name, buf, err => {
         if (err) {
-            console.log(err);
+            // console.log(err);
             res.send(err);
         } else {
-            console.log("save success");
+            // console.log("save success");
             res.send("save success");
         }
     });
@@ -193,64 +191,17 @@ post("insert into collection(uid,did) values(?,?)","contact/contactail/collectio
 post("delete from collection where uid=? and did=?","contact/contactail/nocollec");
 
 
-
-
-var uid;//获取用户id
-app.post('/api',(req,res)=>{
-  uid=req.body.uid;
-  console.log('uid',uid);
-});
-
 //Home
-//首页获取各分类推文的函数
-function getPassage(url,sql){
-    app.get('/api/'+url, (req, res) => {
-      if(!uid){  //uid为空  未知体质状况  uid位默认平和质用户
-          db.query(sql, [1], (err, results) => {  //此处要求数据库必须有一个默认系统创建的用户（平和质） uid=1并且bid=1
-              if (err) {
-                  // console.log(err.message);
-                  res.status(500).send('DB error');
-              }
-              res.status(200).send(results);
-          });
-      }
-      else{  // bid非空  已知体质状况        发发发
-          db.query(sql, [uid], (err, results) => {
-              if (err) {
-                  // console.log(err.message);
-                  res.status(500).send('DB error');
-              }
-              res.status(200).send(results);
-          });
-      }    
-    })
-}
-//推荐
-getPassage('tuijian','select * from recommend where bid in (select bid from user_info where uid=?)');
-//健身方面
-getPassage('jianshen','select * from recommend where cid=1 and bid in (select bid from user_info where uid=?)');
-//饮食方面
-getPassage('yinshi','select * from recommend where cid=2 and bid in (select bid from user_info where uid=?)');
-//理疗方面
-getPassage('liliao','select * from recommend where cid=3 and bid in (select bid from user_info where uid=?)')
-// 宜忌
-getPassage('yiji','select * from shoulds where bid in (select bid from user_info where uid=?)');
-
+postR('select * from recommend where bid in (select bid from user_info where uid=?)','tuijian');
+postR('select body.* from body,user_info where body.bid=user_info.bid and user_info.uid=?','tiaoli');
+postR('select * from recommend where cid=1 and bid in (select bid from user_info where uid=?)','jianshen');
+postR('select * from recommend where cid=2 and bid in (select bid from user_info where uid=?)','yinshi');
+postR('select * from recommend where cid=3 and bid in (select bid from user_info where uid=?)','liliao');
+postR('select * from shoulds where bid in (select bid from user_info where uid=?)','yiji');
 
 
 //Hometail
-app.post('/api/hometail',(req,res)=>{
-  // console.log('hometail');
-  // console.log('req.body:',req.body);
-  body = req.body;
-  const sql = 'select * from recommend where rid=?';
-  db.query(sql,[body.rid],(err,results)=>{
-    if(err){
-        res.status(500).send('DB error');
-    }
-    res.status(200).send(results);
-  });
-});
+postR('select * from recommend where rid=?','hometail');
 
 //收藏推文
 post("insert into collectionR(uid,rid) values(?,?)","hometail/collect");
@@ -258,6 +209,7 @@ post("insert into collectionR(uid,rid) values(?,?)","hometail/collect");
 post("delete from collectionr where uid=? and rid=?","hometail/uncollect");
 
 // 查看是否已经收藏
+// postR('select * from collectionr where rid=? and uid=?','hometail/iscollect');
 app.post('/api/hometail/iscollect',(req,res)=>{
   body=req.body;
   const sql = 'select * from collectionr where uid=? and rid=?';
@@ -268,10 +220,6 @@ app.post('/api/hometail/iscollect',(req,res)=>{
     res.status(200).send(results);
   });
 });
-
-
-
-
 
 //计划页
 get('select * from plan','plan');
@@ -285,20 +233,20 @@ function postR(sql,path){
   var options=[];
   app.post('/api/'+path,(req,res)=>{
     body=req.body;
+    options=[];
     for(var i in body){
       options.push(body[i]);
     }
-    // console.log('options:',options);
+    console.log('options:',options);
     db.query(sql,[...options],(err,result)=>{
       if(err){
         res.status(500).send('DB error');
       }
-      // console.log('result:',result);
+      console.log('result:',result);
       res.status(200).send(result);
     })
   });
 }
-
 postR('select * from plan where pid in (select pid from userplan where uid=?)','plan/userplan');
 //修改计划状态
 postR('update userplan set status=? where uid=? and pid=?','plan/changeStatus');
@@ -313,11 +261,11 @@ postR('select status from userplan where uid=? and pid=?','plan/getStatus');
 function mePage(url,sql){
   app.post('/api/'+url,function(req,res){
     body=req.body;
-    console.log('body:',body);
+    // console.log('body:',body);
     db.query(sql,[body.uid],function(err,result){
       if(err){res.status(500).send('DB error');}
       else{res.status(200).send(result);}
-      console.log('result:',result);
+      // console.log('result:',result);
     }); 
   });
 }
@@ -386,7 +334,7 @@ app.post('/api/question2', function (req, res) {
       options.push(body[i]);
   }
   options.pop();
-  console.log('pop:',options);
+  // console.log('pop:',options);
   db.query(update, [...options], function (err, result) {
     if (err) {
       res.end(err);
