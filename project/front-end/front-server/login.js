@@ -56,7 +56,7 @@ app.post('/api/login/count',function(req,res){
         count = result[0].loginCount;
         // console.log('count:',count);
         if(count==0){
-          console.log('count:',count);
+          // console.log('count:',count);
           res.send('0');
           db.query('update register set loginCount=? where uid=?',[count+1,uid],function(err,result){
             if(err){
@@ -104,7 +104,6 @@ app.post('/api/register',function(req,res){
       }
   });
 });
-
 
 
 
@@ -242,7 +241,7 @@ function postR(sql,path){
       if(err){
         res.status(500).send('DB error');
       }
-      console.log('result:',result);
+      // console.log('result:',result);
       res.status(200).send(result);
     })
   });
