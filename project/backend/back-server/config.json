@@ -1,0 +1,7 @@
+{
+	"host":"localhost",
+	"user":"root",
+	"password":"1234qwerasdf",
+	"database":"test",
+	"supportBigNumbers":true
+}
