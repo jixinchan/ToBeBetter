@@ -132,6 +132,25 @@ post('select * from question where bid=?','somatoplasm');
 //增加题目
 post('insert into question (qid,question,bid) values(?,?,?)','add/question');
 
-
+//管理员信息页面
+//查询所有管理员信息
+get('select * from admins','admins');
+//增加管理员
+post('insert into admins (mid,username,password,roles) values(?,?,?,?)','add/admin');
+//修改管理员信息
+app.post('/api/edit/admin',(req,res)=>{
+	var body=req.body;
+	var mid=body.mid,usr=body.username,pwd=body.password,role=body.role;
+	console.log('body:',body);
+	db.query('update admins set username=?,password=?,roles=? where mid='+mid,[usr,pwd,role],(err,result)=>{
+		if(err){
+			res.status(500).send('DB error!');
+		}else{
+			res.status(200).send(result);
+		}
+	});
+});
+//删除管理员
+post('delete from admins where mid=?','delete/admin');
 
 app.listen(8080);
