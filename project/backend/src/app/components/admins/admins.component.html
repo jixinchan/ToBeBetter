@@ -1,3 +1,107 @@
-<p>
-  admins works!
-</p>
+<div id="wrap">
+  <ol class="breadcrumb">
+    <li><a><span class="glyphicon glyphicon-home"></span>当前位置</a></li>
+    <li class="active"><a>管理员管理</a></li>
+  </ol>
+  <h3 class="title">管理员管理</h3>
+  <button class="btn btn-default pull-right" type="button" (click)="openModal2(template2)">增加管理员</button>
+  <!-- 表格信息 -->
+  <table cellspacing="1"class=" table-hover table-responsive">
+    <thead class="table_title">
+      <td>管理员ID</td>
+      <td>管理员名称</td>
+      <td>拥有角色</td>
+      <td>操作</td>
+    </thead>
+    <tr *ngFor="let info of manager;">
+      <td>{{info.mid}}</td>
+      <td>{{info.username}}</td>
+      <td>{{info.roles}}</td>
+      <td>
+          <div>
+              <button class="edit " (click)="openModal(template1,info.mid)">编辑</button>
+              <button class="delete" (click)="goDelete(template3,info.mid)">删除</button>
+          </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<!-- 编辑的模态窗口 -->
+<ng-template #template1>
+  <div class="modal-header">
+    <h4 class="modal-title  text-center">修改管理员信息</h4>
+  </div>
+  <div class="modal-body">
+      <div class="text">
+          <label for="message-text" class="control-label" >ID：</label>
+          
+          <span class="text2">{{editmid}}</span>
+      </div>
+      <div class="form-group">
+          <label for="message-text" class="control-label" >管理员姓名：</label>
+          <input type="text" class="form-control" [(ngModel)]="editname" value="" name="xxx">
+      </div>
+      <div class="form-group">
+          <label for="message-text" class="control-label">管理员密码：</label>
+          <input type="password" class="form-control" [(ngModel)]="editpwd"  name="xxx">
+      </div>
+      <div class="form-group">
+        <label for="message-text" class="control-label">管理员角色：</label>
+        <select class="form-control" (change)="editSelect($event.target.value)">
+          <option></option>
+          <option value="产品经理">产品经理</option>
+          <option value="开发员">开发员</option>
+          <option value="测试员">测试员</option>
+        </select>
+      </div>
+    
+  </div>
+  <div class="modal-body text-center">
+      <button type="button" class="btn btn-default" (click)="editAdmin()" >保存</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
+    </div>
+</ng-template>
+<!-- 删除的模态窗口 -->
+<ng-template #template3>
+  <div class="modal-body text-center">
+      <h4 class="modal-title  text-center">请问您确定要删除此管理员吗?</h4>
+      <button type="button button1" class="btn btn-default" (click)="goYesdelete()" >删除</button>
+      <button type="button button2" class="btn btn-primary" (click)="decline()" >取消</button>
+  </div>
+</ng-template>
+<!-- 增加题目的模态窗口 -->
+<ng-template #template2>
+  <div class="modal-header">
+      <h4 class="modal-title  text-center">增加管理员</h4>
+  </div>
+  <div class="modal-body">
+      <form>
+          <div class="form-group">
+              <label for="recipient-name" class="control-label">管理员ID:</label>
+              <input type="text" class="form-control" [(ngModel)]="addmid" value="" name="xxx">
+              
+          </div> 
+          <div class="form-group">
+              <label for="message-text" class="control-label" >管理员姓名</label>
+              <input type="text" class="form-control" [(ngModel)]="addname" value="" name="xxx">
+          </div>
+          <div class="form-group">
+              <label for="message-text" class="control-label">管理员密码：</label>
+              <input type="password" class="form-control" [(ngModel)]="addpwd"  name="xxx">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">管理员角色：</label>
+            <select class="form-control" (change)="selectOnchang($event.target.value)">
+              <option></option>
+              <option value="产品经理">产品经理</option>
+              <option value="开发员">开发员</option>
+              <option value="测试员">测试员</option>
+            </select>
+          </div>
+      </form>
+  </div>
+  <div class="modal-body text-center">
+      <button type="button" class="btn btn-default" (click)="goAddadmin()" >保存</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
+  </div>
+</ng-template>

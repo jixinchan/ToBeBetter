@@ -1,0 +1,85 @@
+#wrap{
+    position: absolute;
+    left: 15%;
+    width: 82%;
+    height:auto;
+    margin: 10px;
+}
+.breadcrumb{
+    background-color: white;
+}
+.title{
+    clear: both;
+    color: #23a257;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.breadcrumb a{
+    color: #505050;
+}
+.breadcrumb a span{
+    margin-right:10px;
+}
+.active a{
+    color: #23a257;
+}
+/* 增加管理员 */
+.btn{
+    margin-bottom: 10px;
+}
+.btn-primary{
+    background-color: #23a257;
+}
+.btn-default {
+    color: #23a257;
+    background-color: #fff;
+    border-color: #23a257;
+}
+.modal-body button{
+    margin-right:30px;
+    margin-left:30px;
+}
+/* 表格信息 */
+table{   
+    width: 100%;
+    table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+    color:#505050;
+    text-align: center;
+    border: none;
+}
+
+td{
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    border-bottom:1px solid gainsboro;
+    border-right:1px solid gainsboro;
+    height:40px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    line-height: 35px;
+}
+.table_title{
+    background-color: #ffeb3b;
+    font-weight: bold;
+}
+/* 编辑删除 */
+.edit{
+    color: #fff;
+    background: #43cf7c;    
+    margin-left: -5px;
+    margin-right:20px;
+    width:35px;
+    height: 25px;
+    border: none;
+    border-radius: 7px;
+}
+.delete{
+    background: #e64340;
+    margin-left:20px;
+    width:35px;
+    height: 25px;
+    border: none;
+    border-radius: 7px;
+    color: #fff;
+}
