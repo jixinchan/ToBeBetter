@@ -8,6 +8,7 @@ li:hover{
 a{
     text-decoration-line: none;
 }
+
 .sidebar{
     width: 15%;
     height: 626px;
@@ -18,37 +19,38 @@ a{
 
 .logo{
     width: 100%;
-    /* height: 90px; */
+    height: 90px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     border-bottom: white 1px solid
 }
-.img{
-    width: 40%;
-    text-align: center;
-}
-img{
-    width: 50px;
-    height: 50px;
-}
-.name{
-    width: 55%;
+.logo p{
     color: white;
     font-size: 25px;
-    line-height: 70px;
-    text-align: center;
+    line-height: 62px;
+    margin-top: 10px;
 }
+img{
+    width: 62px;
+    height: 62px;
+}
+
+
 .outlist{
     margin-top: 20px;
     text-indent: 2em;
     font-size:1.1em;
 }
+
 .outlist li:hover{
     color: rgb(255,235,59);
 }
 .outlist li a:hover{
     color: rgb(255,235,59);
 }
+
 .systemlist li{
     text-indent: 4em;
 }

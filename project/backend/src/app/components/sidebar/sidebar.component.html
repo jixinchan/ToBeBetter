@@ -1,16 +1,15 @@
 <div class="sidebar">
   <div class="logo">
-    <div class="img">
-      <img src="../../../assets/imgs/logo.png" alt="">
-    </div>
-    <p class="name">鲜&nbsp;&nbsp;&nbsp;&nbsp;活</p>
+    <img src="../../../assets/imgs/logo.png" alt="">
+    <p>鲜&nbsp;&nbsp;&nbsp;&nbsp;活</p>
   </div>
   <ul class="outlist">
       <li class="hh1">
         <a (click)="choose(1)" [routerLink]='["/home"]'>首页</a>
       </li>
+
       <li>
-        <span (click)="show('systemlist')">系统管理<span class="glyphicon glyphicon-menu-down"></span></span>
+        <span (click)="show('systemlist')">系统管理</span><span class="glyphicon glyphicon-menu-down"></span>
         <ul class="systemlist">
           <li class="hh2">
             <a (click)="choose(2)" [routerLink]='["/question"]'>体质检测题库</a>
@@ -26,8 +25,9 @@
           </li>
         </ul>
       </li>
+
       <li>
-        <span (click)="show('userlist')">用户管理<span class="glyphicon glyphicon-menu-down"></span></span>
+        <span (click)="show('userlist')">用户管理</span><span class="glyphicon glyphicon-menu-down"></span>
         <ul class="userlist">
           <li class="hh6">
             <a (click)="choose(6)" [routerLink]='["/information"]'>个人信息</a>
@@ -42,6 +42,7 @@
           </li>
         </ul>
       </li>
+
       <li class="hh8">
         <a [routerLink]='["/admins"]' (click)="choose(8)">管理员管理</a>
       </li>

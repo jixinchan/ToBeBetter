@@ -2,41 +2,70 @@
     <div class="title">
       <p>用户信息管理</p>
     </div>
-    <div class="search">
-      搜索用户：<input type="search" placeholder="搜索" >
-      <button (click)="search()">搜索</button>
-    </div>
+    <form role="form" class="form-horizontal">
+      <div class="form-group col-sm-11">
+        <p class="col-sm-2 control-label">搜索用户昵称：</p>
+        <input type="text" id="text" class="form-control col-sm-8" placeholder="输入昵称关键字" value="">
+        <button class="btn btn-default" (click)="search()">搜索</button>
+      </div>
+      <div class="col-sm-1">
+        <button class="btn btn-success" (click)="reload()">刷新</button>
+      </div>
+    </form>
     <div class="content">
-      <table cellspacing="1">
+      <table>
         <thead>
-          <td>用户ID</td>
-          <td>性别</td>
-          <td>头像</td>
-          <td>昵称</td>
-          <td>个签</td>
-          <td>生日</td>
-          <td>所在地</td>
-          <td>体质</td>
-          <td>操作</td>
-          <td>详细信息</td>
+          <th>用户ID</th>
+          <th>性别</th>
+          <th>头像</th>
+          <th>昵称</th>
+          <th>个签</th>
+          <th>生日</th>
+          <th>所在地</th>
+          <th>体质</th>
+          <th>操作</th>
+          <th>详细信息</th>
         </thead>
-        <tr *ngFor="let info of userinfo;">
-          <td>{{info.uid}}</td>
-          <td>{{info.sex}}</td>
-          <td>{{info.avatar}}</td>
-          <td>{{info.nickname}}</td>
-          <td>{{info.signature}}</td>
-          <td>{{info.birth}}</td>
-          <td>{{info.city}}</td>
-          <td>{{info.bid}}</td>
-          <td>
-            <!-- <p (click)="delthis(info.uid)" class="btn">删除</p> -->
-            <button class="del" (click)="delthis(info.uid)">删除</button>
-          </td>
-          <td>
-            <a [routerLink]="['/infodetail',info.uid]">详细信息</a>
-          </td>
-        </tr>
+        <tbody class="now">
+          <tr *ngFor="let info of userinfo;">
+            <td>{{info.uid}}</td>
+            <td>{{info.sex}}</td>
+            <td>{{info.avatar}}</td>
+            <td>{{info.nickname}}</td>
+            <td>{{info.signature}}</td>
+            <td>{{info.birth}}</td>
+            <td>{{info.city}}</td>
+            <td>{{info.bid}}</td>
+            <td>
+              <p (click)="isdel(info.uid)" class="btn">删除</p>
+              <!-- <button class="del" (click)="delthis(info.uid)">删除</button> -->
+            </td>
+            <td>
+              <a [routerLink]="['/infodetail',info.uid]">详细信息</a>
+            </td>
+          </tr>
+        </tbody>
+        
+        <tbody class="searchres">
+          <tr *ngFor='let res of searchresults;'>
+            <td>{{res.uid}}</td>
+            <td>{{res.sex}}</td>
+            <td>{{res.avatar}}</td>
+            <td>{{res.nickname}}</td>
+            <td>{{res.signature}}</td>
+            <td>{{res.birth}}</td>
+            <td>{{res.city}}</td>
+            <td>{{res.bid}}</td>
+            <td>
+              <p (click)="isdel(res.uid)" class="btn">删除</p>
+              <!-- <button class="del" (click)="delthis(res.uid)">删除</button> -->
+            </td>
+            <td>
+              <a [routerLink]="['/infodetail',res.uid]">详细信息</a>
+            </td>
+          </tr>
+        </tbody>
+
       </table>
     </div>    
 </div>

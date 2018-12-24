@@ -5,25 +5,41 @@
 /* .title */
 .title{
     width: 100%;
-    /* height: 80px; */
+    height: 70px;
+    /* border: black 1px solid; */
 }
 .title p{
-    font-size: 30px;
-    font-weight: 200px;
+    font-size: 28px;
     line-height: 60px;
-    margin-left: 30px;
+    color: #23a257;
+    /* margin-left: 30px; */
 }
 .search{
-    height: 30px;
-    float: right;
-    margin-right: 10%;
+    height: 40px;
+    /* border: red 1px solid; */
 }
+#text{
+    width: 200px;
+}
+
+
+
+.reload{
+    background-color: #23a257;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 5px;
+    float: right;
+    margin-right: 50px;
+    cursor: pointer;
+}
+
 table{
     width: 100%;
     border-color: #ccc;
 }
 td{
-    height: 45px;
+    height: 40px;
     text-align: center;
 }
 tr:nth-of-type(odd){
@@ -32,28 +48,27 @@ tr:nth-of-type(odd){
 tr:nth-of-type(even){
     background-color: #eee;
 }
-thead td{
+th{
+    height: 40px;
+    text-align: center;
     background-color: #ffeb3b;
-    font-weight: bold;
 }
-.btn{
-    margin:0 10px;
+/* .btn{
+    padding: 2px 6px;
     color: white;
     border-radius: 5px;
     background-color: red;
-}
+    cursor: pointer;
+} */
 a{
-    color: black;
-    text-decoration: underline;
-}
-a:hover{
-    color: blue;
+    color: green;
     /* text-decoration: underline; */
 }
-.del{
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 5px 8px 5px 8px;
-    background: red;
+a:hover{
+    color: green;
+    font-weight: bold;
+    /* text-decoration: none; */
+}
+.hide{
+    display: none;
 }
