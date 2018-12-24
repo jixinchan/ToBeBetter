@@ -3,7 +3,6 @@ import { NavController, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
-import { Content } from 'ionic-angular/umd/navigation/nav-interfaces';
 
 @Component({
   selector: 'page-home',
@@ -66,39 +65,6 @@ export class HomePage {
     
   }
  
-  jianshen;
-  goJianShen() {
-    this.http.post('/api/jianshen',{'uid':this.uid}).subscribe(data => {
-      this.jianshen = data;
-      this.jianshen.forEach(e => {
-        e.imgs = '../assets/imgs/images/' + e.imgs;
-      });
-    });
-  }
-
-  yinshi;
-  goYinShi() {
-    this.http.post('/api/yinshi',{'uid':this.uid}).subscribe(data => {
-      this.yinshi = data;
-      // console.log(data);
-      this.yinshi.forEach(e => {
-        e.imgs = '../assets/imgs/images/' + e.imgs;
-      });
-    });
-  }
-
-  liliao;
-  goLiLiao() {
-    this.http.post('/api/liliao',{'uid':this.uid}).subscribe(data => {
-      this.liliao = data;
-      // console.log(data);
-      this.liliao.forEach(e => {
-        e.imgs = '../assets/imgs/images/' + e.imgs;
-      });
-    });
-  }
-
-
   goHomeTail(rid) {
     console.log('rid',rid);
     this.navCtrl.push("HometailPage", { 'rid': rid });

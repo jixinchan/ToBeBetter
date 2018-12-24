@@ -3,37 +3,45 @@ page-hometail {
         padding-left: 27%;
     }
     ion-content{
-        p{
-            width: 100%;
-            font-size: 14px;
+        .recard{
+            width: 330px;
+            margin: 10px auto;
+            padding: 10px 5px;
+            border: 1px solid wheat;
+            .par{
+                font-size: 15px;
+                text-indent: 2em;
+                line-height: 1.5em;
+                padding: 5px 5px;
+                color: #666;
+            }
         }
         .title{
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            margin: 0;
+            font-size: 22px;
+            // font-weight: bold;
+            font-family: '华文新魏' '方正兰亭超细黑';
+            margin: 20px 10px 0 10px;
             // border: red 1px solid;
         }
         .song{
             font-size: 14px;
             color: #aaa;
             text-align: right;
-            margin: 10px 0 10px 0;
+            margin: 10px 20px 0 0;
         }
         img{
             width: 100%;
-            height: 200px;
+            height: 180px;
         }
-        .par{
-            font-size: 16px;
-            text-indent: 2em;
-            line-height: 1.5em;
-        }
+        
 
         .operation{
             border: #ccc 1px solid;
             width:100%;
             text-align: right;
+            position: fixed;
+            top: 574px;
+            background: white;   
             ion-icon{
                 font-size: 25px;
                 margin-right: 20px;

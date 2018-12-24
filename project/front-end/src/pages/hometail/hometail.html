@@ -3,17 +3,19 @@
     <ion-title color="primary" ><p class="article">文章详情</p></ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content (ionScroll)="scrollHandler($event)">
   <div *ngFor="let art of article;">
-    <div>
+    <div class="content">
       <p class="title">{{art.title}}</p>
       <p class="song">系统推送</p>
     </div>
-    <div>
-      <img src="{{art.imgs}}">
-      <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
+    <div class="recard">
+      <div>
+        <img src="{{art.imgs}}">
+        <p *ngFor="let p of paragraph;" class="par">{{p}}</p>
+      </div>
     </div>
-    <div class="operation">
+    <div class="operation" [style.top]='top'>
       <!-- 收藏、取消收藏 -->
       <ion-icon name="star-outline" (click)="isCollect(art.rid)" class="star"></ion-icon>
       <!-- 分享 -->

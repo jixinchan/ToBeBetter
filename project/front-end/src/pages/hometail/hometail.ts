@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,NgZone} from '@angular/core';
 import { IonicPage, NavController, NavParams , ModalController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
@@ -23,6 +23,7 @@ export class HometailPage {
   title;
   rid;
   collected;
+  top='574px';
 
   isEmpty(obj) {
     for(var k in obj){
@@ -30,11 +31,19 @@ export class HometailPage {
     }
     return true;  // 空
   }
+  scrollHandler(event) {
+    this.zone.run(()=>{
+      this.top=(event.scrollTop+574)+'px';
+      console.log('top:',this.top);
+    });
+  }
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public http: HttpClient,
               public modalCtrl: ModalController,
-              public quicklogin:QuickloginProvider
+              public quicklogin:QuickloginProvider,
+              public zone:NgZone
             ) {
     
     this.rid = this.navParams.get('rid');

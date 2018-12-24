@@ -89,16 +89,9 @@
     <div class="rep">  
       <ion-icon name='book'></ion-icon>  <span>好文推荐</span>
     </div>
-    <ul class="navlist">
-      <!-- <li *ngFor="let item of arr;let idx=index;" (click)="isClick(idx)" [class.first]="isActive==idx">{{item}}</li> -->
-      <li (click)="isClick(0)" [class.first]="isActive==0">推荐</li>
-      <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goJianShen()">健身</li>
-      <li (click)="isClick(2)" [class.first]="isActive==2" (click)="goYinShi()">饮食</li>
-      <li (click)="isClick(3)" [class.first]="isActive==3" (click)="goLiLiao()">理疗</li>
-    </ul>
-    <div [ngSwitch]="isActive" padding>
+    <div  padding>
       <!-- 推荐 -->
-      <div *ngSwitchCase="0" class="out">
+      <div class="out">
         <ul>
           <li *ngFor="let tj of tuijian;" (click)="goHomeTail(tj.rid)">
               <div class="left">
@@ -106,42 +99,6 @@
                 <p>{{tj.content}}</p>
               </div>
               <img src="{{tj.imgs}}">
-          </li>
-        </ul>
-      </div>
-      <!-- 健身 -->
-      <div *ngSwitchCase="1" class="out">
-        <ul>
-          <li *ngFor="let js of jianshen;" (click)="goHomeTail(js.rid)">
-              <div class="left">
-                <p class="title">{{js.title}}</p>
-                <p>{{js.content}}</p>
-              </div>
-              <img src="{{js.imgs}}">
-          </li>
-        </ul>
-      </div>
-      <!-- 饮食 -->
-      <div *ngSwitchCase="2" class="out">
-        <ul>
-          <li *ngFor="let ys of yinshi;" (click)="goHomeTail(ys.rid)">
-              <div class="left">
-                <p class="title">{{ys.title}}</p>
-                <p>{{ys.content}}</p>
-              </div>
-              <img src="{{ys.imgs}}">
-          </li>
-        </ul>
-      </div>
-      <!-- 理疗 -->
-      <div *ngSwitchCase="3" class="out">
-        <ul>
-          <li *ngFor="let ll of liliao;" (click)="goHomeTail(ll.rid)">
-              <div class="left">
-                <p class="title">{{ll.title}}</p>
-                <p>{{ll.content}}</p>
-              </div>
-              <img src="{{ll.imgs}}">
           </li>
         </ul>
       </div>
