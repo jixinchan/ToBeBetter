@@ -37,16 +37,16 @@ export class InformationComponent implements OnInit {
     });
   }
 
+  key;
   searchresults;
   search(){
-    var key = document.querySelector('#text').value;
-    console.log(key);
-    if(key === ''){
+    // console.log(this.key);
+    if(this.key === ''){
       alert('请输入搜索关键字');
     }
     else{
       this.http.post('/api/searchusr',{
-        "key":key
+        "key":this.key
       }).subscribe(data=>{
         this.searchresults = data;
         if(document.querySelectorAll('.now')[0].className.indexOf(' hide') == -1){
