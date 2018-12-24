@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       else if(data[0].password!=this.pwd){this.wrong=false;this.exist=true;}
       else{this.wrong=true;this.exist=true;
         localStorage.setItem('isLogin','true');
+        localStorage.setItem('mid',data[0].mid);
         this.route.navigateByUrl('/home');
       }
     });
