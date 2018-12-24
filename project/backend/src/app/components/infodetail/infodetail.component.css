@@ -1,0 +1,180 @@
+.wrap{
+    position: absolute;
+    left: 15%;
+    width: 82%;
+    height:auto;
+    margin: 10px;
+}
+.bread{
+    width: 100%;
+    height: 56px;
+}
+.bread img{
+   width: 24px;
+   height: 24px;   
+   display: block;
+}
+.bread span{
+    display: block;
+    padding-top: 2px;
+    color: #505050;
+}
+.bread img,.bread span{
+    float: left;
+    margin-bottom: 8px;
+    margin-top: 23px;
+}
+.info{
+    float: left;
+    width: 100%;
+    margin: 10px 0;
+}
+.navlist{
+    float: left;
+    width: 100%;
+    height: 44px;
+}
+.navlist li{
+    float: left;
+    width: 15%;
+    line-height: 44px;
+    font-size: 16px;
+    text-align: center;    
+    border-radius: 10px;
+}
+.first{
+    background-color: #ffeb3b;
+}
+.detail{
+    width: 100%;
+    float: left;
+}
+table{   
+    width: 100%;
+    table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
+    color:#505050;
+    text-align: center;
+    border-collapse:collapse;
+    margin-top: 10px;
+}
+td{
+    padding: 10px;
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    border:1px solid gray;
+}
+tr td button{
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px 8px 5px 8px;
+}
+.delete{
+    background: #e64340;
+}
+.id{
+    width: 5%;
+}
+.time{
+    width: 13%;
+}
+.bid{
+    width: 7%;
+}
+.title{
+    width: 15%;
+}
+.img{
+    width: 12%;
+}
+.class{
+    width: 8%;
+}
+.option{
+    width: 8%;
+}
+.sex{
+    width: 5%;
+}
+.nickname{
+    width: 13%;
+}
+.city{
+    width: 10%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+        .navlist{
+            width: 100%;
+            height: 44px;
+            float: right;
+        }
+        .navlist li{
+            width: 25%;
+            line-height: 44px;
+            font-size: 16px;
+            text-align: center;
+        }
+        .first{
+            border-bottom:2px solid #23a257;
+        }
+
+        .out{
+            width: 100%;
+            float: left;
+
+        }
+        .out li{
+            width: 100%;
+            margin: 0 0 10px 0;
+
+        }
+        p{
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            margin: 0 10px 10px 10px;
+        }
+        .left{
+            width: 75%;
+            float: left;
+        }
+        .title{
+            width: 200px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        img{
+            width: 25%;
+            height: 70px;
+            float: left;
+        } */
