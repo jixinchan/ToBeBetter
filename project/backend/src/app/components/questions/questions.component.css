@@ -160,16 +160,18 @@ tr td button{
     color: #fff;
     cursor: pointer;
     border-radius: 5px;
-    padding: 5px 8px 5px 8px;
+    padding: 3px 3px 3px 3px;
 }
 .edit{
     background: #43cf7c;    
     margin-left: -5px;
     margin-right:20px;
+    border: none;
 }
 .delete{
     background: #e64340;
     margin-left:20px;
+    border: none;
 }
 /* 模态窗口 */
 
@@ -201,4 +203,5 @@ tr td button{
     text-align: center;
     margin-bottom: 10px;
 }
+
 

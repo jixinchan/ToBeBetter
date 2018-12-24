@@ -174,7 +174,7 @@ export class QuestionsComponent implements OnInit {
         "question":this.addquestion,
         "bid":this.addbodyid
       }).subscribe(data=>{
-          console.log("你进来了啊");
+          // console.log("你进来了");
       });
       this.modalRef.hide();
       window.location.reload();
