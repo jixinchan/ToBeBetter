@@ -11,15 +11,13 @@ import { Injectable } from '@angular/core';
 export class WeatherProvider {
   //使用阿里云天气服务的API706230690157445ca0be933947c0e1f0
   appCode = 'APPCODE 706230690157445ca0be933947c0e1f0';
-  url = 'http://saweather.market.alicloudapi.com/gps-to-weather';
+  url = 'http://saweather.market.alicloudapi.com/area-to-weather';
 
-  getWeather(lat,lng) {
+  getWeather(area) {
     return this.http.get(this.url, {
       headers: new HttpHeaders().set('Authorization', this.appCode),
       params: {
-        'from':'3',
-        'lat':lat,
-        'lng':lng,
+        'area':area,
         'needIndex':'1',
         'needMoreDay':'0'
       }

@@ -1,6 +1,7 @@
 page-home {
     padding: 0px;
     margin:0px;
+    font-size: 15px;
     .toolbar-title-md{
             padding-left: 15%;
         }
@@ -46,49 +47,108 @@ page-home {
             border: none;
             float: left;
             width: 100%;
-            height: 170px;
-            .lc{
-                width: 50%;
-                height: 115px;
-                float: left;
-                font-size: 18px;
-                text-align: center;
-                p{
-                    margin: 16px 0;
-                    line-height: 25px;
+            .ccrd1{
+                height: 80%;
+                .lc1{
+                    width: 40%;
+                    height: 55%;
+                    float: left;
+                    text-align: center;
+                    p{
+                        margin: 8px 0;
+                        line-height: 25px;
+                    }
+                    #yi{
+                        display: inline-block;
+                        background: #23a257;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 15px;
+                        color: white;
+                        letter-spacing: 2px;
+                    } 
+                    #ji{
+                        display: inline-block;
+                        border: 1px solid #23a257;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 14px;
+                        letter-spacing: 2px;
+                    }
+                }           
+                .rc1{
+                    width: 60%;
+                    height: 55%;
+                    float: left;
+                    border-left:1px solid #e2e2e2;
+                    padding: 16px;
+                    img{
+                        width: 50px;
+                        height: 50px;
+                    }
+                    .weather-word{
+                        margin-left: 60px;
+                    }
                 }
-                #yi{
-                    display: inline-block;
-                    border: 1px solid #23a257;
-                    width: 30px;
-                    height: 30px;
-                    border-radius: 15px;
-                } 
-                #ji{
-                    display: inline-block;
-                    background: #23a257;
-                    width: 28px;
-                    height: 28px;
-                    border-radius: 14px;
-                    color: white;
+                .bc{
+                    clear: both;
+                    width: 100%;
+                    height: 45%;
+                    margin-left: 14px;
+                    line-height: px;
+                    p{
+                        .icon{
+                            color: red;
+                        }
+                        color: #888;
+                        padding-top: 5px;
+                        border-top:1px solid #e2e2e2;
+                    }
+                    
                 }
-            }           
-            .rc{
-                width: 50%;
-                height: 115px;
-                float: left;
-                border-left:1px solid #e2e2e2;
-                img{
-                    position: relative;
-                    top: 25px;
-                    margin: 0px;
-                    width: 50px;
-                    height: 50px;
-                }
-                .weather-word{
-                    float:left;
-                    margin:15px auto auto 10px;
-                }
+            }
+            
+
+            .ccrd2{
+                .lc2{
+                    width: 50%;
+                    height: 100%;
+                    float: left;
+                    text-align: center;
+                    p{
+                        margin: 8px 0;
+                        line-height: 25px;
+                    }
+                    #yi{
+                        display: inline-block;
+                        background: #23a257;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 15px;
+                        color: white;
+                        letter-spacing: 2px;
+                    } 
+                    #ji{
+                        display: inline-block;
+                        border: 1px solid #23a257;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 14px;
+                        letter-spacing: 2px;
+                    }
+                }  
+                .rc2{
+                    height: 100%;
+                    width: 50%;
+                    float: left;
+                    padding-top: 10px;
+                    p{
+                        // white-space:normal;
+                        color: #888; 
+                        font-size: 14px;
+                    }
+                    border-bottom: 1px solid #e2e2e2;
+                }    
             }
         }
 //调理
@@ -101,7 +161,6 @@ page-home {
                    color: #23a257;
                    width: 100%;
                    line-height: 25px;
-                   font-size: 16px;
                    border-bottom: 1px dotted #23a257;
                    span{
                        display: inline-block;
@@ -173,8 +232,8 @@ page-home {
             // border: black 1px solid;
         }
         .out li{
-            width: 100%;
-            margin: 0 0 10px 0;
+            width: 90%;
+            margin: 0 10px 10px 10px;
             // border: black 1px solid;
         }
         p{

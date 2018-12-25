@@ -1,9 +1,11 @@
 import { Component ,NgZone, ViewChild} from '@angular/core';
-import { NavController, Events } from 'ionic-angular';
+import { NavController, Events, App } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 import { Geolocation } from '@ionic-native/geolocation';
+
+declare const baidumap_location: any;
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -27,9 +29,13 @@ export class HomePage {
   result;
   weather;//天气情况
   temperature;//温度
-  humidity;//湿度
+  cold;//感冒
+  guomin;//过敏
+  clothes;//穿衣
   img;//图片
   city;//城市
+
+  nocity=false;
   
 
   //调理是否展开
@@ -60,24 +66,48 @@ export class HomePage {
 
   //定位函数
   location={
-    latitude: '37.9851923994',
-    longitude: '114.4839363092'
+    city:this.city
   };
   getLocation(){
-    this.geolocation.getCurrentPosition().then(response=>{
-      console.log('location res:',response);
-      // this.location.latitude=response.coords.latitude+'';
-      // this.location.longitude=response.coords.longitude+'';
-    });
+    // this.geolocation.getCurrentPosition().then(response=>{
+    //   console.log('location res:',response);
+    //   this.location.latitude=response.coords.latitude+'';
+    //   this.location.longitude=response.coords.longitude+'';
+    // }).catch(err=>{
+    //   console.log(err.message);
+    // });
+    // if (typeof baidumap_location === 'undefined') { 
+    //   alert('baidumap_location is undefined'); 
+    //     return; 
+    // }; 
+    // baidumap_location.getCurrentPosition(function (result) { 
+    //     alert(JSON.stringify(result, null, 4)); 
+    // }, function (error) { 
+    //     alert(error); 
+    // });
+    // if ('baidumap_location' in window) {
+    //   baidumap_location.getCurrentPosition(function (result) {
+    //       console.log(result);
+    //   }, function (error) {
+    //       console.error(error);
+    //   });
+    // } else {
+    //     console.error('baidumap_location is undefined');
+    // }
   }
+
+  
 
   constructor(public navCtrl: NavController, public http: HttpClient, 
     public weatherProvider: WeatherProvider,public events:Events,
     public quicklogin:QuickloginProvider ,public zone: NgZone,
-    public geolocation:Geolocation ) {
+    public geolocation:Geolocation,public app: App ) {
     
   }
  
+  goLogin(){
+    this.app.getRootNavs()[0].setRoot('LoginPage');
+  }
 
   goHomeTail(rid) {
     console.log('rid',rid);
@@ -92,7 +122,8 @@ export class HomePage {
     //得到uid
     this.uid = localStorage.getItem("uid");
 
-    this.getLocation();
+    //获取gps
+    // this.getLocation();
 
     // 得到宜忌内容
     this.http.post('/api/yiji',{'uid':this.uid}).subscribe(data => {
@@ -128,16 +159,20 @@ export class HomePage {
       if (this.user_info != undefined) {
         this.user_info.forEach(e => {
           if (e.uid == this.uid) {
-            this.city = (e.city?e.city:'北京市');
-            // console.log('this.location:',this.location);
+            this.city = e.city;
+            this.nocity=(e.city?false:true);
+            this.location.city=this.city;
+            console.log('this.location:',this.location);
             //用天气服务获得当前城市的天气数据
-            this.weatherProvider.getWeather(this.location.latitude,this.location.longitude).subscribe(result => {
+            this.weatherProvider.getWeather(this.location.city).subscribe(result => {
               // console.log('weather info:',result["showapi_res_body"]["cityInfo"]);
               console.log(result["showapi_res_body"]["f1"]);
               this.result = result["showapi_res_body"]["f1"];
               this.weather = this.result['day_weather'];
               this.temperature = this.result['day_air_temperature'];
-              this.humidity = this.result['jiangshui'];
+              this.cold = this.result['index'].cold.desc;
+              this.guomin = this.result['index'].ag.title;
+              this.clothes=this.result['index'].clothes.desc;
               this.img = this.result['day_weather_pic'];
               // console.log(this.weather, this.temperature, this.humidity);
             });

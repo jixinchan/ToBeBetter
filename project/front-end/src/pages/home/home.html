@@ -38,18 +38,32 @@
     <div class="rep">  
       <ion-icon name='alarm'></ion-icon> <span>今日宜忌</span>
     </div>
-    <div class="lc">
-      <p><span id="yi">宜</span> {{should}}</p>
-      <p><span id="ji">忌</span> {{avoid}}</p>
-    </div>
-    <div class="rc">
+    <div [hidden]='nocity' class="ccrd1">
+      <div class="lc1">
+        <p><span id="yi">宜</span> {{should}}</p>
+        <p><span id="ji">忌</span> {{avoid}}</p>
+      </div>
+      <div class="rc1">
         <div class="weather-img"><img src = '{{img}}'></div>
         <div class="weather-word">
             <p>天气：<span>{{weather}}</span></p>
-            <p>温度：<span>{{temperature}}℃</span></p>
-            <p>降水：<span>{{humidity}}</span></p>
-        </div>        
+            <p>温度：<span>{{temperature}}℃</span></p>    
+        </div>          
+      </div>
+      <div class="bc">
+          <p><ion-icon name='ios-alert-outline' color='red'></ion-icon> 感冒：<span>{{cold}}</span></p>
+          <p><ion-icon name='ios-heart-outline'></ion-icon> 穿衣：<span>{{clothes}}</span></p>
+      </div>
     </div>
+    <div [hidden]='!nocity' class="ccrd2">
+      <div class="lc2">
+        <p><span id="yi">宜</span> {{should}}</p>
+        <p><span id="ji">忌</span> {{avoid}}</p>
+      </div>
+      <div class="rc2">
+        <p (click)='goLogin()'>登录以后我们对您的<br>"宜"和"忌"的推送会更<br>加精准哦!</p>
+      </div>
+    </div>    
   </div>
   <div class="better">  
     <div class="rep" (click)='goReport()'>  
@@ -89,7 +103,7 @@
     <div class="rep">  
       <ion-icon name='book'></ion-icon>  <span>好文推荐</span>
     </div>
-    <div  padding>
+    <div>
       <!-- 推荐 -->
       <div class="out">
         <ul>
