@@ -7,6 +7,7 @@ page-contact {
         height: 30px;
     }
     ion-content{
+        background: #ebebeb!important;
         .search{
             background: #fff;
             height:41px;
@@ -38,15 +39,17 @@ page-contact {
             padding-left: 0px;
             margin: 0px;
             li{
-                border: 1px solid rgb(204,204,204);
+                // border: 1px solid rgb(204,204,204);
+                background: rgb(245, 245, 245);
                 border-radius: 4px;
-                width:174px;
+                width:170px;
                 height:210px;
-                margin: 3px;
+                margin: 5px;
                 float: left;
                 .img img{
                     width: 174px;
-                    height: 115px;
+                    height: 120px;
+                    border-radius: 4px;
                 }
                 .word{
                     margin: 0 auto;
