@@ -3,7 +3,7 @@ import { NavController, Events } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
-
+import { Geolocation } from '@ionic-native/geolocation';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -30,9 +30,7 @@ export class HomePage {
   humidity;//湿度
   img;//图片
   city;//城市
-  location={
-    city: '北京',
-  };
+  
 
   //调理是否展开
   clicks={
@@ -59,12 +57,28 @@ export class HomePage {
       }
     })
   }
+
+  //定位函数
+  location={
+    latitude: '37.9851923994',
+    longitude: '114.4839363092'
+  };
+  getLocation(){
+    this.geolocation.getCurrentPosition().then(response=>{
+      console.log('location res:',response);
+      // this.location.latitude=response.coords.latitude+'';
+      // this.location.longitude=response.coords.longitude+'';
+    });
+  }
+
   constructor(public navCtrl: NavController, public http: HttpClient, 
     public weatherProvider: WeatherProvider,public events:Events,
-    public quicklogin:QuickloginProvider ,public zone: NgZone) {
+    public quicklogin:QuickloginProvider ,public zone: NgZone,
+    public geolocation:Geolocation ) {
     
   }
  
+
   goHomeTail(rid) {
     console.log('rid',rid);
     this.navCtrl.push("HometailPage", { 'rid': rid });
@@ -78,6 +92,7 @@ export class HomePage {
     //得到uid
     this.uid = localStorage.getItem("uid");
 
+    this.getLocation();
 
     // 得到宜忌内容
     this.http.post('/api/yiji',{'uid':this.uid}).subscribe(data => {
@@ -114,13 +129,11 @@ export class HomePage {
         this.user_info.forEach(e => {
           if (e.uid == this.uid) {
             this.city = (e.city?e.city:'北京市');
-            // console.log('city:',e.city);            
-            this.location.city=this.city;
-            console.log('this.location:',this.location);
+            // console.log('this.location:',this.location);
             //用天气服务获得当前城市的天气数据
-            this.weatherProvider.getWeather(this.location.city).subscribe(result => {
-              console.log('weather info:',result["showapi_res_body"]["cityInfo"]);
-              // console.log(result["showapi_res_body"]["f1"]);
+            this.weatherProvider.getWeather(this.location.latitude,this.location.longitude).subscribe(result => {
+              // console.log('weather info:',result["showapi_res_body"]["cityInfo"]);
+              console.log(result["showapi_res_body"]["f1"]);
               this.result = result["showapi_res_body"]["f1"];
               this.weather = this.result['day_weather'];
               this.temperature = this.result['day_air_temperature'];

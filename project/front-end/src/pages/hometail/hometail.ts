@@ -31,6 +31,8 @@ export class HometailPage {
     }
     return true;  // 空
   }
+
+  //底栏固定
   scrollHandler(event) {
     this.zone.run(()=>{
       this.top=(event.scrollTop+574)+'px';
