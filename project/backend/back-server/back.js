@@ -153,4 +153,24 @@ app.post('/api/edit/admin',(req,res)=>{
 //删除管理员
 post('delete from admins where mid=?','delete/admin');
 
+
+post('select * from user_info where uid=?','infodetail');
+//我的动态
+post('select * from dynamic where uid=?','infodynamic');
+post('delete from dynamic where did=?','delmd');
+//我的收藏
+post('select dynamic.* from dynamic,collection where dynamic.did = collection.did and collection.uid=?','infoliked');
+post("delete from collection where uid=? and did=?","delcd");
+
+post('select recommend.* from recommend,collectionr where recommend.rid = collectionr.rid and collectionr.uid=?','infoliker');
+post("delete from collectionr where uid=? and rid=?","delcr");
+
+//我的关注
+post('select * from user_info where uid in (select aid from attention where uid = ?)','infoattention');
+post("delete from attention where uid=? and aid=?","delat");
+
+//我的粉丝
+post('select * from user_info where uid in (select uid from attention where aid = ?)','infofans');
+post('delete from attention where uid=? and aid=?','delfa');
+
 app.listen(8080);
