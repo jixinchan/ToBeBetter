@@ -95,7 +95,7 @@ export class AdminsComponent implements OnInit {
     this.http.post('/api/delete/admin',{
       "qid":this.deletemid
     }).subscribe(data=>{
-        console.log("删除");
+        // console.log("删除");
     });
     window.location.reload();
   }

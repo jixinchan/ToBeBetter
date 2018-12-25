@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-infodetail',
@@ -47,13 +48,13 @@ export class InfodetailComponent implements OnInit {
 
   ngOnInit() {
     this.uid = this.router.snapshot.params['userid'];
-    console.log(this.uid);
+    // console.log(this.uid);
 
     this.http.post('/api/infodetail',{
       "uid":this.uid
     }).subscribe(data=>{
       this.infomation = data;
-      console.log(this.infomation);
+      // console.log(this.infomation);
       if(this.infomation!=undefined){
         this.infomation.forEach(e=>{
           this.userid = e.uid;
@@ -66,7 +67,7 @@ export class InfodetailComponent implements OnInit {
       "uid": this.uid
     }).subscribe(data=>{
       this.mydynamic=data;
-      console.log(this.mydynamic);
+      // console.log(this.mydynamic);
       if(this.mydynamic!=undefined){
         this.mydynamic.forEach(e=>{
           this.class.filter((e2,i)=>{
@@ -74,18 +75,18 @@ export class InfodetailComponent implements OnInit {
               this.dclass.push(e2);
             }
           });
+          e.time = moment(e.birth).format("YYYY-MM-DD HH:mm:ss");
         });
       }
     });  
   }
 
-  goSC(){
-
+  goDT(){
     this.http.post('/api/infoliked',{
       "uid": this.uid
     }).subscribe(data=>{
       this.cdynamic=data;
-      console.log(this.cdynamic);
+      // console.log(this.cdynamic);
       if(this.cdynamic!=undefined){
         this.cdynamic.forEach(e=>{
           this.class.filter((e2,i)=>{
@@ -93,14 +94,19 @@ export class InfodetailComponent implements OnInit {
               this.cdclass.push(e2);
             }
           });
+          e.time = moment(e.birth).format("YYYY-MM-DD HH:mm:ss");
         });
       }
     });
+    
+  }
+
+  goSC(){
     this.http.post('/api/infoliker',{
       "uid": this.uid
     }).subscribe(data=>{
       this.crecommod=data;
-      console.log(this.crecommod);
+      // console.log(this.crecommod);
       if(this.crecommod!=undefined){
         this.crecommod.forEach(e=>{
           this.body.filter((e2,i)=>{
@@ -122,7 +128,7 @@ export class InfodetailComponent implements OnInit {
     this.http.post('/api/infoattention',{
       "uid": this.uid
     }).subscribe(data=>{
-      console.log(data);
+      // console.log(data);
       this.attention=data;
       console.log(this.attention);
       if(this.attention!=undefined){
@@ -132,6 +138,7 @@ export class InfodetailComponent implements OnInit {
               this.abody.push(e2);
             }
           });
+          e.birth = moment(e.birth).format("YYYY-MM-DD");
         });
       }
     });
@@ -151,56 +158,76 @@ export class InfodetailComponent implements OnInit {
               this.fbody.push(e2);
             }
           });
+          e.birth = moment(e.birth).format("YYYY-MM-DD");
         });
       }
     });
   }
 
+
+  isdel(){
+    var a = confirm('确定要删除这一项吗？');
+    return a;
+  }
   //删除我的动态
   delMD(did){
-    this.http.post('/api/delmd',{
-      "did":did
-    }).subscribe((data)=>{
-      window.location.reload();
-    });
+    if(this.isdel()){
+      this.http.post('/api/delmd',{
+        "did":did
+      }).subscribe((data)=>{
+        window.location.reload();
+      });
+    }
   }
   
   //删除收藏动态
   delCD(did){
-    this.http.post('/api/delcd',{
-      "uid":this.uid,
-      "did":did
-    }).subscribe((data)=>{   
-      window.location.reload();
-    })
+    if(this.isdel()){
+      this.http.post('/api/delcd',{
+        "uid":this.uid,
+        "did":did
+      }).subscribe((data)=>{   
+        window.location.reload();
+      })
+    }
   }
   //删除收藏推文
   delCR(rid){
-    this.http.post('/api/delcr',{
-      "uid":this.uid,
-      "rid":rid
-    }).subscribe((data)=>{
-      window.location.reload();
-    })
+    if(this.isdel()){
+      this.http.post('/api/delcr',{
+        "uid":this.uid,
+        "rid":rid
+      }).subscribe((data)=>{
+        window.location.reload();
+      })
+    }
   }
 
   //删除关注
   delAT(aid){
-    this.http.post('/api/delat',{
-      "uid":this.uid,
-      "aid":aid
-    }).subscribe((data)=>{
-      window.location.reload();
-    })
+    if(this.isdel()){
+      this.http.post('/api/delat',{
+        "uid":this.uid,
+        "aid":aid
+      }).subscribe((data)=>{
+        window.location.reload();
+      })
+    }
   }
 
   //删除粉丝
   delFA(auid){
-    this.http.post('/api/delat',{
-      "uid":auid,
-      "aid":this.uid
-    }).subscribe((data)=>{
-      window.location.reload();
-    })
+    if(this.isdel()){
+      this.http.post('/api/delat',{
+        "uid":auid,
+        "aid":this.uid
+      }).subscribe((data)=>{
+        window.location.reload();
+      })
+    }
   }
+
+
+
+
 }

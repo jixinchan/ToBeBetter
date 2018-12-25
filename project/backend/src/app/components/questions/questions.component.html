@@ -1,143 +1,136 @@
-<div id="wrap">
-  <!-- 面包屑 -->
-  <!-- <div class="bread">
-    <img src="../../../assets/imgs/home.svg">
-    <span>当前位置：系统管理>>体质检测题库</span>
-  </div> -->
-  <ol class="breadcrumb">
-    <li><a><span class="glyphicon glyphicon-home"></span>当前位置</a></li>
-    <li><a>系统管理</a></li>
-    <li class="active"><a>体质检测题库</a></li>
-  </ol>
-  <!-- 标题 -->
-  <h3 class="title">体质检测题库</h3>
-<!-- 导航 -->
-<div classs="nav_body">
-    <ul class="nav nav-pills">
-        <li role="presentation" class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            体质分类<span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li (click)="goTotalbody()"><a>全部体质</a></li>
-            <li (click)="goSomatoplasm(1)"><a>平和质</a></li>
-            <li (click)="goSomatoplasm(2)"><a>气虚质</a></li>
-            <li (click)="goSomatoplasm(3)"><a>阳虚质</a></li>
-            <li (click)="goSomatoplasm(4)"><a>阴虚质</a></li>
-            <li (click)="goSomatoplasm(5)"><a>痰湿质</a></li>
-            <li (click)="goSomatoplasm(6)"><a>湿热质</a></li>
-            <li (click)="goSomatoplasm(7)"><a>血瘀质</a></li>
-            <li (click)="goSomatoplasm(8)"><a>气郁质</a></li>
-            <li (click)="goSomatoplasm(9)"><a>特禀质</a></li>
-          </ul>
-        </li>
-        <button class="btn btn-default pull-right" type="button" (click)="openModal2(template2)">增加题目</button>
-      </ul>
-</div>
-  <!-- 表格 -->
-  <!-- table-striped -->
-  <table cellspacing="1" class="table-hover table-responsive" *ngFor="let item of totalbody;let i=index">
-    <tr>
-      <td colspan="4" class="bodyname">{{body[choicebid[i]-1]}}</td>
-    </tr>
-    <tr>
-        <td class="id">ID</td>
-        <td colspan="3" class="question">题目</td>
-    </tr>
-    <tr *ngFor="let item of totalbody[i];let j=index">
-        <td>{{totalbody[i][j].qid}}</td>
-        <td colspan="2" class="question">{{totalbody[i][j].question}}</td>
-        <td>
-          <div>
-              <button class="edit" (click)="openModal(template1,totalbody[i][j].qid)">编辑</button>
-              <button class="delete" (click)="goDelete(template3,totalbody[i][j].qid)">删除</button>
-          </div>
-        </td>       
-    </tr>
-  </table>
-</div>
-<ng-template #template1>
-    <div class="modal-header">
-      <h4 class="modal-title  text-center">修改题目</h4>
-    </div>
-    <div class="modal-body">
-        <div class="text">
-            <span class="text1">ID:</span>
-            <span class="text2">{{editid}}</span>
-        </div>
-        <div class="text">
-          <span>题目修改为:</span>
-          
-          <input type="text" class="edit_question" [(ngModel)]="editquestion" value="editid"/>
-        </div>
-      
-    </div>
-    <div class="modal-body text-center">
-        <button type="button" class="btn btn-default" (click)="confirm()" >保存</button>
-        <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
+<div class="container">
+        <ol class="breadcrumb">
+            <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+            <li><span>系统管理</span></li>
+            <li class="active"><span>体质检测题库</span></li>
+          </ol>
+        <!-- 标题 -->
+        <h3 class="title">体质检测题库</h3>
+      <!-- 导航 -->
+      <div classs="nav_body">
+          <ul class="nav nav-pills">
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  体质分类<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li (click)="goTotalbody()"><a>全部体质</a></li>
+                  <li (click)="goSomatoplasm(1)"><a>平和质</a></li>
+                  <li (click)="goSomatoplasm(2)"><a>气虚质</a></li>
+                  <li (click)="goSomatoplasm(3)"><a>阳虚质</a></li>
+                  <li (click)="goSomatoplasm(4)"><a>阴虚质</a></li>
+                  <li (click)="goSomatoplasm(5)"><a>痰湿质</a></li>
+                  <li (click)="goSomatoplasm(6)"><a>湿热质</a></li>
+                  <li (click)="goSomatoplasm(7)"><a>血瘀质</a></li>
+                  <li (click)="goSomatoplasm(8)"><a>气郁质</a></li>
+                  <li (click)="goSomatoplasm(9)"><a>特禀质</a></li>
+                </ul>
+              </li>
+              <button class="btn btn-success pull-right" type="button" (click)="openModal2(template2)">增加题目</button>
+            </ul>
       </div>
-  </ng-template>
-<!-- 删除的模态窗口 -->
-<ng-template #template3>
-    <div class="modal-body text-center">
-        <h4 class="modal-title  text-center">请问您确定要删除此题目吗?</h4>
-        <button type="button button1" class="btn btn-default" (click)="goYesdelete()" >删除</button>
-        <button type="button button2" class="btn btn-primary" (click)="decline()" >取消</button>
-    </div>
-</ng-template>
-<!-- 增加题目的模态窗口 -->
-<ng-template #template2>
-    <div class="modal-header">
-        <h4 class="modal-title  text-center">增加题目</h4>
-    </div>
-    <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label for="recipient-name" class="control-label">所属体质:</label>
-                <select class="form-control" (change)="selectOnchang($event.target.value)">
-                        <option></option>
-                        <option value="1">平和质</option>
-                        <option value="2">气虚质</option>
-                        <option value="3">阳虚质</option>
-                        <option value="4">阴虚质</option>
-                        <option value="5">痰湿质</option>
-                        <option value="6">湿热质</option>
-                        <option value="7">血瘀质</option>
-                        <option value="8">气郁质</option>
-                        <option value="9">特禀质</option>
-                </select>
-            </div> 
-            <div class="form-group">
-                <label for="message-text" class="control-label" >ID</label>
-                <input type="text" class="form-control" [(ngModel)]="addqid" value="" name="xxx">
-            </div>
-            <div class="form-group">
-                <label for="message-text" class="control-label">题目内容：</label>
-                <input type="text" class="form-control" [(ngModel)]="addquestion"  name="xxx">
-            </div>
-        </form>
-    </div>
-    <div class="modal-body text-center">
-        <button type="button" class="btn btn-default" (click)="goAddquestion()" >保存</button>
-        <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
-    </div>
-</ng-template> 
-
-
-
-              <!-- <form class="navbar-right navbar-form nav-search mr-md-3" action="">
-            <div class="input-group">
-                <input type="text" placeholder="Search" class="form-control">
-                <div class="input-group-append">
-                    <span class="input-group-text ">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </span>
+        <!-- 表格 -->
+        <!-- table-striped -->
+        <table cellspacing="1" class="table-hover table-responsive" *ngFor="let item of totalbody;let i=index">
+          <tr class="header">
+            <td colspan="4" class="bodyname">{{body[choicebid[i]-1]}}</td>
+          </tr>
+          <tr class="header2">
+              <td class="id">ID</td>
+              <td colspan="3" class="question">题目</td>
+          </tr>
+          <tr *ngFor="let item of totalbody[i];let j=index">
+              <td>{{totalbody[i][j].qid}}</td>
+              <td colspan="2" class="question">{{totalbody[i][j].question}}</td>
+              <td>
+                <div>
+                    <!-- <button class="edit" (click)="openModal(template1,totalbody[i][j].qid)">编辑</button>
+                    <button class="delete" (click)="goDelete(template3,totalbody[i][j].qid)">删除</button> -->                    
+                    <p (click)="openModal(template1,totalbody[i][j].qid)" class="btn editbtn">编辑</p>              
+                    <p (click)="goDelete(template3,totalbody[i][j].qid)" class="btn delbtn">删除</p>
                 </div>
+              </td>       
+          </tr>
+        </table>
+    <!-- </div> -->
+      <ng-template #template1>
+          <div class="modal-header">
+            <h4 class="modal-title  text-center">修改题目</h4>
+          </div>
+          <div class="modal-body">
+              <div class="text">
+                  <span class="text1">ID:</span>
+                  <span class="text2">{{editid}}</span>
+              </div>
+              <div class="text">
+                <span>题目修改为:</span>
+                
+                <input type="text" class="edit_question" [(ngModel)]="editquestion" value="editid"/>
+              </div>
+            
+          </div>
+          <div class="modal-body text-center">
+              <button type="button" class="btn btn-default" (click)="confirm()" >保存</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
             </div>
-        </form> -->
-  
-
-
-
-
-
+        </ng-template>
+      <!-- 删除的模态窗口 -->
+      <ng-template #template3>
+          <div class="modal-body text-center">
+              <h4 class="modal-title  text-center">请问您确定要删除此题目吗?</h4>
+              <button type="button button1" class="btn btn-default" (click)="goYesdelete()" >删除</button>
+              <button type="button button2" class="btn btn-primary" (click)="decline()" >取消</button>
+          </div>
+      </ng-template>
+      <!-- 增加题目的模态窗口 -->
+      <ng-template #template2>
+          <div class="modal-header">
+              <h4 class="modal-title  text-center">增加题目</h4>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <div class="form-group">
+                      <label for="recipient-name" class="control-label">所属体质:</label>
+                      <select class="form-control" (change)="selectOnchang($event.target.value)">
+                              <option></option>
+                              <option value="1">平和质</option>
+                              <option value="2">气虚质</option>
+                              <option value="3">阳虚质</option>
+                              <option value="4">阴虚质</option>
+                              <option value="5">痰湿质</option>
+                              <option value="6">湿热质</option>
+                              <option value="7">血瘀质</option>
+                              <option value="8">气郁质</option>
+                              <option value="9">特禀质</option>
+                      </select>
+                  </div> 
+                  <div class="form-group">
+                      <label for="message-text" class="control-label" >ID</label>
+                      <input type="text" class="form-control" [(ngModel)]="addqid" value="" name="xxx">
+                  </div>
+                  <div class="form-group">
+                      <label for="message-text" class="control-label">题目内容：</label>
+                      <input type="text" class="form-control" [(ngModel)]="addquestion"  name="xxx">
+                  </div>
+              </form>
+          </div>
+          <div class="modal-body text-center">
+              <button type="button" class="btn btn-default" (click)="goAddquestion()" >保存</button>
+              <button type="button" class="btn btn-primary" (click)="decline()" >取消</button>
+          </div>
+      </ng-template> 
+      
+      
+      
+                    <!-- <form class="navbar-right navbar-form nav-search mr-md-3" action="">
+                  <div class="input-group">
+                      <input type="text" placeholder="Search" class="form-control">
+                      <div class="input-group-append">
+                          <span class="input-group-text ">
+                              <span class="glyphicon glyphicon-search"></span>
+                          </span>
+                      </div>
+                  </div>
+              </form> -->
+      
+</div>

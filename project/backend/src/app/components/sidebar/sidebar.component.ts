@@ -13,7 +13,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     document.querySelectorAll('.systemlist')[0].className += ' hide';
     document.querySelectorAll('.userlist')[0].className += ' hide';
-    document.querySelectorAll('.userdetail')[0].className += ' hide';
   }
 
   show(name){
@@ -31,8 +30,8 @@ export class SidebarComponent implements OnInit {
   }
 
   choose(num){
-    for(var i=1;i<9;i++){
-      console.log(i);
+    for(var i=1;i<8;i++){
+      // console.log(i);
       if(num==i){
         document.querySelectorAll('.hh'+i)[0].className += ' choose';
       }

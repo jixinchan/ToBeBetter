@@ -1,0 +1,22 @@
+table{   
+    width: 100%;
+    table-layout:fixed;
+    text-align: center;
+}
+tr:nth-of-type(odd){
+    background-color: rgba(200, 243, 174, 0.671);
+}
+tr:nth-of-type(even){
+    background-color: #eee;
+}
+td,th{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    /* border-bottom:1px solid gainsboro; */
+    border-right:1px solid gainsboro;
+}
+th{
+    background-color: #ffeb3b;
+    text-align: center;
+}

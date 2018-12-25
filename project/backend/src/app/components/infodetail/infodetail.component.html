@@ -1,11 +1,12 @@
-<div class="wrap">
-  <!-- 面包屑 -->
-  <div class="bread">
-    <img src="../../../assets/imgs/home.svg">
-    <span>当前位置：用户管理>>用户详细信息</span>
-  </div>
+<div class="container">
+  <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+      <li><span>用户管理</span></li>
+      <li><span style="color: blue;cursor: pointer;" [routerLink]="['/information']">个人信息</span></li>
+      <li class="active"><span>用户详细信息</span></li>
+    </ol>
   <!-- 信息 -->
-  <div class="info">
+  <div class="title">
     <h3>
       用户ID：{{userid}}
       <span>
@@ -14,25 +15,26 @@
       </span>
     </h3>
   </div>
-  <ul class="navlist">
-    <li (click)="isClick(0)" [class.first]="isActive==0">动态</li>
-    <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goSC()">收藏</li>
-    <li (click)="isClick(2)" [class.first]="isActive==2" (click)="goGZ()">关注</li>
-    <li (click)="isClick(3)" [class.first]="isActive==3" (click)="goFS()">粉丝</li>
+  <ul class="list">
+    <li (click)="isClick(0)" [class.first]="isActive==0">发布动态</li>
+    <li (click)="isClick(1)" [class.first]="isActive==1" (click)="goSC()">收藏文章</li>
+    <li (click)="isClick(2)" [class.first]="isActive==2" (click)="goDT()">收藏动态</li>
+    <li (click)="isClick(3)" [class.first]="isActive==3" (click)="goGZ()">关注</li>
+    <li (click)="isClick(4)" [class.first]="isActive==4" (click)="goFS()">粉丝</li>
   </ul>
   <div [ngSwitch]="isActive" class="detail">
     <!-- 动态 -->
     <div *ngSwitchCase="0" class="out">
       <table>
-        <tr>
-          <td class="id">ID</td>
-          <td class="time">时间</td>
-          <td class="title">题目</td>
-          <td class="content">内容</td>
-          <td class="img">图片</td>
-          <td class="class">类别</td>
-          <td class="option">操作</td>
-        </tr>
+        <thead>
+          <th class="id">ID</th>
+          <th class="time">发布时间</th>
+          <th class="timu">标题</th>
+          <th class="content">内容</th>
+          <th class="img">图片</th>
+          <th class="class">类别</th>
+          <th class="option">操作</th>
+        </thead>
         <tr *ngFor="let mydy of mydynamic;let i=index">
           <td>{{mydy.did}}</td>
           <td>{{mydy.time}}</td>
@@ -42,77 +44,85 @@
           <td>{{dclass[i]}}</td>
           <td>
             <div>
-              <button class="delete" (click)="delMD(mydy.did)">删除</button>
+              <!-- <button class="delete" (click)="delMD(mydy.did)">删除</button> -->
+              <p (click)="delMD(mydy.did)" class="btn delbtn">删除</p>
             </div>
           </td>
         </tr>
       </table>
     </div>
-    <!-- 收藏 -->
+    <!-- 收藏文章 -->
     <div *ngSwitchCase="1" class="out">
-      <table>
-        <tr>
-          <td class="id">ID</td>
-          <td class="time">时间</td>
-          <td class="title">题目</td>
-          <td class="content">内容</td>
-          <td class="img">图片</td>
-          <td class="class">类别</td>
-          <td class="option">操作</td>
-        </tr>
-        <tr *ngFor="let cdyna of cdynamic;let i=index">
-          <td>{{cdyna.did}}</td>
-          <td>{{cdyna.time}}</td>
-          <td>{{cdyna.title}}</td>
-          <td>{{cdyna.content}}</td>
-          <td>{{cdyna.imgs}}</td>
-          <td>{{cdclass[i]}}</td>
-          <td>
-            <div>
-              <button class="delete" (click)="delCD(cdyna.did)">删除</button>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <table>
-        <tr>
-          <td class="id">ID</td>
-          <td class="bid">体质</td>
-          <td class="title">题目</td>
-          <td class="content">内容</td>
-          <td class="img">图片</td>
-          <td class="class">类别</td>
-          <td class="option">操作</td>
-        </tr>
-        <tr *ngFor="let creco of crecommod;let i=index">
-          <td>{{creco.rid}}</td>
-          <td>{{rbody[i]}}</td>
-          <td>{{creco.title}}</td>
-          <td>{{creco.content}}</td>
-          <td>{{creco.imgs}}</td>
-          <td>{{rclass[i]}}</td>
-          <td>
-            <div>
-              <button class="delete" (click)="delCR(creco.rid)">删除</button>
-            </div>
-          </td>
-        </tr>
-      </table>
+        <table>
+            <thead>
+              <th class="id">ID</th>
+              <th class="bid">体质</th>
+              <th class="timu">标题</th>
+              <th class="content">内容</th>
+              <th class="img">图片</th>
+              <th class="class">类别</th>
+              <th class="option">操作</th>
+            </thead>
+            <tr *ngFor="let creco of crecommod;let i=index">
+              <td>{{creco.rid}}</td>
+              <td>{{rbody[i]}}</td>
+              <td>{{creco.title}}</td>
+              <td>{{creco.content}}</td>
+              <td>{{creco.imgs}}</td>
+              <td>{{rclass[i]}}</td>
+              <td>
+                <div>
+                  <!-- <button class="delete" (click)="delCR(creco.rid)">删除</button> -->
+                  <p (click)="delCR(creco.rid)" class="btn delbtn">删除</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+    </div>
+    <!-- 收藏动态 -->
+    <div *ngSwitchCase="2" class="out">
+        <table>
+            <thead>
+              <th class="id">ID</th>
+              <th class="faid">发布人ID</th>
+              <th class="time">发布时间</th>
+              <th class="timu">标题</th>
+              <th class="content">内容</th>
+              <th class="img">图片</th>
+              <th class="class">类别</th>
+              <th class="option">操作</th>
+            </thead>
+            <tr *ngFor="let cdyna of cdynamic;let i=index">
+              <td>{{cdyna.did}}</td>
+              <td>{{cdyna.uid}}</td>
+              <td>{{cdyna.time}}</td>
+              <td>{{cdyna.title}}</td>
+              <td>{{cdyna.content}}</td>
+              <td>{{cdyna.imgs}}</td>
+              <td>{{cdclass[i]}}</td>
+              <td>
+                <div>
+                  <!-- <button class="delete" (click)="delCD(cdyna.did)">删除</button> -->
+                  <p (click)="delCD(cdyna.did)" class="btn delbtn">删除</p>
+                </div>
+              </td>
+            </tr>
+          </table>
     </div>
     <!-- 关注 -->
-    <div *ngSwitchCase="2" class="out">
+    <div *ngSwitchCase="3" class="out">
       <table>
-        <tr>
-          <td class="id">ID</td>
-          <td class="sex">性别</td>
-          <td class="img">头像</td>
-          <td class="nickname">昵称</td>
-          <td class="signature">个签</td>
-          <td class="city">城市</td>
-          <td class="time">生日</td>
-          <td class="bid">体质</td>
-          <td class="option">操作</td>
-        </tr>
+        <thead>
+          <th class="id">ID</th>
+          <th class="sex">性别</th>
+          <th class="img">头像</th>
+          <th class="nickname">昵称</th>
+          <th class="signature">个签</th>
+          <th class="city">城市</th>
+          <th class="time">生日</th>
+          <th class="bid">体质</th>
+          <th class="option">操作</th>
+        </thead>
         <tr *ngFor="let atten of attention;let i=index">
             <td>{{atten.uid}}</td>
             <td>{{atten.sex}}</td>
@@ -124,26 +134,27 @@
             <td>{{abody[i]}}</td>
             <td>
               <div>
-                <button class="delete" (click)="delAT(atten.uid)">删除</button>
+                <!-- <button class="delete" (click)="delAT(atten.uid)">删除</button> -->
+                <p (click)="delAT(atten.uid)" class="btn delbtn">删除</p>
               </div>
             </td>
           </tr>
       </table>
     </div>
     <!-- 粉丝 -->
-    <div *ngSwitchCase="3" class="out">
+    <div *ngSwitchCase="4" class="out">
       <table>
-        <tr>
-          <td class="id">ID</td>
-          <td class="sex">性别</td>
-          <td class="img">头像</td>
-          <td class="nickname">昵称</td>
-          <td class="signature">个签</td>
-          <td class="city">城市</td>
-          <td class="time">生日</td>
-          <td class="bid">体质</td>
-          <td class="option">操作</td>
-        </tr>
+        <thead>
+          <th class="id">ID</th>
+          <th class="sex">性别</th>
+          <th class="img">头像</th>
+          <th class="nickname">昵称</th>
+          <th class="signature">个签</th>
+          <th class="city">城市</th>
+          <th class="time">生日</th>
+          <th class="bid">体质</th>
+          <th class="option">操作</th>
+        </thead>
         <tr *ngFor="let fan of fans;let i=index">
             <td>{{fan.uid}}</td>
             <td>{{fan.sex}}</td>
@@ -155,7 +166,8 @@
             <td>{{fbody[i]}}</td>
             <td>
               <div>
-                <button class="delete" (click)="delFA(fan.uid)">删除</button>
+                <!-- <button class="delete" (click)="delFA(fan.uid)">删除</button> -->
+                <p (click)="delFA(fan.uid)" class="btn delbtn">删除</p>
               </div>
             </td>
           </tr>

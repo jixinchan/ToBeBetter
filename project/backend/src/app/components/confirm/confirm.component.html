@@ -1,9 +1,16 @@
-<div id="wrap">
+<div class="container">
   <!-- 面包屑 -->
-  <div class="bread">
+  <!-- <div class="bread">
     <img src="../../../assets/imgs/home.svg">
     <span>当前位置：系统管理>><a [routerLink]="['/recommend']">系统推荐</a>>>推荐编辑</span>
-  </div>
+  </div> -->
+
+  <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+      <li><span>系统管理</span></li>
+      <li><span style="color: blue;cursor: pointer;" [routerLink]="['/recommend']">系统推荐</span></li>
+      <li class="active"><span>推荐编辑</span></li>
+    </ol>
   <!-- 标题 -->
   <h3 class="title">系统推荐管理</h3>
   <!-- 修改 -->
@@ -38,6 +45,10 @@
       <textarea [(ngModel)]="content"></textarea>
     </p>
   </div>
-  <button class="change" (click)="change()">修改</button>
-  <button class="cancel" (click)="cancel()">取消</button>
+  <div class="buttons">
+    <!-- <button class="change" (click)="change()">修改</button>
+    <button class="cancel" (click)="cancel()">取消</button> -->
+    <p  (click)="change()" class="btn editbtn change">修改</p>              
+    <p  (click)="cancel()" class="btn delbtn cancel">取消</p>
+  </div>
 </div>

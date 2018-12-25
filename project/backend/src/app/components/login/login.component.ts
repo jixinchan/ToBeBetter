@@ -20,16 +20,22 @@ export class LoginComponent implements OnInit {
     
   }
 
-  login(){
-    this.http.post('/api/login',{
-      "username":this.usr
-    }).subscribe(data=>{
+  login() {
+    this.http.post('/api/login', {
+      "username": this.usr
+    }).subscribe(data => {
       // console.log('data:',data);
-      if(!data[0]){this.exist=false;this.wrong=true;}
-      else if(data[0].password!=this.pwd){this.wrong=false;this.exist=true;}
-      else{this.wrong=true;this.exist=true;
-        localStorage.setItem('isLogin','true');
-        localStorage.setItem('mid',data[0].mid);
+      if (!data[0]) {
+        this.exist = false; 
+        this.wrong = true;
+      }
+      else if (data[0].password != this.pwd) {
+        this.wrong = false; this.exist = true;
+      }
+      else {
+      this.wrong = true; this.exist = true;
+        localStorage.setItem('isLogin', 'true');
+        localStorage.setItem('mid', data[0].mid);
         this.route.navigateByUrl('/home');
       }
     });

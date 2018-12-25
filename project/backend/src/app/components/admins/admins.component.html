@@ -1,17 +1,19 @@
-<div id="wrap">
+<div class="container">
   <ol class="breadcrumb">
-    <li><a><span class="glyphicon glyphicon-home"></span>当前位置</a></li>
-    <li class="active"><a>管理员管理</a></li>
+    <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+    <li class="active"><span>管理员管理</span></li>
   </ol>
   <h3 class="title">管理员管理</h3>
-  <button class="btn btn-default pull-right" type="button" (click)="openModal2(template2)">增加管理员</button>
+  <div class="addbtn">
+    <button class="btn btn-success pull-right add" (click)="openModal2(template2)">增加管理员</button>
+  </div>
   <!-- 表格信息 -->
-  <table cellspacing="1"class=" table-hover table-responsive">
-    <thead class="table_title">
-      <td>管理员ID</td>
-      <td>管理员名称</td>
-      <td>拥有角色</td>
-      <td>操作</td>
+  <table>
+    <thead>
+      <th>管理员ID</th>
+      <th>管理员名称</th>
+      <th>拥有角色</th>
+      <th>操作</th>
     </thead>
     <tr *ngFor="let info of manager;">
       <td>{{info.mid}}</td>
@@ -19,8 +21,10 @@
       <td>{{info.roles}}</td>
       <td>
           <div>
-              <button class="edit " (click)="openModal(template1,info.mid)">编辑</button>
-              <button class="delete" (click)="goDelete(template3,info.mid)">删除</button>
+              <!-- <button class="edit " (click)="openModal(template1,info.mid)">编辑</button>
+              <button class="delete" (click)="goDelete(template3,info.mid)">删除</button> -->
+              <p (click)="openModal(template1,info.mid)" class="btn editbtn">编辑</p>              
+              <p (click)="goDelete(template3,info.mid)" class="btn delbtn">删除</p>
           </div>
       </td>
     </tr>
@@ -29,7 +33,7 @@
 <!-- 编辑的模态窗口 -->
 <ng-template #template1>
   <div class="modal-header">
-    <h4 class="modal-title  text-center">修改管理员信息</h4>
+    <h4 class="modal-title text-center">修改管理员信息</h4>
   </div>
   <div class="modal-body">
       <div class="text">

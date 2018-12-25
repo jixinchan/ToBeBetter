@@ -1,48 +1,19 @@
-#wrap{
-    position: absolute;
-    left: 15%;
-    width: 82%;
-    height:auto;
-    margin: 10px;
-}
-.bread img{
-   width: 24px;
-   height: 24px;   
-   display: block;
-}
-.bread span{
-    display: block;
-    padding-top: 2px;
-    color: #505050;
-}
-.bread img,.bread span{
-    float: left;
-    margin-bottom: 10px;
-}
-.title{
-    clear: both;
-    color: #23a257;
-    margin-bottom: 10px;
-}
-.add{
-    margin-bottom: 10px;
-    margin-right: 10px;
-}
 table{   
     width: 100%;
-    table-layout:fixed;/* 只有定义了表格的布局算法为fixed，下面td的定义才能起作用。 */
-    color:#505050;
+    table-layout:fixed;
     text-align: center;
 }
-tr:nth-child(1){
-    background: #ffeb3b;
-    font-weight: bold;
+tr:nth-of-type(odd){
+    background-color: rgba(200, 243, 174, 0.671);
 }
-tr:nth-child(2n){
-    background: #a9fcb2;
+tr:nth-of-type(even){
+    background-color: #eee;
+}
+th{
+    text-align: center;
+    background: #ffeb3b;
 }
 td{
-    padding: 10px;
     white-space:nowrap;/* 不换行 */
     overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
     text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
@@ -54,43 +25,53 @@ td{
     width: 15%;
 }
 .content{
-    width: 35%;
+    width: 30%;
 }
 .rimg{
     width: 13%;
 }
-button{
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 5px 8px 5px 8px;
-    background: #23a257;
-}
-.delete,.new{
-    background: #e64340;
-}
-.edit{
-    margin-left: -5px;
-}
-.order{
-    background: rgb(76, 206, 206);
-    margin-right: 10px;
-}
+
 select{
     border-radius: 3px;
     padding: 5px;
     color: #505050;
 }
 .p{
-    float: right;
+    /* float: right; */
     color: #23a257;
 }
 .p2{
-    float: right;
+    /* float: right; */
     margin-top: 4px;
     margin-left: 40px;
 }
 .p2 span{
     color: #e64340;
     font-weight: bold;
+}
+
+.box{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.buttons{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* border: #23a257 1px solid; */
+}
+.searches{
+    /* width: 70%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* border: #23a257 1px solid; */
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }

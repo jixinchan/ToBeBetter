@@ -1,46 +1,55 @@
-<div id="wrap">
-  <!-- 面包屑 -->
-  <div class="bread">
-    <img src="../../../assets/imgs/home.svg">
-    <span>当前位置：系统管理>>系统推荐</span>
-  </div>
-  <!-- 标题 -->
-  <h3 class="title">系统推荐管理</h3>
-  <button class="order" (click)="order()">排序</button>
-  <button class="add" [routerLink]="['/recommend/confirm',0]">添加</button>
-  <button class="new" (click)="fresh()">刷新</button>
-  <p class="p2">共<span>{{num}}</span>条结果</p>
-  <p class="p">根据体质查找推文：
-    <select (change)="get($event.target.value)">
-      <option *ngFor="let item of body" value="{{item}}">
-        {{item}}
-      </option>
-    </select>
-  </p>  
-  <!-- 表格 -->
-  <table cellspacing="1">
-    <tr>
-      <td class="rid">推文ID</td>
-      <td class="bodyName">体质名称</td>
-      <td class="rtitle">标题</td>
-      <td class="content">内容</td>
-      <td class="rimg">图片</td>
-      <td class="rclass">类别</td>
-      <td class="option">操作</td>
-    </tr>
-    <tr *ngFor="let item of rid;let i=index">
-        <td>{{item}}</td>
-        <td>{{bodyName[i]}}</td>
-        <td>{{title[i]}}</td>
-        <td>{{content[i]}}</td>
-        <td>{{img[i]}}</td>
-        <td>{{className[i]}}</td>
-        <td>
-          <div>
-              <button class="edit" [routerLink]="['/recommend/confirm',item]">编辑</button>
-              <button class="delete" (click)="del(item)">删除</button>
-          </div>
-        </td>       
-    </tr>
-  </table>
+<div class="container">
+    <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+      <li><span>系统管理</span></li>
+      <li class="active"><span>系统推荐</span></li>
+    </ol>
+    <!-- 标题 -->
+    <h3 class="title">系统推荐管理</h3>
+
+    <div class="box">
+      <div class="searches">
+        <p class="p">根据体质查找推文：
+          <select (change)="get($event.target.value)">
+            <option *ngFor="let item of body" value="{{item}}">
+              {{item}}
+            </option>
+          </select>
+        </p>        
+        <p class="p2">共<span>{{num}}</span>条结果</p>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-primary order" (click)="order()">排序</button>
+        <button class="btn btn-warning add" [routerLink]="['/recommend/confirm',0]">添加</button>
+        <button class="btn btn-success new" (click)="fresh()">刷新</button>
+      </div>
+    </div>
+    <!-- 表格 -->
+    <table>
+      <thead>
+        <th class="rid">推文ID</th>
+        <th class="bodyName">体质名称</th>
+        <th class="rtitle">标题</th>
+        <th class="content">内容</th>
+        <th class="rimg">图片</th>
+        <th class="rclass">类别</th>
+        <th class="option">操作</th>
+      </thead>
+      <tr *ngFor="let item of rid;let i=index">
+          <td>{{item}}</td>
+          <td>{{bodyName[i]}}</td>
+          <td>{{title[i]}}</td>
+          <td>{{content[i]}}</td>
+          <td>{{img[i]}}</td>
+          <td>{{className[i]}}</td>
+          <td>
+            <div class="btns">
+                <!-- <button class="edit" [routerLink]="['/recommend/confirm',item]">编辑</button>
+                <button class="delete" (click)="del(item)">删除</button> -->                                    
+                <p  [routerLink]="['/recommend/confirm',item]" class="btn editbtn">编辑</p>              
+                <p  (click)="del(item)" class="btn delbtn">删除</p>
+            </div>
+          </td>       
+      </tr>
+    </table>
 </div>

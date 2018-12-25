@@ -1,17 +1,23 @@
 <div class="container">
-    <div class="title">
-      <p>用户信息管理</p>
-    </div>
-    <form role="form" class="form-horizontal">
-      <div class="form-group col-sm-11">
-        <p class="col-sm-2 control-label">搜索用户昵称：</p>
-        <input type="text" id="text" name="nickname" class="form-control col-sm-8" placeholder="输入昵称关键字" [(ngModel)]="key">
-        <button class="btn btn-default" (click)="search()">搜索</button>
+    <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+      <li><span>用户信息管理</span></li>
+      <li class="active"><span>个人信息</span></li>
+    </ol>
+    <h3 class="title">用户信息管理</h3>
+    
+    <!-- <form role="form" class="form-horizontal"> -->
+      <div class="box">
+        <div class="leftbox">
+          <p>搜索用户昵称：</p>
+          <input type="text" id="text" name="nickname" class="form-control" placeholder="输入昵称关键字" [(ngModel)]="key">
+          <button class="btn btn-default" (click)="search()">搜索</button>
+        </div>
+        <div class="rightbox">
+          <button class="btn btn-success" (click)="reload()">刷新</button>
+        </div>
       </div>
-      <div class="col-sm-1">
-        <button class="btn btn-success" (click)="reload()">刷新</button>
-      </div>
-    </form>
+    <!-- </form> -->
     <div class="content">
       <table>
         <thead>
@@ -37,8 +43,7 @@
             <td>{{info.city}}</td>
             <td>{{info.bid}}</td>
             <td>
-              <p (click)="isdel(info.uid)" class="btn">删除</p>
-              <!-- <button class="del" (click)="delthis(info.uid)">删除</button> -->
+              <p (click)="isdel(info.uid)" class="btn delbtn">删除</p>
             </td>
             <td>
               <a [routerLink]="['/infodetail',info.uid]">详细信息</a>
@@ -57,8 +62,7 @@
             <td>{{res.city}}</td>
             <td>{{res.bid}}</td>
             <td>
-              <p (click)="isdel(res.uid)" class="btn">删除</p>
-              <!-- <button class="del" (click)="delthis(res.uid)">删除</button> -->
+              <p (click)="isdel(res.uid)" class="btn delbtn">删除</p>
             </td>
             <td>
               <a [routerLink]="['/infodetail',res.uid]">详细信息</a>

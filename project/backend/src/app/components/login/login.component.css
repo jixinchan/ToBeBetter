@@ -1,8 +1,12 @@
-.wrap{
+p{
+    margin: 0;
+    padding: 0;
+}
+.log{
     width: 100%;
-    height: 680px;
-    background-image: url(../../../assets/imgs/bg-login.jpg);
-    background-size: 100% 100%;
+    height: 626px;
+    background-image: url(../../../assets/imgs/background.jpg);
+    background-size: cover;
     background-repeat: no-repeat; 
     position: absolute;
     top: 0;
@@ -17,26 +21,67 @@
     left: 0;
 }
 .window{
-    width: 300px;
-    height: 280px;
-    margin-top: 180px;
-    margin-left: 800px;
+    width: 30%;
+    height: 400px;
+    margin-top: 130px;
+    margin-left: 63%;
+    /* border: black 1px solid; */
 }
+.up{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.system{
+    line-height: 70px;
+    margin: 0;
+    color: #23a257;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+}
+.login{
+    width: 100%;
+    float: left;
+    margin-left: 13%;
+    /* border: black 1px solid; */
+}
+input{
+    width: 250px;
+    height: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+.tips{
+    float: left;
+    color: red;
+    line-height: 80px;
+    margin-left: 10px;
+}
+button{
+    margin-left: 31%;
+    margin-top: 20px;
+}
+
+/* 
 .logo{
     width: 50px;
     height: 50px;
     margin-left: 20px;
     opacity: 0.8;
 }
-.title{
+.system{
     display: inline-block;
     color: #23a257;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
     margin-bottom: 30px;
-}
-input{
+} */
+/* input{
     display: block;
     width: 280px;
     margin: 20px;
@@ -46,16 +91,12 @@ input{
 input::-webkit-input-placeholder{
     color: #777;
     text-indent: 1em;
-}
-.btn{
+} */
+/* .btn{
     width: 150px;
     display: block;
     border-radius: 30px;
     background: #23a257;
     color: white;
     margin: 0 auto;
-}
-.tips{
-    color: red;
-    margin-left: 30px;
-}
+} */

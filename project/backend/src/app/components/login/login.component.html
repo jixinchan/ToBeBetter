@@ -1,15 +1,25 @@
-<div class="wrap">
-<div class="cover">
-  <div class="window">
-    <img src="../../../assets/imgs/logo.png" class="logo">
-    <p class="title">鲜活后台管理系统</p>
-    <div id="login">
-      <input type="text" placeholder="用户名" [(ngModel)]='usr'>
-      <p class="tips" [hidden]='exist'>用户名不存在</p>
-      <input type='password' placeholder="密码" [(ngModel)]='pwd'>
-      <p class="tips" [hidden]='wrong'>密码错误</p>
-      <input type="submit" value="登录" class="btn" (click)='login()'>
+<div class="log">
+  <div class="cover">
+    <div class="window">
+      <div class="up">
+        <img src="../../../assets/imgs/logo.png" class="logo">
+        <p class="system">鲜活后台管理系统</p>
+      </div>
+      <div class="out">
+        <div class="login">
+          <input name="name" type="text" class="form-control" placeholder="用户名" [(ngModel)]='usr'>
+          <!-- <p class="tips">用户名不存在</p> -->
+          <p class="tips" [hidden]='exist'>用户名不存在</p>
+        </div>
+        <div class="login">
+          <input type='password' class="form-control" name='pwd' placeholder="密码" [(ngModel)]='pwd'>
+          <p class="tips" [hidden]='wrong'>密码错误</p>
+        </div>
+
+        <button class="btn btn-success" (click)='login()'>
+          <span style="padding: 0 20px;">登&nbsp;&nbsp;&nbsp;录</span>
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </div>

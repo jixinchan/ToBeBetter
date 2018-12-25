@@ -1,42 +1,54 @@
-<div id="wrap">
-  <!-- 面包屑 -->
-  <div class="bread">
-    <img src="../../../assets/imgs/home.svg">
-    <span>当前位置：系统管理>>宜忌</span>
-  </div>
-  <!-- 标题 -->
-  <h3 class="title">宜忌管理</h3>
-  <button class="order" (click)="order()">排序</button>
-  <button class="add" [routerLink]="['/shoulds/manage',0]">添加</button>
-  <button class="new" (click)="fresh()">刷新</button>
-  <p class="p2">共<span>{{num}}</span>条结果</p>
-  <p class="p">根据体质查找推文：
-    <select (change)="get($event.target.value)">
-      <option *ngFor="let item of body" value="{{item}}">
-        {{item}}
-      </option>
-    </select>
-  </p>
-  <!-- 表格 -->
-  <table cellspacing="1">
-    <tr>
-      <td class="sid">宜忌ID</td>
-      <td class="bodyName">体质名称</td>
-      <td>宜</td>
-      <td>忌</td>
-      <td class="option">操作</td>
-    </tr>
-    <tr *ngFor="let item of sid;let i=index">
-      <td>{{item}}</td>
-      <td>{{bodyName[i]}}</td>
-      <td>{{should[i]}}</td>
-      <td>{{avoid[i]}}</td>     
-      <td>
-        <div>
-          <button class="edit" [routerLink]="['/shoulds/manage',item]">编辑</button>
-          <button class="delete" (click)="del(item)">删除</button>
-        </div>
-      </td>
-    </tr>
-  </table>
+<div class="container">
+  <!-- <div id="wrap"> -->
+    <ol class="breadcrumb">
+      <li><span class="glyphicon glyphicon-home"></span><span>当前位置</span></li>
+      <li><span>系统管理</span></li>
+      <li class="active"><span>宜忌</span></li>
+    </ol>
+    <!-- 标题 -->
+    <h3 class="title">宜忌管理</h3>
+
+    <div class="box">
+      <div class="searches">
+        <p class="p">根据体质查找推文：
+          <select (change)="get($event.target.value)">
+            <option *ngFor="let item of body" value="{{item}}">
+              {{item}}
+            </option>
+          </select>
+        </p>        
+        <p class="p2">共<span>{{num}}</span>条结果</p>
+      </div>
+      <div class="buttons">
+        <button class="btn btn-primary order" (click)="order()">排序</button>
+        <button class="btn btn-warning add" [routerLink]="['/recommend/confirm',0]">添加</button>
+        <button class="btn btn-success new" (click)="fresh()">刷新</button>
+      </div>
+    </div>
+
+    <!-- 表格 -->
+    <table cellspacing="1">
+      <thead>
+        <th class="sid">宜忌ID</th>
+        <th class="bodyName">体质名称</th>
+        <th>宜</th>
+        <th>忌</th>
+        <th class="option">操作</th>
+      </thead>
+      <tr *ngFor="let item of sid;let i=index">
+        <td>{{item}}</td>
+        <td>{{bodyName[i]}}</td>
+        <td>{{should[i]}}</td>
+        <td>{{avoid[i]}}</td>     
+        <td class="outbtn">
+          <div class="btns">
+            <!-- <button class="edit" [routerLink]="['/shoulds/manage',item]">编辑</button>
+            <button class="delete" (click)="del(item)">删除</button> -->
+            <p  [routerLink]="['/shoulds/manage',item]" class="btn editbtn">编辑</p>              
+            <p  (click)="del(item)" class="btn delbtn">删除</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  <!-- </div> -->
 </div>

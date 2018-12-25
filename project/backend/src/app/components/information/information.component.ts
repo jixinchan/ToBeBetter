@@ -49,6 +49,9 @@ export class InformationComponent implements OnInit {
         "key":this.key
       }).subscribe(data=>{
         this.searchresults = data;
+        if(document.querySelectorAll('.searchres')[0].className.indexOf(' hide') != -1){
+          document.querySelectorAll('.searchres')[0].className = document.querySelectorAll('.searchres')[0].className.slice(0,9);
+        }
         if(document.querySelectorAll('.now')[0].className.indexOf(' hide') == -1){
           document.querySelectorAll('.now')[0].className += ' hide';
         }

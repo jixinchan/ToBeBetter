@@ -14,5 +14,55 @@ a{
 .container{
     position: absolute;
     left: 15%;
-    width: 82%;
+    width: 84%;
+}
+.breadcrumb{
+    background-color: white;
+}
+.breadcrumb a{
+    color: #505050;
+}
+.breadcrumb a span{
+    margin-right:10px;
+}
+.active span{
+    color: #23a257;
+}
+.title{
+    height: 40px;
+    clear: both;
+    color: #23a257;
+    margin-bottom: 10px;
+    text-align: center;
+    /* border: #23a257 1px solid; */
+}
+.delbtn{
+    padding: 2px 6px;
+    color: white;
+    border-radius: 5px;
+    background-color: red;
+    cursor: pointer;
+}
+.delbtn:hover{
+    color: white;    
+}
+.editbtn{
+    padding: 2px 6px;
+    color: white;
+    border-radius: 5px;
+    background-color: #23a257;
+    cursor: pointer;
+}
+.editbtn:hover{
+    color: white;    
+}
+table{
+    width: 100%;
+    margin-top: 10px;
+}
+th{
+   height: 40px; 
+}
+td{    
+    height: 45px;
 }
