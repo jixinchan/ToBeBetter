@@ -23,7 +23,7 @@ export class LoginPage {
   uid;
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    // console.log('ionViewDidLoad LoginPage');
   }
 
   constructor(public alertCtrl:AlertController,public app:App,public http: HttpClient,
@@ -61,7 +61,7 @@ export class LoginPage {
   goHome(){
     this.http.post('/api/login/count',{'uid':this.uid},{headers:this.headers}).subscribe(data=>{
       if(!data){
-        let profileModal = this.modal.create('SharePage',{flag:false});
+        let profileModal = this.modal.create('StartestPage');
         profileModal.present();
       }
     });

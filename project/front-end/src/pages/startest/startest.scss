@@ -1,0 +1,38 @@
+page-startest {
+    position: relative;
+    ion-content{
+        img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            position: absolute;
+            color: #fff;
+            left: 34%;
+        }
+        .p1{
+            top:34%;
+        }
+        .p2{
+            top:43%;
+        }
+        .p3{
+            top:52%;
+        }
+        .p4{
+            top:61%;
+        }
+        .p5{
+            left: 25%;
+            top:78%;
+            padding: 10px 60px 10px 60px;
+            margin: 0;
+        }
+        .p6{
+            left: 85%;
+            color: rgb(243, 243, 243);
+            font-size: 1.1em;
+        }
+    }
+}
