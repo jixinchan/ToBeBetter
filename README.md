@@ -31,4 +31,4 @@
    * Github：[https://github.com/MengLeXin](https://github.com/MengLeXin)  
    	
 ## 项目运行部分截图
-![avatar](/project/front-end/部分截图/1.png)
+![avatar](/project/front-end/部分截图/1.png)![avatar](/project/front-end/部分截图/2.png)![avatar](/project/front-end/部分截图/3.png)![avatar](/project/front-end/部分截图/4.png)![avatar](/project/front-end/部分截图/5.png)
