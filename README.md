@@ -9,7 +9,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以使用"鲜活"获得基于本人体质结果推荐的文章，通过阅读文章来了解自身体质相关的保养知识。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以选择我们为其创建的计划并添加，然后我们为其记录每日完成情况。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以使用"鲜活"APP分享自己的动态和浏览他人的动态，还可以对他人的动态进行收藏和评论。<br>
-      
+ 
+## 项目地址
+   * Github：[https://github.com/jixinchan/ToBeBetter/tree/master/project](https://github.com/jixinchan/ToBeBetter/tree/master/project)
+
 ## 项目成员
 * 季新婵
    * 负责整体进度把控。前端及服务器端代码实现。代码整合。
