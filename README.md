@@ -33,11 +33,15 @@
 ## 项目运行部分截图
 ### 登录页面
 <img src="/project/front-end/部分截图/1.png" align=center>
+
 ### 首页
 <img src="/project/front-end/部分截图/2.png" align=center>
+
 ### 添加计划页
 <img src="/project/front-end/部分截图/3.png" align=center>
+
 ### 动态页
 <img src="/project/front-end/部分截图/4.png" align=center>
+
 ### 个人中心页
 <img src="/project/front-end/部分截图/5.png" align=center>
