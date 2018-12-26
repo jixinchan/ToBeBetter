@@ -36,6 +36,7 @@ export class HomePage {
   city;//城市
 
   nocity=false;
+  isLogin;
   
 
   //调理是否展开
@@ -106,7 +107,11 @@ export class HomePage {
   }
  
   goLogin(){
-    this.app.getRootNavs()[0].setRoot('LoginPage');
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      this.navCtrl.push('UsertailPage');
+    } 
   }
 
   goHomeTail(rid) {
@@ -121,7 +126,12 @@ export class HomePage {
     }
     //得到uid
     this.uid = localStorage.getItem("uid");
-
+    
+    if(this.uid==1){
+      this.isLogin=false;
+    }else{
+      this.isLogin=true;
+    }
     //获取gps
     // this.getLocation();
 

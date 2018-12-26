@@ -36,7 +36,7 @@ export class HometailPage {
   scrollHandler(event) {
     this.zone.run(()=>{
       this.top=(event.scrollTop+574)+'px';
-      console.log('top:',this.top);
+      // console.log('top:',this.top);
     });
   }
 
