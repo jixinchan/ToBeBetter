@@ -44,7 +44,7 @@
 <img src="/project/front-end/部分截图/3.png" align=center>
 
 ### 动态页
-<img src="/project/front-end/部分截图/4.png" align=center>
+<img src="/project/front-end/部分截图/4.png" width='307px' height='547px' align=center>
 
 ### 个人中心页
 <img src="/project/front-end/部分截图/5.png" align=center>
