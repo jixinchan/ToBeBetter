@@ -12,15 +12,21 @@
       
 ### 项目成员
 * 季新婵
-      * 负责整体进度把控。前端及服务器端代码实现。
-      * Github：[https://github.com/jixinchan](https://github.com/jixinchan)
+   * 负责整体进度把控。前端及服务器端代码实现。
+   * Github：[https://github.com/jixinchan](https://github.com/jixinchan)
 * 王颖
-      * 服务器端代码实现。主要负责后台管理系统。
-      * Github：[https://github.com/wangying1998](https://github.com/wangying1998)
+   * 服务器端代码实现。主要负责后台管理系统。
+   * Github：[https://github.com/wangying1998](https://github.com/wangying1998)
 * 田圆方
-      * 前端及服务器端代码实现。技术钻研。
-      * Github：
+   * 前端及服务器端代码实现。技术钻研。
+   * Github：[https://github.com/tianyuanfang](https://github.com/tianyuanfang)
 * 徐瑞婷
+   * 前端及服务器端代码实现。技术钻研。
+   * Github：[https://github.com/xuruiting1](https://github.com/xuruiting1)  
 * 高铱镁
+   * 前端及服务器端代码实现。技术钻研。
+   * Github：[https://github.com/gaoyimei0721](https://github.com/gaoyimei0721)  
 * 孟乐鑫
+   * 前端及服务器端代码实现。技术钻研。
+   * Github：[https://github.com/MengLeXin](https://github.com/MengLeXin)  
    	
