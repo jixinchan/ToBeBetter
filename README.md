@@ -32,7 +32,7 @@
    	
 ## 项目运行部分截图
 <img src="/project/front-end/部分截图/1.png" align=center>
-![avatar](/project/front-end/部分截图/2.png)
-![avatar](/project/front-end/部分截图/3.png)
-![avatar](/project/front-end/部分截图/4.png)
-![avatar](/project/front-end/部分截图/5.png)
+<img src="/project/front-end/部分截图/2.png" align=center>
+<img src="/project/front-end/部分截图/3.png" align=center>
+<img src="/project/front-end/部分截图/4.png" align=center>
+<img src="/project/front-end/部分截图/5.png" align=center>
