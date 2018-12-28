@@ -17,21 +17,27 @@
 * 季新婵
    * 负责整体进度把控。前端及服务器端代码实现。代码整合。
    * Github：[https://github.com/jixinchan](https://github.com/jixinchan)
+   * 常用邮箱：1209980074@qq.com
 * 王颖
    * 服务器端代码实现。主要负责后台管理系统。
    * Github：[https://github.com/wangying1998](https://github.com/wangying1998)
+   * 常用邮箱：1610010554@qq.com
 * 田圆方
    * 前端及服务器端代码实现。技术钻研。
    * Github：[https://github.com/tianyuanfang](https://github.com/tianyuanfang)
+   * 常用邮箱：1784634905@qq.com
 * 徐瑞婷
    * 前端及服务器端代码实现。负责体质测试主要模块。
    * Github：[https://github.com/xuruiting1](https://github.com/xuruiting1)  
+   * 常用邮箱：1263183452@qq.com
 * 高铱镁
    * 前端及服务器端代码实现。文档书写。
    * Github：[https://github.com/gaoyimei0721](https://github.com/gaoyimei0721)  
+   * 常用邮箱：1272379222@qq.com
 * 孟乐鑫
    * 前端代码实现。UI设计。文档书写。
    * Github：[https://github.com/MengLeXin](https://github.com/MengLeXin)  
+   * 常用邮箱：970914982@qq.com
    	
 ## 项目运行部分截图
 ### 登录页面
