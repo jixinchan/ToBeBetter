@@ -34,7 +34,7 @@ function postR(sql,path){
     for(var i in body){
       options.push(body[i]);
     }
-    console.log('options:',options);
+    // console.log('options:',options);
     db.query(sql,[...options],(err,result)=>{
       if(err){
         res.status(500).send('DB error');
@@ -55,8 +55,9 @@ get('select COUNT(*) num from dynamic','home/dcount');
 // 个人信息
 get('select * from user_info','userinfo');
 
-app.post('/deluser',(req,res)=>{
+app.post('/api/deluser',(req,res)=>{
     var uid = req.body.uid;
+    console.log(uid);
     const sql = "delete from user_info where uid=?";
     db.query(sql,[uid],(err)=>{
         if(err){
@@ -66,6 +67,19 @@ app.post('/deluser',(req,res)=>{
         res.status(200).send();
     });
 });
+
+app.post('/api/searchusr',(req,res)=>{
+    var key = req.body.key;
+    console.log(key);
+    const sql = 'select * from user_info where nickname like ?';
+    db.query(sql,[key],(err,results)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send('DB error');
+        }
+        res.status(200).send(results);
+    })
+})
 
 
 /////////////////////////////////////////////////////////////////// 推荐&&宜忌
@@ -82,7 +96,8 @@ function post(sql, url) {
         // console.log(options);
         db.query(sql, [...options], function (err, result) {
             if (err) {
-                res.send(err);
+                // res.send(err);
+                console.log(err);
             }
             res.send(result);
         });
@@ -132,17 +147,19 @@ post('select * from question where bid=?','somatoplasm');
 //增加题目
 post('insert into question (qid,question,bid) values(?,?,?)','add/question');
 
+
 //管理员信息页面
 //查询所有管理员信息
 get('select * from admins','admins');
 //增加管理员
-post('insert into admins (mid,username,password,roles) values(?,?,?,?)','add/admin');
+post('insert into admins values(?,?,?,?)','add/admin');
+
 //修改管理员信息
 app.post('/api/edit/admin',(req,res)=>{
 	var body=req.body;
 	var mid=body.mid,usr=body.username,pwd=body.password,role=body.role;
 	console.log('body:',body);
-	db.query('update admins set username=?,password=?,roles=? where mid='+mid,[usr,pwd,role],(err,result)=>{
+	db.query('update admins set username=?,password=?,roles=? where mid=?',[usr,pwd,role,mid],(err,result)=>{
 		if(err){
 			res.status(500).send('DB error!');
 		}else{

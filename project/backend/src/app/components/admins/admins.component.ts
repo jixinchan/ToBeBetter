@@ -13,7 +13,7 @@ export class AdminsComponent implements OnInit {
   mid;
   constructor(public http:HttpClient,private modalService: BsModalService) {
     this.mid=localStorage.getItem('mid');
-    console.log(this.mid);
+    console.log('mid  ',this.mid);
   }
   manager;
   addmid;
@@ -32,7 +32,7 @@ export class AdminsComponent implements OnInit {
   ngOnInit() {
     this.http.get('/api/admins').subscribe(data=>{
       this.manager = data;
-      console.log(this.manager);
+      // console.log(this.manager);
     })
   }
   selectOnchang(i){
@@ -40,8 +40,9 @@ export class AdminsComponent implements OnInit {
   }
 
   goAddadmin(){
+    console.log(this.addmid,this.addname,this.addpwd,this.addrole);
     this.http.post('/api/add/admin',{
-      "mid":this.addmid,
+      "mid":Number(this.addmid),
       "username":this.addname,
       "password":this.addpwd,
       "role":this.addrole
@@ -59,7 +60,8 @@ export class AdminsComponent implements OnInit {
     this.editrole=i;
   }
   openModal(template1: TemplateRef<any>,j) {
-    if(this.mid==1){
+    console.log(j);
+    if(this.mid==1 || this.mid==j){
       this.modalRef = this.modalService.show(template1);
       this.editmid=j;
     }else{
@@ -67,8 +69,8 @@ export class AdminsComponent implements OnInit {
     }
   }
   editAdmin(){
-    console.log(this.editmid);
-    console.log(this.editrole);
+    // console.log(this.editmid);
+    // console.log(this.editrole);
     this.http.post('/api/edit/admin',{
       "mid":this.editmid,
       "username":this.editname,
@@ -79,11 +81,12 @@ export class AdminsComponent implements OnInit {
        
     });
     window.location.reload();
+    // this.ngOnInit();
     this.modalRef.hide();
   }
   // 删除管理员
   goDelete(template3: TemplateRef<any>,i){
-    // console.log(i);
+    console.log(i);
     if(this.mid==1&&this.mid!=i){
       this.modalRef = this.modalService.show(template3);
       this.deletemid=i;

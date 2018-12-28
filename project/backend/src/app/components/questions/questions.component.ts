@@ -122,7 +122,7 @@ export class QuestionsComponent implements OnInit {
     }).subscribe(data=>{
         // console.log(i);
     });
-    window.location.reload();
+    window.location.reload();;
   }
   // 编辑
   openModal(template1: TemplateRef<any>,j) {
@@ -137,7 +137,7 @@ export class QuestionsComponent implements OnInit {
     }).subscribe(data=>{
         console.log(this.editid);
     });
-    window.location.reload();
+    window.location.reload();;
     this.modalRef.hide();
   }
   decline(){
@@ -177,7 +177,7 @@ export class QuestionsComponent implements OnInit {
           // console.log("你进来了");
       });
       this.modalRef.hide();
-      window.location.reload();
+      window.location.reload();;
     }
     
     

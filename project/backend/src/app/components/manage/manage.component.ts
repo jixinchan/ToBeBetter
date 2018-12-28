@@ -36,7 +36,7 @@ export class ManageComponent implements OnInit {
     var result = confirm("确认是否修改这个推文？");
     if (result == true) {
       // console.log("确定");
-      console.log(obj);
+      // console.log(obj);
       if (this.temp == 0) {
         this.http.post('/api/shoulds/manage/insert', obj).subscribe(data => { });
       } else {
@@ -54,7 +54,7 @@ export class ManageComponent implements OnInit {
       // console.log("确定");
       this.route.navigate(['shoulds']);
     } else {
-      console.log("取消");
+      // console.log("取消");
     }
   }
 

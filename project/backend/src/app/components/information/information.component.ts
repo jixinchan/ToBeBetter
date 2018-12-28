@@ -33,15 +33,16 @@ export class InformationComponent implements OnInit {
     this.http.post('/api/deluser',{
       "uid":uid
     }).subscribe((data)=>{
-      window.location.reload();
+      // window.location.reload();
+      this.ngOnInit();
     });
   }
 
   key;
   searchresults;
   search(){
-    // console.log(this.key);
-    if(this.key === ''){
+    // console.log(typeof this.key);
+    if(this.key === undefined){
       alert('请输入搜索关键字');
     }
     else{
