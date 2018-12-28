@@ -64,7 +64,7 @@ export class RecommendComponent implements OnInit {
     }
     del(rid) {
         // alert(rid);
-        var result = confirm("确认是否删除？");
+        var result = confirm("请问您确定要删除该推荐吗？");
         if (result == true) {
             // console.log("确定");
             this.http.post('/api/recommend', {

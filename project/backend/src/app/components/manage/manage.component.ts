@@ -33,7 +33,7 @@ export class ManageComponent implements OnInit {
       'bid': this.bid,
       'sid': this.sid
     };
-    var result = confirm("确认是否修改这个推文？");
+    var result = confirm("请问是否保存该宜忌？");
     if (result == true) {
       // console.log("确定");
       // console.log(obj);

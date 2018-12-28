@@ -48,7 +48,7 @@ export class ConfirmComponent implements OnInit {
       'title': this.title,
       'rid': this.rid
     };
-    var result = confirm("确认是否修改这个推文？");
+    var result = confirm("请问是否保存这个推荐？");
     if (result == true) {
       // console.log("确定");
       // console.log(this.obj);
