@@ -60,7 +60,7 @@
 >>>>>> 《鲜活》项目软件架构设计说明书<br>
 >>>>>> 《鲜活》项目风险规划<br>
 
->>>> 鲜活.xls —— 项目Backlog 以及 Sprint
+>>>> Backlog.xls —— 项目Backlog 以及 Sprint
 
 
 ## 项目运行部分截图
