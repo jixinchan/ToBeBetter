@@ -40,10 +40,12 @@
    * 常用邮箱：970914982@qq.com
 
 ## 项目文档
->> backend
->> frontend
->> 项目启动
->> 项目规划
+>> backend<br>
+>>>> server<br>
+>>>> src
+>> frontend<br>
+>> 项目启动<br>
+>> 项目规划<br>
 
 ## 项目运行部分截图
 ### 登录页面
