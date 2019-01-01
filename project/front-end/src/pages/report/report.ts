@@ -1,7 +1,8 @@
 import { Component,ViewChild,ElementRef} from '@angular/core';
-import { IonicPage, NavController, NavParams ,Navbar} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,Navbar, ModalController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { Events } from 'ionic-angular';
+import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 
 declare var echarts;//设置echarts全局对象
 @IonicPage()
@@ -127,7 +128,9 @@ export class ReportPage {
     ]
     });
   }
-  constructor(public events: Events,public http:HttpClient,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public events: Events,public http:HttpClient,
+    public navCtrl: NavController, public navParams: NavParams,
+    public quicklogin:QuickloginProvider, public modalCtrl:ModalController ) {
     //写数据库中的用户信息表的主体质id
     this.uid = localStorage.getItem("uid");
     this.des = this.navParams.get('des');
@@ -246,6 +249,15 @@ export class ReportPage {
     this.events.subscribe('ReportPage',()=>{
       this.ionViewWillEnter();
     });
+  }
+  goShare() {
+    if(this.uid=='1'){
+      this.quicklogin.quickLogin();
+    }else{
+      let profileModal = this.modalCtrl.create('SharePage',{flag:true});
+      profileModal.present();
+    }
+    
   }
   
 }  

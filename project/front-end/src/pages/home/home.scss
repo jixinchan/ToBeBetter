@@ -110,13 +110,15 @@ page-home {
             
 
             .ccrd2{
+                height: 80px;
+                border-bottom: 1px solid #e2e2e2;
                 .lc2{
                     width: 50%;
                     height: 100%;
                     float: left;
                     text-align: center;
                     p{
-                        margin: 8px 0;
+                        margin: 8px 0 8px -10px;
                         line-height: 25px;
                     }
                     #yi{
@@ -142,12 +144,16 @@ page-home {
                     width: 50%;
                     float: left;
                     padding-top: 10px;
+                    border-left: 1px solid #e2e2e2;
+                    // 
                     p{
                         // white-space:normal;
                         color: #888; 
                         font-size: 14px;
+                        line-height: 20px;
+                        margin-left: 20px;
                     }
-                    border-bottom: 1px solid #e2e2e2;
+                    
                 }    
             }
         }
@@ -184,6 +190,11 @@ page-home {
                         text-indent: 2em;
                    }
                }
+               .dec{
+                   color: #777;
+                   padding: 10px 0 10px 40px;
+                   margin: 0;
+               }
            }
         }
         
@@ -192,6 +203,7 @@ page-home {
             font-size: 18px;
             border-bottom:1px solid #e2e2e2;
             border-top:1px solid #e2e2e2;
+            clear: both;
             span{
                 position: relative;
                 right: -0.5em;

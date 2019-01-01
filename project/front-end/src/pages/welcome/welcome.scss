@@ -3,21 +3,28 @@ page-welcome {
         margin-bottom: 20px;
         background: yellow;
     }
-    ion-slide{
+    #s1{
         background: url(../assets/imgs/start/start1.jpg);
         background-repeat: no-repeat;
         background-size: 100%,100%;
-        .button-md{
-            margin-top: 70%;
+    }
+    #s2{
+        background: url(../assets/imgs/start/wreport.png);
+        background-repeat: no-repeat;
+        background-size: 100%,100%;
+    }
+    #s3{
+        background: url(../assets/imgs/start/wplan.png);
+        background-repeat: no-repeat;
+        background-size: 100%,100%;
+    }
+
+    ion-slide{
+        p{
+            margin-top: 120%;
             padding: 5%;
-            background: rgb(250, 250, 110);
-            color: rgb(182, 182, 182);
+            color: white;
+            font-size: 1.3em;
         }
     }
-    // ion-slide:nth-child(1){
-    //     background: url(../assets/imgs/start/23.png);
-    // }
-    // ion-slide:nth-child(2){
-    //     background: url(../assets/imgs/start/20.png);
-    // }
 }

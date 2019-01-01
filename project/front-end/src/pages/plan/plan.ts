@@ -83,15 +83,17 @@ export class PlanPage {
     }).subscribe(()=>{});
   }
   isFinish(pid) {
+    // console.log(pid);
+    // console.log(document.querySelectorAll(".p" + pid)[0]);
     var p = document.querySelectorAll(".p" + pid)[0].className;
     if (p.indexOf(' finish finishimg') !== -1) {    // 完成-->未完成
       document.querySelectorAll(".p" + pid)[0].className = document.querySelectorAll(".p" + pid)[0].className.slice(0,8);
-      console.log('11111111',document.querySelectorAll(".p" + pid)[0].className);
+      // console.log('11111111',document.querySelectorAll(".p" + pid)[0].className);
       this.changeStatus(pid,0);
     }
     else {    // 未完成-->完成
       document.querySelectorAll(".p" + pid)[0].className += " finish finishimg";
-      console.log('22222222',document.querySelectorAll(".p" + pid)[0].className);
+      // console.log('22222222',document.querySelectorAll(".p" + pid)[0].className);
       this.changeStatus(pid,1);
     }
   }

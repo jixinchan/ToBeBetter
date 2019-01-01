@@ -3,6 +3,7 @@
 var express = require('express');
 var db = require('./database');
 var app = express();
+var fs=require('fs');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
@@ -12,23 +13,6 @@ app.all('*',function(req,res,next){
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
 });
-
-//头像
-app.post('/api/avatar', (req, res) => {
-    var file = req.body.avatar;
-    var buf = new Buffer(file, 'base64');
-    // log(buf);
-    fs.writeFile('./avatar.jpg', buf, err => {
-        if (err) {
-            log(err);
-            res.send(err);
-        } else {
-            log("save success");
-            res.send("save success");
-        }
-    });
-});
-
 
 //登录
 app.post('/api/login',function(req,res){
@@ -274,6 +258,23 @@ mePage('me','select * from user_info where uid=?');
 mePage('usertail','select * from user_info where uid=?');
 mePage('usertail/tel','select * from register where uid=?');
 
+//动态上传图片
+app.post('/api/me/usertail/avatar', (req, res) => {
+  var file = req.body.avatar;
+  var name = req.body.name;
+  console.log(name);
+  var buf = new Buffer(file, 'base64');
+  // log(buf);
+  fs.writeFile('../project/src/assets/imgs/avatar/' + name, buf, err => {
+      if (err) {
+          // console.log(err);
+          res.send(err);
+      } else {
+          // console.log("save success");
+          res.send("save success");
+      }
+  });
+});
 //个人资料
 app.post('/api/usertail/save',function(req,res){
   data=req.body;

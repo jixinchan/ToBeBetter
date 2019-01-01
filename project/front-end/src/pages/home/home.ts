@@ -3,7 +3,6 @@ import { NavController, Events, App } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { WeatherProvider } from '../../providers/weather/weather';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
-import { Geolocation } from '@ionic-native/geolocation';
 
 declare const baidumap_location: any;
 @Component({
@@ -102,7 +101,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public http: HttpClient, 
     public weatherProvider: WeatherProvider,public events:Events,
     public quicklogin:QuickloginProvider ,public zone: NgZone,
-    public geolocation:Geolocation,public app: App ) {
+    public app: App ) {
     
   }
  
@@ -180,7 +179,7 @@ export class HomePage {
               this.result = result["showapi_res_body"]["f1"];
               this.weather = this.result['day_weather'];
               this.temperature = this.result['day_air_temperature'];
-              this.cold = this.result['index'].cold.desc;
+              this.cold = this.result['index'].cold.title;
               this.guomin = this.result['index'].ag.title;
               this.clothes=this.result['index'].clothes.desc;
               this.img = this.result['day_weather_pic'];

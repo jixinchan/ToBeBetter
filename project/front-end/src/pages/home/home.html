@@ -65,6 +65,7 @@
       </div>
     </div>    
   </div>
+  
   <div class="better">  
     <div class="rep" (click)='goReport()'>  
       <ion-icon name='body'></ion-icon>  <span>我的体质报告</span><span class="arrow">点击查看</span>
@@ -73,7 +74,7 @@
       <ion-icon name='bookmarks'></ion-icon>  <span>我的调理方案</span>
     </div>
     <div [hidden]='isLogin'>
-      <p style="color:#777"  (click)='goLogin()'>&nbsp;&nbsp;&nbsp;<ion-icon name='ios-happy-outline'></ion-icon>&nbsp;登录以后我们将为您打造适合您的调理方案！</p>
+      <p class="dec"  (click)='goLogin()'>登录以后我们将为您打造适合您的调理方案！</p>
     </div>
     <div [hidden]='!isLogin'>
       <p class="plist">
