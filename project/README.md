@@ -19,6 +19,7 @@
  
 ## 项目地址
    * Github：[https://github.com/jixinchan/ToBeBetter/tree/master/project](https://github.com/jixinchan/ToBeBetter/tree/master/project)
+   * Redmine：[http://10.7.1.5/projects/2016_h5_fresh/issues/gantt](http://10.7.1.5/projects/2016_h5_fresh/issues/gantt)
 
 ## 团队成员
 * 季新婵
