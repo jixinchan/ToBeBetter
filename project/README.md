@@ -10,7 +10,7 @@
 ## 项目立项
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在当今人们对养生的迫切需求下，我们计划实现一款专注养生的APP。为了实现用户可以从日常起居饮食达到&nbsp;&nbsp;养生目的，我们以一定的中医理论为依据。我们以《中医体质判定与分类》为依据，通过制定题目来让用户回答的方式实现对用户体制的测试，再通过不同&nbsp;&nbsp;的体质来为用户推荐不同的饮食及其他方面的建议，让用户通过在日常生活中注意饮食、起居及锻炼的方式达到促进身体健康的目的。与此同时，用户可以&nbsp;&nbsp;通过添加我们为用户制定的计划来进一步促进用户良好习惯的养成，促成养生的成功。
 
-## 用户功能
+## 主要功能
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以通过进行体质测试之后返回的结果来获得自己的体质情况以及一系列的注意事项。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户在测试完毕以后，可以根据我们推送的调理方案在日常生活中进行调理。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以使用"鲜活"获得基于本人体质结果推荐的文章，通过阅读文章来了解自身体质相关的保养知识。<br>
@@ -47,17 +47,18 @@
    * 常用邮箱：970914982@qq.com
 
 ## 项目所用技术
-&nbsp;&nbsp;&nbsp;&nbsp;前端：Angular+Ionic
-&nbsp;&nbsp;&nbsp;&nbsp;后端：NodeJs+express+Mysql
+&nbsp;&nbsp;&nbsp;&nbsp;前端App：Ionic
+&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统：Angular
+&nbsp;&nbsp;&nbsp;&nbsp;服务器端：NodeJs+Express+Mysql
 
 ## 项目文件
 >>project<br>
->>>> backend<br>
->>>>>> back-server ——前台服务器端代码 <br>
+>>>> frontend<br>
+>>>>>> front-server ——前台服务器端代码 <br>
 >>>>>> src ——前台前端代码 <br>
 
->>>> frontend <br>
->>>>>> front-serer ——后台服务器端代码<br>
+>>>> backend <br>
+>>>>>> back-serer ——后台服务器端代码<br>
 >>>>>> src ——后台前端代码<br>
 
 >>>> 项目启动<br>
