@@ -47,9 +47,9 @@
    * 常用邮箱：970914982@qq.com
 
 ## 项目所用技术
-&nbsp;&nbsp;&nbsp;&nbsp;前端App：Ionic
-&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统：Angular
-&nbsp;&nbsp;&nbsp;&nbsp;服务器端：NodeJs+Express+Mysql
+&nbsp;&nbsp;&nbsp;&nbsp;前端App：Ionic <br>
+&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统：Angular <br>
+&nbsp;&nbsp;&nbsp;&nbsp;服务器端：NodeJs+Express+Mysql <br>
 
 ## 项目文件
 >>project<br>
