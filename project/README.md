@@ -1,9 +1,16 @@
 # "鲜活"——HTML5与移动互联网开发
 ## 项目简介
-&nbsp;&nbsp;&nbsp;&nbsp;"**鲜活**"一款包含体质测试、打造养生方案、制定计划并督促用户执行计划的APP；<br>
-&nbsp;&nbsp;&nbsp;&nbsp;"**鲜活**"是一款健康养生类APP。旨在为用户提供饮食、运动等方面的养生建议，减少用户因饮食或运动不当而产生不适的情况，使好用户通过养生达到良好的身体状况。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"**鲜活**"一款包含体质测试、打造养生方案、为用户制定计划并可以发布帖子的健康养生类APP；<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"**鲜活**"旨在为用户提供饮食、运动等方面的养生建议，减少用户因饮食或运动不当而产生不适的情况，使&nbsp;&nbsp;好用户通过养生达到良好的身体状况。
 
-## 用户功能
+## 项目背景
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在人们生活品质越来越高的今天，越来越多的人在工作之余更加注重自己的身体健康。据最新数据显示，养生&nbsp;&nbsp;健康类节目的比重在电视市场中在大比重上升。日前，节目已上达百余个。以北京卫视的《养生堂》为例，自开播，前三月的平均收视率约为0.8%，五月份&nbsp;&nbsp;上升至1.58%，七月份为2.15%，到九月份将近3%，最高时能达到4.53%。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;养生的人群是无关乎年龄的。随着我国GDP总值与人均值的提升，十九大报告指出，我国社会主要矛盾已经转&nbsp;&nbsp;化为人民日益增长的美好生活需要和不平衡、不充分的发展之间的矛盾，而追求美好生活的基本前提是健康。由此，养生的市场会越来越大。养生类的&nbsp;&nbsp;APP也将会成为市场上的一大竞争力。
+
+## 项目立项
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在当今人们对养生的迫切需求下，我们计划实现一款专注养生的APP。为了实现用户可以通过改善日常起居饮&nbsp;&nbsp;食来达到养生目的，我们参照了《中医体质判定与分类》。该标准是我国第一部指导和规范中医体质研究及应用的文件，旨在为体质辨识及与中医体质相关&nbsp;&nbsp;疾病的防治、养生保健、健康管理提供依据，使体质分类科学化、规范化。 我们以此为据，通过制定题目来让用户回答的方式实现对用户体制的测试，再&nbsp;&nbsp;通过不同的体质来为用户推荐不同的饮食及其他方面的建议，让用户通过在日常生活中注意饮食、起居及锻炼的方式达到促进身体健康的目的。与此同时，&nbsp;&nbsp;用户可以通过添加我们为用户制定的计划来进一步促进用户良好习惯的养成，促成养生的成功。
+
+## 主要功能
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以通过进行体质测试之后返回的结果来获得自己的体质情况以及一系列的注意事项。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户在测试完毕以后，可以根据我们推送的调理方案在日常生活中进行调理。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;用户可以使用"鲜活"获得基于本人体质结果推荐的文章，通过阅读文章来了解自身体质相关的保养知识。<br>
@@ -12,8 +19,9 @@
  
 ## 项目地址
    * Github：[https://github.com/jixinchan/ToBeBetter/tree/master/project](https://github.com/jixinchan/ToBeBetter/tree/master/project)
+   * Redmine：[http://10.7.1.5/projects/2016_h5_fresh/issues/gantt](http://10.7.1.5/projects/2016_h5_fresh/issues/gantt)
 
-## 项目成员
+## 团队成员
 * 季新婵
    * 负责整体进度把控。前端及服务器端代码实现。代码整合。
    * Github：[https://github.com/jixinchan](https://github.com/jixinchan)
@@ -39,14 +47,19 @@
    * Github：[https://github.com/MengLeXin](https://github.com/MengLeXin)  
    * 常用邮箱：970914982@qq.com
 
+## 项目所用技术
+&nbsp;&nbsp;&nbsp;&nbsp;前端App：Ionic <br>
+&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统：Angular <br>
+&nbsp;&nbsp;&nbsp;&nbsp;服务器端：NodeJs+Express+Mysql <br>
+
 ## 项目文件
 >>project<br>
->>>> backend<br>
->>>>>> back-server ——前台服务器端代码 <br>
+>>>> frontend<br>
+>>>>>> front-server ——前台服务器端代码 <br>
 >>>>>> src ——前台前端代码 <br>
 
->>>> frontend <br>
->>>>>> front-serer ——后台服务器端代码<br>
+>>>> backend <br>
+>>>>>> back-serer ——后台服务器端代码<br>
 >>>>>> src ——后台前端代码<br>
 
 >>>> 项目启动<br>
