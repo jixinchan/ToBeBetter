@@ -48,12 +48,12 @@
 ## 项目文件
 >>project<br>
 >>>> backend<br>
->>>>>> back-server ——前台服务器端代码 <br>
->>>>>> src ——前台前端代码 <br>
+>>>>>> back-server ——后台服务器端代码 <br>
+>>>>>> src ——后台前端代码 <br>
 
 >>>> frontend <br>
->>>>>> front-serer ——后台服务器端代码<br>
->>>>>> src ——后台前端代码<br>
+>>>>>> front-serer ——前台服务器端代码<br>
+>>>>>> src ——前台前端代码<br>
 
 >>>> 项目启动<br>
 >>>>>> 益生活前台原型<br>
