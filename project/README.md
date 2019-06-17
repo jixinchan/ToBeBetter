@@ -47,14 +47,6 @@
 
 ## 项目文件
 >>project<br>
->>>> backend<br>
->>>>>> back-server ——后台服务器端代码 <br>
->>>>>> src ——后台前端代码 <br>
-
->>>> frontend <br>
->>>>>> front-serer ——前台服务器端代码<br>
->>>>>> src ——前台前端代码<br>
-
 >>>> 项目启动<br>
 >>>>>> 益生活前台原型<br>
 >>>>>> 益生活后台原型<br>
@@ -65,6 +57,14 @@
 >>>>>> 《益生活》项目数据库设计说明书<br>
 >>>>>> 《益生活》项目软件架构设计说明书<br>
 >>>>>> 《益生活》项目风险规划<br>
+
+>>>> backend<br>
+>>>>>> back-server ——后台服务器端代码 <br>
+>>>>>> src ——后台前端代码 <br>
+
+>>>> frontend <br>
+>>>>>> front-serer ——前台服务器端代码<br>
+>>>>>> src ——前台前端代码<br>
 
 >>>> Backlog.xls —— 项目Backlog 以及 Sprint
 
