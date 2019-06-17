@@ -25,7 +25,6 @@ import { WeatherProvider } from '../providers/weather/weather';
 import { QuickloginProvider } from '../providers/quicklogin/quicklogin';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Camera } from '@ionic-native/camera';
-import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
@@ -64,7 +63,6 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     ImagePicker,
     Camera,
-    Geolocation,
     QuickloginProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ReciveServeProvider,WeatherProvider

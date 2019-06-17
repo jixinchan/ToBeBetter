@@ -31,14 +31,16 @@ export class MylikesPage {
     //得到uid
     this.uid = localStorage.getItem("uid");
     console.log(this.uid);
-    
+
     this.http.post('/api/mylikesd', {
       "uid": this.uid
     }).subscribe(data => {
       this.dyna = data;
       console.log(data);
       this.dyna.forEach(e => {
-        e.imgs = '../assets/imgs/download/' + e.imgs;
+        this.http.get('/api/imgs/download', { params: { name: e.imgs } }).subscribe(data => {
+          e.imgs = 'data:image/jpeg;base64,' + data['name'];
+        })
       });
     });
 
@@ -54,7 +56,7 @@ export class MylikesPage {
 
   }
 
-  
+
   goHomeTail(rid) {
     // this.http.post('/api/hometail',{
     //   "title":title
@@ -62,11 +64,11 @@ export class MylikesPage {
 
     this.navCtrl.push("HometailPage", { 'rid': rid });
   }
-  goMydynamicTail(did){
+  goMydynamicTail(did) {
     // this.http.post('/api/hometail',{
     //   "title":title
     // }).subscribe(data=>{});
 
-    this.navCtrl.push("MydynamictailPage",{'did':did});
+    this.navCtrl.push("MydynamictailPage", { 'did': did });
   }
 }

@@ -163,7 +163,9 @@ export class ContactailPage {
       // console.log(data);
       if (this.data != undefined) {
         this.data.forEach(e => {
-          this.imgs.push("../assets/imgs/download/" + e.imgs);
+          this.http.get('/api/imgs/download',{params:{name:e.imgs}}).subscribe(data=>{
+            this.imgs[e.did]='data:image/jpeg;base64,'+data['name'];
+          })
           this.title.push(e.title);
           this.content.push(e.content);
           this.uids.push(e.uid);
@@ -236,7 +238,9 @@ export class ContactailPage {
       if (this.info != undefined && this.uid != undefined) {
         this.info.forEach(e => {
           if (e.uid == this.uid) {
-            this.myAvatar = "../assets/imgs/avatar/" + e.avatar;
+            this.http.get('/api/imgs/avatar',{params:{name:e.avatar}}).subscribe(data=>{
+              this.myAvatar='data:image/jpeg;base64,'+data['name'];
+            })
             // console.log(this.myAvatar);
           }
         });

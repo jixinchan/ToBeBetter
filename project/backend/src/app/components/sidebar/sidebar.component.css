@@ -31,10 +31,12 @@ a{
     font-size: 25px;
     line-height: 62px;
     margin-top: 10px;
+    margin-left: -15px;
 }
 img{
-    width: 62px;
-    height: 62px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
 }
 
 

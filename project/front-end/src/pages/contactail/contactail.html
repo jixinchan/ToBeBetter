@@ -6,13 +6,13 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>鲜活</ion-title>
+    <ion-title>益生活</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <div class="nav">
-    <p><img src="{{avatar[i]}}"></p>
+    <p><img src="{{avatar[dids[i]]}}"></p>
     <p>{{nickname[i]}}</p>
     <p class="btn1">
       <button outline ion-button [ngStyle]="{'border-color':'#808080'}" [ngClass]="{'hide':!flag}" (click)="change(1)">已关注</button>
@@ -25,16 +25,17 @@
     </p>
   </div>
 
-  <ion-slides class="sli" loop autoplay="2000" pager *ngIf="imgs[i]">
+  <!-- <ion-slides class="sli" loop autoplay="2000" pager *ngIf="imgs[dids[i]]"> -->
+  <ion-slides class="sli" *ngIf="imgs[dids[i]]">
     <ion-slide>
-      <img src="{{imgs[i]}}">
+      <img src="{{imgs[dids[i]]}}">
+    </ion-slide>
+    <!-- <ion-slide>
+      <img src="{{imgs[dids[i]]}}">
     </ion-slide>
     <ion-slide>
-      <img src="{{imgs[i]}}">
-    </ion-slide>
-    <ion-slide>
-      <img src="{{imgs[i]}}">
-    </ion-slide>
+      <img src="{{imgs[dids[i]]}}">
+    </ion-slide> -->
   </ion-slides>
 
   <div class="word">

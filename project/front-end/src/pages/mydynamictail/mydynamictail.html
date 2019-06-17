@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>鲜活</ion-title>
+    <ion-title>益生活</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,21 +13,22 @@
     </p>  
   </div>
 
-  <ion-slides class="sli" loop autoplay="2000" pager  *ngFor="let img of dynamic;">
+  <!-- <ion-slides class="sli" loop autoplay="2000" pager  *ngFor="let img of dynamic;"> -->
+  <ion-slides class="sli" *ngFor="let img of dynamic;">
     <ion-slide>
+      <img src="{{img.imgs}}">
+    </ion-slide>
+    <!-- <ion-slide>
       <img src="{{img.imgs}}">
     </ion-slide>
     <ion-slide>
       <img src="{{img.imgs}}">
-    </ion-slide>
-    <ion-slide>
-      <img src="{{img.imgs}}">
-    </ion-slide>
+    </ion-slide> -->
   </ion-slides>
 
   <div class="word" *ngFor="let word of dynamic;">
     <p>{{word.title}}</p>
-    <p>{{word.content}}}</p>
+    <p>{{word.content}}</p>
     <div class="key">
       <div class="cir"><span>#</span></div>
       <span class="span">我的动态</span>

@@ -28,7 +28,9 @@ export class UsertailPage {
   birth;//生日
   city;//城市
   account;//用户手机号
-  imgName
+  imgTmp='';
+  imgName='';
+
   bcity;
   cancel = '取消';
   done = '完成';
@@ -44,18 +46,23 @@ export class UsertailPage {
     public camera: Camera,
     public events: Events) {
     this.uid = localStorage.getItem('uid');
-    this.imgName=this.uid +'_'+Math.random()+'.jpg';//头像重命名
+    this.imgTmp=this.uid +'_'+Math.random()+'.jpg';//头像重命名
+
+    
 
     this.http.post('/api/usertail', {
       'uid': this.uid
     }).subscribe(data => {
-      this.avatar = '../assets/imgs/avatar/' + data[0].avatar;
+      this.imgName= data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
       this.sex = data[0].sex;
       this.city = data[0].city;
       this.birth = data[0].birth ? data[0].birth.substring(0, 9) + (Number(data[0].birth.substring(9, 10)) + 1) : data[0].birth;
-      console.log(data[0].birth, this.birth);
+      // console.log(data[0].birth, this.birth);
+      this.http.get('/api/imgs/avatar',{params:{name:this.imgName}}).subscribe(data=>{
+        this.avatar='data:image/jpeg;base64,'+data['name'];
+      })
     });
     this.http.post('/api/usertail/tel', { 'uid': this.uid }).subscribe(data => {
       this.account = data[0].account;
@@ -104,6 +111,7 @@ export class UsertailPage {
       mediaType: 2
     };
     this.camera.getPicture(options).then(image => {
+      this.imgName=this.imgTmp;
       let base64Image = 'data:image/jpeg;base64,' + image;
       // alert(base64Image);
       this.http.post('/api/me/usertail/avatar', {
@@ -129,6 +137,7 @@ export class UsertailPage {
     };
 
     this.camera.getPicture(options).then(image => {
+      this.imgName=this.imgTmp;
       let base64Image = 'data:image/jpeg;base64,' + image;
       this.http.post('/api/me/usertail/avatar', {
         'avatar': image,
@@ -148,7 +157,7 @@ export class UsertailPage {
   save() {
     console.log(this.bcity);
     this.http.post('/api/usertail/save', {
-      'avatar': this.imgName,
+      'avatar': this.imgName!=this.imgTmp?this.imgName:this.imgTmp,
       'nickname': this.nickname,
       'signature': this.signature,
       'sex': this.sex,

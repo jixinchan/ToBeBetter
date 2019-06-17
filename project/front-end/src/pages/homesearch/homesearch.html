@@ -1,6 +1,7 @@
 <ion-header>
   <ion-navbar>
-    <ion-input placeholder="搜索文章、动态" value=""></ion-input>    
+    <ion-input placeholder="搜索文章、动态" [(ngModel)]="key"
+    value=""></ion-input>    
     <ion-buttons end (click)="searchKey()">
       <button ion-button icon-only id="btn">搜索</button>
     </ion-buttons>
@@ -30,14 +31,14 @@
     </div>
   </div>
   <div class="box">
-    <ul class="list">
+    <ul class="list" *ngIf="show">
       <li (click)="isClick(0)" [class.first]="isActive==0">文章</li>
       <li (click)="isClick(1)" [class.first]="isActive==1">动态</li>
     </ul>
     <div [ngSwitch]='isActive'>
       <div *ngSwitchCase='0' class="out">
         <ul>
-          <li *ngFor="let ar of articleResults;" class="result">
+          <li *ngFor="let ar of articleResults;" class="result" (click)="goHometail(ar.rid)">
             <img src="{{ar.imgs}}">
             <div class="right">
               <p class="title">{{ar.title}}</p>
@@ -48,7 +49,7 @@
       </div>
       <div *ngSwitchCase='1' class="out">
         <ul>
-          <li *ngFor="let dr of dynamicResults;" class="result">
+          <li *ngFor="let dr of dynamicResults;" class="result" (click)="goContactail(dr.did)">
             <img src="{{dr.imgs}}">
             <div class="right">
               <p class="title">{{dr.title}}</p>

@@ -40,12 +40,14 @@ page-hometail {
             width:100%;
             text-align: right;
             position: fixed;
-            top: 574px;
+            // top: 574px;
+            bottom: 0;
+            padding:7px;
             background: white;   
             ion-icon{
                 font-size: 25px;
                 margin-right: 20px;
-                color: rgb(80, 80, 80);
+                color: rgb(159, 218, 183);
             }
             span{
                 font-size: 16px;

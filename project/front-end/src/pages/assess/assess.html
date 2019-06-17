@@ -11,9 +11,9 @@
 </ion-header>
 
 <ion-content>
-    <div class="wrap" *ngFor="let item of avatar;let i=index">
+    <div class="wrap" *ngFor="let item of times;let i=index">
       <div class="img">
-        <img src="{{item}}">
+        <img src="{{avatar[sids[i]]}}">
       </div>
       <div class="word">
         <p class="nick">{{nickname[i]}}</p>

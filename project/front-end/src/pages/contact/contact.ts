@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { QuickloginProvider } from '../../providers/quicklogin/quicklogin';
 import { Events } from 'ionic-angular';
+import { disableDebugTools } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-contact',
@@ -10,11 +11,14 @@ import { Events } from 'ionic-angular';
 })
 export class ContactPage {
   content;
-  love = [10, 23, 17, 19, 11, 12];
+  love = [10, 23, 17, 19, 11, 12,0,0];
   user_info;
   nickname = [];
-  avatar = [];
+  avatar = {};
   uid;//游客
+  duids=[];
+  uids=[];
+  dids=[];
   items;
   doRefresh(refresher) {
     setTimeout(() => {
@@ -50,18 +54,26 @@ export class ContactPage {
       // console.log(data);
       if (this.content != undefined) {
         this.content.forEach(e => {
-          e.imgs = "../assets/imgs/download/" + e.imgs;
+          this.http.get('/api/imgs/download',{params:{name:e.imgs}}).subscribe(data=>{
+             e.imgs ='data:image/jpeg;base64,'+data['name'];
+          })
         });
-
+ 
         this.http.get("/api/contact/user_info").subscribe(data => {
           this.user_info = data;
           // console.log(data);
+          this.dids=[];
+          this.nickname=[];
           this.content.forEach(e => {
             if (this.user_info != undefined) {
               this.user_info.forEach(e2 => {
                 if (e.uid == e2.uid) {
+                  this.dids.push(e.did);
                   this.nickname.push(e2.nickname);
-                  this.avatar.push('../assets/imgs/avatar/' + e2.avatar);
+                  this.uids.push(e2.uid);
+                  this.http.get('/api/imgs/avatar',{params:{name:e2.avatar}}).subscribe(data=>{
+                    this.avatar[e.did]='data:image/jpeg;base64,'+data['name'];
+                  })
                 }
               });
             }

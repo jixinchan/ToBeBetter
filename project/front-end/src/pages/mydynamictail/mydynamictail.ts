@@ -25,7 +25,7 @@ export class MydynamictailPage {
   dynamic;
   paragraph;
   user_info;
-  input="";
+  input = "";
   rTime;
   flag = false;
   love = false;
@@ -35,7 +35,7 @@ export class MydynamictailPage {
     if (this.uid == '1') {//游客判断
       this.quicklogin.quickLogin();
     } else {
-      let profileModal = this.modalCtrl.create('SharePage',{flag:true});
+      let profileModal = this.modalCtrl.create('SharePage', { flag: true });
       profileModal.present();
     }
   }
@@ -79,23 +79,27 @@ export class MydynamictailPage {
     }
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController,public quicklogin:QuickloginProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public modalCtrl: ModalController, public alertCtrl: AlertController, public quicklogin: QuickloginProvider) {
     this.did = this.navParams.get('did');
     this.uid = localStorage.getItem("uid");
 
-    this.http.post('/api/mydynamictail',{'did':this.did}).subscribe(data=>{
+    this.http.post('/api/mydynamictail', { 'did': this.did }).subscribe(data => {
       this.dynamic = data;
       this.dynamic.forEach(e => {
-        e.imgs = '../assets/imgs/download/'+e.imgs;
+        this.http.get('/api/imgs/download', { params: { name: e.imgs } }).subscribe(data => {
+          e.imgs = 'data:image/jpeg;base64,' + data['name'];
+        })
       });
     });
-    this.http.post('/api/mydynamictail/user_info',{'uid':this.uid}).subscribe(data=>{
+    this.http.post('/api/mydynamictail/user_info', { 'uid': this.uid }).subscribe(data => {
       this.user_info = data;
       this.user_info.forEach(e => {
-        e.avatar = '../assets/imgs/avatar/'+e.avatar;
+        this.http.get('/api/imgs/avatar', { params: { name: e.avatar } }).subscribe(data => {
+          e.avatar = 'data:image/jpeg;base64,' + data['name'];
+        })
       });
     });
-    
+
 
   }
 

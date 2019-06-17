@@ -39,7 +39,9 @@ export class MydynamicPage {
       this.content = data;
       // console.log(data);
       this.content.forEach(e => {
-        e.imgs = '../assets/imgs/download/' + e.imgs;
+        this.http.get('/api/imgs/download',{params:{name:e.imgs}}).subscribe(data=>{
+          e.imgs='data:image/jpeg;base64,'+data['name'];
+        })
       });
     });
 
@@ -51,7 +53,9 @@ export class MydynamicPage {
       this.user_info.forEach(e => {
         if (e.uid == this.uid) {
           this.nickname.push(e.nickname);
-          this.avatar.push('../assets/imgs/avatar/' + e.avatar);
+          this.http.get('/api/imgs/avatar',{params:{name:e.avatar}}).subscribe(data=>{
+            this.avatar.push('data:image/jpeg;base64,'+data['name']);
+          })
         }
       });
     });

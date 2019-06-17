@@ -35,9 +35,12 @@ export class MePage {
     this.http.post('/api/me',{
       'uid':this.uid
     }).subscribe(data=>{
-      this.avatar = './assets/imgs/avatar/'+data[0].avatar;
+      let name=data[0].avatar;
       this.nickname = data[0].nickname;
       this.signature = data[0].signature;
+      this.http.get('/api/imgs/avatar',{params:{name:name}}).subscribe(data=>{
+        this.avatar='data:image/jpeg;base64,'+data['name'];
+      })
     });
   }
   goPage(page){

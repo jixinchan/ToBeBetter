@@ -21,10 +21,11 @@ export class AssessPage {
   user_info;
   dids = [];
   uids = [];
+  sids=[];
   times = [];
   contents = [];
   nickname = [];
-  avatar = [];
+  avatar = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {}
 
   ionViewDidEnter(){    
@@ -37,12 +38,14 @@ export class AssessPage {
       this.http.get("/api/contact/user_info").subscribe(data => {
         this.user_info = data;
         // console.log(data);
-        this.nickname = [];
-        this.avatar = [];
+        this.sids=[];
+        this.uids=[];
+        this.times=[];
         if (this.user_info != undefined) {
           if (this.assess != undefined) {
             this.assess.forEach(e => {
               if (e.did == this.did) {
+                this.sids.push(e.sid);
                 this.uids.push(e.uid);
                 this.times.push(e.time);
                 this.contents.push(e.content);
@@ -51,12 +54,14 @@ export class AssessPage {
             this.num = this.uids.length;
             // console.log(this.uids, this.times, this.contents);
           }
-          this.user_info.forEach(e => {
+          this.uids.forEach((e,idx) => {
             if (this.uids != undefined) {
-              this.uids.forEach(e2 => {
-                if (e2 == e.uid) {
-                  this.nickname.push(e.nickname);
-                  this.avatar.push('../assets/imgs/avatar/' + e.avatar);
+              this.user_info.forEach((e2) => {
+                if (e == e2.uid) {
+                  this.nickname.push(e2.nickname);
+                  this.http.get('/api/imgs/avatar',{params:{name:e2.avatar}}).subscribe(data=>{
+                    this.avatar[this.sids[idx]]='data:image/jpeg;base64,'+data['name'];
+                  })
                 }
               });
             }

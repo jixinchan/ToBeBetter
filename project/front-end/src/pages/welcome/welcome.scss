@@ -4,7 +4,7 @@ page-welcome {
         background: yellow;
     }
     #s1{
-        background: url(../assets/imgs/start/start1.jpg);
+        background: url(../assets/imgs/start/start1.png);
         background-repeat: no-repeat;
         background-size: 100%,100%;
     }
@@ -25,6 +25,7 @@ page-welcome {
             padding: 5%;
             color: white;
             font-size: 1.3em;
+            text-shadow: 5px 5px 5px #555;
         }
     }
 }

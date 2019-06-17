@@ -21,9 +21,9 @@ export class MyattentionPage {
   uid;
   attention;
 
-  change(i,j) {
+  change(i, j) {
     console.log(j);
-    
+
     if (i == 0) {
       this.flag[j] = true;
       this.flag[j] = !this.flag[j];
@@ -64,11 +64,13 @@ export class MyattentionPage {
     this.uid = localStorage.getItem("uid");
     console.log(this.uid);
 
-    this.http.post('/api/myattention', {"uid": this.uid}).subscribe(data => {
+    this.http.post('/api/myattention', { "uid": this.uid }).subscribe(data => {
       this.attention = data;
       // console.log(data);
       this.attention.forEach(e => {
-        e.avatar = '../assets/imgs/avatar/' + e.avatar;
+        this.http.get('/api/imgs/avatar', { params: { name: e.avatar } }).subscribe(data => {
+          e.avatar = 'data:image/jpeg;base64,' + data['name'];
+        })
         this.aid.push(e.uid);
       });
     });
